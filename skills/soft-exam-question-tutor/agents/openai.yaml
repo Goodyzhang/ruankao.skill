@@ -1,0 +1,7 @@
+interface:
+  display_name: "软考截图讲题与归档"
+  short_description: "自动识别题目截图，讲解软考考点并在确认后归档知识库"
+  default_prompt: "使用 $soft-exam-question-tutor 讲解这张题目截图，并在我确认后整理进软考知识库。"
+
+policy:
+  allow_implicit_invocation: true
