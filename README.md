@@ -1,15 +1,16 @@
 # ruankao.skill
 
-面向中文软考学习场景的 Agent Skill：接收题目截图、图片或文本，完成题目复原、软考识别、软件设计师（中级）/系统架构设计师（高级）分流、推理讲解、选项分析，并在用户明确同意后归档到 Obsidian 知识库。
+面向中文软考学习场景的 Agent Skill：接收一道题的截图、图片或文本，完成题目复原、软考识别、中级/高级分级、推理讲解、可选的错因诊断式 Grill，并在用户明确同意后归档到 Obsidian 知识库。
 
-仓库内容和使用说明以简体中文为主。Skill 内部标识为 `soft-exam-question-tutor`。
+Skill 内部标识为 `soft-exam-question-tutor`，仓库内容和使用说明以简体中文为主。
 
 ## 主要能力
 
-- 多模态模型直接识图；非多模态模型尝试读取已有 OCR，失败时明确请求题目文本或建议切换模型。
+- 对图片或文本执行输入 Gate：题干、选项、图表或限定词缺失时请求补充，不猜题。
 - 区分“软考题源明确”“软考知识域相关但题源未确认”和“非软考或证据不足”。
 - 根据题型、来源与考查深度判断软件设计师（中级）、系统架构设计师（高级）或两者共有。
-- 按“考点定位 → 逻辑链 → 答案 → 逐项分析/错误诊断 → 易错点 → 变式题”讲解。
+- 按“题干判别词 → 解题链 → 答案与选项分析 → 迁移提示”讲解。
+- 用户已作答时，依据实际理由进行诊断式 Grill；新题未作答时不强行追问。
 - 只有用户确认后才写入 Obsidian；归档时保留原题、正确选项、简析、用户选项、其它选项分析和知识点链接。
 
 ## 环境要求
@@ -20,7 +21,7 @@
 
 ## 安装
 
-### Skills CLI（推荐）
+### Skills CLI
 
 在 Obsidian Vault 或项目根目录执行：
 
@@ -31,35 +32,24 @@ npx skills add Goodyzhang/ruankao.skill --skill soft-exam-question-tutor
 指定 Agent：
 
 ```powershell
-# Claudian / Claude Code：项目级安装到当前 Vault
 npx skills add Goodyzhang/ruankao.skill --skill soft-exam-question-tutor -a claude-code
-
-# Codex：用户级安装
 npx skills add Goodyzhang/ruankao.skill --skill soft-exam-question-tutor -g -a codex
-
-# Kimi Code CLI：用户级安装
 npx skills add Goodyzhang/ruankao.skill --skill soft-exam-question-tutor -g -a kimi-code-cli
 ```
 
-### GitHub CLI
+### GitHub CLI（最新已发布 tag）
 
 ```powershell
-# Claude Code 项目级
 gh skill install Goodyzhang/ruankao.skill soft-exam-question-tutor --agent claude-code --scope project
-
-# Codex 用户级
 gh skill install Goodyzhang/ruankao.skill soft-exam-question-tutor --agent codex --scope user
-
-# Kimi CLI 用户级
 gh skill install Goodyzhang/ruankao.skill soft-exam-question-tutor --agent kimi-cli --scope user
-
-# 固定安装 v0.1.0
-gh skill install Goodyzhang/ruankao.skill soft-exam-question-tutor --agent codex --scope user --pin v0.1.0
 ```
+
+`gh skill install` 会优先解析仓库的最新 tag，再解析默认分支。当前已有 `v0.1.0` tag，因此上述未固定命令会安装该已发布版本。要在下一个 Release 前使用当前默认分支的工作流，请按下方“手动安装”克隆仓库，或使用已验证的提交 SHA 配合 `--pin`。
 
 ### 手动安装
 
-下载 Release 中的 `soft-exam-question-tutor-v0.1.0.zip`，解压后将整个 `soft-exam-question-tutor` 目录复制到对应位置：
+克隆或下载仓库后，将 `skills/soft-exam-question-tutor/` 整个目录复制到对应位置：
 
 | Agent | 项目级目录 | 用户级目录 |
 |---|---|---|
@@ -69,31 +59,25 @@ gh skill install Goodyzhang/ruankao.skill soft-exam-question-tutor --agent codex
 
 安装完成后重新加载 Agent 或重新打开会话。
 
-## 自动触发
-
-Skill 的描述已覆盖“发题目截图并要求讲解”“为什么选”“怎么做”“我哪里错了”等表达。支持语义发现的 Agent 可以自动触发，无需点名 Skill。
-
-如果所用 Agent 的自动发现不稳定，可在 Vault 根目录的 `AGENTS.md` 或 `CLAUDE.md` 中加入：
-
-> 收到题目图片、截图或题目文本且用户要求讲题时，必须读取并执行 `soft-exam-question-tutor`；用户确认前不得写入知识库。
-
 ## 使用方法
 
 直接发送图片或题目文本，例如：
 
 - “为我讲一下这道题。”
-- “为什么选 B？其它选项错在哪里？”
+- “我选了 C，为什么错？请 Grill 一下。”
 - “这是系统架构设计师的题吗？我哪里做错了？”
 
-讲解完成后，Agent 会询问是否归档。需要归档时可回复：
+处理链为：
 
-> 是，我选了 C，请整理进知识库。
+```text
+输入 Gate → 题源与分级 → 讲题 → 按作答状态决定可选 Grill → 用户确认后归档
+```
 
-未作答时回复“是，未作答”即可。拒绝或不回复时不会创建、修改知识库文件。
+多题材料会先编号并逐题处理。用户没有说明是否作答、明确未作答，或要求快速讲时，Skill 不会强行启动 Grill；每题归档前都需要自己的明确确认。
 
 ## Obsidian 知识库
 
-默认根目录为：
+以下是常见的 Vault 相对目录示例：
 
 ```text
 个人资料/笔记/软考/
@@ -103,7 +87,7 @@ Skill 的描述已覆盖“发题目截图并要求讲解”“为什么选”�
     └── 错题本/
 ```
 
-可以在 `AGENTS.md`、`CLAUDE.md` 或其它工作区指令中声明自己的知识库根目录；显式配置优先于默认值。Skill 使用 Vault 相对 Wiki-link，不写入设备绝对路径。
+首次归档前，请在 `AGENTS.md`、`CLAUDE.md` 或其它工作区指令中声明 Vault 相对根目录，或在 Agent 询问时确认根目录和目标文件。Skill 不会静默创建发布者的默认目录，也不写入设备绝对路径。
 
 ## 内容与版权边界
 
@@ -111,7 +95,7 @@ Skill 的描述已覆盖“发题目截图并要求讲解”“为什么选”�
 
 ## 致谢
 
-向开源项目[软考达人](https://github.com/ruankaodaren/ruankao)致敬。该项目长期维护软考题库、知识库和学习工具，为中文软考学习社区提供了持续价值。
+向开源项目 [软考达人](https://github.com/ruankaodaren/ruankao) 致敬。该项目长期维护软考题库、知识库和学习工具，为中文软考学习社区提供了持续价值。
 
 `ruankao.skill` 是独立实现的 Agent Skill，不包含、复制或分发软考达人的代码、题库、解析或素材；上述链接仅用于致谢与推荐。
 
