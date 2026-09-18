@@ -1,0 +1,34 @@
+{
+  "soft-exam-tool-guard": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 scripts/harness_tool_guard.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "soft-exam-stop-guard": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "py -3 scripts/harness_stop_guard.py",
+        "timeout": 10
+      }
+    ]
+  },
+  "soft-exam-pre-invocation": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "py -3 scripts/harness_pre_invocation.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

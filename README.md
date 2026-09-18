@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.2.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.2.0) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.0) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.2.0) 下载 `ruankao-toolkit-v0.2.0.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.0) 下载 `ruankao-toolkit-v0.3.0.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.2.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -50,6 +50,10 @@ py -3 scripts/init_toolkit.py --vault "../RuankaoVault" --platform antigravity
 脚本将五个完整 Skill 放入 `.agents/skills/`，将资料放入 `个人资料/笔记/软考/`。已有文件默认保留，并列出跳过的文件；重复运行不会清空错题和进度。
 
 在 **Obsidian 中打开目标 Vault**，再在 **Antigravity 中打开同一个目录并新建会话**。发现目录与加载行为见 [Antigravity 官方说明](https://antigravity.google/docs/skills)。
+
+### 可选：超长上下文 Harness
+
+Antigravity 用户可以安装 [可选 Harness](integrations/antigravity-harness/README.md)。它仅在已确认的软考单题会话中提醒卡片续接、约束工具并拦截讲题后裸退；普通图片、文档和其它 Agent 不受影响。
 
 ### 3. 首次使用
 
@@ -110,6 +114,7 @@ npx skills add Goodyzhang/ruankao.skill -a antigravity
 skills/                         五个完整 Skill
 scripts/                        初始化与包验证
 tests/                          初始化行为测试
+integrations/antigravity-harness/ 可选长上下文 Harness 与安装器
 vault/
   软考工具包使用说明.md
   个人资料/笔记/软考/
@@ -165,6 +170,13 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.0 — 2026-09-18
+
+- 新增可选 Antigravity 超长上下文 Harness：PreInvocation 续接提醒、PreToolUse 白名单和 fullyIdle Stop 拦截协同工作。
+- Harness 只对已确认的软考单题流程生效；图片附件和泛化讲题用语不再单独触发。
+- 增加独立安装器，可合并三个命名 Hook 并保留工作区其它 Hook；同名 Harness 升级需要显式 --force。
+- 新增 Harness 安装行为测试和包结构校验。真实 Antigravity UI 回归仍需在目标客户端完成。
 
 ### v0.2.0 — 2026-09-16
 

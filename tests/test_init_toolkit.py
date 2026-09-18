@@ -28,20 +28,23 @@ class InitTests(unittest.TestCase):
         self.run_install()
         self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 5)
         note = next(self.vault.glob('个人资料/笔记/软考/系统架构设计师-高级/错题本/*.md'))
-        note.write_text('PRIVATE ANSWER sentinel\n')
+        note.write_text('PRIVATE ANSWER sentinel\n', encoding='utf-8')
         skill = self.vault / '.agents/skills/soft-exam-prep/SKILL.md'
-        skill.write_text('custom skill\n')
+        skill.write_text('custom skill\n', encoding='utf-8')
         self.run_install()
-        self.assertEqual(skill.read_text(), 'custom skill\n')
+        self.assertEqual(skill.read_text(encoding='utf-8'), 'custom skill\n')
         self.run_install(upgrade_skills=True)
-        self.assertNotEqual(skill.read_text(), 'custom skill\n')
-        self.assertEqual(note.read_text(), 'PRIVATE ANSWER sentinel\n')
+        self.assertNotEqual(skill.read_text(encoding='utf-8'), 'custom skill\n')
+        self.assertEqual(note.read_text(encoding='utf-8'), 'PRIVATE ANSWER sentinel\n')
 
     def test_symlink_blocks_all_writes(self):
         outside = Path(self.tmp.name) / 'outside'
         outside.mkdir()
         self.vault.mkdir()
-        (self.vault / '.agents').symlink_to(outside, target_is_directory=True)
+        try:
+            (self.vault / '.agents').symlink_to(outside, target_is_directory=True)
+        except OSError:
+            self.skipTest('当前 Windows 账户不允许创建测试用符号链接')
         with self.assertRaises(ValueError):
             self.run_install()
         self.assertFalse((self.vault / '个人资料').exists())
