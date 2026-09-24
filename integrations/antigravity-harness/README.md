@@ -27,6 +27,7 @@ python3 integrations/antigravity-harness/install_harness.py --workspace "../Your
 ~~~
 
 安装器会合并三个名为 soft-exam- 开头的 Hook，不改动其它 Hook。若目标中已存在不同版本的同名 Harness 文件或 Hook，默认保留；确认需要更新时使用 --force。
+安装时会按当前系统实际可用的 Python 命令写入 Hook；手动复制 `hooks.json` 时需自行确认其中的 Python 命令能在 Antigravity 中运行。
 
 ## 验收
 
@@ -37,3 +38,5 @@ python3 integrations/antigravity-harness/install_harness.py --workspace "../Your
 3. 上传一张非软考图片或执行普通文档任务，确认 Harness 不注入提醒，也不阻断工具。
 
 Hook 的字段与事件基于 Google Antigravity Hooks 文档。实际卡片工具是否暴露仍取决于当前客户端与会话能力。
+
+若回复正文出现 `call:default_api:ask_question{...}` 之类文本，说明卡片没有实际调用。检查当前会话是否提供 `ask_question`，以及所选自定义 Agent 是否启用了该工具；工具缺失时按主 Skill 的运行时契约报告停在哪一步。Stop Hook 不会阻止这类明确的能力缺失报告结束。

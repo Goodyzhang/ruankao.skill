@@ -19,3 +19,5 @@
 3. Stop Hook 只在 model_stop 且 fullyIdle 为 true 时检查本轮完整讲题。发现讲题结束但缺少 ask_question 时，返回 continue 让 Agent 补发门控卡。
 
 Stop Hook 负责拦截讲题后裸退；Grill 与归档阶段的具体续接仍以主 Skill 的执行与续接契约为准。
+
+当前会话未暴露结构化提问工具时，报告阻塞阶段并等待用户恢复工具或明确选择文本模式；不得把工具调用格式写进正文冒充卡片，也不反复强制续写。

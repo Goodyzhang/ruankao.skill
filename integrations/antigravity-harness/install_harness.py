@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Install the optional Antigravity soft-exam Harness into one workspace."""
 import argparse
+from copy import deepcopy
 import json
+import os
 from pathlib import Path
+import shutil
 
 
 ROOT = Path(__file__).resolve().parent
@@ -30,10 +33,19 @@ def load_json(path):
     return value
 
 
+def python_command():
+    candidates = ("py", "python") if os.name == "nt" else ("python3", "python")
+    for candidate in candidates:
+        if shutil.which(candidate):
+            return "py -3" if candidate == "py" else candidate
+    raise ValueError("未找到可供 Antigravity Hook 使用的 Python 命令")
+
+
 def install(workspace, dry_run=False, force=False):
     workspace = Path(workspace).expanduser().resolve()
     agent_root = workspace / ".agents"
     source_hooks = load_json(ROOT / "hooks.json")
+    launcher = python_command()
     target_hooks = agent_root / "hooks.json"
 
     if target_hooks.exists():
@@ -44,7 +56,13 @@ def install(workspace, dry_run=False, force=False):
     merged_hooks = dict(current_hooks)
     actions = []
     for name in HOOK_NAMES:
-        desired = source_hooks[name]
+        desired = deepcopy(source_hooks[name])
+        for event_handlers in desired.values():
+            for event_handler in event_handlers:
+                for command_hook in event_handler.get("hooks", [event_handler]):
+                    command = command_hook["command"]
+                    if command.startswith("py -3 "):
+                        command_hook["command"] = launcher + command[len("py -3"):]
         if name not in current_hooks:
             merged_hooks[name] = desired
             actions.append((target_hooks, "create-hook"))

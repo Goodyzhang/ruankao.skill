@@ -1,16 +1,11 @@
 import json
 import os
+import re
 
 
 MAX_TAIL_BYTES = 262144
 MAX_RECORDS = 240
 HARNESS_MARKER = "[soft-exam-harness:active]"
-
-TEXT_RECORD_TYPES = {
-    "USER_INPUT",
-    "PLANNER_RESPONSE",
-    "EPHEMERAL_MESSAGE",
-}
 
 STRONG_SOFT_EXAM_SIGNALS = (
     "软考",
@@ -19,6 +14,12 @@ STRONG_SOFT_EXAM_SIGNALS = (
     "系统架构设计师",
     "soft-exam-question-tutor",
 )
+
+QUESTION_CUES = ("这道题", "这题", "本题", "题目", "软考题", "真题")
+QUESTION_ACTIONS = ("讲", "解析", "分析", "怎么做", "我选", "选项")
+CONTINUATION_CUES = ("grill", "归档", "继续当前题", "我选", "下一题", "再来一题")
+RUNTIME_CUES = ("skill", "hook", "harness", "ask_question", "工具", "客户端")
+DIAGNOSTIC_ACTIONS = ("检查", "排查", "修复", "调试", "弹不", "问题")
 
 ACTIVE_FLOW_SIGNALS = (
     HARNESS_MARKER,
@@ -64,23 +65,41 @@ def text_content(value):
         return str(value)
 
 
-def recent_context(transcript_path):
-    chunks = []
-    for record in read_recent_records(transcript_path):
-        if record.get("type") in TEXT_RECORD_TYPES:
-            text = text_content(record.get("content"))
-            if text:
-                chunks.append(text)
-    return "\n".join(chunks)
-
-
 def is_soft_exam_context(transcript_path):
-    context = recent_context(transcript_path)
-    if not context:
+    records = read_recent_records(transcript_path)
+    latest_user = next(
+        (text_content(record.get("content")) for record in reversed(records)
+         if record.get("type") == "USER_INPUT"),
+        "",
+    )
+    if not latest_user:
         return False
-    return any(
-        signal in context
-        for signal in STRONG_SOFT_EXAM_SIGNALS + ACTIVE_FLOW_SIGNALS
+
+    lowered = latest_user.lower()
+    if (
+        any(cue in lowered for cue in RUNTIME_CUES)
+        and any(action in lowered for action in DIAGNOSTIC_ACTIONS)
+    ):
+        return False
+    if (
+        any(signal in lowered for signal in STRONG_SOFT_EXAM_SIGNALS)
+        and any(cue in latest_user for cue in QUESTION_CUES)
+        and any(action in latest_user for action in QUESTION_ACTIONS)
+    ):
+        return True
+
+    last_planner = next(
+        (record for record in reversed(records) if record.get("type") == "PLANNER_RESPONSE"),
+        None,
+    )
+    if not last_planner or not any(
+        signal in text_content(last_planner.get("content")) for signal in ACTIVE_FLOW_SIGNALS
+    ):
+        return False
+    return (
+        any(cue in lowered for cue in CONTINUATION_CUES)
+        or lowered.strip() in {"继续", "结束", "a", "b", "c", "d", "1", "2", "3"}
+        or bool(re.match(r"^a\d+\s*:", lowered.strip()))
     )
 
 

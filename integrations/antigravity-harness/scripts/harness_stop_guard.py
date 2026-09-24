@@ -55,6 +55,12 @@ def main():
         or ("题目复原" in content and "解题链" in content)
     )
 
+    # The runtime contract requires a clear stop when this session has no
+    # structured question tool. Continuing here would only repeat that failure.
+    if "当前会话未暴露结构化提问工具" in content:
+        allow()
+        return
+
     if has_complete_explanation and "ask_question" not in tool_names:
         response = {
             "decision": "continue",
