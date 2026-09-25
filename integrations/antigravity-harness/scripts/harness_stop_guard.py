@@ -54,6 +54,9 @@ def main():
         or "## 考点与判别词" in content
         or ("题目复原" in content and "解题链" in content)
     )
+    has_leaked_grill_card = (
+        "### Grill" in content and "call:default_api:ask_question" in content
+    )
 
     # The runtime contract requires a clear stop when this session has no
     # structured question tool. Continuing here would only repeat that failure.
@@ -61,12 +64,12 @@ def main():
         allow()
         return
 
-    if has_complete_explanation and "ask_question" not in tool_names:
+    if (has_complete_explanation or has_leaked_grill_card) and "ask_question" not in tool_names:
         response = {
             "decision": "continue",
             "reason": (
-                "检测到软考单题讲解已完成，但本轮未实际调用 ask_question。"
-                "正文中的调用文字不算工具事件；不要重复讲解，只调用原生 Grill 门控卡或归档确认卡并等待选择。"
+                "检测到软考单题回复需要交互卡，但本轮未实际调用 ask_question。"
+                "正文中的调用文字不算工具事件；不要重复讲解或复写调用文字，只调用原生 Grill 门控卡或归档确认卡并等待选择。"
             ),
         }
         print(json.dumps(response, ensure_ascii=False))

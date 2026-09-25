@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.3.4](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.4) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.5](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.5) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.4) 下载 `ruankao-toolkit-v0.3.4.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.5) 下载 `ruankao-toolkit-v0.3.5.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.3.4 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.5 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -162,7 +162,8 @@ macOS / Linux 把 `py -3` 换成 `python3`。`--force` 只替换同名 Harness H
 | 现象 | 处理 |
 |---|---|
 | 没发现 Skill | 确认打开的是目标 Vault，检查 `.agents/skills/soft-exam-question-tutor/SKILL.md`，再新建会话 |
-| 只讲题、不弹卡 | 先看会话是否有真实 `ask_question` 工具事件；正文中的调用文字不能替代卡片。若工具可用但只出现调用文字，升级到 v0.3.4 的可选 Harness 并新建会话复测；若工具未暴露，再检查所选 Agent 的工具配置 |
+| 只讲题、不弹卡 | 先看会话是否有真实 `ask_question` 工具事件；正文中的调用文字不能替代卡片。若工具可用但只出现调用文字，升级到 v0.3.5 的可选 Harness 并新建会话复测；若工具未暴露，再检查所选 Agent 的工具配置 |
+| Grill 收尾时出现 `call:default_api:ask_question` 文字 | 这是正文文本，没有真实卡片。v0.3.5 的 Stop Hook 会在已确认的单题流程中尝试续写并补发原生卡片；已显示的乱码无法由 Hook 撤回。升级 Harness 后新建会话验证 |
 | 卡片已弹出，正文却夹着调用参数 | 直接点选已出现的卡片，不根据正文重复作答或重发；升级 Skill 与可选 Harness 后新建会话复测 |
 | Hook 路径出现 `.agents/.agents/scripts` | 升级到 v0.3.2 并用 `--force` 更新可选 Harness；Hook 脚本路径应相对于 `.agents/` 写成 `scripts/...` |
 | 等待卡片 | 先完成已有卡片；没有返回结果不能当作同意 |
@@ -181,6 +182,12 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.5 — 2026-09-25
+
+- 修正 Grill 轮次后 Harness 上下文丢失：当前题已由模型明确判为软考时，后续 Grill 回复继续保持提醒与工具守卫生效。
+- Stop Hook 识别 Grill 收尾正文里的伪 `ask_question` 调用且没有真实工具事件的情况，请求 Agent 继续补发原生归档确认卡。
+- 用真实会话片段重放确认此前返回 `allow`、修复后返回 `continue`；增加 Grill 收尾回归测试。
 
 ### v0.3.4 — 2026-09-25
 

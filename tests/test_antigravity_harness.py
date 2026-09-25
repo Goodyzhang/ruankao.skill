@@ -161,6 +161,50 @@ class HarnessInstallTests(unittest.TestCase):
         )
         self.assertEqual(unrelated["decision"], "allow")
 
+    def test_grill_closing_leaked_call_is_recovered(self):
+        records = [
+            {"type": "USER_INPUT", "content": "为我讲一下这道题（附图）"},
+            {
+                "type": "PLANNER_RESPONSE",
+                "content": "题目归属：软考明确\n## 题目复原\n题干\n## 迁移提示\n规律",
+                "tool_calls": [{"name": "ask_question"}],
+            },
+            {"type": "GENERIC", "content": "A1: 开始 Grill"},
+            {
+                "type": "PLANNER_RESPONSE",
+                "content": "### Grill 第 2 轮反馈\n请完成下一轮。",
+                "tool_calls": [{"name": "ask_question"}],
+            },
+            {"type": "GENERIC", "content": "A1: 正确答案"},
+        ]
+        reminder = self.run_hook(
+            "harness_pre_invocation.py", records, invocationNum=2, initialNumSteps=3
+        )
+        self.assertTrue(reminder["injectSteps"])
+
+        closing = {
+            "type": "PLANNER_RESPONSE",
+            "content": (
+                "### Grill 第 3 轮反馈与诊断收官\n本轮小结。"
+                "call:default_api:ask_question{questions:[...]}"
+            ),
+        }
+        event = {"terminationReason": "model_stop", "fullyIdle": True}
+        leaked = self.run_hook("harness_stop_guard.py", records + [closing], **event)
+        self.assertEqual(leaked["decision"], "continue")
+
+        closing["tool_calls"] = [{"name": "ask_question"}]
+        with_card = self.run_hook("harness_stop_guard.py", records + [closing], **event)
+        self.assertEqual(with_card["decision"], "allow")
+
+        closing.pop("tool_calls")
+        unrelated = self.run_hook(
+            "harness_stop_guard.py",
+            records + [{"type": "USER_INPUT", "content": "检查这个 Hook 问题"}, closing],
+            **event,
+        )
+        self.assertEqual(unrelated["decision"], "allow")
+
     def test_stop_allows_missing_tool_report_but_catches_bare_explanation(self):
         user_input = {"type": "USER_INPUT", "content": "请讲解这道软考题"}
         explanation = "## 题目复原\n题干\n## 迁移提示\n解题提示"

@@ -99,6 +99,16 @@ def is_soft_exam_context(transcript_path):
     if last_planner_index is None:
         return False
     planner_text = text_content(records[last_planner_index].get("content"))
+    if last_planner_index > latest_user_index and "### Grill" in planner_text:
+        for record in records[latest_user_index + 1:last_planner_index]:
+            if record.get("type") != "PLANNER_RESPONSE":
+                continue
+            earlier_text = text_content(record.get("content"))
+            if "## 题目复原" in earlier_text and re.search(
+                r"(?m)^题目归属：(?:软考明确|软考知识域相关但题源未确认)\s*$",
+                earlier_text,
+            ):
+                return True
     if not any(signal in planner_text for signal in ACTIVE_FLOW_SIGNALS):
         return False
     if (
