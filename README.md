@@ -188,7 +188,7 @@ python3 -m unittest discover -s tests -v
 
 - 修正 Grill 提前达到掌握证据时只输出总结、不弹归档确认卡：Stop Hook 在确认的单题流程中补发归档卡，并避免用户已明确结束或已作出归档选择时重复发卡。
 - 当前题一经明确判定为软考，后续 G1/G2 等不带五段式或 `### Grill` 标题的反馈仍保持 Harness 激活；PreInvocation 提醒明确包含提前收尾的归档步骤。
-- 用 Antigravity 会话 `6001515b-7323-486d-b216-6b54f9acf0f3` 的收尾片段重放，并新增回归测试。
+- 用实际 Antigravity 会话的收尾片段重放，并新增回归测试。
 
 ### v0.3.5 — 2026-09-25
 
