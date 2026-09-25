@@ -67,11 +67,14 @@ def text_content(value):
 
 def is_soft_exam_context(transcript_path):
     records = read_recent_records(transcript_path)
-    latest_user = next(
-        (text_content(record.get("content")) for record in reversed(records)
-         if record.get("type") == "USER_INPUT"),
-        "",
+    latest_user_index = next(
+        (index for index in range(len(records) - 1, -1, -1)
+         if records[index].get("type") == "USER_INPUT"),
+        None,
     )
+    if latest_user_index is None:
+        return False
+    latest_user = text_content(records[latest_user_index].get("content"))
     if not latest_user:
         return False
 
@@ -88,14 +91,25 @@ def is_soft_exam_context(transcript_path):
     ):
         return True
 
-    last_planner = next(
-        (record for record in reversed(records) if record.get("type") == "PLANNER_RESPONSE"),
+    last_planner_index = next(
+        (index for index in range(len(records) - 1, -1, -1)
+         if records[index].get("type") == "PLANNER_RESPONSE"),
         None,
     )
-    if not last_planner or not any(
-        signal in text_content(last_planner.get("content")) for signal in ACTIVE_FLOW_SIGNALS
-    ):
+    if last_planner_index is None:
         return False
+    planner_text = text_content(records[last_planner_index].get("content"))
+    if not any(signal in planner_text for signal in ACTIVE_FLOW_SIGNALS):
+        return False
+    if (
+        last_planner_index > latest_user_index
+        and "## 题目复原" in planner_text
+        and re.search(
+            r"(?m)^题目归属：(?:软考明确|软考知识域相关但题源未确认)\s*$",
+            planner_text,
+        )
+    ):
+        return True
     return (
         any(cue in lowered for cue in CONTINUATION_CUES)
         or lowered.strip() in {"继续", "结束", "a", "b", "c", "d", "1", "2", "3"}

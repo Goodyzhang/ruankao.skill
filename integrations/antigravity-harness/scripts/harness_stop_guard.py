@@ -65,8 +65,8 @@ def main():
         response = {
             "decision": "continue",
             "reason": (
-                "检测到软考单题讲解已完成，但本轮未调用 ask_question。"
-                "请按当前作答状态立即调用 Grill 门控卡或归档确认卡，再等待用户选择。"
+                "检测到软考单题讲解已完成，但本轮未实际调用 ask_question。"
+                "正文中的调用文字不算工具事件；不要重复讲解，只调用原生 Grill 门控卡或归档确认卡并等待选择。"
             ),
         }
         print(json.dumps(response, ensure_ascii=False))

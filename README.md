@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.3.3](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.3) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.4](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.4) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.3) 下载 `ruankao-toolkit-v0.3.3.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.4) 下载 `ruankao-toolkit-v0.3.4.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.3.3 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.4 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -162,7 +162,7 @@ macOS / Linux 把 `py -3` 换成 `python3`。`--force` 只替换同名 Harness H
 | 现象 | 处理 |
 |---|---|
 | 没发现 Skill | 确认打开的是目标 Vault，检查 `.agents/skills/soft-exam-question-tutor/SKILL.md`，再新建会话 |
-| 只讲题、不弹卡 | 确认当前会话实际提供 `ask_question`，并检查所选自定义 Agent 是否启用了该工具；是否弹卡以真实工具事件为准，正文中的调用文字不能替代卡片 |
+| 只讲题、不弹卡 | 先看会话是否有真实 `ask_question` 工具事件；正文中的调用文字不能替代卡片。若工具可用但只出现调用文字，升级到 v0.3.4 的可选 Harness 并新建会话复测；若工具未暴露，再检查所选 Agent 的工具配置 |
 | 卡片已弹出，正文却夹着调用参数 | 直接点选已出现的卡片，不根据正文重复作答或重发；升级 Skill 与可选 Harness 后新建会话复测 |
 | Hook 路径出现 `.agents/.agents/scripts` | 升级到 v0.3.2 并用 `--force` 更新可选 Harness；Hook 脚本路径应相对于 `.agents/` 写成 `scripts/...` |
 | 等待卡片 | 先完成已有卡片；没有返回结果不能当作同意 |
@@ -181,6 +181,12 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.4 — 2026-09-25
+
+- 修正“题图＋为我讲一下这道题”的首轮 Harness 漏激活：模型本轮已明确判定为软考题并完成讲解时，Stop Hook 会拦截只有调用文字、没有真实卡片的裸退。
+- 激活依据限定在当前用户消息之后的讲题回复，避免旧题回复影响下一项普通任务。
+- 用实际 Antigravity 会话片段复现并验证修复；增加对应回归测试。
 
 ### v0.3.3 — 2026-09-25
 

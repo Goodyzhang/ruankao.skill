@@ -137,6 +137,30 @@ class HarnessInstallTests(unittest.TestCase):
         )
         self.assertTrue(result["injectSteps"])
 
+    def test_image_question_confirmed_by_current_reply_triggers_stop(self):
+        records = [
+            {"type": "USER_INPUT", "content": "为我讲一下这道题（附图）"},
+            {
+                "type": "PLANNER_RESPONSE",
+                "content": (
+                    "题目归属：软考明确\n级别：系统架构设计师-高级\n"
+                    "## 题目复原\n题干与选项\n## 迁移提示\n规律"
+                ),
+            },
+        ]
+        stopped = self.run_hook(
+            "harness_stop_guard.py", records,
+            terminationReason="model_stop", fullyIdle=True,
+        )
+        self.assertEqual(stopped["decision"], "continue")
+
+        records.append({"type": "USER_INPUT", "content": "检查一张普通图片"})
+        unrelated = self.run_hook(
+            "harness_tool_guard.py", records,
+            toolCall={"name": "run_command", "args": {}},
+        )
+        self.assertEqual(unrelated["decision"], "allow")
+
     def test_stop_allows_missing_tool_report_but_catches_bare_explanation(self):
         user_input = {"type": "USER_INPUT", "content": "请讲解这道软考题"}
         explanation = "## 题目复原\n题干\n## 迁移提示\n解题提示"
