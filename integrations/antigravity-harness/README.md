@@ -28,6 +28,7 @@ python3 integrations/antigravity-harness/install_harness.py --workspace "../Your
 
 安装器会合并三个名为 soft-exam- 开头的 Hook，不改动其它 Hook。若目标中已存在不同版本的同名 Harness 文件或 Hook，默认保留；确认需要更新时使用 --force。
 安装时会按当前系统实际可用的 Python 命令写入 Hook；手动复制 `hooks.json` 时需自行确认其中的 Python 命令能在 Antigravity 中运行。
+Hook 命令中的 `scripts/...` 相对于工作区的 `.agents/` 目录；不要再加 `.agents/` 前缀，否则 Antigravity 会查找 `.agents/.agents/scripts/...`。
 
 ## 验收
 

@@ -49,7 +49,9 @@ class HarnessInstallTests(unittest.TestCase):
             self.assertTrue(
                 command_hook["command"].startswith(harness.python_command() + " ")
             )
-            script_path = self.workspace / command_hook["command"].split()[-1]
+            relative_script = Path(command_hook["command"].split()[-1])
+            self.assertEqual(relative_script.parts[0], "scripts")
+            script_path = hooks.parent / relative_script
             self.assertTrue(script_path.is_file(), script_path)
         self.assertTrue(
             (self.workspace / ".agents" / "scripts" / "harness_stop_guard.py").is_file()
