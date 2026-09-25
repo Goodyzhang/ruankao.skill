@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.3.2](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.2) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.3](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.3) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.2) 下载 `ruankao-toolkit-v0.3.2.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.3) 下载 `ruankao-toolkit-v0.3.3.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.3.2 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.3 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -148,7 +148,7 @@ python3 scripts/init_toolkit.py --vault "../RuankaoVault" --platform antigravity
 
 `--upgrade-skills` 会覆盖所选平台的同名 Skill 文件，包括手工定制的内容。它始终保留已有知识点、错题本、计划与论文底稿。知识资料升级需人工比较、合并；不要用公开模板覆盖个人记录。
 
-已安装 v0.3.0 或 v0.3.1 可选 Harness 的 Antigravity 工作区，还需从新版发布包根目录单独更新 Hook 与脚本。先预览，再执行：
+已安装旧版可选 Harness 的 Antigravity 工作区，还需从新版发布包根目录单独更新 Hook 与脚本。先预览，再执行：
 
 ```powershell
 py -3 integrations/antigravity-harness/install_harness.py --workspace "D:\YourVault" --force --dry-run
@@ -162,7 +162,8 @@ macOS / Linux 把 `py -3` 换成 `python3`。`--force` 只替换同名 Harness H
 | 现象 | 处理 |
 |---|---|
 | 没发现 Skill | 确认打开的是目标 Vault，检查 `.agents/skills/soft-exam-question-tutor/SKILL.md`，再新建会话 |
-| 只讲题、不弹卡 | 确认当前会话实际提供 `ask_question`，并检查所选自定义 Agent 是否启用了该工具；正文出现 `call:default_api:ask_question{...}` 只是文本，不是弹卡。使用可提供该工具的 Agent 新建会话复测 |
+| 只讲题、不弹卡 | 确认当前会话实际提供 `ask_question`，并检查所选自定义 Agent 是否启用了该工具；是否弹卡以真实工具事件为准，正文中的调用文字不能替代卡片 |
+| 卡片已弹出，正文却夹着调用参数 | 直接点选已出现的卡片，不根据正文重复作答或重发；升级 Skill 与可选 Harness 后新建会话复测 |
 | Hook 路径出现 `.agents/.agents/scripts` | 升级到 v0.3.2 并用 `--force` 更新可选 Harness；Hook 脚本路径应相对于 `.agents/` 写成 `scripts/...` |
 | 等待卡片 | 先完成已有卡片；没有返回结果不能当作同意 |
 | 工具缺失或报错 | Agent 应报告阻塞位置；用户明确选择文字交互后才能改用文字问答 |
@@ -180,6 +181,12 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.3 — 2026-09-25
+
+- 调整单题运行时指引：正文只放讲解或上一题反馈，下一张卡的题干、选项与参数交给原生工具调用，减少重复与原始调用文本混入正文。
+- 按真实工具事件判断卡片状态：卡片已显示时等待点选，不因正文混入调用文字而重发。
+- 精简容易被照搬的调用示例，并更新可选 Harness 的瞬时提醒和排查说明。
 
 ### v0.3.2 — 2026-09-25
 
