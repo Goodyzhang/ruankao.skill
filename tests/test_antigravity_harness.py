@@ -172,7 +172,7 @@ class HarnessInstallTests(unittest.TestCase):
             {"type": "GENERIC", "content": "A1: 开始 Grill"},
             {
                 "type": "PLANNER_RESPONSE",
-                "content": "### Grill 第 2 轮反馈\n请完成下一轮。",
+                "content": "**G1 反馈：回答正确！**\n请完成下一轮。",
                 "tool_calls": [{"name": "ask_question"}],
             },
             {"type": "GENERIC", "content": "A1: 正确答案"},
@@ -204,6 +204,49 @@ class HarnessInstallTests(unittest.TestCase):
             **event,
         )
         self.assertEqual(unrelated["decision"], "allow")
+
+    def test_early_grill_mastery_still_needs_archive_card(self):
+        records = [
+            {"type": "USER_INPUT", "content": "为我讲一下这道题（附图）"},
+            {
+                "type": "PLANNER_RESPONSE",
+                "content": "题目归属：软考明确\n## 题目复原\n题干\n## 迁移提示\n规律",
+                "tool_calls": [{"name": "ask_question"}],
+            },
+            {"type": "GENERIC", "content": "A1: 开始 Grill"},
+            {
+                "type": "PLANNER_RESPONSE",
+                "content": "**G1 反馈：回答正确！**",
+                "tool_calls": [{"name": "ask_question"}],
+            },
+            {"type": "GENERIC", "content": "A1: 正确答案"},
+            {
+                "type": "PLANNER_RESPONSE",
+                "content": "**G2 反馈：回答正确！**\n### Grill 诊断总结\n已达到掌握证据，提前结束 Grill 追问。",
+            },
+        ]
+        event = {"terminationReason": "model_stop", "fullyIdle": True}
+        missing = self.run_hook("harness_stop_guard.py", records, **event)
+        self.assertEqual(missing["decision"], "continue")
+        self.assertIn("归档确认卡", missing["reason"])
+
+        records[-1]["tool_calls"] = [{"name": "ask_question"}]
+        with_card = self.run_hook("harness_stop_guard.py", records, **event)
+        self.assertEqual(with_card["decision"], "allow")
+
+        records[-1].pop("tool_calls")
+        for choice in ("不归档，直接结束", "确认归档（高级）"):
+            result = {
+                "type": "GENERIC",
+                "content": (
+                    "Created At: now\nCompleted At: now\n"
+                    f"A1: {choice}"
+                ),
+            }
+            finished = self.run_hook(
+                "harness_stop_guard.py", records[:-1] + [result, records[-1]], **event
+            )
+            self.assertEqual(finished["decision"], "allow")
 
     def test_stop_allows_missing_tool_report_but_catches_bare_explanation(self):
         user_input = {"type": "USER_INPUT", "content": "请讲解这道软考题"}

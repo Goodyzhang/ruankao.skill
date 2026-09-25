@@ -1,7 +1,8 @@
 import json
+import re
 import sys
 
-from harness_common import is_soft_exam_context, last_planner_response, text_content
+from harness_common import is_soft_exam_context, last_planner_response, read_recent_records, text_content
 
 # Ensure clean UTF-8 I/O on Windows
 if sys.platform == "win32":
@@ -54,6 +55,9 @@ def main():
         or "## 考点与判别词" in content
         or ("题目复原" in content and "解题链" in content)
     )
+    has_grill_wrap_up = "### Grill" in content and (
+        "诊断总结" in content or "诊断收官" in content
+    )
     has_leaked_grill_card = (
         "### Grill" in content and "call:default_api:ask_question" in content
     )
@@ -64,13 +68,34 @@ def main():
         allow()
         return
 
-    if (has_complete_explanation or has_leaked_grill_card) and "ask_question" not in tool_names:
-        response = {
-            "decision": "continue",
-            "reason": (
+    if has_grill_wrap_up:
+        for record in reversed(read_recent_records(transcript_path)):
+            if record.get("type") != "GENERIC":
+                continue
+            answer = re.search(
+                r"(?m)^Completed At: [^\n]+\nA\d+:\s*([^\n]+)",
+                text_content(record.get("content")),
+            )
+            if answer:
+                if answer.group(1).strip().startswith(("确认归档", "不归档", "结束", "跳过", "换题")):
+                    allow()
+                    return
+                break
+
+    if (has_complete_explanation or has_grill_wrap_up or has_leaked_grill_card) and "ask_question" not in tool_names:
+        if has_grill_wrap_up:
+            reason = (
+                "检测到软考 Grill 已收尾，但本轮未实际调用 ask_question。"
+                "不要重复总结；只调用原生归档确认卡并等待选择。"
+            )
+        else:
+            reason = (
                 "检测到软考单题回复需要交互卡，但本轮未实际调用 ask_question。"
                 "正文中的调用文字不算工具事件；不要重复讲解或复写调用文字，只调用原生 Grill 门控卡或归档确认卡并等待选择。"
-            ),
+            )
+        response = {
+            "decision": "continue",
+            "reason": reason,
         }
         print(json.dumps(response, ensure_ascii=False))
         return

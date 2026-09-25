@@ -32,6 +32,6 @@ Skill 只能规定恢复行为，不能修复模型服务或客户端的流中�
 
 ## 可选 Antigravity Harness
 
-需要进一步降低超长上下文中的卡片遗漏时，可安装 [Antigravity Harness](../../../integrations/antigravity-harness/README.md)。它只在已确认的软考单题流程中注入短暂续接提醒、限制工具，并在完全空闲的讲题裸退时让 Agent 补发门控卡。
+需要进一步降低超长上下文中的卡片遗漏时，可安装 [Antigravity Harness](../../../integrations/antigravity-harness/README.md)。它只在已确认的软考单题流程中注入短暂续接提醒、限制工具，并在完全空闲的讲题或 Grill 收尾漏卡时让 Agent 补发对应卡片。
 
 Harness 不会凭图片附件或泛化讲题用语激活，也不保证当前会话一定提供 ask_question。工具未暴露时仍按本文件的能力检查与恢复规则处理。
