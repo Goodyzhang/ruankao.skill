@@ -313,6 +313,16 @@ class HarnessInstallTests(unittest.TestCase):
         ]
         self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True)["terminationBehavior"], "force_continue")
 
+    def test_new_question_does_not_inherit_previous_archive_choice(self):
+        for request, media in (("下一题", None), ("再来一题，我选 B", None), ("我选 B", [{"type": "image"}])):
+            records = self.active_grill()
+            records[-1]["content"] = "Completed At: now\nA1: 确认归档"
+            records.extend([
+                {"type": "USER_INPUT", "content": f"<USER_REQUEST>{request}</USER_REQUEST>", "media": media},
+                {"type": "PLANNER_RESPONSE", "content": "题目归属：软考明确\n## 题目复原\n新题\n## 迁移提示\n规律"},
+            ])
+            self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True)["terminationBehavior"], "force_continue")
+
     def test_successful_or_pending_cards_and_terminal_choices_are_not_repeated(self):
         for choice in ("确认归档", "直接归档并跳过 Grill", "不归档，直接结束", "结束本次题目"):
             records = self.active_grill()

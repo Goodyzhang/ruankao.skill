@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.3.7](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.7) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.8](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.8) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.7) 下载 `ruankao-toolkit-v0.3.7.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.8) 下载 `ruankao-toolkit-v0.3.8.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.3.7 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.8 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -184,6 +184,11 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.8 — 2026-09-27
+
+- 在 v0.3.7 的卡片自动恢复基础上，修复“下一题”“再来一题”或新截图加“我选 B”的新题边界：旧题的归档选择不再使新题漏卡被放行。
+- 保留问号续接与故障排查边界，新增三种连续做题输入的回归覆盖；17 项 Harness 测试通过。
 
 ### v0.3.7 — 2026-09-27
 

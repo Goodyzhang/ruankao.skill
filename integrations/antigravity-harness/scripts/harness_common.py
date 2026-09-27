@@ -17,7 +17,7 @@ STRONG_SOFT_EXAM_SIGNALS = (
 
 QUESTION_CUES = ("这道题", "这题", "本题", "题目", "软考题", "真题")
 QUESTION_ACTIONS = ("讲", "解析", "分析", "怎么做", "我选", "选项")
-CONTINUATION_CUES = ("grill", "归档", "继续当前题", "我选", "下一题", "再来一题")
+CONTINUATION_CUES = ("grill", "归档", "继续当前题", "我选")
 RUNTIME_CUES = ("skill", "hook", "harness", "ask_question", "工具", "客户端")
 DIAGNOSTIC_ACTIONS = ("检查", "排查", "修复", "调试", "弹不", "问题")
 
@@ -101,6 +101,8 @@ def current_flow_records(records):
             action in request for action in DIAGNOSTIC_ACTIONS
         ):
             return []
+        if record.get("media") or "下一题" in request or "再来一题" in request:
+            break
         if not is_continuation(request):
             break
     return records[start:]
