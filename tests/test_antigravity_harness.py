@@ -44,15 +44,14 @@ class HarnessInstallTests(unittest.TestCase):
         self.assertIn("other-hook", merged)
         for name in harness.HOOK_NAMES:
             self.assertIn(name, merged)
-            event_handlers = next(iter(merged[name].values()))
-            command_hook = event_handlers[0].get("hooks", [event_handlers[0]])[0]
-            self.assertTrue(
-                command_hook["command"].startswith(harness.python_command() + " ")
-            )
-            relative_script = Path(command_hook["command"].split()[-1])
-            self.assertEqual(relative_script.parts[0], "scripts")
-            script_path = hooks.parent / relative_script
-            self.assertTrue(script_path.is_file(), script_path)
+            for event_handlers in merged[name].values():
+                command_hook = event_handlers[0].get("hooks", [event_handlers[0]])[0]
+                self.assertTrue(command_hook["command"].startswith(harness.python_command() + " "))
+                script_arg = command_hook["command"][len(harness.python_command()) + 1:].split()[0]
+                relative_script = Path(script_arg)
+                self.assertEqual(relative_script.parts[0], "scripts")
+                self.assertTrue((hooks.parent / relative_script).is_file())
+        self.assertIn("PostInvocation", merged["soft-exam-stop-guard"])
         self.assertTrue(
             (self.workspace / ".agents" / "scripts" / "harness_stop_guard.py").is_file()
         )
@@ -77,7 +76,7 @@ class HarnessInstallTests(unittest.TestCase):
         upgraded = json.loads(hooks.read_text(encoding="utf-8"))
         self.assertNotEqual(upgraded["soft-exam-stop-guard"], {"Stop": []})
 
-    def run_hook(self, name, records, **event_fields):
+    def run_hook(self, name, records, post_invocation=False, **event_fields):
         transcript = Path(self.tmp.name) / "transcript.jsonl"
         transcript.write_text(
             "".join(json.dumps(record, ensure_ascii=False) + "\n" for record in records),
@@ -96,7 +95,8 @@ class HarnessInstallTests(unittest.TestCase):
         sys.path.insert(0, str(script.parent))
         try:
             with mock.patch.object(sys, "stdin", io.StringIO(json.dumps(payload, ensure_ascii=False))):
-                with contextlib.redirect_stdout(output):
+                args = [str(script)] + (["--post-invocation"] if post_invocation else [])
+                with contextlib.redirect_stdout(output), mock.patch.object(sys, "argv", args):
                     runpy.run_path(str(script), run_name="__main__")
         finally:
             sys.path.pop(0)
@@ -244,7 +244,10 @@ class HarnessInstallTests(unittest.TestCase):
                 ),
             }
             finished = self.run_hook(
-                "harness_stop_guard.py", records[:-1] + [result, records[-1]], **event
+                "harness_stop_guard.py", records[:-1] + [
+                    {"type": "PLANNER_RESPONSE", "tool_calls": [{"name": "ask_question"}]},
+                    result, records[-1],
+                ], **event
             )
             self.assertEqual(finished["decision"], "allow")
 
@@ -271,6 +274,76 @@ class HarnessInstallTests(unittest.TestCase):
             **event,
         )
         self.assertEqual(unavailable["decision"], "allow")
+
+    def active_grill(self):
+        return [
+            {"type": "USER_INPUT", "content": "<USER_REQUEST>\n\n</USER_REQUEST>\n<ADDITIONAL_METADATA>image</ADDITIONAL_METADATA>"},
+            {"type": "PLANNER_RESPONSE", "content": "题目归属：软考明确\n## 题目复原\n## 迁移提示"},
+            {"type": "USER_INPUT", "content": "<USER_REQUEST>\n？\n</USER_REQUEST>\n<ADDITIONAL_METADATA>time</ADDITIONAL_METADATA>"},
+            {"type": "PLANNER_RESPONSE", "tool_calls": [{"name": "ask_question"}]},
+            {"type": "GENERIC", "content": "Created At: now\nCompleted At: now\nA1: 开始本题 Grill 深度诊断"},
+            {"type": "PLANNER_RESPONSE", "content": "第一轮练习", "tool_calls": [{"name": "ask_question"}]},
+            {"type": "GENERIC", "content": "Created At: now\nCompleted At: now\nA1: 内容选项 B"},
+        ]
+
+    def test_question_mark_and_heading_free_feedback_keep_card_due(self):
+        for feedback in ("回答正确，继续第二轮。", "### 第 1 轮反馈与第 2 轮追问\ncall:default_api:ask_question{questions:[...]}\n"):
+            records = self.active_grill() + [{"type": "PLANNER_RESPONSE", "content": feedback}]
+            reminder = self.run_hook("harness_pre_invocation.py", records)
+            self.assertTrue(reminder["injectSteps"])
+            stop = self.run_hook("harness_stop_guard.py", records, terminationReason="model_stop", fullyIdle=True)
+            self.assertEqual(stop["decision"], "continue")
+            post = self.run_hook("harness_stop_guard.py", records, post_invocation=True)
+            self.assertEqual(post["terminationBehavior"], "force_continue")
+            records[-1]["tool_calls"] = [{"name": "ask_question"}]
+            self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+
+    def test_new_task_ends_context_even_after_question_mark_recovery(self):
+        for request in ("检查这个 Hook 问题", "帮我写一份周报"):
+            records = self.active_grill() + [
+                {"type": "USER_INPUT", "content": f"<USER_REQUEST>{request}</USER_REQUEST>"},
+                {"type": "PLANNER_RESPONSE", "content": "call:default_api:ask_question{quoted example}"},
+            ]
+            self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+
+    def test_large_tool_result_does_not_remove_question_context(self):
+        records = self.active_grill() + [
+            {"type": "GENERIC", "content": "large file result " + "x" * 370000},
+            {"type": "PLANNER_RESPONSE", "content": "回答正确，下一轮。"},
+        ]
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True)["terminationBehavior"], "force_continue")
+
+    def test_successful_or_pending_cards_and_terminal_choices_are_not_repeated(self):
+        for choice in ("确认归档", "直接归档并跳过 Grill", "不归档，直接结束", "结束本次题目"):
+            records = self.active_grill()
+            records[-1]["content"] = "Completed At: now\nA1: " + choice
+            records.append({"type": "PLANNER_RESPONSE", "content": "### Grill 诊断总结\n本题结束。"})
+            self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+        records = self.active_grill()[:-1] + [{"type": "PLANNER_RESPONSE", "content": "等待卡片作答。"}]
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+
+    def test_recovery_retries_are_bounded_and_logged(self):
+        records = self.active_grill() + [{"type": "PLANNER_RESPONSE", "content": "回答正确。"}]
+        for _ in range(2):
+            result = self.run_hook("harness_stop_guard.py", records, post_invocation=True)
+            self.assertEqual(result["terminationBehavior"], "force_continue")
+            message = result["injectSteps"][0]["ephemeralMessage"]
+            self.assertIn("[soft-exam-card-recovery]", message)
+            records.append({"type": "EPHEMERAL_MESSAGE", "content": message})
+            self.assertEqual(self.run_hook("harness_stop_guard.py", records, terminationReason="model_stop", fullyIdle=True)["decision"], "allow")
+            records.append({"type": "PLANNER_RESPONSE", "content": "仍然只有文字。"})
+        result = self.run_hook("harness_stop_guard.py", records, post_invocation=True)
+        blocked = result["injectSteps"][0]["ephemeralMessage"]
+        self.assertIn("[soft-exam-card-blocked]", blocked)
+        records.extend([
+            {"type": "EPHEMERAL_MESSAGE", "content": blocked},
+            {"type": "PLANNER_RESPONSE", "content": "卡片生成失败，当前题未完成。"},
+        ])
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+        events = [json.loads(line) for line in (Path(self.tmp.name) / "soft-exam-card-events.jsonl").read_text(encoding="utf-8").splitlines()]
+        self.assertEqual(events[-1]["check"], "recovery_report_requested")
+        self.assertTrue(any(e["action"] == "force_continue" for e in events))
+        self.assertNotIn("回答正确", json.dumps(events, ensure_ascii=False))
 
 
 if __name__ == "__main__":

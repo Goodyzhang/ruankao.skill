@@ -1,106 +1,159 @@
 import json
+from datetime import datetime, timezone
+from pathlib import Path
 import re
 import sys
 
-from harness_common import is_soft_exam_context, last_planner_response, read_recent_records, text_content
+from harness_common import (
+    current_flow_records, is_soft_exam_context, read_recent_records,
+    text_content, user_request,
+)
 
-# Ensure clean UTF-8 I/O on Windows
-if sys.platform == "win32":
-    try:
-        sys.stdin.reconfigure(encoding="utf-8")
-        sys.stdout.reconfigure(encoding="utf-8")
-    except Exception:
-        pass
 
-def allow():
-    print(json.dumps({"decision": "allow"}))
+RECOVERY_MARKER = "[soft-exam-card-recovery]"
+BLOCKED_MARKER = "[soft-exam-card-blocked]"
+TERMINAL_CHOICES = ("确认归档", "直接归档", "不归档", "结束", "换题")
+
+
+def card_check(data):
+    transcript = data.get("transcriptPath", "")
+    if not is_soft_exam_context(transcript):
+        return "outside_exam_context", "", None
+    records = current_flow_records(read_recent_records(transcript))
+    planner_index = next(
+        (i for i in range(len(records) - 1, -1, -1)
+         if records[i].get("type") == "PLANNER_RESPONSE"), None,
+    )
+    if planner_index is None:
+        return "no_planner_record", "", None
+    planner = records[planner_index]
+    step = planner.get("step_index")
+    content = text_content(planner.get("content"))
+    if planner.get("status", "DONE") != "DONE":
+        return "planner_not_done", "", step
+    calls = planner.get("tool_calls") or []
+    if calls:
+        # A real call owns the next step, including a card awaiting its answer.
+        return "real_tool_call", "", step
+    if "当前会话未暴露结构化提问工具" in content:
+        return "tool_unavailable", "", step
+
+    latest_user = next((r for r in reversed(records) if r.get("type") == "USER_INPUT"), {})
+    request = user_request(latest_user)
+    if request.startswith(TERMINAL_CHOICES) or re.search(r"(?:把|将)本题归档", request):
+        return "user_finished", "", step
+
+    # Actual card answers survive wording/heading changes in the next feedback.
+    latest_answer = None
+    card_index = next((i for i in range(planner_index - 1, -1, -1) if any(
+        call.get("name") == "ask_question" for call in records[i].get("tool_calls") or []
+    )), None)
+    if card_index is not None:
+        result = next((r for r in records[card_index + 1:planner_index] if r.get("type") == "GENERIC"), {})
+        if result.get("status", "DONE") == "DONE":
+            answer = re.search(r"(?m)^A\d+:\s*([^\n]+)", text_content(result.get("content")))
+            if answer:
+                latest_answer = answer.group(1).strip()
+        if latest_answer is None:
+            return "card_pending_or_failed", "", step
+    if latest_answer and latest_answer.startswith(TERMINAL_CHOICES):
+        return "archive_or_end_answered", "", step
+
+    # Count only consecutive repairs since a user message or actual card call.
+    retry_messages = []
+    for record in reversed(records):
+        if record.get("type") == "USER_INPUT" or any(
+            call.get("name") == "ask_question" for call in record.get("tool_calls") or []
+        ):
+            break
+        if record.get("type") in {"EPHEMERAL_MESSAGE", "SYSTEM_MESSAGE"}:
+            retry_messages.append(text_content(record.get("content")))
+    if any(BLOCKED_MARKER in message for message in retry_messages):
+        return "recovery_report_requested", "", step
+    if any(
+        RECOVERY_MARKER in text_content(record.get("content"))
+        for record in records[planner_index + 1:]
+    ):
+        return "recovery_already_requested", "", step
+
+    leaked = "call:default_api:ask_question" in content
+    explanation = (
+        "## 迁移提示" in content or "## 考点与判别词" in content
+        or ("题目复原" in content and "解题链" in content)
+    )
+    wrap_up = "Grill" in content and ("诊断总结" in content or "诊断收官" in content)
+    attempts = sum(RECOVERY_MARKER in message for message in retry_messages)
+    if not (leaked or explanation or wrap_up or latest_answer or attempts):
+        return "no_card_due", "", step
+    if attempts >= 2:
+        return "recovery_exhausted", (
+            BLOCKED_MARKER + "\n原生卡片补发连续两次未形成工具事件。"
+            "停止重试，明确告诉用户本题停在卡片生成失败，保留未完成状态；"
+            "不要宣称已完成，不归档，不开始下一题。"
+        ), step
+    purpose = "归档确认卡" if wrap_up else "本轮原定的门控、练习或归档确认卡"
+    return "missing_card", (
+        RECOVERY_MARKER + "\n本轮需要卡片，但没有真实 ask_question 工具事件。"
+        f"正文已发送，不重复讲解、题干、选项或调用格式；现在只实际调用原生 {purpose}，"
+        "然后等待真实返回。正文中的调用文字不算调用；不要开始下一题或擅自归档。"
+    ), step
+
+
+def emit(data, event, check, response, step=None):
+    # Per-conversation diagnostics contain event metadata, never question text
+    # or tool arguments. They distinguish skipped checks from missing execution.
+    directory = data.get("artifactDirectoryPath")
+    if directory:
+        entry = {
+            "time": datetime.now(timezone.utc).isoformat(),
+            "event": event,
+            "conversationId": data.get("conversationId"),
+            "terminationReason": data.get("terminationReason"),
+            "fullyIdle": data.get("fullyIdle"),
+            "plannerStep": step,
+            "check": check,
+            "action": response.get("terminationBehavior", response.get("decision", "allow")),
+        }
+        try:
+            with (Path(directory) / "soft-exam-card-events.jsonl").open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(entry, ensure_ascii=False) + "\n")
+        except OSError as error:
+            print(f"soft-exam card event log unavailable: {error}", file=sys.stderr)
+    print(json.dumps(response, ensure_ascii=False))
 
 
 def main():
+    if sys.platform == "win32":
+        for stream in (sys.stdin, sys.stdout):
+            if hasattr(stream, "reconfigure"):
+                stream.reconfigure(encoding="utf-8")
+    post_invocation = "--post-invocation" in sys.argv
+    event = "PostInvocation" if post_invocation else "Stop"
+    default = {} if post_invocation else {"decision": "allow"}
     try:
-        raw_input = sys.stdin.read()
-        data = json.loads(raw_input) if raw_input.strip() else {}
-    except Exception:
-        allow()
+        data = json.loads(sys.stdin.read() or "{}")
+    except json.JSONDecodeError:
+        emit({}, event, "invalid_input", default)
         return
-
-    if data.get("terminationReason") != "model_stop":
-        allow()
-        return
-
-    if not data.get("fullyIdle", False):
-        allow()
-        return
-
-    transcript_path = data.get("transcriptPath", "")
-    if not is_soft_exam_context(transcript_path):
-        allow()
-        return
-
-    last_planner = last_planner_response(transcript_path)
-    if not last_planner:
-        allow()
-        return
-
-    content = text_content(last_planner.get("content"))
-    tool_calls = last_planner.get("tool_calls") or []
-    tool_names = [
-        call.get("name")
-        for call in tool_calls
-        if isinstance(call, dict) and call.get("name")
-    ]
-
-    has_complete_explanation = (
-        "## 迁移提示" in content
-        or "## 考点与判别词" in content
-        or ("题目复原" in content and "解题链" in content)
-    )
-    has_grill_wrap_up = "### Grill" in content and (
-        "诊断总结" in content or "诊断收官" in content
-    )
-    has_leaked_grill_card = (
-        "### Grill" in content and "call:default_api:ask_question" in content
-    )
-
-    # The runtime contract requires a clear stop when this session has no
-    # structured question tool. Continuing here would only repeat that failure.
-    if "当前会话未暴露结构化提问工具" in content:
-        allow()
-        return
-
-    if has_grill_wrap_up:
-        for record in reversed(read_recent_records(transcript_path)):
-            if record.get("type") != "GENERIC":
-                continue
-            answer = re.search(
-                r"(?m)^Completed At: [^\n]+\nA\d+:\s*([^\n]+)",
-                text_content(record.get("content")),
-            )
-            if answer:
-                if answer.group(1).strip().startswith(("确认归档", "不归档", "结束", "跳过", "换题")):
-                    allow()
-                    return
-                break
-
-    if (has_complete_explanation or has_grill_wrap_up or has_leaked_grill_card) and "ask_question" not in tool_names:
-        if has_grill_wrap_up:
-            reason = (
-                "检测到软考 Grill 已收尾，但本轮未实际调用 ask_question。"
-                "不要重复总结；只调用原生归档确认卡并等待选择。"
-            )
-        else:
-            reason = (
-                "检测到软考单题回复需要交互卡，但本轮未实际调用 ask_question。"
-                "正文中的调用文字不算工具事件；不要重复讲解或复写调用文字，只调用原生 Grill 门控卡或归档确认卡并等待选择。"
-            )
+    if not post_invocation:
+        if data.get("terminationReason") != "model_stop":
+            emit(data, event, "not_model_stop", default)
+            return
+        if not data.get("fullyIdle", False):
+            emit(data, event, "not_idle", default)
+            return
+    check, reason, step = card_check(data)
+    if not reason:
+        response = default
+    elif post_invocation:
         response = {
-            "decision": "continue",
-            "reason": reason,
+            "injectSteps": [{"ephemeralMessage": reason}],
+            "terminationBehavior": "force_continue",
         }
-        print(json.dumps(response, ensure_ascii=False))
-        return
+    else:
+        response = {"decision": "continue", "reason": reason}
+    emit(data, event, check, response, step)
 
-    allow()
 
 if __name__ == "__main__":
     main()

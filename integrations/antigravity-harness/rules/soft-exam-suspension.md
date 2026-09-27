@@ -16,8 +16,8 @@
 
 1. PreInvocation Hook 在已确认流程的每次模型调用前注入瞬时提醒，并写入活动标记以抵抗长上下文注意力衰减。
 2. PreToolUse Hook 监听全部工具调用，对白名单外工具返回 deny；未确认的会话不受影响。
-3. Stop Hook 只在 model_stop 且 fullyIdle 为 true 时检查本轮完整讲题。发现讲题结束但缺少 ask_question 时，返回 continue 让 Agent 补发门控卡。
+3. PostInvocation Hook 在每轮模型回复后检查真实卡片事件，缺卡时强制继续补发；Stop Hook 在 model_stop 且 fullyIdle 为 true 时复用同一检查。
 
-Stop Hook 负责拦截讲题后裸退；Grill 与归档阶段的具体续接仍以主 Skill 的执行与续接契约为准。
+卡片待答或已有真实调用时不重复发卡。练习卡返回后，反馈仍需衔接下一张练习或归档确认卡；具体续接以主 Skill 的执行与续接契约为准。补发连续两次仍未形成工具事件时，明确报告本题未完成，不静默跳过。
 
 当前会话未暴露结构化提问工具时，报告阻塞阶段并等待用户恢复工具或明确选择文本模式；不得把工具调用格式写进正文冒充卡片，也不反复强制续写。

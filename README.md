@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.3.6](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.6) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.7](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.7) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.6) 下载 `ruankao-toolkit-v0.3.6.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.7) 下载 `ruankao-toolkit-v0.3.7.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.3.6 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.7 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -162,7 +162,8 @@ macOS / Linux 把 `py -3` 换成 `python3`。`--force` 只替换同名 Harness H
 | 现象 | 处理 |
 |---|---|
 | 没发现 Skill | 确认打开的是目标 Vault，检查 `.agents/skills/soft-exam-question-tutor/SKILL.md`，再新建会话 |
-| 只讲题、不弹卡 | 先看会话是否有真实 `ask_question` 工具事件；正文中的调用文字不能替代卡片。若工具可用但只出现调用文字，升级到 v0.3.6 的可选 Harness 并新建会话复测；若工具未暴露，再检查所选 Agent 的工具配置 |
+| 只讲题、不弹卡 | 升级到 v0.3.7 并用 `--force` 更新可选 Harness。PostInvocation 在每轮回复后检查漏卡并要求自动补发；以真实工具事件判断是否成功，正文中的调用文字不能替代卡片。工具未暴露时检查所选 Agent 的工具配置 |
+| 对话变长或回复“？”后再次漏卡 | v0.3.7 按当前题和真实卡片返回续接，不再依赖反馈标题；大段工具结果不会按 256 KiB 截断题目上下文。升级后重开工作区以加载新 Hook；执行结果见会话产物目录下 `soft-exam-card-events.jsonl` |
 | Grill 收尾后没有归档确认卡 | 提前达到掌握证据可以结束追问，但仍需本题的归档确认。v0.3.6 的 Stop Hook 会在已确认的单题流程中尝试补发原生归档卡；用户已明确结束、拒绝或确认归档时不重复发卡 |
 | Grill 收尾时出现 `call:default_api:ask_question` 文字 | 这是正文文本，没有真实卡片。升级可选 Harness 后新建会话验证；已显示的乱码无法由 Hook 撤回 |
 | 卡片已弹出，正文却夹着调用参数 | 直接点选已出现的卡片，不根据正文重复作答或重发；升级 Skill 与可选 Harness 后新建会话复测 |
@@ -183,6 +184,14 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.7 — 2026-09-27
+
+- 新增 PostInvocation 卡片检查，模型回复结束后立即要求补发缺失卡片；Stop 复用同一检查，避免只依赖最终停止事件。
+- 修复真实 Antigravity 消息包装、问号续接和无固定标题的 Grill 反馈导致上下文丢失；依据真实卡片返回确定下一张卡是否待发。
+- 读取完整的最近事件，避免大段文件读取结果截断当前题上下文；已有真实调用、等待作答、明确结束或归档授权不重复发卡。
+- 连续两次补发失败时明确报告未完成，不静默跳过或误归档。新增不包含题目内容的 Hook 执行记录，以追查实际运行情况。
+- 重放真实会话中的两次漏卡及正常收尾，并增加对应回归测试；仍需在目标客户端验证真实卡片显示。
 
 ### v0.3.6 — 2026-09-25
 

@@ -21,15 +21,6 @@ CONTINUATION_CUES = ("grill", "归档", "继续当前题", "我选", "下一题"
 RUNTIME_CUES = ("skill", "hook", "harness", "ask_question", "工具", "客户端")
 DIAGNOSTIC_ACTIONS = ("检查", "排查", "修复", "调试", "弹不", "问题")
 
-ACTIVE_FLOW_SIGNALS = (
-    HARNESS_MARKER,
-    "## 题目复原",
-    "## 考点与判别词",
-    "## 解题链",
-    "## 迁移提示",
-)
-
-
 def read_recent_records(transcript_path):
     if not transcript_path or not os.path.exists(transcript_path):
         return []
@@ -37,9 +28,19 @@ def read_recent_records(transcript_path):
     try:
         with open(transcript_path, "rb") as handle:
             handle.seek(0, os.SEEK_END)
-            size = handle.tell()
-            handle.seek(max(0, size - MAX_TAIL_BYTES))
-            raw = handle.read()
+            position = handle.tell()
+            chunks = []
+            newline_count = 0
+            # A single view_file result can exceed one chunk. Retain complete
+            # recent events instead of losing the question before that result.
+            while position > 0 and newline_count <= MAX_RECORDS:
+                count = min(position, MAX_TAIL_BYTES)
+                position -= count
+                handle.seek(position)
+                chunk = handle.read(count)
+                chunks.append(chunk)
+                newline_count += chunk.count(b"\n")
+            raw = b"".join(reversed(chunks))
     except OSError:
         return []
 
@@ -65,66 +66,65 @@ def text_content(value):
         return str(value)
 
 
-def is_soft_exam_context(transcript_path):
-    records = read_recent_records(transcript_path)
+def user_request(record):
+    content = text_content(record.get("content"))
+    wrapped = re.search(r"<USER_REQUEST>\s*(.*?)\s*</USER_REQUEST>", content, re.S)
+    return (wrapped.group(1) if wrapped else content).strip()
+
+
+def is_continuation(request):
+    lowered = request.lower()
+    return (
+        any(cue in lowered for cue in CONTINUATION_CUES)
+        or lowered in {"继续", "结束", "a", "b", "c", "d", "1", "2", "3", "?", "？"}
+        or bool(re.match(r"^a\d+\s*:", lowered))
+    )
+
+
+def current_flow_records(records):
+    """Keep the current question across short replies, but stop at a new task."""
     latest_user_index = next(
         (index for index in range(len(records) - 1, -1, -1)
          if records[index].get("type") == "USER_INPUT"),
         None,
     )
     if latest_user_index is None:
-        return False
-    latest_user = text_content(records[latest_user_index].get("content"))
-    if not latest_user:
-        return False
+        return []
+    start = latest_user_index
+    for index in range(latest_user_index, -1, -1):
+        record = records[index]
+        if record.get("type") != "USER_INPUT":
+            continue
+        start = index
+        request = user_request(record).lower()
+        if any(cue in request for cue in RUNTIME_CUES) and any(
+            action in request for action in DIAGNOSTIC_ACTIONS
+        ):
+            return []
+        if not is_continuation(request):
+            break
+    return records[start:]
 
-    lowered = latest_user.lower()
-    if (
-        any(cue in lowered for cue in RUNTIME_CUES)
-        and any(action in lowered for action in DIAGNOSTIC_ACTIONS)
-    ):
-        return False
-    if (
-        any(signal in lowered for signal in STRONG_SOFT_EXAM_SIGNALS)
-        and any(cue in latest_user for cue in QUESTION_CUES)
-        and any(action in latest_user for action in QUESTION_ACTIONS)
-    ):
-        return True
 
-    last_planner_index = next(
-        (index for index in range(len(records) - 1, -1, -1)
-         if records[index].get("type") == "PLANNER_RESPONSE"),
-        None,
-    )
-    if last_planner_index is None:
-        return False
-    planner_text = text_content(records[last_planner_index].get("content"))
-    if last_planner_index > latest_user_index:
-        for record in records[latest_user_index + 1:last_planner_index + 1]:
-            if record.get("type") != "PLANNER_RESPONSE":
-                continue
-            earlier_text = text_content(record.get("content"))
-            if "## 题目复原" in earlier_text and re.search(
-                r"(?m)^题目归属：(?:软考明确|软考知识域相关但题源未确认)\s*$",
-                earlier_text,
+def is_soft_exam_context(transcript_path):
+    for record in current_flow_records(read_recent_records(transcript_path)):
+        if record.get("type") == "USER_INPUT":
+            request = user_request(record).lower()
+            if (
+                any(signal in request for signal in STRONG_SOFT_EXAM_SIGNALS)
+                and any(cue in request for cue in QUESTION_CUES)
+                and any(action in request for action in QUESTION_ACTIONS)
             ):
                 return True
-    if not any(signal in planner_text for signal in ACTIVE_FLOW_SIGNALS):
-        return False
-    if (
-        last_planner_index > latest_user_index
-        and "## 题目复原" in planner_text
-        and re.search(
-            r"(?m)^题目归属：(?:软考明确|软考知识域相关但题源未确认)\s*$",
-            planner_text,
-        )
-    ):
-        return True
-    return (
-        any(cue in lowered for cue in CONTINUATION_CUES)
-        or lowered.strip() in {"继续", "结束", "a", "b", "c", "d", "1", "2", "3"}
-        or bool(re.match(r"^a\d+\s*:", lowered.strip()))
-    )
+        if record.get("type") == "PLANNER_RESPONSE":
+            content = text_content(record.get("content"))
+            if "## 题目复原" in content and re.search(
+                r"(?m)^题目归属：(?:软考明确|软考知识域相关但题源未确认)\s*$", content
+            ):
+                return True
+        if record.get("type") == "EPHEMERAL_MESSAGE" and HARNESS_MARKER in text_content(record.get("content")):
+            return True
+    return False
 
 
 def last_planner_response(transcript_path):
