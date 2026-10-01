@@ -2,7 +2,7 @@
 
 面向 **Antigravity + Obsidian** 的软考学习套组，也支持 Codex、Claude Code / Claudian 和 Trae。包含 5 个 Skill、两级知识资料、空错题本及保留已有笔记的初始化脚本。
 
-[下载 v0.3.8](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.8) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.3.9](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.9) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ## 五个 Skill
 
@@ -22,10 +22,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.8) 下载 `ruankao-toolkit-v0.3.8.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.3.9) 下载 `ruankao-toolkit-v0.3.9.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.3.8 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.3.9 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -184,6 +184,14 @@ python3 -m unittest discover -s tests -v
 包结构、链接、空错题本和初始化行为已有本地验证。**尚未完成 Antigravity / 其它 Agent 的真实 UI 回归**；手动流程见 [交互验收](docs/validation.md)。
 
 ## 更新日志
+
+### v0.3.9 — 2026-10-01
+
+- 修复 Antigravity 归档确认与流程收尾阶段的卡片死循环 Bug：
+  - 增强 `harness_stop_guard.py` 对带 `(Recommended)` / `[推荐]` 标识或选项编号前缀的选项文本提取能力（解决 Antigravity 原生推荐项导致前缀匹配失败的问题）。
+  - 扩充终止关键词（支持 `已完成`、`等待下一题`、`等待上传`、`全流程已归档` 等常见收尾状态）。
+  - 新增正文已宣布全流程归档完成时的防御性旁路，避免循环要求模型补发。
+  - 同步更新 Harness 挂起规则与单元测试套件。
 
 ### v0.3.8 — 2026-09-27
 

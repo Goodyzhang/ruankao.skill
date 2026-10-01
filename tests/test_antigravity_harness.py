@@ -324,11 +324,23 @@ class HarnessInstallTests(unittest.TestCase):
             self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True)["terminationBehavior"], "force_continue")
 
     def test_successful_or_pending_cards_and_terminal_choices_are_not_repeated(self):
-        for choice in ("确认归档", "直接归档并跳过 Grill", "不归档，直接结束", "结束本次题目"):
+        for choice in (
+            "确认归档",
+            "直接归档并跳过 Grill",
+            "不归档，直接结束",
+            "结束本次题目",
+            "(Recommended) 结束本题流程",
+            "[推荐] 确认归档（中级）",
+            "1. 已完成，等待下一题",
+            "A. 等待上传新题目",
+        ):
             records = self.active_grill()
             records[-1]["content"] = "Completed At: now\nA1: " + choice
             records.append({"type": "PLANNER_RESPONSE", "content": "### Grill 诊断总结\n本题结束。"})
             self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+        records = self.active_grill()
+        records.append({"type": "PLANNER_RESPONSE", "content": "本题全流程已归档完毕。"})
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
         records = self.active_grill()[:-1] + [{"type": "PLANNER_RESPONSE", "content": "等待卡片作答。"}]
         self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
 

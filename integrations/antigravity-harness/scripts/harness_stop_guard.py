@@ -12,7 +12,36 @@ from harness_common import (
 
 RECOVERY_MARKER = "[soft-exam-card-recovery]"
 BLOCKED_MARKER = "[soft-exam-card-blocked]"
-TERMINAL_CHOICES = ("确认归档", "直接归档", "不归档", "结束", "换题")
+TERMINAL_CHOICES = (
+    "确认归档",
+    "直接归档",
+    "不归档",
+    "归档完毕",
+    "已归档",
+    "归档完成",
+    "全流程已归档",
+    "结束",
+    "换题",
+    "已完成",
+    "完成",
+    "等待下一题",
+    "等待上传",
+    "结束本次学习",
+    "结束本题",
+    "退出",
+)
+
+
+def is_terminal_choice(text):
+    if not text:
+        return False
+    cleaned = re.sub(
+        r"^(?:A\d+:\s*)?(?:\((?:recommended|推荐)\)|\[(?:recommended|推荐)\]|[0-9]+[.\s、]|[a-zA-Z][.\s、])\s*",
+        "",
+        text,
+        flags=re.I,
+    ).strip()
+    return any(keyword in cleaned for keyword in TERMINAL_CHOICES)
 
 
 def card_check(data):
@@ -40,7 +69,7 @@ def card_check(data):
 
     latest_user = next((r for r in reversed(records) if r.get("type") == "USER_INPUT"), {})
     request = user_request(latest_user)
-    if request.startswith(TERMINAL_CHOICES) or re.search(r"(?:把|将)本题归档", request):
+    if is_terminal_choice(request) or re.search(r"(?:把|将)本题归档", request):
         return "user_finished", "", step
 
     # Actual card answers survive wording/heading changes in the next feedback.
@@ -56,8 +85,10 @@ def card_check(data):
                 latest_answer = answer.group(1).strip()
         if latest_answer is None:
             return "card_pending_or_failed", "", step
-    if latest_answer and latest_answer.startswith(TERMINAL_CHOICES):
+    if latest_answer and is_terminal_choice(latest_answer):
         return "archive_or_end_answered", "", step
+    if re.search(r"(?:流程已(?:圆满)?结束|已(?:圆满)?归档完成|全流程已归档完毕|已为您重置题目上下文)", content):
+        return "archive_or_end_announced", "", step
 
     # Count only consecutive repairs since a user message or actual card call.
     retry_messages = []
