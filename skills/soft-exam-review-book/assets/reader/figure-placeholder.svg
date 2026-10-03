@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="待替换的模板占位图">
+  <rect width="1200" height="675" fill="#fff9ed"/>
+  <rect x="80" y="80" width="1040" height="515" rx="12" fill="none" stroke="#a9bdc9" stroke-width="3" stroke-dasharray="12 10"/>
+  <g fill="#183149" font-family="PingFang SC,Microsoft YaHei,sans-serif" text-anchor="middle">
+    <text x="600" y="310" font-size="36">知识图解 · 模板占位</text>
+    <text x="600" y="375" font-size="24">替换为已创作、核对并验收的图片</text>
+    <text x="600" y="430" font-size="20" fill="#64727c">本图不含考试知识，不计入正式图像验收</text>
+  </g>
+</svg>

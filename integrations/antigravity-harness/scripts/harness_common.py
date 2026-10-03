@@ -81,6 +81,27 @@ def is_continuation(request):
     )
 
 
+def is_review_book_request(request):
+    """Recognize authoring intent without excluding questions inside a review book."""
+    if "复习册" not in request and "soft-exam-review-book" not in request:
+        return False
+    single_question = r"(?:这道题|这题|本题|这道软考题|一道题|一道软考题|第\s*\d+\s*题)"
+    explanation = r"(?:讲解|讲|解析|分析|解答|诊断|怎么做|为什么选)"
+    book_question = r"(?:复习册|soft-exam-review-book)[^。！？\n，,]{0,20}" + single_question
+    # "Explain this question in the book" is tutoring; "update the book using
+    # this question's explanation" still asks for an authored artifact.
+    if re.search(explanation + r"[^。！？\n，,]{0,30}" + book_question, request) or re.search(
+        book_question + r"[，,\s]*(?:请|继续|再|帮我|给我|为我|详细|仔细)*" + explanation,
+        request,
+    ):
+        return False
+    authoring = r"(?:制作|生成|创建|编写|编排|整理|重写|更新|修改|完善|扩写|续写|继续|完成|做|写)"
+    nearby = r"[^。！？\n]{0,80}"
+    return "soft-exam-review-book" in request or bool(re.search(authoring + nearby + "复习册", request) or re.search(
+        "复习册" + nearby + authoring, request
+    ))
+
+
 def current_flow_records(records):
     """Keep the current question across short replies, but stop at a new task."""
     latest_user_index = next(
@@ -97,6 +118,9 @@ def current_flow_records(records):
             continue
         start = index
         request = user_request(record).lower()
+        # Chapter authoring ends inherited single-question restrictions.
+        if is_review_book_request(request):
+            return []
         if any(cue in request for cue in RUNTIME_CUES) and any(
             action in request for action in DIAGNOSTIC_ACTIONS
         ):

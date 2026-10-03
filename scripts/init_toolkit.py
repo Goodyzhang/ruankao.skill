@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the five Skills and seed notes into a Vault without replacing notes."""
+"""Install the six Skills and seed notes into a Vault without replacing notes."""
 import argparse
 from pathlib import Path
 import shutil
@@ -18,7 +18,7 @@ def install(vault, platforms, dry_run=False, upgrade_skills=False):
             entries.append((src, vault / src.relative_to(ROOT / 'vault'), False))
     for folder in sorted({PLATFORMS[p] for p in platforms}):
         for src in sorted((ROOT / 'skills').rglob('*')):
-            if src.is_file():
+            if src.is_file() and '__pycache__' not in src.parts and src.suffix != '.pyc' and src.name != '.soft-exam.local.json':
                 entries.append((src, vault / folder / 'skills' / src.relative_to(ROOT / 'skills'), True))
     plan = []
     for src, dst, skill in entries:

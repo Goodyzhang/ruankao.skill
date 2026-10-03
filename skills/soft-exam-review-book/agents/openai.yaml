@@ -1,0 +1,4 @@
+interface:
+  display_name: "软考视觉复习册"
+  short_description: "按章节创作图文复习册，协作写作与生图，保留速查、自测和顺序续接记录"
+  default_prompt: "请用 $soft-exam-review-book 把已学章节整理成图文复习册，重点详讲常错考点，按小节顺序完成。"

@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 dist/
+
+# User-specific paths and tool choices
+.soft-exam.local.json

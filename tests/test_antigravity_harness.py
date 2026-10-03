@@ -344,6 +344,51 @@ class HarnessInstallTests(unittest.TestCase):
         records = self.active_grill()[:-1] + [{"type": "PLANNER_RESPONSE", "content": "等待卡片作答。"}]
         self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
 
+    def test_setup_card_answers_do_not_trigger_grill_recovery(self):
+        for question, answer in (
+            ("归档目录使用哪个位置？", "当前 Vault 下的科目目录"),
+            ("资料根目录使用哪个位置？", "手动输入绝对路径"),
+            ("未找到所需工具，请填写 CLI 路径或跳过。", "跳过"),
+            ("Vault 位置使用哪个？", str(self.workspace)),
+        ):
+            with self.subTest(question=question):
+                records = self.active_grill() + [
+                    {"type": "PLANNER_RESPONSE", "tool_calls": [{"name": "ask_question", "args": {
+                        "questions": [{"question": question, "options": [{"label": "默认目录"}]}]
+                    }}]},
+                    {"type": "GENERIC", "content": "Completed At: now\nA1: " + answer},
+                    {"type": "PLANNER_RESPONSE", "content": "已记录位置，将继续处理本题。"},
+                ]
+                self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+                # Setup does not disable normal single-question tool restrictions.
+                result = self.run_hook("harness_tool_guard.py", records, toolCall={"name": "run_command"})
+                self.assertEqual(result["decision"], "deny")
+
+    def test_setup_option_words_cannot_hide_a_real_grill_question(self):
+        records = self.active_grill()
+        records[-2]["tool_calls"] = [{"name": "ask_question", "args": {
+            "questions": [{"question": "SMTP 和 POP3 分别负责哪一步？", "options": [{"label": "归档目录"}]}]
+        }}]
+        records[-1]["content"] = "A1: POP3 负责读取"
+        records.append({"type": "PLANNER_RESPONSE", "content": "回答正确，继续下一轮。"})
+        result = self.run_hook("harness_stop_guard.py", records, post_invocation=True)
+        self.assertEqual(result["terminationBehavior"], "force_continue")
+
+    def test_grill_resumes_after_a_completed_environment_card(self):
+        records = self.active_grill() + [
+            {"type": "PLANNER_RESPONSE", "tool_calls": [{"name": "ask_question", "arguments": json.dumps({
+                "questions": [{"question": "归档目录使用哪个位置？"}]
+            })}]},
+            {"type": "GENERIC", "content": "A1: 选择默认资料目录"},
+            {"type": "PLANNER_RESPONSE", "tool_calls": [{"name": "ask_question", "args": {
+                "questions": [{"question": "请选择邮件提交流程中的协议。"}]
+            }}]},
+            {"type": "GENERIC", "content": "A1: SMTP"},
+            {"type": "PLANNER_RESPONSE", "content": "回答正确，继续第二轮。"},
+        ]
+        result = self.run_hook("harness_stop_guard.py", records, post_invocation=True)
+        self.assertEqual(result["terminationBehavior"], "force_continue")
+
     def test_recovery_retries_are_bounded_and_logged(self):
         records = self.active_grill() + [{"type": "PLANNER_RESPONSE", "content": "回答正确。"}]
         for _ in range(2):

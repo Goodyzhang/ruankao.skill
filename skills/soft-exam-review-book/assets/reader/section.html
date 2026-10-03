@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小节标题 · 图解复习册模板</title>
+  <link rel="stylesheet" href="reader.css">
+  <script src="quiz-state.js" defer></script>
+  <script src="reader.js" defer></script>
+</head>
+<body data-template="true" data-book-id="architect-v2" data-chapter-id="02" data-section-id="02-01-example">
+  <a class="skip" href="#article">跳到正文</a>
+  <aside class="outline" aria-label="章节与小节目录">
+    <div class="chapter-no">02</div>
+    <p>章节名称〔模板占位〕</p>
+    <nav>
+      <a href="index.html#chapter">← 章节总览</a>
+      <details open>
+        <summary>小节分组〔模板占位〕</summary>
+        <a href="#overview">本小节标题〔模板占位〕</a>
+        <ul><li><a href="#relation">核心关系</a></li><li><a href="#process">展开过程</a></li><li><a href="#recap">回到整体</a></li><li><a href="#related-concept">关联知识</a></li></ul>
+        <a href="#quick">本节速查</a>
+        <a href="#quiz">本节自测</a>
+      </details>
+    </nav>
+  </aside>
+  <div class="workspace">
+    <header class="masthead">
+      <p class="eyebrow">02 / 章节名称 · 小节编号与名称〔模板占位〕</p>
+      <h1>小节标题：一个明确的理解任务〔模板占位〕</h1>
+      <p class="intro">用一两句话说明这篇图文将建立什么联系。</p>
+      <p class="template-notice">界面模板：正文、图片与自测题均为示范占位，不能作为考试材料。</p>
+    </header>
+    <div class="toolbar" data-tabs role="tablist" aria-label="阅读方式" hidden>
+      <button type="button" id="tab-article" data-tab role="tab" aria-controls="article" aria-selected="true">图文</button>
+      <button type="button" id="tab-quick" data-tab role="tab" aria-controls="quick" aria-selected="false" tabindex="-1">速查</button>
+      <button type="button" id="tab-quiz" data-tab role="tab" aria-controls="quiz" aria-selected="false" tabindex="-1">自测</button>
+    </div>
+    <main>
+      <noscript><p class="noscript">正文、速查与题干均可阅读。自测判分、进度保存和图片弹层需要 JavaScript；图片链接仍可直接打开。</p></noscript>
+      <section id="article" data-panel="article" role="tabpanel" aria-labelledby="tab-article" tabindex="0">
+        <article class="prose">
+          <div id="overview"><p class="lead">〔总述占位〕先给出整体关系，用一个具体情境串起本节各概念。不要把制作过程或提示词写入读者正文。</p></div>
+          <h2 id="relation">先辨认各部分怎样联系</h2>
+          <p>〔正文占位〕交代各角色、对象或层级的分工，再解释它们为何需要合作。段落应能连续阅读。</p>
+          <figure>
+            <a class="figure-link" data-zoom href="figure-placeholder.svg" aria-label="放大模板示意图"><img src="figure-placeholder.svg" width="1200" height="675" alt="模板占位图：待替换为已经审核的知识图解"></a>
+            <figcaption>〔图注占位〕用一句话指出本图最需要看懂的关系。点击图片可放大。</figcaption>
+          </figure>
+          <h2 id="process">沿同一情境展开过程</h2>
+          <p>〔正文占位〕承接上一段的结果，说明下一步发生什么、为什么发生。正式内容可在这里加入第二张图或已渲染的 Mermaid SVG；不要显示未渲染源码。</p>
+          <p class="aside-note">〔边界占位〕澄清一个真实易混点，写明成立条件与例外。</p>
+          <h2 id="recap">把细节放回完整关系</h2>
+          <p>〔归拢占位〕回到开头的情境，串起本节判断依据。结尾不新增整组尚未解释的名词。</p>
+          <details class="related"><summary>关联知识与继续阅读</summary><p id="related-concept">〔关联占位〕先说明与本节的关系，再加入真实存在的其他小节链接，例如 <a href="index.html#chapter">返回章节目录选择相关小节</a>。</p></details>
+          <nav class="next-reading" aria-label="阅读下一步"><a href="#quick">查看本节速查</a><a href="#quiz">开始本节自测 →</a></nav>
+        </article>
+      </section>
+      <section id="quick" data-panel="quick" role="tabpanel" aria-labelledby="tab-quick" tabindex="0">
+        <h2>本节速查〔模板占位〕</h2>
+        <p>仅放回看时需要快速辨别的信息，完整解释保留在图文中。</p>
+        <div class="quick-grid">
+          <article class="fact" id="quick-relation"><h3>概念与关系</h3><p>〔占位〕写核心职责、关系方向或判断条件。</p><a href="#relation">回看图解</a></article>
+          <article class="fact"><h3>易混点</h3><p>〔占位〕用同一比较维度区分概念，保留适用条件。</p><a href="#process">回看解释</a></article>
+        </div>
+      </section>
+      <section id="quiz" data-panel="quiz" role="tabpanel" aria-labelledby="tab-quiz" tabindex="0">
+        <div class="quiz-toolbar"><div><h2>本节自测</h2><p>以下是界面测试用示范题，请整体替换为经过审核的题目。</p></div><button type="button" data-reset-quiz>重做本节</button></div>
+        <div class="quiz-progress"><progress data-quiz-progress max="2" value="0" aria-label="已作答题数"></progress><span data-quiz-score role="status">已答 0 / 2</span></div>
+        <div class="quiz-grid">
+          <fieldset class="question" data-question-id="example-role" data-question-version="1" data-answer="a">
+            <legend>01 / 模板功能示范</legend><h3 data-prompt>〔示范题〕这一页是什么？</h3>
+            <div class="options"><label class="option"><input type="radio" name="example-role" value="a"><span>待填入正式内容的界面骨架</span></label><label class="option"><input type="radio" name="example-role" value="b"><span>已审核的正式考试教材</span></label></div>
+            <p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>这是可复用模板，正文与题目均需要创作和审核。</span></p><button type="button" data-retry-question hidden>重做此题</button>
+          </fieldset>
+          <fieldset class="question" data-question-id="example-scope" data-question-version="1" data-answer="b">
+            <legend>02 / 模板功能示范</legend><h3 data-prompt>〔示范题〕本地进度会自动跨设备同步吗？</h3>
+            <div class="options"><label class="option"><input type="radio" name="example-scope" value="a"><span>会自动同步</span></label><label class="option"><input type="radio" name="example-scope" value="b"><span>不会；保存还取决于浏览器是否允许</span></label></div>
+            <p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>本地存储可能被浏览器禁用或清理，保存失败时页面会明确提示。</span></p><button type="button" data-retry-question hidden>重做此题</button>
+          </fieldset>
+        </div>
+        <p class="storage-note" data-storage-note role="status">尚未启用本地进度。</p>
+      </section>
+      <details class="sources"><summary>依据与来源〔待替换〕</summary><p>正式材料在这里填写教材页码、题目出处及已核实的原始资料链接；研究与制作记录放在独立目录。</p></details>
+      <nav class="next-reading" aria-label="跨页导航"><a href="index.html#chapter">← 章节目录</a><a href="index.html#chapter">下一小节〔待配置〕 →</a></nav>
+    </main>
+    <footer>图解复习册 · 小节独立阅读与自测</footer>
+  </div>
+</body>
+</html>

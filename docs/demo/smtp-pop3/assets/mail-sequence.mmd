@@ -1,0 +1,16 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#FFF9ED","fontFamily":"PingFang SC, Microsoft YaHei, sans-serif","fontSize":"18px","primaryColor":"#DAEBF2","primaryTextColor":"#17344B","primaryBorderColor":"#5687A3","lineColor":"#335C73","actorBkg":"#DAEBF2","actorBorder":"#5687A3","actorTextColor":"#17344B","actorLineColor":"#95ADBA","signalColor":"#335C73","signalTextColor":"#17344B","noteBkgColor":"#F7EACD","noteBorderColor":"#D8BF8C","noteTextColor":"#17344B"},"sequence":{"useMaxWidth":false,"mirrorActors":false,"actorMargin":55,"width":175,"height":55,"diagramMarginX":25,"diagramMarginY":20,"boxMargin":12,"messageMargin":24,"noteMargin":16,"wrap":false},"themeCSS":".messageText { font-size: 18px !important; } .noteText { font-size: 17px !important; } .actor { font-size: 18px !important; } svg { background: #FFF9ED; }"}}%%
+sequenceDiagram
+    participant A as 发件客户端
+    participant S as 发件服务器
+    participant R as 收件服务器
+    participant B as 收件客户端
+
+    A->>S: SMTP：提交邮件
+    S->>R: SMTP：中继邮件
+    Note over R: 邮件已入箱<br/>客户端尚未取回
+
+    B->>R: 发起 TCP 连接
+    B->>R: POP3：请求取信
+    R-->>B: 返回邮件内容
+
+    Note over A,B: 省略认证与中间中继；TCP 箭头只表示主动连接方，省略握手。

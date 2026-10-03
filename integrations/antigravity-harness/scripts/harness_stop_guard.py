@@ -44,6 +44,30 @@ def is_terminal_choice(text):
     return any(keyword in cleaned for keyword in TERMINAL_CHOICES)
 
 
+def is_environment_card(call):
+    """Use the real question, not its answers/options, to separate setup from Grill."""
+    if call.get("name") != "ask_question":
+        return False
+    args = call.get("args", call.get("arguments", {}))
+    if isinstance(args, str):
+        try:
+            args = json.loads(args)
+        except json.JSONDecodeError:
+            return False
+    if not isinstance(args, dict):
+        return False
+    questions = args.get("questions", [])
+    if isinstance(questions, dict):
+        questions = [questions]
+    if not isinstance(questions, list) or not questions:
+        return False
+    # Mixed question batches retain ordinary card checks; setup must be separate.
+    return all(isinstance(question, dict) and re.search(
+        r"归档目录|资料根目录|CLI\s*路径|Vault\s*(?:位置|目录|路径)",
+        str(question.get("question", "")), re.I,
+    ) for question in questions)
+
+
 def card_check(data):
     transcript = data.get("transcriptPath", "")
     if not is_soft_exam_context(transcript):
@@ -85,6 +109,12 @@ def card_check(data):
                 latest_answer = answer.group(1).strip()
         if latest_answer is None:
             return "card_pending_or_failed", "", step
+    if card_index is not None and any(
+        is_environment_card(call) for call in records[card_index].get("tool_calls") or []
+    ):
+        # Choosing a directory neither answers a Grill round nor authorizes filing.
+        # Explicit explanation/wrap-up checks below still apply if the agent emits them.
+        latest_answer = None
     if latest_answer and is_terminal_choice(latest_answer):
         return "archive_or_end_answered", "", step
     if re.search(r"(?:流程已(?:圆满)?结束|已(?:圆满)?归档完成|全流程已归档完毕|已为您重置题目上下文)", content):
