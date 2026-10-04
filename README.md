@@ -1,8 +1,24 @@
 # 软考学习 Toolkit
 
-一道题，讲清考点、换条件练习，确认后留下能复习的记录。一章学完，再把教材、知识点和错题重新组织成图文复习册。
+一道题，讲清考点、换条件练习，确认后留下能复习的记录。一章学完，再把教材、知识点和错题重新组织成图文复习册。练案例题时，打开本地作答环境，提交后逐点评阅。
 
-[下载 v0.4.3](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.3) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.5.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.5.0) · [案例题实验室](#新功能软考作答实验室) · [初始化 prompt](#安装后初始化-prompt可复制) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [交互验收](docs/validation.md)
+
+## 新功能：软考作答实验室
+
+`soft-exam-lab` 为系统架构设计师案例题提供本机作答网页和严格逐点评阅。计时、Markdown／公式预览、题图放大、简易绘图、自动保存与刷新续做都在本地完成。提交后，当前 Agent 阅读冻结答卷，逐个采分点引用真实文字或图形证据，给出**参考估分和严格训练分**，并生成失分对照、图形报告、强化 prompt 与练习档案。
+
+只在显式调用 `$soft-exam-lab`、`@soft-exam-lab` 或“使用 soft-exam-lab”时启动，普通讲题保持原流程：
+
+```text
+$soft-exam-lab 为我来一道系统架构设计师软件系统设计的案例题真题，就做一道。
+```
+
+一道包含一整道案例大题及全部小问；一套默认三道专题案例题。方向或数量缺失时先弹卡。优先读取绑定的本地真题库，再检查历史错题及网上资料；题源、关键图示或可靠解析不完整时请用户补材料或换题，不冒充真题。
+
+首次使用确认题库与档案位置；使用者无需 npm 或额外模型 API，需要 Python 3.9 以上。没有可用 Python 时引导离线导出／导入答卷。评分表作答前冻结，训练扣分与参考估分分开标注；单次表现不等于长期掌握程度。
+
+[实验室使用与开发说明](docs/soft-exam-lab.md) · [验收范围](docs/soft-exam-lab-validation.md) · [v0.5.0 发布说明](docs/releases/v0.5.0.md)
 
 ![知识点二次蒸馏工作室：穿鲸鱼娘服装的 GPT 娘统筹核验与核心图，戴 cc-switch 头显的 Claude 娘后备协作，Ani 绘制辅助图，Gemini 娘创意写作，合成图文、速查与自测复习册](docs/images/knowledge-distillation-studio.png)
 
@@ -40,7 +56,7 @@
 |---|---|---|
 | [第五章 · 软件工程基础知识 → 打开章节目录](https://goodyzhang.github.io/ruankao.skill/artifacts/高级/系统架构设计师/05_软件工程基础知识/index.html) | 5.1–5.7，42 个知识组，图文、速查与 159 道自测 | 2026-10-04 |
 
-[查看第五章源码与离线资源](artifacts/高级/系统架构设计师/05_软件工程基础知识/)。下载当前仓库后可直接打开该目录的 `index.html`；保留同目录的图片、CSS 和 JavaScript 文件。在线章节跟随主分支更新，已发布的 Release 下载包保留各自版本的内容。
+[查看第五章源码与离线资源](https://github.com/Goodyzhang/ruankao.skill/tree/main/artifacts/高级/系统架构设计师/05_软件工程基础知识/)。通过 `git clone` 获取仓库后可直接打开该目录的 `index.html`；保留同目录的图片、CSS 和 JavaScript 文件。**从 v0.5.0 起，Release 安装包与自动生成的 Source code 压缩包均排除 `artifacts/`**，章节仍可在线阅读或单独从仓库取得。SMTP／POP3 样章继续随包提供。
 
 **欢迎其他考生一起搭建各个科目的知识库。** 可以通过 [Issue](https://github.com/Goodyzhang/ruankao.skill/issues) 提出勘误或待补章节，也欢迎提交 Pull Request，补充讲解、图解、变式题及完整章节。
 
@@ -69,10 +85,11 @@
 
 ## 按任务选择 Skill
 
-支持 Antigravity、Codex、Claude Code / Claudian 和 Trae。当前公开包提供六个 Skill、两级知识资料、空错题本，以及保留已有笔记的初始化脚本。
+支持 Antigravity、Codex、Claude Code / Claudian 和 Trae。当前公开包提供七个 Skill、两级知识资料、空错题本，以及保留已有笔记的初始化脚本。
 
 | Skill | 什么时候用 |
 |---|---|
+| `soft-exam-lab` | 显式调用后准备案例题作答网页、严格逐点评阅与本地档案；首版仅架构师案例题 |
 | `soft-exam-review-book` | 一章学完，制作或续写图文速查复习册；首版由 Codex 统筹 |
 | `soft-exam-question-tutor` | 发一道题，讲清考点，可选 Grill，确认后归档 |
 | `soft-exam-prep` | 安排中级学习计划、知识学习、练习和进度 |
@@ -80,7 +97,7 @@
 | `soft-exam-architect-prep` | 安排高级学习计划、案例、论文与 D1/D7/D21 复习 |
 | `soft-exam-architect-organizer` | 导入明确提交的完整高级历史对话 |
 
-单题统一交给 tutor；学习计划与历史整理 Skill 引用 tutor 的章节与归档契约。安装时保留六个完整目录及各自的 `references/`、`assets/` 和 `scripts/`，不能只复制入口文件。复习册制作沿用自己的顺序接力流程，不进入单题 Grill。
+单题统一交给 tutor；学习计划与历史整理 Skill 引用 tutor 的章节与归档契约。安装时保留七个完整目录及各自的 `references/`、`assets/` 和 `scripts/`，不能只复制入口文件。复习册制作沿用自己的顺序接力流程，不进入单题 Grill。
 
 
 ## 快速开始：完整初始化
@@ -89,10 +106,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.3) 下载 `ruankao-toolkit-v0.4.3.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.5.0) 下载 `ruankao-toolkit-v0.5.0.zip` 并解压。该包保留全部七个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.4.3 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.5.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -114,7 +131,7 @@ py -3 scripts/init_toolkit.py --vault "../RuankaoVault" --platform antigravity -
 py -3 scripts/init_toolkit.py --vault "../RuankaoVault" --platform antigravity
 ```
 
-脚本将六个完整 Skill 放入 `.agents/skills/`，将资料放入 `个人资料/笔记/软考/`。已有文件默认保留，并列出跳过的文件；重复运行不会清空错题和进度。
+脚本将七个完整 Skill 放入 `.agents/skills/`，将资料放入 `个人资料/笔记/软考/`。已有文件默认保留，并列出跳过的文件；重复运行不会清空错题和进度。
 
 在 **Antigravity 中打开目标目录并新建会话**；使用 Obsidian 时，也将这个目录作为 Vault 打开。普通学习资料目录同样可用。发现目录与加载行为见 [Antigravity 官方说明](https://antigravity.google/docs/skills)。
 
@@ -133,6 +150,54 @@ Antigravity 用户可以安装 [可选 Harness](integrations/antigravity-harness
 ```
 
 中级学习换成 `soft-exam-prep`。计划、进度和项目底稿由使用者提供事实后填写。
+
+### 安装后初始化 prompt（可复制）
+
+安装后在目标工作区新建会话，复制下面的 prompt。将 `{请在这里填写你的工作区或 Vault 路径}` 替换为你的路径；已经在目标工作区中时，也可改为 `.`。Skill 根目录由 Agent 探测，无需照抄作者的本机路径。
+
+```markdown
+请执行软考学习导师（Soft Exam Tutor）初始化流程。
+我的工作区或 Vault：{请在这里填写你的工作区或 Vault 路径}
+
+请先确认该目录存在，将以下路径均相对于它解析。读取现有的最新 SOP、契约与规则，作为后续执行依据；本次仅初始化，不启动讲题、案例题场次、复习册制作或归档。
+
+1. 【探测权威目录与分工】
+   - 如存在 AGENTS.md，完整读取其软考入口、路由与方法学；不要假定安装包一定提供这个文件。
+   - 优先遵循工作区已声明的权威目录。如 .agents/skills/ 或 .trae/skills/ 中只是发现桥接，继续读取其指向的完整源文件。
+   - 独立安装时，核对 .claude/skills/、.agents/skills/、.trae/skills/ 中实际存在的 soft-exam-question-tutor，以完整且已声明的源作为 SKILL_ROOT。存在多个冲突版本时先说明差异，不能静默任选或混用。
+   - 确认七个 Skill 的分工：单题由 soft-exam-question-tutor 负责；学习计划和周期复习由对应级别的 prep 负责；完整历史导入由 organizer 负责；章节复习册由 soft-exam-review-book 负责；soft-exam-lab 只接受用户显式点名，初始化中提及名称不算启动。
+
+2. 【运行时与终止保护】
+   - 如存在 GEMINI.md、.agents/rules/soft-exam-suspension.md，读取相关规则；缺失时如实报告，不伪造加载结果，也不自行安装 Hook。
+   - 卡片必须通过当前会话实际提供的原生提问工具调用，不能在正文输出伪 JSON 或调用文字冒充卡片。
+   - 卡片待答时等待真实返回，不重复弹卡；预选、空回复和超时不当作用户作答或授权。
+   - 识别带 (Recommended)、[推荐]、选项编号的真实终止选择；用户选择结束本题、已完成等待下一题或不归档时正常结束，不能循环补卡。
+   - 核对已有归档授权与实际写入、回读结果；已经完成的步骤不重复执行，不能仅凭模型声称“已归档”判断完成。
+
+3. 【完整读取单题核心契约】
+   - SKILL_ROOT/soft-exam-question-tutor/SKILL.md
+   - SKILL_ROOT/soft-exam-question-tutor/references/first-use.md
+   - SKILL_ROOT/soft-exam-question-tutor/references/runtime-interaction.md
+   - SKILL_ROOT/soft-exam-question-tutor/references/knowledge-base-contract.md
+   - SKILL_ROOT/soft-exam-question-tutor/references/grill-diagnostic-contract.md
+   - 后续只按实际任务加载其它 Skill 的完整 SOP，不让单题规则限制章节制作或实验室。
+
+4. 【资料位置】
+   - 检查已有本地绑定及工作区默认资料目录，已有有效绑定直接复用。
+   - 必要位置不明确时，用实际可用的追问卡提供 1～2 个真实候选，或请我手动填写绝对路径；没有候选就说明没有探测到。没有卡片工具时说明限制，并按契约处理。
+   - 选择位置不等于同意归档本题，不创建虚构做题记录，不把初始化扩展为批量归档授权。
+
+【完成汇报】
+1. 列出实际读取的核心契约相对路径；版本、哈希或修改时间只报告实际可核验的信息，缺失文件另列。
+2. 简述五项守则：输入 Gate 补齐、五段式讲解、基于真实作答的 Grill 门控、授权范围内章级归档与回读、终止与中断保护。
+3. 核心契约齐全且工具检查完成后回复：“软考辅导环境已就绪，请上传软考题目图片、截图或文本开始。”未完成时说明缺口，不声称就绪。
+```
+
+需要案例题时，初始化后另发显式调用：
+
+```text
+$soft-exam-lab 为我来一道系统架构设计师软件系统设计案例题真题，就做一道。先确认题库和练习档案位置，使用自由计时。
+```
 
 ### 首次使用：先检查，再引导
 
@@ -167,13 +232,13 @@ python3 scripts/init_toolkit.py --vault "../RuankaoVault" --platform trae
 
 ### 只安装 Skills
 
-把 `skills/` 下六个目录完整复制到平台目录，或使用 [Skills CLI](https://github.com/vercel-labs/skills)：
+把 `skills/` 下七个目录完整复制到平台目录，或使用 [Skills CLI](https://github.com/vercel-labs/skills)：
 
 ```sh
 npx skills add Goodyzhang/ruankao.skill -a antigravity
 ```
 
-在选择界面选齐六个 Skill。此方式只安装 Skill；知识资料仍需通过初始化脚本或手动复制 `vault/` 的内容取得。
+在选择界面选齐七个 Skill。此方式只安装 Skill；知识资料仍需通过初始化脚本或手动复制 `vault/` 的内容取得。
 
 ### 已有权威源与发现桥接的工作区
 
@@ -192,11 +257,11 @@ npx skills add Goodyzhang/ruankao.skill -a antigravity
 ## 资料目录
 
 ```text
-skills/                         六个完整 Skill
+skills/                         七个完整 Skill
 scripts/                        初始化与包验证
 tests/                          初始化、路由与阅读状态测试
 docs/demo/smtp-pop3/             可离线打开的 SMTP／POP3 样章
-artifacts/高级/系统架构设计师/
+artifacts/高级/系统架构设计师/   仅完整 Git 仓库／在线知识库提供
   05_软件工程基础知识/           第五章完整复习册，index.html 为入口
 integrations/antigravity-harness/ 可选长上下文 Harness 与安装器
 vault/
@@ -272,9 +337,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本版通过 60 项 Python 行为测试与 10 项 Node 自测状态测试；六个 Skill 的格式、包结构、资料保留、离线依赖与链接检查通过。首次引导另做了独立场景推演。**尚未完成 Antigravity / 其它 Agent 的真实卡片 UI 及 Windows 客户端回归**；手动流程见 [交互验收](docs/validation.md)。Node 仅用于开发验证，安装和离线阅读不需要它。
+v0.5.0 通过 99 项 Python 行为测试与 10 项 Node 自测状态测试；七个 Skill 的格式、包结构、资料保留、离线依赖与链接检查通过。实验室另完成内建浏览器闭环，范围见 [实验室验收记录](docs/soft-exam-lab-validation.md)。首次引导另做了独立场景推演。**尚未完成正式真题闭环、Antigravity / 其它 Agent 的真实卡片 UI 及 Windows 客户端回归**；直接打开离线报告的渲染受内建浏览器协议限制，未实测。手动流程见 [交互验收](docs/validation.md)。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 ## 更新日志
+
+### v0.5.0 — 2026-10-04
+
+- 新增第七个 Skill `soft-exam-lab`：显式启动架构师案例题作答环境，可靠保存、绘图、提交冻结与中断续接。
+- 当前 Agent 按冻结采分点严格评阅，分别提供参考估分与训练分；生成图形报告、失分对照、强化 prompt 和本地练习档案。
+- 同步安装、发现元数据、Harness 路由与恢复包；普通单题和复习册继续沿用原入口。
+- 新增可复制的安装后初始化 prompt，探测实际权威目录，使用相对路径或使用者填写的路径。
+- Release 安装包和 Source code 压缩包排除 `artifacts/`；完整知识库保留在 Git 仓库与在线站点。
+
+升级方法与验证范围见 [v0.5.0 发布说明](docs/releases/v0.5.0.md)。
 
 ### v0.4.3 — 2026-10-04
 

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "review_note": "当前Agent按自编题干定义手工逐点评阅；此数据是语义验收基线，运行器不从关键词推断答案。",
+  "point_order": ["p-order", "p-fail", "p-ttl", "p-consistency", "p-request", "p-response"],
+  "cases": [
+    {"name":"满分","answers":{"q-write":"先成功提交数据库，再删除缓存。提交失败不删除。","q-ttl":"旧缓存最多生存60秒，不保证实时一致。","q-arrow":"请求客户端到服务端；响应服务端到客户端。"},"statuses":["awarded","awarded","awarded","awarded","awarded","awarded"],"reference":6,"training":6},
+    {"name":"同义表达","answers":{"q-write":"事务落库成功后才使旧缓存失效；落库未成功就不动缓存。","q-ttl":"旧值至多留存一分钟，到期机制仍不能保证读到实时库存。","q-arrow":"查询从客户端流向服务端；返回结果走相反方向，服务端到客户端。"},"statuses":["awarded","awarded","awarded","awarded","awarded","awarded"],"reference":6,"training":6},
+    {"name":"遗漏失败分支","answers":{"q-write":"数据库提交成功后删除缓存。","q-ttl":"旧值最多60秒，TTL不保证实时一致。","q-arrow":"请求客户端到服务端，响应反向由服务端到客户端。"},"statuses":["awarded","omitted","awarded","awarded","awarded","awarded"],"reference":5,"training":5},
+    {"name":"含糊表达","answers":{"q-write":"按写后删处理异常。","q-ttl":"用TTL保持一致性。","q-arrow":"正常通信并返回。"},"statuses":["omitted","omitted","omitted","omitted","omitted","omitted"],"reference":0,"training":0},
+    {"name":"术语正确机制错误","answers":{"q-write":"采用写后删除，即先删除缓存，再提交数据库。提交失败不删除缓存。","q-ttl":"旧值最多60秒，TTL不保证实时一致。","q-arrow":"请求客户端到服务端；响应服务端到客户端。"},"statuses":["incorrect","awarded","awarded","awarded","awarded","awarded"],"reference":5,"training":5,"note":"顺序错已丢对应分，不重复叠罚。"},
+    {"name":"反向箭头","answers":{"q-write":"数据库提交成功后删缓存；失败不删。","q-ttl":"旧值最多60秒，不保证实时一致。","q-arrow":"请求：服务端 → 客户端。响应：客户端 → 服务端。"},"statuses":["awarded","awarded","awarded","awarded","incorrect","incorrect"],"reference":4,"training":4},
+    {"name":"额外错误","answers":{"q-write":"先成功提交数据库再删除缓存；失败不删除。","q-ttl":"旧缓存最多60秒，不保证实时一致。额外说明：数据库不是事实来源。","q-arrow":"请求客户端到服务端；响应服务端到客户端。"},"statuses":["awarded","awarded","awarded","awarded","awarded","awarded"],"reference":6,"training":5,"extra_error":"数据库不是事实来源"},
+    {"name":"重复额外错误","answers":{"q-write":"先成功提交数据库再删除缓存；失败不删除。","q-ttl":"旧缓存最多60秒，不保证实时一致。数据库不是事实来源。数据库不是事实来源。","q-arrow":"请求客户端到服务端；响应服务端到客户端。"},"statuses":["awarded","awarded","awarded","awarded","awarded","awarded"],"reference":6,"training":5,"extra_error":"数据库不是事实来源","note":"同因重复表述只扣一次。"},
+    {"name":"空白","answers":{"q-write":"","q-ttl":"","q-arrow":""},"statuses":["omitted","omitted","omitted","omitted","omitted","omitted"],"reference":0,"training":0},
+    {"name":"解析争议","answers":{"q-write":"数据库提交成功后删缓存，失败不删。","q-ttl":"旧值最多60秒，不保证实时一致。","q-arrow":"请求客户端到服务端；响应服务端到客户端。"},"statuses":["awarded","awarded","pending","awarded","awarded","awarded"],"reference":null,"training":null,"note":"假设施材定义冲突：先标待核验，不用零分代替未知。"}
+  ]
+}

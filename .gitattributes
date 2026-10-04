@@ -1,0 +1,4 @@
+# Keep the published knowledge library in Git/Pages, outside release source archives.
+/artifacts export-ignore
+# Preserve generated dependencies and their upstream legal notices byte for byte.
+/skills/soft-exam-lab/assets/frontend/dist/** -text -whitespace

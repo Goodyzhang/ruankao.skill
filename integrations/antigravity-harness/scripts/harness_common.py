@@ -152,6 +152,7 @@ def is_continuation(request):
         or lowered in {"继续", "结束", "a", "b", "c", "d", "1", "2", "3", "?", "？"}
         or bool(re.match(r"^a\d+\s*:", lowered))
         or mode_choice(request) is not None
+        or bool(re.fullmatch(r"(?:已提交|已完成|继续作答|结束并保留草稿|续做|继续批卷|继续实验室)[。！!]?", request))
     )
 
 
@@ -176,6 +177,13 @@ def is_review_book_request(request):
     ))
 
 
+def is_lab_request(request):
+    # Explicit invocation in the human request, excluding code/quoted examples.
+    text = re.sub(r"```[\s\S]*?```|`[^`]*`", "", request)
+    text = "\n".join(line for line in text.splitlines() if not line.lstrip().startswith(">"))
+    return bool(re.search(r"(?m)^(?:请|请你|帮我|为我)?\s*(?:使用|调用|用)?\s*[$@]soft-exam-lab\b", text) or re.search(r"(?:使用|调用|用)\s+[$@]?soft-exam-lab\b", text))
+
+
 def current_flow_records(records):
     """Keep the current question across short replies, but stop at a new task."""
     latest_user_index = next(
@@ -193,7 +201,7 @@ def current_flow_records(records):
         start = index
         request = user_request(record).lower()
         # Chapter authoring ends inherited single-question restrictions.
-        if is_review_book_request(request):
+        if is_review_book_request(request) or is_lab_request(request):
             return []
         if any(cue in request for cue in RUNTIME_CUES) and any(
             action in request for action in DIAGNOSTIC_ACTIONS

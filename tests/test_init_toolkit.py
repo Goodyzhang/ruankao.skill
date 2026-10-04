@@ -26,7 +26,7 @@ class InitTests(unittest.TestCase):
 
     def test_repeat_and_upgrade_preserve_personal_notes(self):
         self.run_install()
-        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 6)
+        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 7)
         note = next(self.vault.glob('个人资料/笔记/软考/系统架构设计师-高级/错题本/*.md'))
         note.write_text('PRIVATE ANSWER sentinel\n', encoding='utf-8')
         skill = self.vault / '.agents/skills/soft-exam-prep/SKILL.md'
@@ -67,7 +67,7 @@ class InitTests(unittest.TestCase):
         generated.write_text('<h1>User-created review book</h1>', encoding='utf-8')
         before = {p: p.read_bytes() for p in (relay, generated)}
         self.run_install(upgrade_skills=True)
-        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 6)
+        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 7)
         for path, content in before.items():
             self.assertEqual(path.read_bytes(), content)
 
@@ -88,7 +88,7 @@ class InitTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             installer.install(self.vault, list(installer.PLATFORMS))
         for folder in ['.agents', '.claude', '.trae']:
-            self.assertEqual(len(list((self.vault / folder / 'skills').glob('*/SKILL.md'))), 6)
+            self.assertEqual(len(list((self.vault / folder / 'skills').glob('*/SKILL.md'))), 7)
 
 
 if __name__ == '__main__':
