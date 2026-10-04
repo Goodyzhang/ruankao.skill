@@ -1,7 +1,7 @@
 interface:
   display_name: "软考单题讲解与归档"
-  short_description: "识别完整题目、诊断作答错因并在确认后归档"
-  default_prompt: "使用 $soft-exam-question-tutor 讲解这道题；我已选 C，请诊断错因并在我确认后归档。"
+  short_description: "讲解完整软考题目、辨析作答并在明确授权后归档到知识库"
+  default_prompt: "使用 $soft-exam-question-tutor 讲解这道软考题；如我提供了作答，再诊断错因。"
 
 policy:
   allow_implicit_invocation: true

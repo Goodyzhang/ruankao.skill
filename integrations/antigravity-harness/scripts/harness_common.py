@@ -72,12 +72,86 @@ def user_request(record):
     return (wrapped.group(1) if wrapped else content).strip()
 
 
+def mode_choice(text):
+    """Recognize an explicit mode choice, not a mention in a question/document."""
+    text = re.sub(r"^A\d+:\s*", "", text.strip(), flags=re.I)
+    text = re.sub(r"\((?:Recommended|推荐)\)|\[(?:Recommended|推荐)\]", "", text, flags=re.I).strip()
+    match = re.fullmatch(
+        r"(?:请|本题)?(?:改用|使用|切换到|切回|恢复|继续用|选择|同意|用)?"
+        r"(文字|文本|卡片|原生卡片)模式(?:继续本题|继续|讲题|练习|Grill)?[。！!]?",
+        text, re.I,
+    )
+    if match:
+        return "text" if match[1] in {"文字", "文本"} else "card"
+    return None
+
+
+def interaction_mode(records):
+    """Only USER_INPUT or a real mode-selection card response changes mode."""
+    mode = "card"
+    pending_mode_card = False
+    for record in records:
+        if record.get("type") == "USER_INPUT":
+            choice = mode_choice(user_request(record))
+            if choice:
+                mode = choice
+            pending_mode_card = False
+        elif record.get("type") == "PLANNER_RESPONSE":
+            pending_mode_card = False
+            for call in record.get("tool_calls") or []:
+                if call.get("name") != "ask_question":
+                    continue
+                args = call.get("args", call.get("arguments", {}))
+                if isinstance(args, str):
+                    try:
+                        args = json.loads(args)
+                    except json.JSONDecodeError:
+                        continue
+                questions = args.get("questions", []) if isinstance(args, dict) else []
+                if isinstance(questions, list) and len(questions) == 1:
+                    question = questions[0]
+                    if isinstance(question, dict) and re.search(
+                        r"本题.*交互方式|选择.*(?:文字|文本|卡片)模式", str(question.get("question", "")),
+                    ):
+                        pending_mode_card = True
+        elif record.get("type") == "GENERIC" and pending_mode_card:
+            if record.get("status", "DONE") == "DONE":
+                answer = re.search(r"(?m)^A\d+:\s*([^\n]+)", text_content(record.get("content")))
+                choice = mode_choice(answer[1]) if answer else None
+                if choice:
+                    mode = choice
+            pending_mode_card = False
+    return mode
+
+
+def explanation_only_requested(records):
+    for record in reversed(records):
+        if record.get("type") != "USER_INPUT":
+            continue
+        request = user_request(record)
+        if re.search(r"(?:开始|进入).*Grill|(?:把|将)本题归档", request, re.I):
+            return False
+        if re.match(r"^(?:请|本题)?(?:只|仅)(?:讲解|解析|给解析)", request):
+            return not re.search(r"(?:然后|随后|并|再).*(?:Grill|归档|练习)", request, re.I)
+    return False
+
+
+def explicit_archive_request(records):
+    """Suppress redundant archive cards; this never grants filesystem access."""
+    return any(re.match(
+        r"^(?:请|请你|帮我|为我)?(?:把|将)(?:本题|第\s*[0-9一二三四五六七八九十]+"
+        r"(?:\s*[-–—～~至到、,，]\s*[0-9一二三四五六七八九十]+)*\s*题)\s*归档(?:到|[，,。\s]|$)",
+        user_request(record),
+    ) for record in records if record.get("type") == "USER_INPUT")
+
+
 def is_continuation(request):
     lowered = request.lower()
     return (
         any(cue in lowered for cue in CONTINUATION_CUES)
         or lowered in {"继续", "结束", "a", "b", "c", "d", "1", "2", "3", "?", "？"}
         or bool(re.match(r"^a\d+\s*:", lowered))
+        or mode_choice(request) is not None
     )
 
 
