@@ -181,3 +181,22 @@ class ReviewRoutingTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class LabRoutingTests(unittest.TestCase):
+    setUp = ReviewRoutingTests.setUp
+    write_records = ReviewRoutingTests.write_records
+    assert_route = ReviewRoutingTests.assert_route
+    def test_lab_explicit_and_resume_end_tutor_restrictions(self):
+        for request in ('$soft-exam-lab 来一道系统架构设计师案例题', '@soft-exam-lab 继续', '使用 soft-exam-lab 来三道题'):
+            for reply in ('已提交', '继续作答', '结束并保留草稿', 'A1: 已提交', '继续批卷'):
+                with self.subTest(request=request, reply=reply):
+                    self.assert_route([user('请解析这道软考题'), CONFIRMED, MARKER, user(request), CONFIRMED, MARKER, user(reply)], False)
+    def test_nonexplicit_case_question_stays_tutor(self):
+        self.assert_route([user('请解析这道系统架构设计师案例题'),CONFIRMED],True)
+    def test_quoted_invocation_does_not_start_lab(self):
+        self.assertFalse(harness.is_lab_request('文档示例：`$soft-exam-lab`'))
+        self.assertFalse(harness.is_lab_request('> $soft-exam-lab 来一道题'))
+        self.assertFalse(harness.is_lab_request('我在文档里看到 $soft-exam-lab，是什么意思？'))
+        self.assertFalse(harness.is_lab_request('案例里的 @soft-exam-lab 是命令吗？'))
+    def test_new_tutor_after_lab_enters_normal_flow(self):
+        self.assert_route([user('$soft-exam-lab 来一道题'),user('请解析这道软考题'),CONFIRMED],True)

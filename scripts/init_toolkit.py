@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the six Skills and seed notes into a Vault without replacing notes."""
+"""Install the seven Skills and seed notes into a Vault without replacing notes."""
 import argparse
 from pathlib import Path
 import shutil

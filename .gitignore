@@ -5,3 +5,8 @@ dist/
 
 # User-specific paths and tool choices
 .soft-exam.local.json
+
+node_modules/
+# The lab ships a prebuilt offline runtime.
+!skills/soft-exam-lab/assets/frontend/dist/
+!skills/soft-exam-lab/assets/frontend/dist/**
