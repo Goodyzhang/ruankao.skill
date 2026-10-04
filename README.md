@@ -2,7 +2,7 @@
 
 一道题，讲清考点、换条件练习，确认后留下能复习的记录。一章学完，再把教材、知识点和错题重新组织成图文复习册。
 
-[下载 v0.4.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.0) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.4.1](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.1) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ![知识点二次蒸馏工作室：穿鲸鱼娘服装的 GPT 娘统筹核验与核心图，戴 cc-switch 头显的 Claude 娘后备协作，Ani 绘制辅助图，Gemini 娘创意写作，合成图文、速查与自测复习册](docs/images/knowledge-distillation-studio.png)
 
@@ -21,6 +21,8 @@
 原始教材、知识点和错题本保留原样，成品放进对应科目的 `速查复习册/NN-章名/`。已经认可的内容可以局部更新，制作中断后也能按记录继续。
 
 漫画里的工作室，对应实际的协作方式：Codex 统筹、核验并用内置 imagegen 制作核心图；创意写作优先交给 Antigravity 中的 Gemini，Claude Code 作为后备，Grok 可提供少文字的辅助图。缺少协作 CLI 时可填写位置或跳过；这些工具无需全部安装。Claude Code 实际使用什么模型，以本机配置与返回信息为准。
+
+**v0.4.1 加强图像与讲解复核**：生图前完成两轮提示词改稿，再交 Gemini 按 tutor 方法复核；公式用小黑板写清符号、条件与代入步骤。完成后实际看图，并优先在内建浏览器检查页面。正文或图片修订保留兼容的自测记录。
 
 资料可以放在 Obsidian Vault，也可以是普通文件夹。首次运行会检查已有配置；目录不明确时，提供真实候选或接受手动输入的绝对路径。
 
@@ -85,10 +87,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.0) 下载 `ruankao-toolkit-v0.4.0.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.1) 下载 `ruankao-toolkit-v0.4.1.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.4.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.4.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -271,6 +273,15 @@ node --test tests/test_review_quiz_state.cjs
 本版通过 53 项 Python 行为测试与 10 项 Node 自测状态测试；六个 Skill 的格式、包结构、资料保留、离线依赖与链接检查通过。首次引导另做了独立场景推演。**尚未完成 Antigravity / 其它 Agent 的真实卡片 UI 及 Windows 客户端回归**；手动流程见 [交互验收](docs/validation.md)。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 ## 更新日志
+
+### v0.4.1 — 2026-10-04
+
+- 强化复习册生图流程：两轮提示词改稿、Gemini tutor 复核、生成后整图核验；35 字作为知识密度下限，公式保留符号、单位、条件和逐步演算。
+- 修正协作探测：Gemini 经 Antigravity（`agy`）调用；核对真实帮助、完整参数和业务状态，分别记录请求模型与返回披露。
+- 核验前先读完整案例，区分局部与全局结论；优先内建浏览器检查，局部更新不重置无关作答。
+- 下载包加入高级／系统架构设计师第五章完整复习册：7 节、42 个知识组、159 道自测；在线知识库继续随主分支更新。
+
+升级方法与验证范围见 [v0.4.1 发布说明](docs/releases/v0.4.1.md)。
 
 ### v0.4.0 — 2026-10-03
 
