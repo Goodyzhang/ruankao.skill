@@ -5,7 +5,8 @@ import re
 import sys
 
 from harness_common import (
-    current_flow_records, is_soft_exam_context, read_recent_records,
+    current_flow_records, explanation_only_requested, explicit_archive_request,
+    interaction_mode, is_soft_exam_context, read_recent_records,
     text_content, user_request,
 )
 
@@ -90,6 +91,10 @@ def card_check(data):
         return "real_tool_call", "", step
     if "当前会话未暴露结构化提问工具" in content:
         return "tool_unavailable", "", step
+    if interaction_mode(records) == "text":
+        return "confirmed_text_mode", "", step
+    if explanation_only_requested(records):
+        return "explanation_only", "", step
 
     latest_user = next((r for r in reversed(records) if r.get("type") == "USER_INPUT"), {})
     request = user_request(latest_user)
@@ -143,6 +148,8 @@ def card_check(data):
         or ("题目复原" in content and "解题链" in content)
     )
     wrap_up = "Grill" in content and ("诊断总结" in content or "诊断收官" in content)
+    if explicit_archive_request(records) and (wrap_up or (explanation and latest_answer is None)):
+        return "archive_already_requested", "", step
     attempts = sum(RECOVERY_MARKER in message for message in retry_messages)
     if not (leaked or explanation or wrap_up or latest_answer or attempts):
         return "no_card_due", "", step

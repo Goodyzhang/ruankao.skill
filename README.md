@@ -2,7 +2,7 @@
 
 一道题，讲清考点、换条件练习，确认后留下能复习的记录。一章学完，再把教材、知识点和错题重新组织成图文复习册。
 
-[下载 v0.4.1](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.1) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.4.2](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.2) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ![知识点二次蒸馏工作室：穿鲸鱼娘服装的 GPT 娘统筹核验与核心图，戴 cc-switch 头显的 Claude 娘后备协作，Ani 绘制辅助图，Gemini 娘创意写作，合成图文、速查与自测复习册](docs/images/knowledge-distillation-studio.png)
 
@@ -22,7 +22,7 @@
 
 漫画里的工作室，对应实际的协作方式：Codex 统筹、核验并用内置 imagegen 制作核心图；创意写作优先交给 Antigravity 中的 Gemini，Claude Code 作为后备，Grok 可提供少文字的辅助图。缺少协作 CLI 时可填写位置或跳过；这些工具无需全部安装。Claude Code 实际使用什么模型，以本机配置与返回信息为准。
 
-**v0.4.1 加强图像与讲解复核**：生图前完成两轮提示词改稿，再交 Gemini 按 tutor 方法复核；公式用小黑板写清符号、条件与代入步骤。完成后实际看图，并优先在内建浏览器检查页面。正文或图片修订保留兼容的自测记录。
+**v0.4.1 起加强图像与讲解复核**：生图前完成两轮提示词改稿，再交 Gemini 按 tutor 方法复核；公式用小黑板写清符号、条件与代入步骤。完成后实际看图，并优先在内建浏览器检查页面。正文或图片修订保留兼容的自测记录。
 
 资料可以放在 Obsidian Vault，也可以是普通文件夹。首次运行会检查已有配置；目录不明确时，提供真实候选或接受手动输入的绝对路径。
 
@@ -63,7 +63,7 @@
 
 发一张完整题图，告诉它“我选 B，请解析”。讲解会围绕题目考查的知识、推理过程和选项边界展开。有需要时继续做变式练习，看看条件改变后还能不能判断；未作答或只想快速听解析，也可以跳过练习。
 
-讲完后确认归档，Agent 将本题的知识点与错题记录整理到对应章节，并回读核验。省下手动复制和排版的时间，下一次能找到当时的错因。本题已有明确归档授权时直接沿用；换题后重新确认。
+普通讲题后可确认归档；明确要求“只讲解”时直接结束。确认归档后，Agent 将本题的知识点与错题记录整理到对应章节，并回读核验。省下手动复制和排版的时间，下一次能找到当时的错因。本题已有明确归档授权时直接沿用；用户明确授权第 1–3 题及目标时，逐题执行并记录结果，范围之外的新题重新确认。
 
 ## 按任务选择 Skill
 
@@ -87,10 +87,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.1) 下载 `ruankao-toolkit-v0.4.1.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.2) 下载 `ruankao-toolkit-v0.4.2.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.4.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.4.2 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -179,8 +179,8 @@ npx skills add Goodyzhang/ruankao.skill -a antigravity
 
 ## 日常使用
 
-- **讲题**：提供完整题图后说“我选 B，请解析”。Agent 先复原题目、说明考点、解题链和选项边界，再询问是否 Grill。未作答或明确快速讲时跳过 Grill。
-- **Grill**：“开始 Grill”。每张练习卡含一个正确项和两个干扰项；选择后先反馈，再决定下一题，最多三轮。“结束”或“换题”结束当前题。
+- **讲题**：提供完整题图后说“我选 B，请解析”。Agent 先复原题目、说明考点、解题链和选项边界，再询问是否 Grill。未作答或明确快速讲时跳过 Grill；明确要求直接归档时沿用授权写入。
+- **Grill**：“开始 Grill”。生成变式含一个正确项和两个干扰项；复用原题时按宿主能力保留完整选项。选择后先反馈，再决定下一题，最多三轮。“结束”或“换题”结束当前题。
 - **归档**：“将本题归档到高级”。授权只用于本题；写入章级知识点和错题本后回读核验。下一题重新建立状态与授权。
 - **章节复习册**：“第五章已经学完，请制作图文速查复习册”。按小节取材、写作、生图、复核，整章完成后统一审阅；也可指定某个专题或局部修订。
 - **复习**：“今天有哪些 D1/D7/D21 到期？”依据实际完成日期计算，空日期不会被当作今天到期。
@@ -270,9 +270,17 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本版通过 53 项 Python 行为测试与 10 项 Node 自测状态测试；六个 Skill 的格式、包结构、资料保留、离线依赖与链接检查通过。首次引导另做了独立场景推演。**尚未完成 Antigravity / 其它 Agent 的真实卡片 UI 及 Windows 客户端回归**；手动流程见 [交互验收](docs/validation.md)。Node 仅用于开发验证，安装和离线阅读不需要它。
+本版通过 60 项 Python 行为测试与 10 项 Node 自测状态测试；六个 Skill 的格式、包结构、资料保留、离线依赖与链接检查通过。首次引导另做了独立场景推演。**尚未完成 Antigravity / 其它 Agent 的真实卡片 UI 及 Windows 客户端回归**；手动流程见 [交互验收](docs/validation.md)。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 ## 更新日志
+
+### v0.4.2 — 2026-10-04
+
+- 吸收 [DreamLanter 的 PR #1](https://github.com/Goodyzhang/ruankao.skill/pull/1)：移除默认“我已选 C”，区分候选错因与实际证据，保留原题与练习选项映射，按需加载资料。
+- 文字模式由用户明确选择后启用；同步 Harness，防止合法文字练习被重复补卡。明确只讲解时正常收尾。
+- 明确批量归档授权绑定题号、目标与操作；逐题查重、保存状态并从实际未完成位置恢复，保留人工记录。
+
+升级与验证范围见 [v0.4.2 发布说明](docs/releases/v0.4.2.md)。
 
 ### v0.4.1 — 2026-10-04
 
