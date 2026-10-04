@@ -1,0 +1,28 @@
+flowchart TB
+ subgraph LOCAL[单个判定：完整求值且组合与目标可行]
+ direction TB
+ M[条件组合覆盖<br/>该判定内全部条件取值组合]
+ DC[判定/条件覆盖<br/>判定与条件两项都达成]
+ D[判定覆盖<br/>每个判定真假出口]
+ C[条件覆盖<br/>每个条件实际取真与假]
+ S[语句覆盖<br/>每个可执行语句执行过]
+ M -->|包含| DC
+ DC -->|包含| D
+ DC -->|包含| C
+ D -->|包含| S
+ end
+ subgraph LIMIT[控制流图另看建模粒度]
+ direction TB
+ P[全路径覆盖<br/>该 CFG 所有可行入口到出口路径]
+ X[粗粒度复合判定节点<br/>全路径不保证节点内部组合齐全]
+ P -->|在本文 CFG 口径下包含| D
+ P -.->|注意粒度| X
+ end
+ LOCAL ~~~ LIMIT
+ R[互不包含的反例：D=A∧B，均实际求值<br/>TF与FT：条件达成，判定未达成<br/>TT与FT：判定达成，B未取假]
+ C -.->|不能推出判定或语句| R
+ D -.->|不能推出条件| R
+ classDef rule fill:#edf8ff,stroke:#3684ad,color:#123d55
+ classDef caution fill:#fff4dd,stroke:#c28c31,color:#4b3713
+ class M,DC,D,C,S,P rule
+ class X,R caution

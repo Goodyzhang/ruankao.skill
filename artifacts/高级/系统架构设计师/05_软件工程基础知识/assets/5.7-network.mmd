@@ -1,0 +1,12 @@
+flowchart LR
+ A[A候补设计 3天<br/>ES0 EF3] --> B[B通知接入 4天<br/>ES3 EF7<br/>TF2 FF0]
+ A --> C[C递补实现 8天<br/>ES3 EF11]
+ B --> D[D通知联调 2天<br/>ES7 EF9<br/>TF2 FF2]
+ C --> E[E集成 2天<br/>ES11 EF13]
+ D --> E
+ E --> F[F发布 1天<br/>ES13 EF14]
+ F --> Z[完成14]
+ E -.-> X[前推max：9与11取11<br/>逆推起点F.LF=14]
+ classDef critical fill:#fff0ed,stroke:#d3654f,stroke-width:3px;
+ class A,C,E,F critical;
+ linkStyle 1,3,5 stroke:#d3654f,stroke-width:3px;

@@ -1,0 +1,10 @@
+flowchart TB
+ C[CCM 4.0 使用模型] -->|无会话状态| S[Service：stateless／无主键]
+ C -->|临时会话状态| T[Session：非持久身份／无主键]
+ C -->|持久状态与身份| D[durable 使用模型]
+ D -->|home 有主键| E[Entity]
+ D -->|home 无主键| P[Process]
+ E -.->|可选持久化责任| B[容器管理 或 自身管理]
+ P -.->|可选持久化责任| B
+ T -.->|另一观察维度| X[servant 寿命策略：Any<br/>不能固定绑定会话寿命]
+ N[无会话状态 ≠ 所有操作无副作用／幂等] -.->|限定| S

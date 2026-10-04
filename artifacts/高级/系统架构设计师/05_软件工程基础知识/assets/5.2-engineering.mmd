@@ -1,0 +1,15 @@
+%%{init: {'flowchart': {'rankSpacing': 90}}}%%
+flowchart TB
+  subgraph DEV[需求开发：本次推进顺序可回访]
+    direction LR
+    G[获取] --> A[分析与建模] --> S[文档化 SRS] --> V[确认与验证]
+  end
+  V -->|评审批准| B[需求基线 B1]
+  M[需求管理：变更控制／版本／跟踪／状态<br/>初始需求开始规划，初稿形成后开展] -.支持.-> DEV
+  subgraph GET[需求获取的六步参考过程：允许返回补充]
+    direction LR
+    G1[① 高层<br/>业务模型] --> G2[② 范围与<br/>高层需求] --> G3[③ 用户角色<br/>与代表] --> G4[④ 具体<br/>需求] --> G5[⑤ 目标<br/>业务工作流] --> G6[⑥ 整理<br/>与总结]
+  end
+  G -.展开获取活动.-> GET
+  classDef focus fill:#d8f4fa,stroke:#1683a7,color:#102d48;
+  class B,M focus;

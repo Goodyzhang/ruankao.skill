@@ -1,0 +1,16 @@
+flowchart TB
+  S[学生]
+  R{候补}
+  A[活动]
+  T([入队时间])
+  ST([候补状态])
+  S ---|每名学生可关联0..N个活动| R
+  A ---|每项活动可关联0..N名学生| R
+  R --- T
+  R --- ST
+  classDef entity fill:#e8f2ff,stroke:#3b74a6;
+  classDef relation fill:#fff2d6,stroke:#bc8a37;
+  classDef attribute fill:#f1eaff,stroke:#9674ae;
+  class S,A entity;
+  class R relation;
+  class T,ST attribute;

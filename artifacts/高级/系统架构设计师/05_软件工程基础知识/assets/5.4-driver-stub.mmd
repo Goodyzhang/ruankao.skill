@@ -1,0 +1,23 @@
+flowchart TB
+ subgraph CALL[先按调用方向定位替身]
+ direction LR
+ D[驱动 Driver<br/>模拟上层调用者] -->|调用并提供输入| U[被测模块<br/>候补调度]
+ U -->|调用下层接口| T[桩 Stub<br/>代替未就绪依赖]
+ end
+ subgraph TOP[自顶向下：高层先接通]
+ direction LR
+ H[真实高层控制] -->|调用| M[被测模块]
+ M -->|下层尚缺，常用| ST[下层桩]
+ end
+ subgraph BOTTOM[自底向上：低层先组合]
+ direction LR
+ DR[上层尚缺，常用驱动] -->|调用| L[真实低层模块]
+ end
+ CALL ~~~ TOP
+ TOP ~~~ BOTTOM
+ N[上下两端都缺时，可同时需要驱动与桩<br/>Mock 可检查预期交互，不等于只返回预设数据]
+ BOTTOM ~~~ N
+ classDef actual fill:#edf8ff,stroke:#3684ad,color:#123d55
+ classDef substitute fill:#fff4dd,stroke:#c28c31,color:#4b3713
+ class U,H,M,L actual
+ class D,T,ST,DR,N substitute

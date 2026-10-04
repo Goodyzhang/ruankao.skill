@@ -1,0 +1,13 @@
+flowchart TB
+ S([S 开始]) --> D1{D1 资格合格？}
+ D1 -->|真| D2{D2 名额可用？}
+ D1 -->|假| R[R 拒绝]
+ D2 -->|真| C[C 确认]
+ D2 -->|假| W[W 候补]
+ R --> E([E 结束])
+ C --> E
+ W --> E
+ classDef decision fill:#eaf6ff,stroke:#337aa1,color:#123d55
+ classDef action fill:#f0fbf8,stroke:#388b75,color:#174b3d
+ class D1,D2 decision
+ class R,C,W action

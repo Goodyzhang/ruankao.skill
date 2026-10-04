@@ -1,0 +1,22 @@
+flowchart TB
+  subgraph requirement[规约与目标]
+    direction LR
+    A[用户规则变化或原规约写错] --> B[重新确认需求与规范] --> C[追踪受影响设计，重新验证]
+  end
+  subgraph usage[使用条件]
+    direction LR
+    D[取消、递补或并发的使用分布变化] --> E[重新建立相关使用模型] --> F[取得新条件下的认证证据]
+  end
+  subgraph environment[执行假设]
+    direction LR
+    H[语言、编译器或OS偏离原假设] --> J[检查验证范围与运行环境] --> K[补验证或执行证据，重新评估]
+  end
+  subgraph version[被测版本]
+    direction LR
+    L[代码v0.1改为v0.2] --> M[旧估计不直接适用新版本] --> N[复查认证范围与数据条件]
+  end
+  Q[四类变化可以同时发生<br/>样本零失败不直接证明全体无缺陷]
+  C -. 不同证据共同支持交付 .-> Q
+  F -. 不同证据共同支持交付 .-> Q
+  K -. 不同证据共同支持交付 .-> Q
+  N -. 不同证据共同支持交付 .-> Q

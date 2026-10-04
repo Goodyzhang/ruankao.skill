@@ -1,0 +1,18 @@
+sequenceDiagram
+  actor S as 学生（系统外）
+  participant B as 报名页面（边界）
+  participant C as 候补协调器（控制）
+  participant E as 活动／候补记录（实体）
+  participant N as 通知适配（边界）
+  S->>B: 取消请求
+  B->>C: 转换后的取消操作
+  Note over C,E: 本例假设队首资格通过；变更置于事务及约束下
+  C->>E: 取消并释放名额
+  E-->>C: 已释放空位
+  C->>E: 获取按序候补者并核验资格
+  E-->>C: 符合资格的候补记录
+  C->>E: 递补并更新状态
+  E-->>C: 更新结果
+  C->>N: 发送递补通知
+  C-->>B: 取消处理结果
+  B-->>S: 显示结果

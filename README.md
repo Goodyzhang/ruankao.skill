@@ -2,7 +2,7 @@
 
 一道题，讲清考点、换条件练习，确认后留下能复习的记录。一章学完，再把教材、知识点和错题重新组织成图文复习册。
 
-[下载 v0.4.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.0) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.4.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.0) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ![知识点二次蒸馏工作室：穿鲸鱼娘服装的 GPT 娘统筹核验与核心图，戴 cc-switch 头显的 Claude 娘后备协作，Ani 绘制辅助图，Gemini 娘创意写作，合成图文、速查与自测复习册](docs/images/knowledge-distillation-studio.png)
 
@@ -25,6 +25,22 @@
 资料可以放在 Obsidian Vault，也可以是普通文件夹。首次运行会检查已有配置；目录不明确时，提供真实候选或接受手动输入的绝对路径。
 
 **先看成品：[在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/)** · [样章源码与离线资源](docs/demo/smtp-pop3/index.html)。样章展示邮件专题的图文、速查与 6 道自测，下载包内也可直接打开。
+
+## 持续更新的图文知识库
+
+复习册会随学习整理与勘误持续更新。章节更新合并到 `main` 后，GitHub Pages 会自动发布，在线内容随仓库同步更新。
+
+**当前已更新高级／系统架构设计师的章节：**
+
+| 章节 | 阅读范围 | 最近更新 |
+|---|---|---|
+| [第五章 · 软件工程基础知识 → 打开章节目录](https://goodyzhang.github.io/ruankao.skill/artifacts/高级/系统架构设计师/05_软件工程基础知识/index.html) | 5.1–5.7，42 个知识组，图文、速查与 159 道自测 | 2026-10-04 |
+
+[查看第五章源码与离线资源](artifacts/高级/系统架构设计师/05_软件工程基础知识/)。下载当前仓库后可直接打开该目录的 `index.html`；保留同目录的图片、CSS 和 JavaScript 文件。在线章节跟随主分支更新，已发布的 Release 下载包保留各自版本的内容。
+
+**欢迎其他考生一起搭建各个科目的知识库。** 可以通过 [Issue](https://github.com/Goodyzhang/ruankao.skill/issues) 提出勘误或待补章节，也欢迎提交 Pull Request，补充讲解、图解、变式题及完整章节。
+
+章节按 `artifacts/<级别>/<科目>/NN_章名/` 组织，提供 `index.html` 入口及本地阅读资源。贡献时注明教材版本与知识来源，区分原题、改编题和自编题；保留必要条件和解析，提交前检查导航、图片与自测。仅提交可公开的复习内容，个人作答记录、教材全文和制作日志留在本地；来源范围见 [NOTICE](NOTICE.md)。
 
 <details>
 <summary>复习册安装后，可以这样发起任务</summary>
@@ -176,6 +192,8 @@ skills/                         六个完整 Skill
 scripts/                        初始化与包验证
 tests/                          初始化、路由与阅读状态测试
 docs/demo/smtp-pop3/             可离线打开的 SMTP／POP3 样章
+artifacts/高级/系统架构设计师/
+  05_软件工程基础知识/           第五章完整复习册，index.html 为入口
 integrations/antigravity-harness/ 可选长上下文 Harness 与安装器
 vault/
   软考工具包使用说明.md

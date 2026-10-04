@@ -1,0 +1,29 @@
+flowchart TB
+ subgraph OBJECT[常用四层：对象与目的，可在迭代中反复开展]
+ direction LR
+ U[单元<br/>函数、类、模块内部]
+ I[集成<br/>模块接口与协作]
+ S[系统<br/>完整组装系统]
+ A[验收<br/>交付与预期使用]
+ U -->|范围扩大| I -->|范围扩大| S -->|转向交付认可| A
+ end
+ UD[详细设计、源码或单元契约]
+ ID[概要设计、接口契约]
+ SD[软件需求规格说明书]
+ AD[用户需求、合同、验收标准]
+ U ---|主要依据| UD
+ I ---|主要依据| ID
+ S ---|主要依据| SD
+ A ---|主要依据| AD
+ G[修改后的回归<br/>可在单元、集成、系统等层开展]
+ G -.->|检查影响| U
+ G -.->|检查影响| I
+ G -.->|检查影响| S
+ T[功能、性能、恢复等属于关注内容<br/>可与被测层次交叉]
+ AD ~~~ T
+ classDef layer fill:#edf8ff,stroke:#3684ad,color:#123d55
+ classDef basis fill:#f0fbf8,stroke:#388b75,color:#174b3d
+ classDef goal fill:#fff4dd,stroke:#c28c31,color:#4b3713
+ class U,I,S,A layer
+ class UD,ID,SD,AD basis
+ class G,T goal

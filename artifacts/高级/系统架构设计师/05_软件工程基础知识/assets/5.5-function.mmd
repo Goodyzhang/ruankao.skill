@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph target[目标规约：只截取未重复且处于开放期的报名决策]
+    direction LR
+    A[不具备资格] --> R[拒绝]
+    B[有资格且余量大于0] --> C[确认]
+    D[有资格且余量为0] --> W[候补]
+  end
+  subgraph checks[候选函数：上述条件全返回拒绝]
+    direction LR
+    F[任何条件 → 拒绝] --> K[完备性通过<br/>每种输入至少一个输出]
+    F --> U[一致性通过<br/>同一输入至多一个输出]
+    F --> X[目标检查不通过<br/>有资格且有余量也被拒绝]
+  end
+  C -. 与候选响应比较 .-> X
+  N[完整规约还要规定异常、重复、并发与取消<br/>输入历史不同，当前查询相同也可有不同响应]
+  checks -. 不可外推完整系统 .-> N
+  classDef good fill:#e4f3ec,stroke:#35825b,color:#163e2a
+  classDef bad fill:#fff1d5,stroke:#b27620,color:#573710
+  class K,U good
+  class X bad

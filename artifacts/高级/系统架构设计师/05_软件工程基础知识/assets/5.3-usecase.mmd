@@ -1,0 +1,14 @@
+flowchart TB
+  subgraph I[包含：公共必需行为复用]
+    I1([申请候补]) -.->|include| I3([账户检查])
+    I2([取消候补]) -.->|include| I3
+  end
+  subgraph E[扩展：在扩展点增加行为]
+    E1([附加通知]) -.->|extend：在给定扩展点| E2([申请处理])
+  end
+  subgraph G[泛化：特殊者承接一般者]
+    G1([网页申请]) -->|generalization：特殊→一般| G3([候补申请])
+    G2([移动端申请]) -->|generalization：特殊→一般| G3
+  end
+  I ~~~ E
+  E ~~~ G

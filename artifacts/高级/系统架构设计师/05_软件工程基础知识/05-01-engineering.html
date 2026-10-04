@@ -1,0 +1,164 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>5.1 软件工程 · 软件工程视觉复习册</title><link rel="stylesheet" href="reader.css?v=28862625d7c8"><script src="quiz-state.js?v=83377ec3e02f" defer></script><script src="reader.js?v=387904866391" defer></script></head>
+<body data-book-id="architect-v2" data-chapter-id="05" data-section-id="05-1-engineering"><a class="skip" href="#article">跳到正文</a><aside class="outline" aria-label="章节与知识组目录"><div class="chapter-no">05</div><p>软件工程基础知识</p><nav><a href="index.html#chapter">← 章节关系总览</a><details open><summary>5.1 软件工程</summary><ul><li><a href="05-01-engineering.html#engineering">工程活动与支撑</a></li><li><a href="05-01-engineering.html#models">过程模型的选择</a></li><li><a href="05-01-engineering.html#prototype">原型的两条分类轴</a></li><li><a href="05-01-engineering.html#agile">敏捷及方法家族</a></li><li><a href="05-01-engineering.html#rup">RUP 阶段与工作流</a></li><li><a href="05-01-engineering.html#views">4+1 同系统多视角</a></li><li><a href="05-01-engineering.html#maturity">CMM/CMMI 过程改进</a></li></ul><a href="05-01-engineering.html#quick">速查</a><a href="05-01-engineering.html#quiz">自测</a></details><details ><summary>5.2 需求工程</summary><ul><li><a href="05-02-requirements.html#levels">需求层次与观察维度</a></li><li><a href="05-02-requirements.html#elicitation">获取与协商</a></li><li><a href="05-02-requirements.html#baseline">基线与变更</a></li><li><a href="05-02-requirements.html#trace">追踪与版本</a></li></ul><a href="05-02-requirements.html#quick">速查</a><a href="05-02-requirements.html#quiz">自测</a></details><details ><summary>5.3 系统分析与设计</summary><ul><li><a href="05-03-analysis-design.html#analysis">分析与设计的边界</a></li><li><a href="05-03-analysis-design.html#structured">结构化模型与工具</a></li><li><a href="05-03-analysis-design.html#cohesion">耦合与内聚</a></li><li><a href="05-03-analysis-design.html#objects">面向对象与设计原则</a></li><li><a href="05-03-analysis-design.html#uml">UML 的不同问题</a></li><li><a href="05-03-analysis-design.html#patterns">模式的层次与分类</a></li></ul><a href="05-03-analysis-design.html#quick">速查</a><a href="05-03-analysis-design.html#quiz">自测</a></details><details ><summary>5.4 软件测试</summary><ul><li><a href="05-04-testing.html#axes">方法与阶段交叉</a></li><li><a href="05-04-testing.html#blackbox">黑盒选例</a></li><li><a href="05-04-testing.html#coverage">白盒覆盖条件</a></li><li><a href="05-04-testing.html#complexity">圈复杂度与基路径</a></li><li><a href="05-04-testing.html#stages">常用四层与回归</a></li><li><a href="05-04-testing.html#performance">性能与用户参与</a></li><li><a href="05-04-testing.html#verification">测试、调试与 V&V</a></li></ul><a href="05-04-testing.html#quick">速查</a><a href="05-04-testing.html#quiz">自测</a></details><details ><summary>5.5 净室软件工程</summary><ul><li><a href="05-05-cleanroom.html#foundation">正确性与可靠性</a></li><li><a href="05-05-cleanroom.html#process">增量开发与独立认证</a></li><li><a href="05-05-cleanroom.html#limits">使用条件与限制</a></li></ul><a href="05-05-cleanroom.html#quick">速查</a><a href="05-05-cleanroom.html#quiz">自测</a></details><details ><summary>5.6 基于构件的软件工程</summary><ul><li><a href="05-06-components.html#contract">构件、接口与依赖</a></li><li><a href="05-06-components.html#model">构件模型与分类轴</a></li><li><a href="05-06-components.html#cbse">CBSE 过程</a></li><li><a href="05-06-components.html#assembly">组装与适配</a></li></ul><a href="05-06-components.html#quick">速查</a><a href="05-06-components.html#quiz">自测</a></details><details ><summary>5.7 软件项目管理</summary><ul><li><a href="05-07-management.html#management">范围、WBS 与 4P</a></li><li><a href="05-07-management.html#schedule">网络计划与时差</a></li><li><a href="05-07-management.html#estimation">PERT 估计与假设</a></li><li><a href="05-07-management.html#crashing">赶工与费用目标</a></li><li><a href="05-07-management.html#assignment">指派约束与最优证据</a></li><li><a href="05-07-management.html#rescue">电子商务进度变式</a></li><li><a href="05-07-management.html#configuration">配置、变更与基线</a></li><li><a href="05-07-management.html#maintenance">维护分类的不同条件</a></li><li><a href="05-07-management.html#cost-axis">费用属性与核算边界</a></li><li><a href="05-07-management.html#quality">质量模型与 QA/QC</a></li><li><a href="05-07-management.html#risk">风险分类与持续闭环</a></li></ul><a href="05-07-management.html#quick">速查</a><a href="05-07-management.html#quiz">自测</a></details></nav></aside><div class="workspace"><header class="masthead"><p class="eyebrow">系统架构设计师 · 第 2 版 · 5.1</p><h1>软件工程</h1><p class="intro">沿校园活动报名系统，辨认概念的职责、条件与关系。案例为自编教学场景。</p></header><div class="toolbar" data-tabs role="tablist" aria-label="阅读方式" hidden><button type="button" id="tab-article" data-tab role="tab" aria-controls="article" aria-selected="true">图文</button><button type="button" id="tab-quick" data-tab role="tab" aria-controls="quick" aria-selected="false" tabindex="-1">速查</button><button type="button" id="tab-quiz" data-tab role="tab" aria-controls="quiz" aria-selected="false" tabindex="-1">自测</button></div><main><noscript><p>正文、速查与题干可阅读；自测判分与进度保存需要 JavaScript。图片链接可直接打开。</p></noscript><section id="article" data-panel="article" role="tabpanel" aria-labelledby="tab-article" tabindex="0"><article class="prose"><h2 id="engineering">软件工程的定义与基础支撑</h2>
+<p>100 人报名上限，两个学生同时看到最后一个名额。在同一瞬间点击确认，后台如果缺乏正确的并发控制，就可能超额接收报名。项目最初预估为两周完成的小工具，随后因规则变化而延期，交付的功能也可能偏离主办方期望；人员交接缺乏文档，又让维护困难。进度难预测、成本难控制、功能不满足期望、质量难保证、难维护和文档不足，是教材所说软件危机的六种表现。软件工程将系统化、受约束、可量化的工程方法应用于开发、运行和维护，帮助团队处理这些问题。</p>
+<p>软件生命周期包含四项基本工程活动：软件规格说明明确系统功能与约束，软件开发产出符合要求的系统，软件确认验证系统符合预期，软件演进负责系统上线后的变更与完善。架构设计和编码实现从属于开发活动内部，并不与四大活动平级。工程中常借用质量管理中的PDCA（计划-执行-检查-处理）辅助理解这四项活动的推进关系，但两者属于不同范畴的方法论，不能直接视为同一模型。支撑这些活动的集成环境包含三项关键机制：环境信息库负责跨阶段数据的集中存储与共享，过程控制与消息服务器负责工具间的事件联动与流程协调，统一界面则提供一致的操作交互。</p>
+
+<h2 id="models">生命周期模型与演变逻辑</h2>
+<p>过程模型用于组织各项工程活动的顺序、反馈和衔接。在报名系统早期，如果业务规则较明确，技术方案也已有验证，瀑布模型能提供清晰的阶段边界。前一阶段的产出经过评审，作为后一阶段的输入。若规格遗漏一直未被发现，直到集成或用户试用才暴露，后面的设计、代码和测试就可能一起返工。阶段评审可以提前发现问题，但它对真实使用体验的反馈仍可能较晚。需求稳定是适合条件，并不保证效率最高；实际项目遇到缺陷，也需要受控地回到前面的工作修订。</p>
+<p>当活动负责人提出新需求：名额满员后开放候补排队，一旦有人取消，系统自动按序补位并通知学生。面对新增业务，增量与迭代以不同方式参与系统演进。增量关注可用功能的扩充，系统先交付基础报名功能，下一版本补充候补排队表单，再下一版本增加自动补位后台。迭代关注在已有功能范围内改进实现，对于最初简单的数据库读写，开发团队在相同业务功能下重新设计并发检查逻辑，引入事务重试与状态校验以提升并发可靠性。增量提供新的功能切片，迭代在复访中完善实现，两者通常结合运用。</p>
+<p>若系统面临高并发性能未知或第三方服务接口不稳定的显著风险，螺旋模型提供了一种可选的风险驱动机制。螺旋模型以循环螺旋的方式推进，每个周期依次展开：确定目标、备选方案与约束条件；评估方案并开展风险分析；执行当前周期的开发与验证；评审并规划下一阶段工作。团队可以在风险分析阶段针对候补排队逻辑编写性能原型进行实测。需要注意的是，风险处理旨在控制和降低不确定性，但系统依然可能存在残余风险；迭代推进也是多数现代模型共有的特征，不宜将螺旋模型理解为某种特殊的运算公式。</p>
+<p>组成来源类试题有三个相近空位。教材把螺旋描述为在快速原型基础上扩展、结合生命周期模型与原型模型：生命周期提供阶段产物和评审约束，原型帮助较早取得反馈，显式风险分析决定这一轮如何推进。因此，“瀑布模型与什么结合”题里通常填快速原型；“原型与什么结合”按教材选生命周期模型，选项可能写经典生命周期或瀑布。<strong>“迭代”描述反复推进的运行特征，“增量”描述功能扩充，两者都不能自动替代组成来源题所问的模型。</strong>这组说法是教材的来源概括，不是给模型做数学加法；风险驱动仍是识别实际机制的重点。</p>
+<figure><a class="figure-link" data-zoom href="assets/spiral-questions.png?v=4a9083ca387c" aria-label="放大：螺旋的组成来源与运行机制分开辨析，一轮四步后由评审决定继续停止或重选"><img src="assets/spiral-questions.png?v=4a9083ca387c" width="1536" height="1024" alt="螺旋的组成来源与运行机制分开辨析，一轮四步后由评审决定继续停止或重选"></a><figcaption>上半两卡回答不同问题：来源问法看生命周期与原型，运行机制看显式风险驱动。下半仅展开一轮，评审决定继续才启动下一轮；三个决策为并列选择。</figcaption></figure>
+
+<p>再把视线放到螺旋本身：沿蓝线绕过四个活动区，读的是本轮工作如何推进；从中心向外看距离，读的是累计成本与投入。十字线只分活动区，不是“横轴时间、纵轴风险”的数值坐标。走到轮末，参与方还要决定是否继续；选择继续，才带着评审结果进入下一轮。下面的图专门用来读这个关系，前一张图则保留题干问法的辨析。</p>
+<figure><a class="figure-link" data-zoom href="assets/spiral-quadrants.png?v=499a0128898f" aria-label="放大：连续向外展开的顺时针螺旋经过目标、风险、开发验证、评审四区，径向表示累计投入"><img src="assets/spiral-quadrants.png?v=499a0128898f" width="1536" height="1024" alt="连续向外展开的顺时针螺旋经过目标、风险、开发验证、评审四区，径向表示累计投入"></a><figcaption>顺时针沿圈看活动进展，径向看累计成本与投入；四区是活动，原型的抛弃或演化是实现去向。圈距不表示等工时，每轮也不保证产出完整软件。</figcaption></figure>
+
+<h3 id="prototype">原型的维度划分与应用场景</h3>
+<p>负责人还没想清楚候补按钮应放在哪里。先做可以点选的页面，让他试一次，往往比反复解释文字更容易澄清分歧。若疑问变成“两个取消请求会不会补入同一个人”，就需要运行关键逻辑。两者都叫原型，回答的问题却不同。实现的广度与深度、原型最后的去向，是两条独立分类轴，可以组合：</p>
+<figure><a class="figure-link" data-zoom href="assets/prototype-axes-r2.png?v=89e8c3903324" aria-label="放大：原型以覆盖深度和实现去向组合为四格，抛弃保留学习成果，演化经过扩充与质量验证"><img src="assets/prototype-axes-r2.png?v=89e8c3903324" width="1536" height="1024" alt="原型以覆盖深度和实现去向组合为四格，抛弃保留学习成果，演化经过扩充与质量验证"></a><figcaption>先判断覆盖与深度，再判断原型实现的去向。右下橙箭头表示从整个核心切片逐步扩充功能；蓝箭头表示请求经过逻辑和数据保存，二者的含义不同。</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>原型组合</th>
+<th>实现特征</th>
+<th>在报名系统中的应用</th>
+<th>后续处置方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>水平抛弃型</td>
+<td>广界面、薄逻辑</td>
+<td>用页面原型工具绘制完整的候补申请与取消流程，供用户体验布局</td>
+<td>舍弃原型实现，保留需求与试用结论，再开发正式系统</td>
+</tr>
+<tr>
+<td>水平演化型</td>
+<td>广界面、逐步充实后台</td>
+<td>直接基于前端生产框架搭建界面骨架与表单，后续逐步接入真实接口</td>
+<td>保留前端界面代码，在后续版本中持续填充业务实现</td>
+</tr>
+<tr>
+<td>垂直抛弃型</td>
+<td>窄功能、深实现、快速验证</td>
+<td>用脚本快速跑通一段自动补位排队调度逻辑，验证并发状态流转</td>
+<td>摸清死锁风险后废弃脚本，重新按规范编写生产代码</td>
+</tr>
+<tr>
+<td>垂直演化型</td>
+<td>窄功能、深实现、规范编码</td>
+<td>按照生产标准完整实现名额扣减与排队入队核心服务，暂不提供前台界面</td>
+<td>作为演化基础，完善并验证质量后纳入目标系统，允许局部重构或重写</td>
+</tr>
+</tbody>
+</table>
+<p>在工程选择上，需求不清不足以作为唯一决定采用抛弃式原型的依据。即使需求存在模糊，只要核心领域结构相对稳固，团队依然可以采用演化式垂直原型逐步摸索并保留成果。同时，原型同样可以实现真实功能，例如垂直原型可以包含真实的数据库操作与并发控制，只是它是否满足正式发布的质量标准（如异常处理、安全审计、文档完备性）属于另一个维度的考量，不宜将所有原型都视为缺乏真实逻辑的模拟界面。</p>
+<p>“迭代、集成、抛弃”放在一起时，先检查它们各在回答什么。迭代说的是反复改进，抛弃式原型也能试过几版才舍弃；增量说的是添加功能；集成说的是把部件组合起来。抛弃与演化则回答原型实现最终怎样处理。它们可以同时出现在一个项目里，不能只凭这些词把软件放进同一组互斥象限。抛弃实现之后，需求理解、设计取舍和验证结果仍然可以留下。</p>
+<p>教材的过程分为原型开发、目标软件开发两阶段。取得反馈后，团队先修正理解，确认需求，再开发目标系统。第一阶段可以模拟人机界面和交互、实际开发一个原型，也可以找已有相似软件供用户比较。要验证并发规则时，界面模拟不够；只是讨论候补按钮时，先拿现成报名软件比较，可能已经够用。反复试用也要逐步收敛到目标范围，不能无限扩展原型。</p>
+
+<h2 id="agile">敏捷原则与轻量级协作</h2>
+<p>面对业务规则的频繁变动，敏捷方法提供了更具弹性的应对手段。敏捷的核心特征在于适应性与面向人。敏捷宣言提倡：个体与交互胜过过程与工具，可工作的软件胜过面面俱到的文档，客户合作胜过合同谈判，响应变化胜过遵循计划。在重视左项的同时，右项依然具备工程价值。敏捷提倡精简冗余的形式化流程，但关键的设计记录、接口定义与运维文档依然在系统维护中发挥作用。</p>
+<p>极限编程（XP）以技术实践为核心驱动力。教材口径中XP包含四项核心价值观：交流、朴素、反馈与勇气（现代XP版本扩展了第五项“尊重”）。XP围绕这些价值观确立了一组紧密关联的实践：测试先行（在编码前编写自动化单元测试）、结对编程（双人协同审视代码）、简单设计（仅满足当前已知需求）、重构（保持外部行为不变优化内部结构）、持续集成（频繁合入主干并触发自动化构建）以及小版本发布。在XP实践中，原型代码用于快速探索某项算法的可行性，而小版本发布交付的则是符合生产质量标准的可用系统子集，两者在质量要求上存在明确界限。</p>
+<p>Scrum 侧重组织协作。部分案例采用 2–4 周的 Sprint，Scrum Guide 2020 规定一个月或更短。产品负责人维护 Product Backlog（产品待办列表）；Sprint 计划中，团队围绕目标选取本轮条目并形成 Sprint Backlog（目标、选定条目及交付计划），无需把整个产品待办列表都塞进本轮。每日 Scrum 是 15 分钟的开发者活动，检查目标进展并调整计划。Sprint 评审检查产品结果，Sprint 回顾检查团队工作方式。符合完成标准的可用增量提供真实反馈，是否发布还要结合业务决定。</p>
+<p>其他敏捷方法各具侧重。水晶方法（Crystal）按人员规模、项目关键程度和协作环境选择方法族。特征驱动开发（Feature Driven Development，FDD）先开发整体对象模型、构造特征列表、计划特征开发，再对选定特征反复设计和构建。前面三项给出整体方向，后两项形成小迭代，不能当成五个一次性阶段。教材列出的六种关键角色是项目经理、首席架构设计师、开发经理、主程序员、程序员和领域专家；这是职责分工，人员少时可兼任。</p>
+<p>同一团队可以用 Scrum 安排迭代，再用 XP 的结对、测试先行与重构落实技术工作。两套方法各有侧重。看到“每天开会”还不够识别敏捷，需看会议能否形成反馈，团队是否据此调整、持续交付可用结果。</p>
+
+<h2 id="rup">统一过程的阶段划分与多维工作流</h2>
+<p>团队希望把范围、技术风险和交付准备放到同一套框架下，Rational Unified Process（RUP，统一过程）给出了阶段、活动和制品之间的安排。它可按项目裁剪，特点是用例驱动、以体系结构为中心、迭代与增量。一个开发周期在时间轴上分为四个连续阶段：</p>
+<table>
+<thead>
+<tr>
+<th>阶段名称</th>
+<th>核心目标</th>
+<th>终止里程碑</th>
+<th>在报名系统中的工作重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始阶段（Inception）</td>
+<td>明确业务边界、项目范围及商业合理性</td>
+<td>生命周期目标（LCO）</td>
+<td>确定活动报名的基本场景、用户体量与可行性边界</td>
+</tr>
+<tr>
+<td>细化阶段（Elaboration）</td>
+<td>分析问题域、缓解主要技术风险、建立可执行架构基线</td>
+<td>生命周期架构（LCA）</td>
+<td>设计并实现核心并发控制与数据存储架构，验证名额扣减可行性</td>
+</tr>
+<tr>
+<td>构造阶段（Construction）</td>
+<td>基于架构基线开发剩余组件并完成系统集成</td>
+<td>初始运行能力（IOC）</td>
+<td>完成候补队列、自动补位、通知与导出报表等全部功能</td>
+</tr>
+<tr>
+<td>移交阶段（Transition）</td>
+<td>确保软件对最终用户可用，完成试用与部署</td>
+<td>产品发布（PR）</td>
+<td>开展小规模学生测试、修复缺陷、培训主办方管理员并正式上线</td>
+</tr>
+</tbody>
+</table>
+<p>阶段与工作流构成了相互交叉的两个维度。每个阶段可以包含一轮或多轮迭代。单次迭代根据当前阶段的目标按需执行多种工程活动，不会在单次迭代内部重新完整走一遍初始、细化、构造、移交四个阶段。多轮迭代的产出可以用于内部技术验证，也可以形成对外发布的交付版本。在细化阶段，架构探索是重点工作，其目标是建立稳定可执行的架构基线，后续阶段依然允许对架构进行受控演进。</p>
+<figure><a class="figure-link" data-zoom href="assets/rup-phase-focus.png?v=eba23320ca98" aria-label="放大：同一候补功能在初始判断范围和商业合理性，在细化验证可执行架构基线，工作流跨两阶段"><img src="assets/rup-phase-focus.png?v=eba23320ca98" width="1536" height="1024" alt="同一候补功能在初始判断范围和商业合理性，在细化验证可执行架构基线，工作流跨两阶段"></a><figcaption>改变阶段目标，产物证据与里程碑随之变化。图只展开前两阶段，活动圆点是按需开展示意。题目写“建立完善架构”时，按阶段主要目标辨认细化，不能由此推出初始禁止架构探索。</figcaption></figure>
+<p>RUP 包含九大核心工作流：六个过程工作流（业务建模、需求、分析与设计、实现、测试、部署）和三个支持工作流（配置与变更管理、项目管理、环境）。风险管理属于项目管理，环境也是正式支持工作流。工作流可以跨阶段按需开展，并不要求每个阶段九种工作都做一遍：细化阶段可实现和测试架构骨架，构造阶段仍可处理需求变化。RUP 支持裁剪，XP 的测试先行和重构等实践也可以融入具体迭代。</p>
+<figure><a class="figure-link" data-zoom href="assets/rup-matrix-r2.png?v=00c92dbba044" aria-label="放大：RUP四阶段与九工作流交叉，各阶段末是相应里程碑，一次细化迭代围绕候补用例开展多类活动"><img src="assets/rup-matrix-r2.png?v=00c92dbba044" width="1536" height="1024" alt="RUP四阶段与九工作流交叉，各阶段末是相应里程碑，一次细化迭代围绕候补用例开展多类活动"></a><figcaption>横向读阶段和时间，纵向读工作类别。深浅只示意重心，不代表工时或禁止某项活动；阶段内的小块表示迭代，次数和长度不固定。</figcaption></figure>
+<p>在细化阶段的一次迭代里，学生代表确认候补规则，设计人员调整队列职责，程序员实现并发检查，测试人员制造竞争条件。四个人处在同一阶段，做的是不同工作流。初始阶段也可探索架构，细化的区别在于形成有证据支持的架构基线；后面仍允许受控演进。题干说“建立完善架构”，是在问阶段重点。</p>
+<figure><a class="figure-link" data-zoom href="assets/5.1-rup-structure.svg?v=993ee75d2887" aria-label="放大：开发周期包含四阶段，细化阶段包含迭代，一次迭代按需开展九工作流中的活动"><img src="assets/5.1-rup-structure.svg?v=993ee75d2887" width="1200" height="701" alt="开发周期包含四阶段，细化阶段包含迭代，一次迭代按需开展九工作流中的活动"></a><figcaption>实线箭头表示时间推进或包含，虚线写明裁剪与归属。一次迭代不需要重新走完整四阶段，也不要求商业发布。</figcaption></figure>
+<p>再落到一次“评审候补规则”的工作：<strong>角色</strong>回答 Who，谁负责；<strong>活动</strong>回答 How，完成哪项有明确目的的工作；<strong>制品</strong>回答 What，产生或修改了什么信息；<strong>工作流</strong>回答 When，活动如何衔接。角色可由一个人或小组承担，制品可以是需求文档、模型、代码、测试结果。</p>
+
+<h2 id="views">4+1架构视图对系统的多角度观察</h2>
+<p>在设计和理解复杂系统时，单一视角难以覆盖不同干系人的关切。Kruchten提出的4+1视图模型通过五个视角来呈现同一系统：</p>
+<ul>
+<li><strong>逻辑视图</strong>：关注功能需求，以用户和分析人员为视角，描述系统内部的概念实体与对象职责。在报名系统中，它呈现了“活动”、“报名表单”、“候补排队列表”等业务概念及它们之间的约束关系。</li>
+<li><strong>开发视图（实现视图）</strong>：关注软件模块的组织结构，以开发人员和配置管理员为视角，展示源码文件、工程包、构建脚本及依赖关系。</li>
+<li><strong>进程视图</strong>：关注非功能属性与运行时表现，以系统集成人员为视角，分析进程边界、线程分配、并发竞争与通信机制。在早晨高并发报名场景下，它描述了请求如何被工作线程接收，并发排队逻辑如何执行。</li>
+<li><strong>物理视图（部署视图）</strong>：关注软件构件到硬件节点的映射，以运维人员为视角，展示应用服务、数据库实例、网络设备与服务器环境的物理分布。</li>
+<li><strong>场景视图（用例视图）</strong>：居于核心地位的“+1”视图。它通过典型的业务用例把上述四个视图串联起来，验证设计是否能够满足功能与质量要求。</li>
+</ul>
+<p>学生提交候补申请：用例视图描述用户目标及与系统的交互；逻辑视图描述报名、候补实体的职责与关系；实现视图展示承载它们的包和模块；进程视图描述请求执行时的并发、通信和同步；部署视图标出软件落在哪些硬件节点。视图是描述，实际执行调用的是软件。它们并行审视同一个系统，不表示四个时间阶段。</p>
+<figure><a class="figure-link" data-zoom href="assets/5.1-views.svg?v=563c7d2375c3" aria-label="放大：一个候补申请场景联结逻辑、实现、进程和部署视图"><img src="assets/5.1-views.svg?v=563c7d2375c3" width="1200" height="399" alt="一个候补申请场景联结逻辑、实现、进程和部署视图"></a><figcaption>连线表示场景联系各视角，没有先后箭头。“进程”看运行协作，“部署”看软件到硬件的映射。</figcaption></figure>
+
+<h2 id="maturity">过程能力与组织成熟度模型</h2>
+<p>过程模型指引了开发活动的推进节奏，而组织交付质量的稳定性则取决于过程能力的成熟程度。CMM与CMMI用于评估组织的过程能力与成熟度，它们属于评价体系，不能视作开发过程模型，也不是RUP之后的延伸阶段。</p>
+<p>早期软件CMM定义了五个阶梯等级：1级初始级、2级可重复级、3级已定义级、4级已管理级、5级优化级。而在CMMI的阶段式模型中，五个等级的官方命名具有明确区分：1级初始级、2级已管理级、3级已定义级、4级量化管理级、5级优化级。在概念辨析中，切勿将2级与4级的名称混淆，更不能出现“4级已定义”的错误表述。</p>
+<p>各个级别反映了不同的管理控制深度：</p>
+<ul>
+<li><strong>1级 初始级</strong>：开发过程随意，缺乏正规规范，项目的完成主要依赖个别骨干的经验投入。</li>
+<li><strong>2级 已管理级</strong>：在项目级别建立了基础管理纪律，包括需求跟踪、项目计划与监控，确保项目内部受控。</li>
+<li><strong>3级 已定义级</strong>：在组织层面建立了标准软件过程资产库，项目团队可以依据统一指南对组织级标准过程进行剪裁使用。在此级别之前，个别项目也可以存在局部规范，但3级标志着规范上升为组织级的统一资产。</li>
+<li><strong>4级 量化管理级</strong>：组织使用统计与度量技术对选定的关键子过程进行精确定量控制，使过程质量与执行表现具有统计可预测性。</li>
+<li><strong>5级 优化级</strong>：基于长远业务目标，运用量化数据开展根本原因因果分析，通过技术与过程改进实现持续演进。</li>
+</ul>
+<p>判断4级与5级的核心差异，在于4级侧重利用统计数据控制过程波动的可预测性，5级侧重围绕业务目标通过因果分析与技术创新驱动持续改进。组织历史数据在4级构建性能基线时即已被广泛使用，不能仅凭使用了多个项目的数据就将其判定为5级。</p>
+<figure><a class="figure-link" data-zoom href="assets/maturity-judgement.png?v=f8ea90005c21" aria-label="放大：同一批多项目度量用于4级统计控制或5级根因改进，补并发评审清单后依据量化比较决定推广或调整"><img src="assets/maturity-judgement.png?v=f8ea90005c21" width="1536" height="1024" alt="同一批多项目度量用于4级统计控制或5级根因改进，补并发评审清单后依据量化比较决定推广或调整"></a><figcaption>先看管理目标与动作，再看数据来自哪里。均值线仅作概念示意，统计受控须由分析确认；教学例中的改进是否有效须测量。此图辨析成熟度特征，单项活动不能证明组织正式等级。</figcaption></figure>
+<p>教材语境下，CMMI 有阶段式与连续式表示。阶段式对一组过程域给出组织成熟度，五级为 1–5；连续式看选定过程域的能力，v1.2 为 0–5，v1.3 为 0–3。版本变了，不能把旧能力级数照搬。五级成熟度也不意味着每个项目一定成功。</p>
+<p>相关试题另考“方针→过程→规程→模板”文件层次：方针规定方向，过程规定活动，规程细化复杂活动，模板支持执行。排序轴是抽象到具体，模板能复用也仍在具体层。这是题库采用的体系文件组织口径，CMMI 没有强制所有组织只采用这一种四层结构。教材转录中的“3168 种关键时间”等数字有明显疑点，本册不采用。</p>
+
+<h2 id="recap">工程术语在业务变更中的协同落地</h2>
+<p>当回到校园活动报名系统面对的“满员后候补排队与自动补位”需求变更时，前面讨论的各项概念在实际研发中展现出各自的分工：</p>
+<ul>
+<li>在开发组织层面，团队可以采用Scrum形式，将“候补排队”与“自动补位”拆解为产品待办条目，纳入Sprint待办列表，在每日例会中围绕Sprint目标协同调整代码实现，并在迭代周期末向活动主办方演示增量。</li>
+<li>在生命周期管理层面，若系统基于RUP体系推进，候补逻辑中涉及的高并发数据一致性问题被作为核心技术风险，安排在细化阶段的迭代中通过构建架构基线加以验证，需求、设计、实现与测试工作流在各个阶段按需协同展开。</li>
+<li>在系统设计层面，4+1视图为该变更提供了清晰的解耦表达：用例视图定义了补位场景，逻辑视图补充了排队队列实体，进程视图规划了并发检查与通知派发线程，开发视图建立了新增业务模块，物理视图指明了服务部署的硬件位置。</li>
+<li>在组织能力层面，CMMI提供了检验工程过程的度量坐标。一个规范的团队无需宣称获得了高级别认证，只要遵循既定流程管理需求变更、落实代码评审并根据历史缺陷数据改进补位逻辑的健壮性，工程方法便已在实际系统中发挥作用。</li>
+</ul>
+<p>再换一个条件：负责人一次确认全部规则，技术路径成熟，阶段交接成本较低，瀑布安排会更容易管理；若用户只有“想看一个候补效果”，原型先帮助澄清；若关键困难是并发一致性未知，风险分析要先决定下一轮投入。判断跟着条件走。下一节把那句候补要求变成可批准、可追踪的需求变化。</p>
+<nav class="next-reading"><a href="#quick">回看判断线索</a><a href="#quiz">用变式检验理解 →</a></nav></article></section><section id="quick" data-panel="quick" role="tabpanel" aria-labelledby="tab-quick" tabindex="0"><h2>5.1 速查</h2><p>先辨问题坐标：过程怎样安排、此时做什么活动、系统从什么视角看、组织过程能否稳定改进。</p>
+<div class="quick-grid">
+<article class="fact"><h3>5.1.1 工程活动</h3><p>规格说明 / 开发 / 确认 / 演进。设计、编码属于开发，测试是取得证据的手段之一。PDCA 仅助记。</p><a href="#engineering">回看组成关系</a></article>
+<article class="fact"><h3>5.1.2 过程模型</h3><p>较稳定需求＋顺序产物交接→瀑布；先看效果澄清→原型；显式风险驱动轮次→螺旋。只见“迭代”不足判螺旋。</p><a href="#models">回看条件变化</a></article>
+<article class="fact"><h3>原型与三个开发动作</h3><p>水平 / 垂直看广度深度；抛弃 / 演化看原型实现去向，学习成果仍可保留。迭代反复改进，增量添加功能，集成组合部件。</p><a href="#prototype">回看二维图</a></article>
+<article class="fact"><h3>5.1.3 敏捷</h3><p>教材主要特点：适应性、面向人；右项仍有价值。XP重技术实践，Scrum重协作框架，Crystal按环境，FDD按特征。</p><a href="#agile">回看同团队比较</a></article>
+<article class="fact"><h3>5.1.4 RUP 四阶段</h3><p>初始：范围 / LCO；细化：可执行架构基线与主要风险 / LCA；构造：剩余构件集成 / IOC；移交：用户可用 / PR。</p><a href="#rup">回看阶段×工作流</a></article>
+<article class="fact"><h3>RUP 九工作流</h3><p>六过程：业务建模、需求、分析设计、实现、测试、部署；三支持：配置变更、项目管理、环境。风险归项目管理。阶段内包含迭代。</p><a href="#rup">回看粒度</a></article>
+<article class="fact"><h3>4+1</h3><p>逻辑看职责关系；实现看代码组织；进程看运行并发；部署看硬件映射；用例 / 场景贯穿。视图与时间阶段分轴。</p><a href="#views">回看五镜头</a></article>
+<article class="fact"><h3>5.1.5 CMMI</h3><p>阶段式 1初始 / 2已管理 / 3已定义 / 4量化管理 / 5优化。4统计可预测，5基于业务目标改进；跨项目数据不专属5。</p><a href="#maturity">回看版本与边界</a></article>
+<article class="fact"><h3>CMM 名称与文件层次</h3><p>CMM 2可重复、4已管理，别套CMMI名称。方针→过程→规程→模板是题库采用的文件口径，非CMMI唯一强制结构。</p><a href="#maturity">回看分类依据</a></article>
+</div>
+</section><section id="quiz" data-panel="quiz" role="tabpanel" aria-labelledby="tab-quiz" tabindex="0"><div class="quiz-toolbar"><div><h2>5.1 自测</h2><p>选择后显示解析。题源性质逐题标明；作答进度仅保存在当前浏览器。</p></div><button type="button" data-reset-quiz>重做本节</button></div><div class="quiz-progress"><progress data-quiz-progress max="13" value="0" aria-label="已作答题数"></progress><span data-quiz-score role="status">已答 0 / 13</span></div><div class="quiz-grid"><fieldset class="question" data-question-id="engineering-granularity" data-question-version="1" data-answer="a"><legend>01 / 自编迁移题</legend><h3 data-prompt>把设计、编码列为与规格说明、开发、确认、演进平级的基本活动，问题在哪里？</h3><div class="options"><label class="option"><input type="radio" name="engineering-granularity" value="a"><span>设计与编码是开发内部工作，分类粒度混用了</span></label><label class="option"><input type="radio" name="engineering-granularity" value="b"><span>设计不属于软件工程</span></label><label class="option"><input type="radio" name="engineering-granularity" value="c"><span>演进只能在编码前进行</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>四基本活动是较大的职责划分；设计与编码从属于开发。活动清单需保持同一抽象粒度。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="process-risk-identity" data-question-version="1" data-answer="b"><legend>02 / 改编题｜螺旋组成来源变式</legend><h3 data-prompt>同一报名项目每轮先确定目标和方案，再分析方案风险，据风险决定原型或开发策略。单凭什么特征最能判为螺旋？</h3><div class="options"><label class="option"><input type="radio" name="process-risk-identity" value="a"><span>重复了多轮</span></label><label class="option"><input type="radio" name="process-risk-identity" value="b"><span>显式风险分析驱动本轮决策</span></label><label class="option"><input type="radio" name="process-risk-identity" value="c"><span>出现了需求文档</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>迭代、文档和原型都不专属螺旋。教材将螺旋描述为生命周期与原型思想结合，识别核心是风险驱动。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="spiral-composition-source" data-question-version="1" data-answer="c"><legend>03 / 改编题｜螺旋组成来源辨析</legend><h3 data-prompt>题目按教材问“螺旋是原型模型与哪种模型的结合”，选项未列“瀑布”，哪项最符合本题概括？</h3><div class="options"><label class="option"><input type="radio" name="spiral-composition-source" value="a"><span>增量模型，因为它分批交付</span></label><label class="option"><input type="radio" name="spiral-composition-source" value="b"><span>迭代模型，因为螺旋有多轮</span></label><label class="option"><input type="radio" name="spiral-composition-source" value="c"><span>生命周期模型，保留阶段产物与评审约束</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>本题问组成来源，应按教材的生命周期＋原型概括。迭代是运行特征，增量是功能扩充，不能用共有特征替代所问模型。实际螺旋机制仍以风险驱动为核心。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="prototype-two-axes" data-question-version="1" data-answer="c"><legend>04 / 自编迁移题</legend><h3 data-prompt>团队只跑通名额检查的一条完整技术链，验证后全部重写。这是哪种组合？</h3><div class="options"><label class="option"><input type="radio" name="prototype-two-axes" value="a"><span>水平＋演化</span></label><label class="option"><input type="radio" name="prototype-two-axes" value="b"><span>垂直＋演化</span></label><label class="option"><input type="radio" name="prototype-two-axes" value="c"><span>垂直＋抛弃</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>窄功能贯穿实现→垂直；代码用后重写→抛弃。实现范围与去向是独立分类轴。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="iteration-increment" data-question-version="1" data-answer="a"><legend>05 / 自编迁移题</legend><h3 data-prompt>保持报名功能不变，复访设计并改进并发校验；下一版又增加候补功能。两种动作分别强调什么？</h3><div class="options"><label class="option"><input type="radio" name="iteration-increment" value="a"><span>迭代完善、增量扩充</span></label><label class="option"><input type="radio" name="iteration-increment" value="b"><span>增量扩充、迭代完善</span></label><label class="option"><input type="radio" name="iteration-increment" value="c"><span>两者都只能叫增量</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>第一种重访既有实现，第二种扩充功能范围。一个开发过程可同时采用迭代与增量。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="agile-document-value" data-question-version="1" data-answer="c"><legend>06 / 改编题｜敏捷原因与XP反向题变式</legend><h3 data-prompt>团队采用敏捷，候补服务仍记录接口约定与必要运维文档。最准确的解释是什么？</h3><div class="options"><label class="option"><input type="radio" name="agile-document-value" value="a"><span>记录文档说明它已经不敏捷</span></label><label class="option"><input type="radio" name="agile-document-value" value="b"><span>敏捷只要求开每日会议</span></label><label class="option"><input type="radio" name="agile-document-value" value="c"><span>更重可用结果与交流，同时保留有价值的文档</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>敏捷价值偏好不等于删除右项。迭代或每日会议本身也不足唯一证明敏捷。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="rup-architecture-phase" data-question-version="1" data-answer="b"><legend>07 / 改编题｜RUP阶段辨析</legend><h3 data-prompt>已确认业务范围后，团队用可执行骨架验证并发名额风险，并确立架构基线。当前阶段重点是什么？</h3><div class="options"><label class="option"><input type="radio" name="rup-architecture-phase" value="a"><span>初始阶段 / LCO</span></label><label class="option"><input type="radio" name="rup-architecture-phase" value="b"><span>细化阶段 / LCA</span></label><label class="option"><input type="radio" name="rup-architecture-phase" value="c"><span>移交阶段 / PR</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>定范围与商业理由是初始重点；建立可靠架构基线、处理最高技术风险是细化重点。初始可探索架构，但题干强调基线证据。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="rup-phase-discipline" data-question-version="1" data-answer="a"><legend>08 / 自编迁移题</legend><h3 data-prompt>细化阶段的一次迭代中同时做需求、设计、实现和测试。这应如何解释？</h3><div class="options"><label class="option"><input type="radio" name="rup-phase-discipline" value="a"><span>活动跨越四个工作类别，仍可处在同一时间阶段</span></label><label class="option"><input type="radio" name="rup-phase-discipline" value="b"><span>团队跳过了构造阶段，违反RUP</span></label><label class="option"><input type="radio" name="rup-phase-discipline" value="c"><span>每次迭代必须重新走完整四阶段</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>阶段回答时间位置，工作流回答活动类别；一次迭代按需裁剪多个工作流。不能将工作流与阶段一一配对。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="rup-support-discipline" data-question-version="1" data-answer="a"><legend>09 / 改编题｜RUP工作流辨析</legend><h3 data-prompt>搭建一致的开发工具环境，并管理待处理技术风险，分别落在哪个RUP工作流？</h3><div class="options"><label class="option"><input type="radio" name="rup-support-discipline" value="a"><span>环境；项目管理</span></label><label class="option"><input type="radio" name="rup-support-discipline" value="b"><span>环境不属于核心工作流；风险独立为第十个</span></label><label class="option"><input type="radio" name="rup-support-discipline" value="c"><span>业务建模；部署</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>环境是三个核心支持工作流之一，风险管理归项目管理。六过程＋三支持共九个。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="views-runtime-deployment" data-question-version="1" data-answer="b"><legend>10 / 自编迁移题</legend><h3 data-prompt>一张图画工作线程如何同步，另一张画报名服务和数据库落在哪些服务器。分别回答什么？</h3><div class="options"><label class="option"><input type="radio" name="views-runtime-deployment" value="a"><span>实现视图；逻辑视图</span></label><label class="option"><input type="radio" name="views-runtime-deployment" value="b"><span>进程视图；部署视图</span></label><label class="option"><input type="radio" name="views-runtime-deployment" value="c"><span>初始阶段；构造阶段</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>运行并发是进程观察维度，软硬件映射是部署观察维度；两图没有时间先后关系。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="maturity-four-five" data-question-version="1" data-answer="c"><legend>11 / 改编题｜CMMI 4/5级辨析</legend><h3 data-prompt>组织利用多个历史项目的数据建立性能基线，统计控制当前项目子过程波动。仅凭这些条件，最贴近哪一能力描述？</h3><div class="options"><label class="option"><input type="radio" name="maturity-four-five" value="a"><span>跨项目数据必然等于5级优化</span></label><label class="option"><input type="radio" name="maturity-four-five" value="b"><span>3级只要文件很多就够了</span></label><label class="option"><input type="radio" name="maturity-four-five" value="c"><span>4级量化管理特征；还不能证明5级持续改进</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>数据来源数量不是唯一判别词。4级强调统计量化与可预测性，5级还强调基于业务目标的因果分析及过程技术改进。这里不进行正式成熟度评定。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="cmmi-version-boundary" data-question-version="1" data-answer="b"><legend>12 / 自编迁移题</legend><h3 data-prompt>一份题目明确引用CMMI-DEV v1.3，连续式能力级与阶段式成熟度级分别怎样写？</h3><div class="options"><label class="option"><input type="radio" name="cmmi-version-boundary" value="a"><span>连续0–5；阶段1–5</span></label><label class="option"><input type="radio" name="cmmi-version-boundary" value="b"><span>连续0–3；阶段1–5</span></label><label class="option"><input type="radio" name="cmmi-version-boundary" value="c"><span>两者都0–3</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>v1.3连续式能力级为0–3，阶段式成熟度仍1–5；旧v1.2的连续0–5不能跨版本照搬。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset><fieldset class="question" data-question-id="scrum-review-retrospective" data-question-version="1" data-answer="a"><legend>13 / 自编迁移题</legend><h3 data-prompt>负责人检查候补增量能否满足业务，团队讨论为何测试反馈太晚。两类活动分别最接近什么？</h3><div class="options"><label class="option"><input type="radio" name="scrum-review-retrospective" value="a"><span>Sprint评审；Sprint回顾</span></label><label class="option"><input type="radio" name="scrum-review-retrospective" value="b"><span>Sprint回顾；Sprint评审</span></label><label class="option"><input type="radio" name="scrum-review-retrospective" value="c"><span>两者都是管理者催进度</span></label></div><p class="feedback" data-feedback aria-live="polite" hidden><strong data-result></strong><span data-explanation>评审检查产品成果并适应后续方向；回顾检查团队工作方式并改进。Scrum组织协作，XP技术实践可在其中使用。</span></p><button type="button" data-retry-question hidden>重做此题</button></fieldset></div><p class="storage-note" data-storage-note role="status">尚未启用本地进度。</p></section><details class="sources"><summary>教材对应与来源</summary><p>教材对应：5.1.1–5.1.5，印刷页标记 p.176–185。原型二维、迭代/增量、SDE与文件层次为支撑材料。原型矩阵是结合独立分类维度的教学示例，螺旋四区是过程活动，二者分别解释。</p>
+<ul><li><a href="https://www.cs.cmu.edu/~bam/uicourse/1997spring/lecture04process.html">CMU：Usability Engineering Design Process</a>（水平/垂直原型的范围与深度）。</li><li><a href="https://www.sei.cmu.edu/blog/prototyping-for-developing-big-data-systems/">CMU SEI：Prototyping for Developing Big Data Systems</a>（抛弃式与演化式原型、验证所得及集成风险）。</li><li><a href="https://www.cs.hmc.edu/~markk/SWE_copies/boehmspiral.pdf">Boehm：A Spiral Model of Software Development and Enhancement，1988</a>（图2的径向累计成本、角向活动进展与风险驱动）。图像结合教材图5-3核对几何关系后重新绘制，情境为自编。</li></ul>
+<ul><li>《系统架构设计师教程（第 2 版）》第五章。自测为改编或自编；参考的试题转录未全部核对官方原卷，不标为官方原题。</li><li><a href="https://public.dhe.ibm.com/software/rational/web/whitepapers/2003/rup_bestpractices.pdf">IBM：RUP Best Practices</a>（两维、阶段与裁剪）。</li><li><a href="https://agilemanifesto.org/iso/zhchs/manifesto.html">敏捷宣言</a>；<a href="https://scrumguides.org/scrum-guide.html">Scrum Guide 2020</a>（现代周期与事件边界）。</li><li><a href="https://www.sei.cmu.edu/documents/853/2010_005_001_15287.pdf">SEI：CMMI-DEV v1.3</a>（能力级与成熟度版本差异）。</li></ul>
+</details><nav class="next-reading"><a href="index.html#chapter">← 全章目录</a><a href="#article">回到本节图文</a></nav></main><footer>第五章视觉复习册 · 浏览器独立保存进度 · 图可放大</footer></div></body></html>

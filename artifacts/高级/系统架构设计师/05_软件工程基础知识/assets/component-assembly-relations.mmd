@@ -1,0 +1,25 @@
+flowchart TB
+ subgraph ways[连接方式：各用相同功能构件比较]
+  direction LR
+  subgraph seq[顺序]
+   direction TB
+   S1[导出] -->|结果成为输入| S2[压缩]
+  end
+  subgraph hierarchy[层次]
+   direction TB
+   H1[导出] -->|请求兼容服务| H2[压缩]
+  end
+  subgraph additive[叠加]
+   direction TB
+   F[新门面／合并接口] -->|调用| A1[导出]
+   F -->|调用| A2[压缩]
+   N[原构件无相互依赖／调用]
+  end
+ end
+ subgraph fit[供需判断与适配范围]
+  Q[需要查询＋取消] -->|供仅查询| M[缺少取消能力]
+  M -->|不可凭包装产生| W[另选候选／另实现能力]
+  R[只需查询] -->|供查询＋取消| V[契约兼容时可用]
+  T[名字／参数不同] -->|已有行为可合法转换| X[适配器]
+ end
+ ways ~~~ fit

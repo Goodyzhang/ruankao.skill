@@ -1,0 +1,20 @@
+flowchart TB
+  S[外部实体：学生]
+  P1([1 核验候补资格])
+  P2([2 登记候补申请])
+  D1[(数据存储：资格资料与核验记录)]
+  D2[(数据存储：候补记录)]
+  S -->|候补申请：学生编号、活动编号| P1
+  D1 -->|资格资料| P1
+  P1 -->|资格核验记录| D1
+  P1 -->|拒绝结果| S
+  P1 -->|可入队申请| P2
+  D2 -->|已有候补记录| P2
+  P2 -->|新候补记录| D2
+  P2 -->|候补登记结果| S
+  classDef external fill:#fff4db,stroke:#bb8c42;
+  classDef process fill:#e8f2ff,stroke:#3b74a6;
+  classDef storage fill:#f1eaff,stroke:#9674ae;
+  class S external;
+  class P1,P2 process;
+  class D1,D2 storage;
