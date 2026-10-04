@@ -2,7 +2,7 @@
 
 一道题，讲清考点、换条件练习，确认后留下能复习的记录。一章学完，再把教材、知识点和错题重新组织成图文复习册。
 
-[下载 v0.4.2](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.2) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
+[下载 v0.4.3](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.3) · [在线知识库](#持续更新的图文知识库) · [在线阅读 SMTP／POP3 样章](https://goodyzhang.github.io/ruankao.skill/demo/smtp-pop3/) · [快速开始](#快速开始完整初始化) · [资料处理说明](docs/data-preparation.md) · [交互验收](docs/validation.md)
 
 ![知识点二次蒸馏工作室：穿鲸鱼娘服装的 GPT 娘统筹核验与核心图，戴 cc-switch 头显的 Claude 娘后备协作，Ani 绘制辅助图，Gemini 娘创意写作，合成图文、速查与自测复习册](docs/images/knowledge-distillation-studio.png)
 
@@ -23,6 +23,8 @@
 漫画里的工作室，对应实际的协作方式：Codex 统筹、核验并用内置 imagegen 制作核心图；创意写作优先交给 Antigravity 中的 Gemini，Claude Code 作为后备，Grok 可提供少文字的辅助图。缺少协作 CLI 时可填写位置或跳过；这些工具无需全部安装。Claude Code 实际使用什么模型，以本机配置与返回信息为准。
 
 **v0.4.1 起加强图像与讲解复核**：生图前完成两轮提示词改稿，再交 Gemini 按 tutor 方法复核；公式用小黑板写清符号、条件与代入步骤。完成后实际看图，并优先在内建浏览器检查页面。正文或图片修订保留兼容的自测记录。
+
+**v0.4.3 改善 Goal 接力**：已获授权的 Gemini tutor 复核可复用教学方法交接范围，跨小节与换图不重复弹同范围授权卡；发送前检查材料，续接保留真实审批与调用结果。详见 [发布说明](docs/releases/v0.4.3.md)。
 
 资料可以放在 Obsidian Vault，也可以是普通文件夹。首次运行会检查已有配置；目录不明确时，提供真实候选或接受手动输入的绝对路径。
 
@@ -87,10 +89,10 @@
 
 ### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.2) 下载 `ruankao-toolkit-v0.4.2.zip` 并解压，也可以获取相同版本源码：
+从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.4.3) 下载 `ruankao-toolkit-v0.4.3.zip` 并解压，也可以获取相同版本源码：
 
 ```sh
-git clone --branch v0.4.2 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.4.3 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -273,6 +275,15 @@ node --test tests/test_review_quiz_state.cjs
 本版通过 60 项 Python 行为测试与 10 项 Node 自测状态测试；六个 Skill 的格式、包结构、资料保留、离线依赖与链接检查通过。首次引导另做了独立场景推演。**尚未完成 Antigravity / 其它 Agent 的真实卡片 UI 及 Windows 客户端回归**；手动流程见 [交互验收](docs/validation.md)。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 ## 更新日志
+
+### v0.4.3 — 2026-10-04
+
+- 复习册 Goal 沿用任务内的协作授权，明确 tutor／Grill 通用方法、提示词和公开知识的交接范围，同范围不重复确认。
+- 续接区分待授权、重复卡、未发送与已返回结果；保存真实依据，不伪造用户回答或绕过平台审批。
+- 加入 Goal 授权范围模板；独立演练三个场景，并通过正常审批完成一次真实 agy 教学方法复核。
+
+升级与验证范围见 [v0.4.3 发布说明](docs/releases/v0.4.3.md)。
+
 
 ### v0.4.2 — 2026-10-04
 
