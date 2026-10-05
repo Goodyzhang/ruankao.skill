@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "published_at": "2026-10-05",
+  "textbook": "系统架构设计师教程（第2版）",
+  "chapter": "03-信息系统基础知识",
+  "sections": 8,
+  "self_tests": 243,
+  "images": 88,
+  "public_copy_changes": {
+    "03-01-overview.html": [
+      "omitted-personal-study-source-and-statistics",
+      "personal-reference-in-prose",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label"
+    ],
+    "03-02-tps.html": [
+      "omitted-personal-study-source-and-statistics",
+      "personal-reference-in-prose",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label"
+    ],
+    "03-03-mis.html": [
+      "omitted-personal-study-source-and-statistics",
+      "personal-reference-in-prose",
+      "personal-reference-in-prose",
+      "personal-reference-in-prose",
+      "personal-reference-in-prose",
+      "public-cross-chapter-link",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label"
+    ],
+    "03-04-dss.html": [
+      "omitted-personal-study-source-and-statistics",
+      "personal-reference-in-prose",
+      "personal-reference-in-prose",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label"
+    ],
+    "03-05-es.html": [
+      "omitted-personal-study-source-and-statistics",
+      "personal-reference-in-prose",
+      "personal-reference-in-prose",
+      "local-source-link-to-label",
+      "local-source-link-to-label",
+      "local-source-link-to-label"
+    ],
+    "03-06-oas.html": [
+      "omitted-personal-study-statistics"
+    ],
+    "03-07-erp.html": [
+      "omitted-personal-study-statistics",
+      "personal-reference-in-prose"
+    ],
+    "03-08-typical.html": [
+      "omitted-personal-study-statistics"
+    ],
+    "index.html": [
+      "omitted-personal-study-statistics"
+    ]
+  },
+  "files": {
+    "03-01-overview.html": {
+      "sha256": "542dd39dc0d87a39afc04cbb48044e5735d2e31a16d238cc858c4fa4203bf180",
+      "bytes": 99624
+    },
+    "03-02-tps.html": {
+      "sha256": "ba0f7210f519a11b87d44574d23f8012d27645242d2949d7536ef85a22d232fa",
+      "bytes": 49964
+    },
+    "03-03-mis.html": {
+      "sha256": "93061b0b6d0b844cd89ba712626b17b8b9376536dfc4836099f9767088e3abef",
+      "bytes": 68925
+    },
+    "03-04-dss.html": {
+      "sha256": "fb1de59ef403a18dd959b004b9a291545301b2d6b4b64fa155da9906fd1c2a13",
+      "bytes": 73585
+    },
+    "03-05-es.html": {
+      "sha256": "f0f4b6841cac8a4ec01e69aeb88a5704c5c43403a0d6f24305106a75bcaa999f",
+      "bytes": 75670
+    },
+    "03-06-oas.html": {
+      "sha256": "c37f9c4bc051f290c2b49b47b60a0e005aae7d0996cefc66d2993a7e8c1ec322",
+      "bytes": 49111
+    },
+    "03-07-erp.html": {
+      "sha256": "70c0f6336922bb87fd3bcffcd3c23aae3eb917d5e2e41ddf95cb6c96d9eda60d",
+      "bytes": 74249
+    },
+    "03-08-typical.html": {
+      "sha256": "608ffa056a516da4f2d8e307a7bddcf12d4957b8ca0cb790c647a6d170d4fa6b",
+      "bytes": 97645
+    },
+    "assets/chapter-overview.png": {
+      "sha256": "1a84c819c48a1c74f40b8a5d5766f2a0c453e673eddc0b4e855e8b978c7a13f7",
+      "bytes": 1789228
+    },
+    "assets/commerce-framework.png": {
+      "sha256": "f50e8ee84f86bf90f74b119dab0e638a5133952c8c84059471e27f2c8c40bce1",
+      "bytes": 2067660
+    },
+    "assets/commerce-roles.png": {
+      "sha256": "5027d00acd01629b22328a0c0375faf77284138437b66172f5bc36b25178fa14",
+      "bytes": 2204004
+    },
+    "assets/crm-scm.png": {
+      "sha256": "f2613829049ed5cc388d5ce35bea8e369cc1d2533b90d74e2e518c9afc783893",
+      "bytes": 2400443
+    },
+    "assets/dss-bi.png": {
+      "sha256": "8fc6fb74d28acbbf0aeeb10195eefdce2ab011d4cb008d8cccae41425db3fb65",
+      "bytes": 1961243
+    },
+    "assets/dss-core.png": {
+      "sha256": "680149aff1db6049a9ccedd476a4e869fb47691a9185cdb19725627d6891355d",
+      "bytes": 1999978
+    },
+    "assets/dss-emv.png": {
+      "sha256": "2dcb003aaf587abd11ef46f8c8a923042315128aee6727c9bca7625d6ad8cacf",
+      "bytes": 2151925
+    },
+    "assets/dss-olap.png": {
+      "sha256": "a166096049233968a3540abbc691cc875bccde29efe316e3853f5c859a04c3d6",
+      "bytes": 2101962
+    },
+    "assets/dss-resources.png": {
+      "sha256": "476d678354c947885a5f7046ae1605ae668d1b942b7b28a7c4584b9f6a87eecd",
+      "bytes": 2090829
+    },
+    "assets/dss-whatif.png": {
+      "sha256": "8791762cdba6f18e14e4a1dbaea142191e6622f70c9a1eaf7c1e7dd6a35a519a",
+      "bytes": 2278485
+    },
+    "assets/eai.png": {
+      "sha256": "e3432e466f523ccd35b7ff929de70547a4145f58245d1dd0e1bf757968c99171",
+      "bytes": 2251083
+    },
+    "assets/edi.png": {
+      "sha256": "bd84489dca25df562728ba737b6954419555fc3c65ed0859c853e326b1d4a106",
+      "bytes": 2069964
+    },
+    "assets/enterprise-methods.png": {
+      "sha256": "36fb3a98b8147a8a21bc24033bd40183b431ce5c067da07e5f752f13c2a76410",
+      "bytes": 2352699
+    },
+    "assets/enterprise-planning.png": {
+      "sha256": "6efa55de62298a24b8f2c02c2d1f5be458a52ef866a827776bd1f44daec0d62a",
+      "bytes": 2266550
+    },
+    "assets/erp-calculation.png": {
+      "sha256": "71cce317307a2d36ee227e4d5df4aaacf7d343135f2cded75b0047fc91fff1e8",
+      "bytes": 2015463
+    },
+    "assets/erp-evolution.png": {
+      "sha256": "834e93689c6ae4d391f34c9d84fea9f6b4b8a5bf036e5813f239b510825acb49",
+      "bytes": 1990656
+    },
+    "assets/erp-flows.png": {
+      "sha256": "17cafcad139a01469c6bd338add3b8a119e2ab3550c94d5e40c085e2aad194f4",
+      "bytes": 1793826
+    },
+    "assets/erp-plans.png": {
+      "sha256": "c54f04a7ec8b273ea15ca47911d0f540572b81ba75f62bc7c077046bc0095d9e",
+      "bytes": 1774024
+    },
+    "assets/es-features.png": {
+      "sha256": "ea27ed6dfda7d57864615715567fd0f6b9c8d3b7caf35462b2e2775e8866a38f",
+      "bytes": 2485041
+    },
+    "assets/es-map.png": {
+      "sha256": "f6ea539eb92953234971fd76d830db41690a3c7ee658527c7af5ff6999ccf141",
+      "bytes": 2277689
+    },
+    "assets/es-reasoning.png": {
+      "sha256": "e7fb89ec25ec00903608815c1f4656b193af1a694127c0a5b2cc16d34c002c89",
+      "bytes": 2235474
+    },
+    "assets/es-structure.png": {
+      "sha256": "a9903626cc4b625736eb99edf5a9b8f9bd774f76bdb5d8f97ae7898e3ce35517",
+      "bytes": 2115913
+    },
+    "assets/gov-relations.png": {
+      "sha256": "efd583ec2d98cd84e1dbae475428013ab249a1cc45221835e419c6e6f735de3c",
+      "bytes": 2065406
+    },
+    "assets/gov-stages.png": {
+      "sha256": "3d336de204383dea131ca7db795b7c6d8b774ed9aedb5368c40332895dc16800",
+      "bytes": 2126516
+    },
+    "assets/imsa-dimensions.png": {
+      "sha256": "c05c631c9e0831f697f411bc58b5c61501ac5d4231d5b65c9ab8b1cafc44b09d",
+      "bytes": 2002689
+    },
+    "assets/imsa-levels.png": {
+      "sha256": "f7a0efe2a059c73dd47bde223e55b5687f04495f7a3b3ff3862ba0a9bc5f6971",
+      "bytes": 2268956
+    },
+    "assets/lifecycle.png": {
+      "sha256": "1c47db014bfbc7df0cd685d78aca9b1b24f91c935c798cfbf5fba3adfdb1e697",
+      "bytes": 1581412
+    },
+    "assets/methods.png": {
+      "sha256": "64b2d810a7006263d57d260ee3d8f561ec8a7c7253cab4fadacf9dd20e1107db",
+      "bytes": 1854371
+    },
+    "assets/mis-cvp.png": {
+      "sha256": "97a18e1c3b62ae47a20b8124485569f5ae30824eb220a591bf1cee20344c7368",
+      "bytes": 2169287
+    },
+    "assets/mis-feedback.png": {
+      "sha256": "3169418494e2f424ba9d18953d11b4fa090c7ec319b6623fa84b1c4c19f0f615",
+      "bytes": 1783330
+    },
+    "assets/mis-layers.png": {
+      "sha256": "755ee4f4ee029aea6895d055fd3cf434fc9fe3179bece238719b848f1dfc74ab",
+      "bytes": 1719946
+    },
+    "assets/mis-markov.png": {
+      "sha256": "ca5036d2f5d257702b14f5f442a26a745d0cf1e5bd406a21cbe9b574a9269f08",
+      "bytes": 2251339
+    },
+    "assets/mis-process.png": {
+      "sha256": "5282280f94759c810444124161623fa08e67c2bb69d59609098ea7453b376e46",
+      "bytes": 1741979
+    },
+    "assets/mis-structure.png": {
+      "sha256": "487fc1def92c8ed59745bd77b120b34c52b8f0afb3e41bf8d75af3e64b430ddc",
+      "bytes": 1768514
+    },
+    "assets/nolan.png": {
+      "sha256": "286b3ec309fbaa8865b0517663357a93f70ee4380771251a21a0c81140968f73",
+      "bytes": 2035417
+    },
+    "assets/oas-components.png": {
+      "sha256": "88109db160e7f9878de7ed075e6623f36197ce93278a6b2e41f366ff8ecbff10",
+      "bytes": 1913097
+    },
+    "assets/oas-functions.png": {
+      "sha256": "bedf470c0569d19076994cf1e17324aa9b72a59849b9a823fdbf9780a7e53a1c",
+      "bytes": 1949195
+    },
+    "assets/oas-map.png": {
+      "sha256": "ab7cbc43f32443dedd5124e357847bf9737bea6fbab1ebae3e223a4b35a1f3d4",
+      "bytes": 1927123
+    },
+    "assets/planning.png": {
+      "sha256": "77acd480f4b9b1b5dfeba317d75c986ad5419313e2cbdaf924e7248cef8f028e",
+      "bytes": 1805226
+    },
+    "assets/reader/glossary.js": {
+      "sha256": "82bf23070554978db44bb4a1e33a4c7bc68e79bc55b9d82f9c917e3797924420",
+      "bytes": 710
+    },
+    "assets/reader/quiz-state.js": {
+      "sha256": "83377ec3e02fcc87a6f14cd39d25e0af82a075c490d22e790267f11443189679",
+      "bytes": 3973
+    },
+    "assets/reader/reader.css": {
+      "sha256": "c55f4b588f9a971b036f4f374c7ce08bfd52303139441c0cf28b3e18dca2ef5a",
+      "bytes": 7988
+    },
+    "assets/reader/reader.js": {
+      "sha256": "38790486639161f093b3678b009b68591ad7de6adc92d3b3df51a7c6f1a7ea33",
+      "bytes": 7378
+    },
+    "assets/s31-abstraction.svg": {
+      "sha256": "d055f65a62300b3a29ec53368ebd46411007a8e45e201f59571345b8e79a65d6",
+      "bytes": 10672
+    },
+    "assets/s31-classification.svg": {
+      "sha256": "36b7afa3d19a8945cee28e7b858ba4b59d6b4700eda81f0a3bacfdc912b64e79",
+      "bytes": 21848
+    },
+    "assets/s31-definition.svg": {
+      "sha256": "adce9b03159c827248c1519d569bddc67743fdd09cc06922daf345b661362858",
+      "bytes": 22647
+    },
+    "assets/s31-imsa-dimensions.svg": {
+      "sha256": "7bfc0e0d0047279bb0dc763a34d18e6a1f70d613d6fd2e93bad707e8977b4702",
+      "bytes": 16881
+    },
+    "assets/s31-imsa-levels.svg": {
+      "sha256": "4b4c9eae3d10ebcdc794d4adbcf0e84ba7d6f148068d98ccfc081cdaa28b1f40",
+      "bytes": 16260
+    },
+    "assets/s31-life.svg": {
+      "sha256": "032d5ed6fe03e312c252800b68ac8629f529e6d0a611dcfd1cde175c9fbf1484",
+      "bytes": 15835
+    },
+    "assets/s31-manufacturing.svg": {
+      "sha256": "179006cbcaea015ebcf5964a5370efeda33f94ce50282a9d6aca33a80a7e52ab",
+      "bytes": 17644
+    },
+    "assets/s31-methods.svg": {
+      "sha256": "75a549a548e1014573b74e0928d7616e01caa70832c54f1396f36b864819ea62",
+      "bytes": 17406
+    },
+    "assets/s31-nolan.svg": {
+      "sha256": "51937b432a07bb02dcdad498eec29eee0bbd8c631f25ae813eb6a9a05c622302",
+      "bytes": 13596
+    },
+    "assets/s31-planning-neighbors.svg": {
+      "sha256": "9a0224990da238b0951f00b7d8b791745a2fd51d5a60d67c01fcbf3c8d089d66",
+      "bytes": 14476
+    },
+    "assets/s31-planning.svg": {
+      "sha256": "1d8e8bdb8d6cb955c95badab8227cf9ec52a56a808aca8404d8d38da4c18fdca",
+      "bytes": 17144
+    },
+    "assets/s31-principles.svg": {
+      "sha256": "76447e78bff96761a41e88fbd79e68d7fa6227a5bd5ef74567072eb81830d805",
+      "bytes": 14161
+    },
+    "assets/s31-requirements.svg": {
+      "sha256": "b782d687631a70f4f3a091de4d0f207c847dfed3fa60137f2f6b4a4496e1dab5",
+      "bytes": 14910
+    },
+    "assets/s32-concept.svg": {
+      "sha256": "8528b7a1c6c6a3bea4fc2555d0be4f3b866f1959481fb2d9bfecf8f31ad9cc67",
+      "bytes": 13168
+    },
+    "assets/s32-documents.svg": {
+      "sha256": "5ec92686e8e0a6e26fa13fd50ddaf1a512114316164db0cd168658787125482f",
+      "bytes": 15271
+    },
+    "assets/s32-features.svg": {
+      "sha256": "223fcf0202dd5b968461d59d1b2dbd58ba82db881d0d4f35e634e57d75a27731",
+      "bytes": 11308
+    },
+    "assets/s32-functions.svg": {
+      "sha256": "9f58e8b8467be98eff8ee6196c26090486c4cdcfb5b977f871a639c4b310d500",
+      "bytes": 11872
+    },
+    "assets/s32-processing.svg": {
+      "sha256": "47097da95e65ea5f4da61ea19d76414519d4961933447096ae737e79ef93328b",
+      "bytes": 15969
+    },
+    "assets/s33-composition.svg": {
+      "sha256": "41a84ea4d8beff6a4be7d84946ac0d6ee62a3c01994074e148d9d01cf3195756",
+      "bytes": 19394
+    },
+    "assets/s33-concept.svg": {
+      "sha256": "81e276f61b976de0039f6f0cda6a549e92258ff1f51bd0ce59ca4ed3369778bc",
+      "bytes": 12273
+    },
+    "assets/s33-feedback.svg": {
+      "sha256": "77a580dfbf5bce2391f660150013c4d85ea7b4c69db59b5605945458f794a550",
+      "bytes": 16725
+    },
+    "assets/s33-functions.svg": {
+      "sha256": "f49d219d1d102173706275eb6c53a0e70ccd0293646d2fa9be7a6959d14c0a5c",
+      "bytes": 25223
+    },
+    "assets/s34-composition.svg": {
+      "sha256": "effe6c161e0e406e215ee89bb62a5494941f624f6a882377d8f1784e903c7a09",
+      "bytes": 17030
+    },
+    "assets/s34-concept.svg": {
+      "sha256": "ccc97b070e99ab42b7d95833b6b9ffdbb7a6b49bffcb6d6cdc817680ac862928",
+      "bytes": 15512
+    },
+    "assets/s34-features.svg": {
+      "sha256": "40dcef7c56dc74fcc499bcf762cdd27072a56520614e4dd3180482416565f199",
+      "bytes": 13177
+    },
+    "assets/s34-functions.svg": {
+      "sha256": "29cd8da270ab7541485c081a701f89b79ddbacf1b4d6aee1033c5cea0789bac8",
+      "bytes": 16233
+    },
+    "assets/s34-irm.svg": {
+      "sha256": "f98cc76c864b8dbcf5017f7a37afd533e02ec09c8005677219d13cd64e69b81d",
+      "bytes": 14237
+    },
+    "assets/s35-composition.svg": {
+      "sha256": "3934a874901d8a181f250b3131faa7cfaadd73c6f2c909ce2e148a79be3acadb",
+      "bytes": 25115
+    },
+    "assets/s35-concept.svg": {
+      "sha256": "76311fc4cab9a52742bde79c944998c935183714568241c4e4a3027e523a8074",
+      "bytes": 19619
+    },
+    "assets/s35-features.svg": {
+      "sha256": "c7619f4c94b299484aa134b1b6ca2c183220c403e5ebd6ef60a2a2f22044dd86",
+      "bytes": 22439
+    },
+    "assets/s35-inference.svg": {
+      "sha256": "ef3bfd50496f47b27f2aa44e2e42acd1c3fedf78485f09019d473b554dea161e",
+      "bytes": 23529
+    },
+    "assets/s35-observations.svg": {
+      "sha256": "f9c5ae8f38fcf63abbaa6b351c4a99291d5c1b8e80037e35a9ae6936354c8509",
+      "bytes": 14267
+    },
+    "assets/s35-solving.svg": {
+      "sha256": "3f291dfae1cb9d8a88023c4c1874e7b9fc1d701405a51283da130e7d1795d470",
+      "bytes": 16858
+    },
+    "assets/s36-composition.svg": {
+      "sha256": "23d4c1b986cbca599c752b631ce5dc128d4445bdf527fe43b1a3a8eadb0df4ae",
+      "bytes": 15997
+    },
+    "assets/s36-concept.svg": {
+      "sha256": "01092a84f33e734949ce71a360776a851c72988369edad8069e308fbb733f019",
+      "bytes": 11703
+    },
+    "assets/s36-functions.svg": {
+      "sha256": "65a0b981c680404b0ade36d631d5fad7d1dad185356e6485d85b82778f48c86e",
+      "bytes": 14216
+    },
+    "assets/s37-concept.svg": {
+      "sha256": "efb3aefaf57ef8c5677e3305313641c75c9b1d32c0775064d8532eb86b0a3632",
+      "bytes": 13523
+    },
+    "assets/s37-functions.svg": {
+      "sha256": "2a1dcf3d6842d8ac35a6990297cd3784ec4d678b1176608f6c61e2ba0dc95c42",
+      "bytes": 16230
+    },
+    "assets/s37-structure.svg": {
+      "sha256": "565768684b5eec3bf9497b1f991f5a120abea70a38efc67af73c48d7c8569a0f",
+      "bytes": 17105
+    },
+    "assets/s38-commerce.svg": {
+      "sha256": "67ce583d2c883b8b4c66cfaa1de472983363fb9887352dd9f807c737af2ce5de",
+      "bytes": 13093
+    },
+    "assets/s38-eai.svg": {
+      "sha256": "a4c1a32f7c4e5b4e177582c11839ce02105e8b0a0eb1747c4fbdda05b408600a",
+      "bytes": 9996
+    },
+    "assets/s38-edi.svg": {
+      "sha256": "0b1f9978ef1f5d5f6a0b978c3cd8f9c3e4596538f800db1694ad5fbdc7be93e7",
+      "bytes": 23546
+    },
+    "assets/s38-enterprise.svg": {
+      "sha256": "005dc2d0cb096162ca488c952703bdee4eff89de8635c9bbb426b74292f496ed",
+      "bytes": 10497
+    },
+    "assets/s38-government.svg": {
+      "sha256": "8b3ea49b507ff27ac3206eb12bbab400f008f59d74f32519caf219a78a225f3f",
+      "bytes": 9156
+    },
+    "assets/s38-planning.svg": {
+      "sha256": "c0a2463a18e6e7fa76981b01d9bef1154ee7b7d7813904049324d0083d80309d",
+      "bytes": 12330
+    },
+    "assets/six-systems.png": {
+      "sha256": "9ebeff5c06d821dedfb5652a5da1b7da22936a6889fb8fcbfca5358c9defa01e",
+      "bytes": 1770965
+    },
+    "assets/tps-documents.png": {
+      "sha256": "f2285b2c7a8eb051d42d5c0c968f11f9123c34f9b79938a4fae80ad8d1f87235",
+      "bytes": 1788507
+    },
+    "assets/tps-map.png": {
+      "sha256": "8fecdecc60b91f0b7f4ee452822b3b6e3770b5e2350df911ecf9b7ac5dcb84e4",
+      "bytes": 1845978
+    },
+    "assets/tps-processing.png": {
+      "sha256": "b5cb8d82a778712c7685b20a8654556256ccf921df68f20372a825c21d3201cb",
+      "bytes": 1855207
+    },
+    "index.html": {
+      "sha256": "8c8c1b1efb96c1459ec1f2f819f5d637448ba6a7f735a363109a1052cd23a8a1",
+      "bytes": 212357
+    }
+  },
+  "quiz_fieldsets_unchanged": true,
+  "source_html_unchanged": true
+}

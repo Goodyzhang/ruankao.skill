@@ -84,7 +84,7 @@ def validate_pack(pack, rubric, source_root, require_true=False, count=None):
         seen.add(case['id'])
         source = case.get('source', {})
         require(set(source) <= {'kind','locator','label','identity_verified','year','case_number','identity_evidence'}, '公开来源含未知字段')
-        require(source.get('kind') in ('original', 'recollection', 'adapted', 'authored'), '题源类型缺失')
+        require(source.get('kind') in ('original', 'recollection', 'adapted', 'authored', 'web-bank'), '题源类型缺失')
         require(source.get('locator') and source.get('label'), '题源定位缺失')
         if require_true or source['kind'] in ('original', 'recollection'):
             require(source['kind'] in ('original', 'recollection') and source.get('identity_verified') is True,

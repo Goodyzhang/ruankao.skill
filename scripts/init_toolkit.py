@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Install the seven Skills and seed notes into a Vault without replacing notes."""
+"""Install the eight Skills and seed notes into a Vault without replacing notes."""
 import argparse
 from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-PLATFORMS = {'antigravity': '.agents', 'codex': '.agents', 'claude': '.claude', 'trae': '.trae'}
+PLATFORMS = {'antigravity': '.agents', 'codex': '.agents', 'claude': '.claude', 'trae': '.trae', 'zcode': '.zcode'}
 
 
 def install(vault, platforms, dry_run=False, upgrade_skills=False):

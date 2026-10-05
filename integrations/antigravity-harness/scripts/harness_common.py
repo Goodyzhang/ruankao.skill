@@ -184,6 +184,15 @@ def is_lab_request(request):
     return bool(re.search(r"(?m)^(?:请|请你|帮我|为我)?\s*(?:使用|调用|用)?\s*[$@]soft-exam-lab\b", text) or re.search(r"(?:使用|调用|用)\s+[$@]?soft-exam-lab\b", text))
 
 
+def is_bank_ingest_request(request):
+    """Only a direct human invocation starts browser-bank ingestion."""
+    text = re.sub(r"```[\s\S]*?```|`[^`]*`", "", request)
+    text = "\n".join(line for line in text.splitlines() if not line.lstrip().startswith(">"))
+    prefix = r"(?m)^\s*(?:请|请你|帮我|为我)?\s*"
+    return bool(re.search(prefix + r"(?:使用|调用|用)?\s*[$@]soft-exam-bank-ingest\b", text)
+                or re.search(prefix + r"(?:使用|调用)\s+soft-exam-bank-ingest\b", text))
+
+
 def current_flow_records(records):
     """Keep the current question across short replies, but stop at a new task."""
     latest_user_index = next(
@@ -201,7 +210,7 @@ def current_flow_records(records):
         start = index
         request = user_request(record).lower()
         # Chapter authoring ends inherited single-question restrictions.
-        if is_review_book_request(request) or is_lab_request(request):
+        if is_review_book_request(request) or is_lab_request(request) or is_bank_ingest_request(request):
             return []
         if any(cue in request for cue in RUNTIME_CUES) and any(
             action in request for action in DIAGNOSTIC_ACTIONS

@@ -26,7 +26,7 @@ class InitTests(unittest.TestCase):
 
     def test_repeat_and_upgrade_preserve_personal_notes(self):
         self.run_install()
-        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 7)
+        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 8)
         note = next(self.vault.glob('个人资料/笔记/软考/系统架构设计师-高级/错题本/*.md'))
         note.write_text('PRIVATE ANSWER sentinel\n', encoding='utf-8')
         skill = self.vault / '.agents/skills/soft-exam-prep/SKILL.md'
@@ -41,7 +41,7 @@ class InitTests(unittest.TestCase):
         self.assertNotEqual(skill.read_text(encoding='utf-8'), 'custom skill\n')
         self.assertEqual(note.read_text(encoding='utf-8'), 'PRIVATE ANSWER sentinel\n')
 
-    def test_all_six_skills_resources_are_copied_byte_for_byte(self):
+    def test_all_skills_resources_are_copied_byte_for_byte(self):
         self.run_install()
         source = installer.ROOT / 'skills'
         installed = self.vault / '.agents/skills'
@@ -55,7 +55,7 @@ class InitTests(unittest.TestCase):
         self.assertTrue((installed / 'assets/characters/whale-reference.png').is_file())
         self.assertTrue((installed / 'references/environment.md').is_file())
 
-    def test_upgrade_from_five_skills_adds_review_book_without_replacing_work(self):
+    def test_upgrade_with_missing_review_book_adds_review_book_without_replacing_work(self):
         self.run_install()
         import shutil
         shutil.rmtree(self.vault / '.agents/skills/soft-exam-review-book')
@@ -67,7 +67,7 @@ class InitTests(unittest.TestCase):
         generated.write_text('<h1>User-created review book</h1>', encoding='utf-8')
         before = {p: p.read_bytes() for p in (relay, generated)}
         self.run_install(upgrade_skills=True)
-        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 7)
+        self.assertEqual(len(list((self.vault / '.agents/skills').glob('*/SKILL.md'))), 8)
         for path, content in before.items():
             self.assertEqual(path.read_bytes(), content)
 
@@ -87,8 +87,8 @@ class InitTests(unittest.TestCase):
     def test_all_platform_targets(self):
         with contextlib.redirect_stdout(io.StringIO()):
             installer.install(self.vault, list(installer.PLATFORMS))
-        for folder in ['.agents', '.claude', '.trae']:
-            self.assertEqual(len(list((self.vault / folder / 'skills').glob('*/SKILL.md'))), 7)
+        for folder in ['.agents', '.claude', '.trae', '.zcode']:
+            self.assertEqual(len(list((self.vault / folder / 'skills').glob('*/SKILL.md'))), 8)
 
 
 if __name__ == '__main__':

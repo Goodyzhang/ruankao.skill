@@ -8,7 +8,7 @@ from urllib.parse import unquote
 
 EXPECTED_SKILLS = {
     'soft-exam-question-tutor', 'soft-exam-organizer', 'soft-exam-prep',
-    'soft-exam-architect-organizer', 'soft-exam-architect-prep', 'soft-exam-review-book', 'soft-exam-lab',
+    'soft-exam-architect-organizer', 'soft-exam-architect-prep', 'soft-exam-review-book', 'soft-exam-lab', 'soft-exam-bank-ingest',
 }
 
 
@@ -22,7 +22,7 @@ def validate(ROOT):
         errors.append(f'Skill set mismatch: missing={sorted(EXPECTED_SKILLS - names)}, extra={sorted(names - EXPECTED_SKILLS)}')
     for name in EXPECTED_SKILLS:
         required = ['SKILL.md']
-        if name in {'soft-exam-question-tutor', 'soft-exam-review-book', 'soft-exam-lab'}:
+        if name in {'soft-exam-question-tutor', 'soft-exam-review-book', 'soft-exam-lab', 'soft-exam-bank-ingest'}:
             required.append('agents/openai.yaml')
         if name == 'soft-exam-review-book':
             required += [f'references/{stem}.md' for stem in (
@@ -30,6 +30,11 @@ def validate(ROOT):
             required += [f'assets/reader/{item}' for item in (
                 'index.html', 'section.html', 'reader.css', 'reader.js', 'quiz-state.js', 'figure-placeholder.svg')]
             required += ['assets/characters/whale-reference.png', 'scripts/check_book.py']
+        if name == 'soft-exam-bank-ingest':
+            required += ['scripts/bank.py'] + ['references/' + n + '.md' for n in ('browser', 'teaching', 'essay', 'records', 'validation')]
+            metadata = ROOT / 'skills' / name / 'agents/openai.yaml'
+            if metadata.is_file() and 'allow_implicit_invocation: false' not in metadata.read_text(encoding='utf-8'):
+                errors.append('Bank ingest must require explicit invocation')
         if name == 'soft-exam-lab':
             required += ['scripts/lab.py', 'assets/frontend/dist/lab.js', 'assets/frontend/dist/lab.css', 'references/grading.md', 'references/runtime.md']
             metadata = ROOT / 'skills' / name / 'agents/openai.yaml'
@@ -214,7 +219,7 @@ def main():
     errors = validate(root)
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'PASS: seven named Skills and resources, {len(list((root / "vault").rglob("*.md")))} seed notes, '
+    print(f'PASS: {len(EXPECTED_SKILLS)} named Skills and resources, {len(list((root / "vault").rglob("*.md")))} seed notes, '
           '21 empty notebooks; Markdown links, privacy scan, reader templates and demo offline assets passed.')
 
 
