@@ -1,0 +1,7 @@
+interface:
+  display_name: "软考题库整理"
+  short_description: "显式调用后整理浏览器案例与论文，保存原图、逐问解析和可续接题库"
+  default_prompt: "使用 $soft-exam-bank-ingest 整理当前浏览器中本节剩余的案例题和论文题。"
+
+policy:
+  allow_implicit_invocation: false

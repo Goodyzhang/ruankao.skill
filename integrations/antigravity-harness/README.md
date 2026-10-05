@@ -62,3 +62,5 @@ PostInvocation 与 Stop 会在运行时提供的 `artifactDirectoryPath` 下追�
 升级旧 Hook 须重新运行安装器的 `--force`，同时更新 Skill；先 `--dry-run` 预览。默认安装会保留已存在的不同版本 Hook。
 
 显式调用 soft-exam-lab 后，其场次续接退出单题限制；当前 Agent 可运行本机服务与内建浏览器。单独引用名称及普通案例讲解仍保持原路由。
+
+显式调用 soft-exam-bank-ingest 及其批次续接退出单题工具白名单与漏卡检查；普通单题与名称引用保持原路由。题库批次以本地台账续接，不强制 Grill 或逐题归档卡，不代填网站或交卷。

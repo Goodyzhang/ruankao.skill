@@ -6,7 +6,7 @@
 
 `id / version / title / scoring_notice / cases[]`。每大题 `id / title / stem / complete: true / max_score / source / figures[] / questions[]`。
 
-- `source`: `kind` 为 original/recollection/adapted/authored，`label / locator`；真题还需 `identity_verified: true / year / case_number / identity_evidence`。
+- `source`: `kind` 为 original/recollection/adapted/authored/web-bank，`label / locator`；真题还需 `identity_verified: true / year / case_number / identity_evidence`。web-bank 是尚未核实年份、考试题号的网站材料，仅作普通练习，`require_true` 必须拒绝。
 - `figures[]`: `file` 为源目录内相对路径、`caption / source_locator`。`prepare` 复制为本场 figures/ 文件，不暴露任意文件目录。
 - `questions[]`: `id / title / prompt / complete: true / max_score`。大题分值等于全部小问之和。
 
