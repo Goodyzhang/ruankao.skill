@@ -1,10 +1,12 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.6.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.6.0) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.6.1](https://github.com/Goodyzhang/ruankao.skill/archive/refs/tags/v0.6.1.zip) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
 ## 1. 这套工具做什么
 
 发一道题，讲清考点，换条件练习，确认后留下可复习的记录。一章学完，将教材、知识点和错题二次蒸馏为图文复习册；练案例题时，打开本地作答环境，提交后逐点评阅。
+
+**v0.6.1 交互修复：** 作答区常驻“撤销”，每个小问保留最近 20 次正文编辑；正常输入与自动保存期间，恢复草稿按钮不再反复出现。
 
 **v0.6.0 新功能：在内建浏览器中登录“软考〇人（防谶）”，快速整理案例题和论文题。** 打开小节后，直接点名 `soft-exam-bank-ingest`，指定题号或整理剩余题目。Agent 保存题干和原图，合并同案例的小问，补上考场答案、采分要点与详细解析；论文生成完整应试模拟范文，整理中断后可续接。
 
@@ -14,7 +16,7 @@
 
 需要能实际看图的模型、浏览器工具与本地保存能力。优先使用内建浏览器，不要求特定 browser-use CLI；首次资料位置不明确时，用真实目录候选卡片引导。只读取题目、展开解析和导航，答案保存本地，不代填网站或交卷。
 
-[题库整理说明](docs/soft-exam-bank-ingest.md) · [案例作答实验室](docs/soft-exam-lab.md) · [新版本说明](docs/releases/v0.6.0.md)
+[题库整理说明](docs/soft-exam-bank-ingest.md) · [案例作答实验室](docs/soft-exam-lab.md) · [新版本说明](docs/releases/v0.6.1.md)
 
 ## 2. Skill 家族
 
@@ -104,10 +106,10 @@
 
 #### 1. 获取发布包
 
-从 [Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.6.0) 下载 `ruankao-toolkit-v0.6.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+下载 [v0.6.1 源码安装包](https://github.com/Goodyzhang/ruankao.skill/archive/refs/tags/v0.6.1.zip) 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.6.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.6.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -339,10 +341,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-发布验证范围与实际结果见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次补丁的验证范围见 [v0.6.1 更新说明](docs/releases/v0.6.1.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.6.1 — 2026-10-08
+
+- 修复作答期间“恢复浏览器未保存稿”随输入和自动保存反复出现、消失的问题；恢复候选在打开页面时读取，恢复后提示收起。
+- 作答区右侧新增常驻“撤销”，按当前小问保留最近 20 次正文编辑，中文输入合成阶段合并为一次编辑。
+- 更新随包前端构建产物；已保存草稿继续保留。刷新后从新的编辑开始记录撤销历史。
+- 浏览器实测覆盖单步撤销、20 步上限、小问隔离、暂停恢复以及撤销后保存和刷新。
+
+[更新说明与升级方法](docs/releases/v0.6.1.md)。
 
 ### v0.6.0 — 2026-10-05
 
