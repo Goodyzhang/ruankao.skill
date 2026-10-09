@@ -97,7 +97,7 @@ def validate(ROOT):
             continue
         if p.name == '.soft-exam.local.json':
             errors.append(f'{p.relative_to(ROOT)}: machine-local binding must not be published')
-        if p.suffix not in {'.md', '.yaml', '.yml', '.py', '.json', '.html', '.css', '.js', '.cjs', '.svg', '.ps1', '.sh', '.txt'}:
+        if p.suffix not in {'.md', '.yaml', '.yml', '.py', '.json', '.html', '.css', '.js', '.mjs', '.cjs', '.svg', '.ps1', '.sh', '.txt'}:
             continue
         text = p.read_text(encoding='utf-8')
         # Match concrete device paths and credential shapes, not the regex examples here.

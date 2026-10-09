@@ -365,6 +365,21 @@ class Session:
                 self.update('submit', {'attempt_id': s['attempt_id'], 'revision': s['revision']})
 
 
+def validate_text_evidence(evidence, answer):
+    """Validate a source passage and optional precise highlight spans."""
+    text = answer['markdown']
+    start, end = evidence.get('start'), evidence.get('end')
+    require(evidence.get('kind') == 'text' and isinstance(start, int) and isinstance(end, int)
+            and 0 <= start < end <= len(text) and text[start:end] == evidence.get('quote'), '原文证据定位错误')
+    if 'focus' in evidence:
+        focus = evidence['focus']
+        require(isinstance(focus, list) and focus, '批注高亮片段不能为空')
+        for span in focus:
+            a, b = span.get('start'), span.get('end')
+            require(isinstance(a, int) and isinstance(b, int) and start <= a < b <= end
+                    and text[a:b] == span.get('quote'), '批注高亮必须精确对应证据内的原文')
+
+
 def grade(session, evaluation_path):
     """Validate Agent point decisions and calculate scores; never infer correctness."""
     engine = Session(session)
@@ -413,9 +428,7 @@ def grade(session, evaluation_path):
         require(status not in ('awarded', 'incorrect') or evidence, '给分/判错必须定位实际证据')
         for e in evidence:
             if e.get('kind') == 'text':
-                start, end = e.get('start'), e.get('end')
-                require(isinstance(start, int) and isinstance(end, int) and 0 <= start < end <= len(answer['markdown'])
-                        and answer['markdown'][start:end] == e.get('quote'), '原文证据定位错误')
+                validate_text_evidence(e, answer)
             elif e.get('kind') == 'diagram':
                 elems = {v['id'] for v in (answer.get('scene') or {}).get('elements', []) if not v.get('isDeleted')}
                 require(answer.get('drawing_png') and e.get('element_id') in elems and e.get('description') and not any(v.get('id') == e.get('element_id') and v.get('customData', {}).get('labSource') == 'question-background' for v in (answer.get('scene') or {}).get('elements', [])), '图示证据未对应已提交用户图稿')
@@ -444,8 +457,7 @@ def grade(session, evaluation_path):
         qid, cause, e = rule['question_id'], error.get('cause_id'), error.get('evidence', {})
         require(cause and error.get('comment'), '原始扣分原因缺失')
         a = sub['answers'][qid]
-        require(e.get('kind') == 'text' and isinstance(e.get('start'), int) and isinstance(e.get('end'), int)
-                and 0 <= e['start'] < e['end'] <= len(a['markdown']) and a['markdown'][e['start']:e['end']] == e.get('quote'), '原始扣分证据错误')
+        validate_text_evidence(e, a)
         duplicate = (qid, cause) in official_causes
         already_lost = any(d.get('cause_id') == cause and points[d['point_id']]['question_id'] == qid and d['status'] == 'incorrect' for d in decisions)
         amount = 0 if duplicate or (already_lost and not rule.get('allow_overlap')) else rule['amount']
@@ -460,7 +472,7 @@ def grade(session, evaluation_path):
         a = sub['answers'][qid]
         e = error['evidence']
         if e.get('kind') == 'text':
-            require(isinstance(e.get('start'), int) and isinstance(e.get('end'), int) and 0 <= e['start'] < e['end'] <= len(a['markdown']) and a['markdown'][e['start']:e['end']] == e.get('quote'), '训练扣分证据错误')
+            validate_text_evidence(e, a)
         else:
             require(e.get('kind') == 'diagram' and a.get('drawing_png') and e.get('element_id') in {x['id'] for x in (a.get('scene') or {}).get('elements', [])}, '训练扣分图示证据错误')
         related = error.get('point_id')
@@ -471,6 +483,12 @@ def grade(session, evaluation_path):
         amount = 0 if duplicate else points[related]['weight'] if related else min(p['weight'] for p in points.values() if p['question_id'] == qid)
         qresults[qid]['penalty'] += amount
         penalties.append(dict(error, amount=amount, deduplicated=bool(duplicate)))
+    for warning in evaluation.get('warnings', []):
+        qid, related = warning.get('question_id'), warning.get('point_id')
+        require(set(warning) <= {'question_id', 'point_id', 'comment', 'source', 'evidence'}
+                and qid in qresults and warning.get('comment') and warning.get('source'), '风险提示须有计分小问、说明与依据，不得携带扣分')
+        require(related is None or related in points and points[related]['question_id'] == qid, '风险提示关联采分点不匹配')
+        validate_text_evidence(warning.get('evidence', {}), sub['answers'][qid])
     for qid, qr in qresults.items():
         qr['max'] = counted_questions[qid]['max_score']
         qr['reference'] = None if qr['pending'] else qr['reference_known']

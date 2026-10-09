@@ -4,7 +4,7 @@
 
 - [TAO 考试导航](https://userguide.taotesting.com/user-documentation/latest/public/test-navigation-for-test-takers)：题号、计时、未答标记、交卷确认。
 - [Excalidraw 集成](https://docs.excalidraw.com/docs/@excalidraw/excalidraw/integration) 与 [导出](https://docs.excalidraw.com/docs/@excalidraw/excalidraw/api/utils/export)：保存editable scene，exportToBlob生成对应PNG，基本图形替代过早设计UML语义编辑器。
-- [markdown-it](https://github.com/markdown-it/markdown-it)、[DOMPurify](https://github.com/cure53/DOMPurify)、[KaTeX](https://katex.org/docs/api.html)：本地解析、净化和公式渲染，不开放答案HTML执行。
+- [react-markdown](https://github.com/remarkjs/react-markdown)、[remark-math / rehype-katex](https://github.com/remarkjs/remark-math)、[KaTeX](https://katex.org/docs/api.html)：保留原文位置的 Markdown 语法树、词句批注和本地公式渲染，不开放答案 HTML 执行。
 - [SteLLA](https://arxiv.org/abs/2501.09092)：按rubric拆成可验证采分点，用学生实际证据判定后加权。本功能不复现论文实验或宣称达到论文准确度；当前Agent初评和自检，不伪称双代理复核。
 - [清华出版社指定试题解析书](https://www.tup.com.cn/booksCenter/book_10321101.html)：考试研究部编写的2018–2022试题分析书是优先取材线索，网页元数据不等于已经核验某题答案。无统一公开附加扣分规则时本功能定义训练规则，并与参考估分分开。
 

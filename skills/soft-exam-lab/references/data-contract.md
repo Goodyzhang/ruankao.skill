@@ -26,10 +26,14 @@
 
 - decisions：每点一个 `point_id / status`（awarded/omitted/incorrect/pending）、`comment / evidence[]`，错误可用 `cause_id`，待核验加 `pending_reason`。
 - 文本 evidence：`kind: text / start / end / quote`，范围严格对应已提交原文；图证据：`kind: diagram / element_id / description`，实际看PNG，核对节点/箭头；附件：`kind: attachment / index / description`。没有依据不写命中。
+- 文本 evidence 可加 `focus: [{start, end, quote}]`，用绝对 Python Unicode 字符偏移定位本段证据内真正得分或错误的词句。新评阅须优先给精确片段，证据中的中性上下文不整段涂色；范围必须包含在外层 evidence 内，quote 必须精确相等。多处得分可给多个片段。
 - extra_errors：`question_id / cause_id / point_id`（可省略）`/ comment / source / evidence`。同一因使用同一身份，已因该错丢分不再叠罚。
+- warnings：可选数组，每项 `question_id / point_id`（可省略）`/ comment / source / evidence`。仅用于有依据的表述风险，evidence 必须是文本并可给 focus。该字段不接受 amount 等扣分字段，不改变参考分、训练分或错题统计。
 - recommendations：`priority / topic / reason / prompt`，prompt 包含实际误解与待验证迁移条件。
 
 `grade.json` 和 `reviews/` 保存每次结果与离线HTML，分数、分布、维度从点结果计算。待核验总分为 null；已核验分数可以局部展示。脚本不检查同义/因果语义。
+
+报告根据判定生成颜色：awarded 的文本证据为绿色，incorrect、reference_errors 与 extra_errors 的文本证据为红色，warnings 为黄色；遗漏和待核验不自动着色。重叠处红色优先于黄色、黄色优先于绿色，悬停保留相关评语；右侧各条反馈仍展示自己的依据。公式按完整公式高亮。没有 focus 的历史证据按原证据范围展示，不臆造精确得分词。
 
 ## archive-receipt.json
 

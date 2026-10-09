@@ -1,6 +1,6 @@
 interface:
   display_name: "软考作答实验室"
-  short_description: "显式启动案例与论文作答、按原卷选题计分、逐点评阅及完整参考答案"
+  short_description: "显式启动案例与论文作答、三色原文批注、逐点评阅及完整参考答案"
   default_prompt: "使用 $soft-exam-lab 为我准备一道系统架构设计师软件系统设计案例题真题。"
 policy:
   allow_implicit_invocation: false

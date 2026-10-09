@@ -2,18 +2,10 @@ import React,{useEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {Excalidraw,exportToBlob,convertToExcalidrawElements} from '@excalidraw/excalidraw';
 import '@excalidraw/excalidraw/index.css';
-import MarkdownIt from 'markdown-it';
-import DOMPurify from 'dompurify';
-import katex from 'katex';
+import {Markdown,reviewAnnotations,annotationLabels} from './review-markdown.mjs';
 import 'katex/dist/katex.min.css';
 import './style.css';
 const data=JSON.parse(document.getElementById('lab-data').textContent);
-const md=new MarkdownIt({html:false,linkify:false,breaks:true});
-md.inline.ruler.after('escape','math',(s,silent)=>{if(s.src[s.pos]!=='$'||s.src[s.pos+1]==='$')return false;const end=s.src.indexOf('$',s.pos+1);if(end<0)return false;if(!silent){const t=s.push('math','',0);t.content=s.src.slice(s.pos+1,end);}s.pos=end+1;return true;});
-md.block.ruler.before('fence','mathblock',(s,start,end,silent)=>{let from=s.bMarks[start]+s.tShift[start],to=s.eMarks[start];if(!s.src.slice(from,to).startsWith('$$'))return false;let content=s.src.slice(from+2,to),line=start;if(!content.endsWith('$$')){content+='\n';while(++line<end){const row=s.src.slice(s.bMarks[line],s.eMarks[line]);if(row.endsWith('$$')){content+=row;break;}content+=row+'\n';}if(line>=end)return false;}if(silent)return true;const t=s.push('mathblock','',0);t.content=content.slice(0,-2);s.line=line+1;return true;});
-md.renderer.rules.math=(ts,i)=>katex.renderToString(ts[i].content,{throwOnError:false,trust:false});
-md.renderer.rules.mathblock=(ts,i)=>katex.renderToString(ts[i].content,{throwOnError:false,trust:false,displayMode:true});
-function Markdown({text=''}){return <div className="markdown" dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(md.render(text),{ADD_TAGS:['annotation'],FORBID_TAGS:['img']})}}/>;}
 const download=(name,obj)=>{const url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 const readData=file=>new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);});
 const timefmt=n=>`${Math.floor(n/3600).toString().padStart(2,'0')}:${Math.floor(n/60%60).toString().padStart(2,'0')}:${Math.floor(n%60).toString().padStart(2,'0')}`;
@@ -95,11 +87,51 @@ function ResultSummary({pack,grade:g}){
 function ReferenceAnswer({reference,essayReview,zoom}){
  return <>{essayReview&&<section className="essay-review"><h4>审题要求对照</h4>{[['abstract','摘要'],['body','正文']].map(([field,label])=><p key={field}>{label}：{essayReview.counts[field]} 字（不含空白）；题卷要求 {essayReview.limits[field+'_min']?`${essayReview.limits[field+'_min']}–`:'不超过 '}{essayReview.limits[field+'_max']} 字，<b>{essayReview.within_limits[field]?'符合字数要求':'未满足字数或内容非空要求'}</b>。</p>)}<ul>{essayReview.requirements.map(t=><li key={t.id}><b>{({'met':'已覆盖','partial':'部分覆盖','not-met':'未覆盖','pending':'待核验'})[t.status]}</b> · {t.text}</li>)}</ul></section>}<section className="reference-answer" aria-label={essayReview?'应试参考范文':'参考答案'}><h4>{essayReview?'应试参考范文':'参考答案'}{reference?.origin==='skill-generated'?' · Skill 整理生成':reference?.origin==='pending'?' · 待核验':''}</h4>{reference?<><Markdown text={reference.markdown}/>{reference.images?.map((f,i)=><figure key={i}><img src={f.data} alt={f.caption} onClick={()=>zoom(f.data)}/><figcaption>{f.caption}</figcaption></figure>)}<div className="reference-source"><Markdown text={'依据：'+reference.source}/></div></>:<p>这份历史报告尚未保存完整参考答案，可使用当前 Skill 补充评阅。</p>}</section></>;
 }
-function Report(){const {grade:g,state:s,pack:p}=data;const [zoom,setZoom]=useState(null),[highlight,setHighlight]=useState(null);const qLabel=id=>{for(const c of p.cases){const q=c.questions.find(q=>q.id===id);if(q)return c.title+' · '+q.title;}return id;};const sourceLevel={'exam-study-book':'考试研究部指定解析','institution-original':'机构原始解析','authored-fixture':'自编验收材料'}[g.answer_source.level]||g.answer_source.level;const dims=Object.entries(g.dimensions);const points=g.results;const counts=Object.values(g.questions).reduce((a,q)=>{for(const k in q.counts)a[k]=(a[k]||0)+q.counts[k];return a;},{});
+function EvidenceQuote({e,annotation,locate}){
+ if(e.kind!=='text')return <blockquote>图示 {e.element_id||e.index}：{e.description}</blockquote>;
+ const chars=[...e.quote],spans=annotation?.spans||[];
+ const cuts=[...new Set([0,chars.length,...spans.flatMap(s=>[s.start-e.start,s.end-e.start])])].sort((a,b)=>a-b);
+ return <blockquote><button className="evidence-jump" onClick={()=>locate(annotation?.id)}><span className="evidence-heading">{annotationLabels[annotation?.tone]||'原文证据'}<small>点击定位</small></span><span className="evidence-text">{cuts.slice(0,-1).map((from,i)=>{const to=cuts[i+1],text=chars.slice(from,to).join('');return spans.some(s=>s.start-e.start<to&&s.end-e.start>from)?<mark key={from} className={'review-mark review-'+annotation.tone}>{text}</mark>:<React.Fragment key={from}>{text}</React.Fragment>;})}</span></button></blockquote>;
+}
+function QuestionReview({q,a,g,highlight,setHighlight,setZoom}){
+ const annotations=reviewAnnotations(g,q.id);
+ const locate=id=>{
+  setHighlight(id);
+  const answer=document.getElementById('annotated-'+q.id);
+  const mark=Array.from(answer?.querySelectorAll('[data-review-ids]')||[]).find(el=>el.dataset.reviewIds.split(' ').includes(id));
+  (mark||answer)?.scrollIntoView({block:'center'});
+ };
+ return <article className="review-question">
+  <h3>{q.title} · 参考 {g.questions[q.id].reference??'待核验'} / {q.max_score} · 训练 {g.questions[q.id].training??'待核验'}</h3>
+  <Markdown text={q.prompt}/>
+  <div className="review-columns"><div>
+   <h4>你的原答卷</h4>
+   <div className="annotation-legend" aria-label="批注颜色说明"><span><mark className="review-mark review-good">绿色</mark> 得分</span><span><mark className="review-mark review-risk">黄色</mark> 表述风险</span><span><mark className="review-mark review-error">红色</mark> 明确错误</span><small>无填充：未批注。黄色不额外扣分；红色的计分影响见右侧反馈。</small></div>
+   <details className="raw-answer"><summary>查看原始 Markdown</summary><pre className="source-answer">{a.markdown||'（空白）'}</pre></details>
+   <div className="annotated-answer" id={'annotated-'+q.id}><Markdown text={a.markdown||'（空白）'} annotations={annotations} activeId={highlight}/></div>
+   {a.drawing_png&&<img src={a.drawing_png} onClick={()=>setZoom(a.drawing_png)}/>}
+   {a.attachments?.map((f,i)=><img key={i} src={f.data} onClick={()=>setZoom(f.data)}/>)}
+   <ReferenceAnswer reference={g.reference_answers?.[q.id]} essayReview={g.essay_review?.[q.id]} zoom={setZoom}/>
+  </div><div><h4>逐点反馈</h4>
+   {g.results.filter(r=>r.question_id===q.id).map(r=><div key={r.id} className={'point '+r.status}>
+    <b>{r.status==='awarded'?'✓ 命中':r.status==='omitted'?'○ 遗漏':r.status==='pending'?'? 待核验':'× 错误'} · {r.earned} / {r.weight} · {r.criterion}</b>
+    <Markdown text={r.correct}/><p>{r.comment}</p>
+    {r.evidence?.map((e,i)=><EvidenceQuote key={i} e={e} annotation={annotations.find(a=>a.id==='point-'+r.id+'-'+i)} locate={locate}/>)}
+    {r.pending_reason&&<p>{r.pending_reason}</p>}
+   </div>)}
+   {[['warnings','risk','△ 表述风险 · 不额外扣分'],['reference_penalties','incorrect','来源细则扣分'],['penalties','incorrect','训练扣分']].map(([field,style,label])=>g[field]?.map((e,i)=>e.question_id===q.id&&<div className={'point '+style} key={field+i}>
+    <b>{label}{field!=='warnings'&&<>：{e.amount} 分{e.deduplicated?'（同因去重）':''}</>}</b><p>{e.comment}</p>
+    {e.evidence&&<EvidenceQuote e={e.evidence} annotation={annotations.find(a=>a.id===field+'-'+i)} locate={locate}/>}
+    {e.source&&<small className="feedback-source">依据：{e.source}</small>}
+   </div>))}
+  </div></div>
+ </article>;
+}
+function Report(){const {grade:g,state:s,pack:p}=data;const [zoom,setZoom]=useState(null),[highlight,setHighlight]=useState(null);const qLabel=id=>{for(const c of p.cases){const q=c.questions.find(q=>q.id===id);if(q)return c.title+' · '+q.title;}return id;};const sourceLevel={'exam-study-book':'考试研究部指定解析','institution-original':'机构原始解析','authored-fixture':'自编验收材料'}[g.answer_source.level]||g.answer_source.level;const dims=Object.entries(g.dimensions);const counts=Object.values(g.questions).reduce((a,q)=>{for(const k in q.counts)a[k]=(a[k]||0)+q.counts[k];return a;},{});
  return <><header><b>软考作答实验室 · 评阅报告</b><button onClick={()=>window.print()}>打印 / 保存 PDF</button></header><main className="report"><div className="eyebrow">单代理评阅 · {g.basis==='published'?'来源评分细则':'推定训练评分表'} · {sourceLevel} · 用时 {timefmt(g.offline_elapsed_seconds??g.elapsed_seconds)}</div><h1>{p.title}</h1><ResultSummary pack={p} grade={g}/><div className="scores"><article><span>参考估分</span><strong>{g.reference_score??'待核验'}<small> / {g.max_score}</small></strong></article><article><span>严格训练分</span><strong>{g.training_score??'待核验'}<small> / {g.max_score}</small></strong></article><p>训练额外扣分按冻结规则执行，避免同因重复扣罚。该结果描述本次作答，不代表官方阅卷或长期掌握程度。</p></div>
  <section className="charts"><article><h2>小问得分</h2>{Object.entries(g.questions).map(([id,q])=><Bar key={id} label={qLabel(id)} value={q.reference_known} max={q.max} pending={q.pending}/>)}</article><article><h2>采分点分布</h2><div className="distribution">{[['awarded','命中'],['omitted','遗漏'],['incorrect','错误'],['pending','待核验']].map(([k,label])=><div key={k}>{label}<strong>{counts[k]||0}</strong></div>)}</div><h2>本次考点覆盖</h2>{dims.map(([name,v])=><Bar key={name} label={name} value={v.earned} max={v.max} pending={v.pending}/>)}</article></section>
  {dims.length>=3&&!dims.some(([,d])=>d.pending)&&<section><h2>本次考查维度</h2><svg role="img" aria-label="考查维度雷达图" viewBox="0 0 400 300" className="radar">{[.25,.5,.75,1].map(r=><polygon key={r} points={dims.map((_,i)=>{const t=i*2*Math.PI/dims.length-Math.PI/2;return `${200+90*r*Math.cos(t)},${150+90*r*Math.sin(t)}`;}).join(' ')} fill="none" stroke="#b9c8ce"/>)}<polygon points={dims.map(([,v],i)=>{const t=i*2*Math.PI/dims.length-Math.PI/2,r=v.earned/v.max;return `${200+90*r*Math.cos(t)},${150+90*r*Math.sin(t)}`;}).join(' ')} fill="#0e749044" stroke="#0e7490"/>{dims.map(([name],i)=>{const t=i*2*Math.PI/dims.length-Math.PI/2;return <text key={name} x={200+120*Math.cos(t)} y={150+120*Math.sin(t)} textAnchor="middle">{name}</text>;})}</svg></section>}
- {p.cases.filter(c=>!g.selected_case_ids||g.selected_case_ids.includes(c.id)).map(c=><section key={c.id}><h2>{c.title}</h2><details><summary>完整题干与题图</summary><Markdown text={c.stem}/>{c.figures?.map(f=><figure key={f.file}><img src={f.file} alt={f.caption} onClick={()=>setZoom(f.file)}/><figcaption>{f.caption} · {f.source_locator}</figcaption></figure>)}</details>{c.questions.filter(q=>g.questions[q.id]).map(q=>{const a=s.answers[q.id];return <article className="review-question" key={q.id}><h3>{q.title} · 参考 {g.questions[q.id].reference??'待核验'} / {q.max_score} · 训练 {g.questions[q.id].training??'待核验'}</h3><Markdown text={q.prompt}/><div className="review-columns"><div><h4>你的原答卷</h4><pre className="source-answer" id={'answer-'+q.id}>{highlight?.question_id===q.id?<>{[...a.markdown].slice(0,highlight.start).join('')}<mark>{[...a.markdown].slice(highlight.start,highlight.end).join('')}</mark>{[...a.markdown].slice(highlight.end).join('')}</>:a.markdown||'（空白）'}</pre><Markdown text={a.markdown}/>{a.drawing_png&&<img src={a.drawing_png} onClick={()=>setZoom(a.drawing_png)}/>} {a.attachments?.map((f,i)=><img key={i} src={f.data} onClick={()=>setZoom(f.data)}/>)}<ReferenceAnswer reference={g.reference_answers?.[q.id]} essayReview={g.essay_review?.[q.id]} zoom={setZoom}/></div><div><h4>逐点反馈</h4>{points.filter(r=>r.question_id===q.id).map(r=><div key={r.id} className={'point '+r.status}><b>{r.status==='awarded'?'✓ 命中':r.status==='omitted'?'○ 遗漏':r.status==='pending'?'? 待核验':'× 错误'} · {r.earned} / {r.weight} · {r.criterion}</b><Markdown text={r.correct}/><p>{r.comment}</p>{r.evidence?.map((e,i)=><blockquote key={i}>{e.kind==='text'?<button onClick={()=>{setHighlight({...e,question_id:q.id});document.getElementById('answer-'+q.id)?.scrollIntoView({block:'center'});}}>{`定位原文 ${e.start}–${e.end}：“${e.quote}”`}</button>:`图示 ${e.element_id||e.index}：${e.description}`}</blockquote>)}{r.pending_reason&&<p>{r.pending_reason}</p>}</div>)}{g.reference_penalties?.filter(e=>e.question_id===q.id).map((e,i)=><div className="point incorrect" key={'ref'+i}>来源细则扣分：{e.amount} 分<p>{e.comment} · {e.source}</p></div>)}{g.penalties.filter(e=>e.question_id===q.id).map((e,i)=><div className="point incorrect" key={i}>训练扣分：{e.amount} 分{e.deduplicated?'（同因去重）':''}<p>{e.comment}</p></div>)}</div></div></article>;})}</section>)}
+ {p.cases.filter(c=>!g.selected_case_ids||g.selected_case_ids.includes(c.id)).map(c=><section key={c.id}><h2>{c.title}</h2><details><summary>完整题干与题图</summary><Markdown text={c.stem}/>{c.figures?.map(f=><figure key={f.file}><img src={f.file} alt={f.caption} onClick={()=>setZoom(f.file)}/><figcaption>{f.caption} · {f.source_locator}</figcaption></figure>)}</details>{c.questions.filter(q=>g.questions[q.id]).map(q=><QuestionReview key={q.id} q={q} a={s.answers[q.id]} g={g} highlight={highlight} setHighlight={setHighlight} setZoom={setZoom}/>)}</section>)}
  <section><h2>下一步强化</h2>{g.recommendations?.map((r,i)=><article key={i}><h3>{r.priority}. {r.topic}</h3><p>{r.reason}</p><pre>{r.prompt}</pre><button onClick={async()=>{try{await navigator.clipboard.writeText(r.prompt);}catch{window.prompt('复制讲解 prompt',r.prompt);}}}>复制讲解 prompt</button></article>)}</section><details><summary>来源与自检记录</summary><p>{g.answer_source.locator}</p><pre>{JSON.stringify(g.self_check,null,2)}</pre><p>场次 {s.attempt_id} · 评分表 {g.rubric_hash} · 答卷 {g.submission_hash}</p></details></main><Lightbox src={zoom} close={()=>setZoom(null)}/></>;
 }
 createRoot(document.getElementById('root')).render(data.mode==='report'?<Report/>:<Exam/>);
