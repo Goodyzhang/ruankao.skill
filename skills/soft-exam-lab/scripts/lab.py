@@ -3,6 +3,7 @@
 import argparse
 import base64
 import hashlib
+from itertools import combinations
 import json
 import mimetypes
 import os
@@ -67,12 +68,70 @@ def safe_file(root, relative):
     return path
 
 
-def questions(pack):
-    return {q['id']: q for c in pack['cases'] for q in c['questions']}
+def questions(pack, selected=None):
+    return {q['id']: q for c in pack['cases'] if selected is None or c['id'] in selected for q in c['questions']}
+
+
+def essay_markdown(parts):
+    return '## 摘要\n\n' + parts['abstract'] + '\n\n## 正文\n\n' + parts['body']
+
+
+def selection(pack, selected=None, complete=True):
+    ids = [c['id'] for c in pack['cases']]
+    exam = pack.get('exam')
+    if not exam:
+        require(selected is None or set(selected) == set(ids), '专题练习包含全部题目')
+        return ids
+    required = exam['required_case_ids']
+    selected = required if selected is None else selected
+    require(isinstance(selected, list) and len(selected) == len(set(selected))
+            and set(selected) <= set(ids) and set(required) <= set(selected), '选答题重复、无效或缺少必答题')
+    chosen = len(selected) - len(required)
+    require(chosen <= exam['choose_count'] and (not complete or chosen == exam['choose_count']), '请按试卷要求选齐计分题目')
+    return list(selected)
+
+
+def validate_exam(pack, rubric):
+    exam = pack.get('exam')
+    if not exam:
+        return
+    require(set(exam) <= {'kind', 'instructions', 'required_case_ids', 'choose_count', 'max_score',
+                         'pass_score', 'rules_source', 'pass_source', 'duration_minutes', 'essay_limits'}, '未知试卷规则字段')
+    require(exam.get('kind') in ('case-analysis', 'essay') and exam.get('instructions')
+            and exam.get('rules_source') and exam.get('pass_source'), '缺少试卷类型、作答要求或标准出处')
+    ids = {c['id'] for c in pack['cases']}
+    required = exam.get('required_case_ids')
+    count = exam.get('choose_count')
+    require(isinstance(required, list) and len(required) == len(set(required)) and set(required) <= ids,
+            '必答题配置无效')
+    require(isinstance(count, int) and 0 <= count <= len(ids) - len(required) and len(required) + count > 0,
+            '选答数量无效')
+    require(isinstance(exam.get('max_score'), (int, float)) and exam['max_score'] > 0
+            and isinstance(exam.get('pass_score'), (int, float)) and 0 < exam['pass_score'] <= exam['max_score'], '满分或合格线无效')
+    require(exam['max_score'] == 75, '系统架构设计师正式试卷满分为75分；全题训练应使用练习模式')
+    scores = {c['id']: c['max_score'] for c in pack['cases']}
+    for chosen in combinations(ids - set(required), count):
+        require(abs(sum(scores[i] for i in required + list(chosen)) - exam['max_score']) < 1e-6,
+                '选答组合的分值与试卷满分不一致')
+    if exam['kind'] == 'essay':
+        require(not required and count == 1 and all(len(c['questions']) == 1 for c in pack['cases']), '论文卷每个论题为一篇，选答一篇')
+        limits = exam.get('essay_limits', {})
+        require(set(limits) == {'abstract_min', 'abstract_max', 'body_min', 'body_max'}
+                and all(isinstance(v, int) and v >= 0 for v in limits.values())
+                and limits['abstract_min'] <= limits['abstract_max'] and limits['body_min'] <= limits['body_max'], '须按原卷填写摘要和正文字数要求')
+        requirements = rubric.get('essay_requirements', {})
+        require(set(requirements) == set(questions(pack)), '每个论题须提供原卷审题要求与采分点映射')
+        pointmap = {p['id']: p for p in rubric['points']}
+        for qid, tasks in requirements.items():
+            require(tasks and len({t['id'] for t in tasks}) == len(tasks), '论文审题要求缺失或重复')
+            for task in tasks:
+                require(task.get('text') and task.get('source') and task.get('point_ids')
+                        and all(pid in pointmap and pointmap[pid]['question_id'] == qid for pid in task['point_ids']),
+                        '论文审题要求未对应本题的冻结采分点')
 
 
 def validate_pack(pack, rubric, source_root, require_true=False, count=None):
-    require(set(pack) <= {'schema_version','id','version','title','scoring_notice','cases'}, '公开题包含未知字段，可能泄露解析')
+    require(set(pack) <= {'schema_version','id','version','title','scoring_notice','cases','exam'}, '公开题包含未知字段，可能泄露解析')
     require(pack.get('schema_version') == 1 and rubric.get('schema_version') == 1, '数据版本必须为 1')
     require(ID.fullmatch(pack.get('id', '')) and pack.get('version'), '题目包身份缺失')
     cases = pack.get('cases', [])
@@ -119,6 +178,7 @@ def validate_pack(pack, rubric, source_root, require_true=False, count=None):
     for qid, q in questions(pack).items():
         require(abs(sum(p['weight'] for p in points if p['question_id'] == qid) - q['max_score']) < 1e-6,
                 '采分点总分与小问不一致: ' + qid)
+    validate_exam(pack, rubric)
 
 
 def html(path, payload):
@@ -126,14 +186,21 @@ def html(path, payload):
     atomic(path, '''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>软考作答实验室</title><link rel="stylesheet" href="static/lab.css"></head><body><div id="root"></div><script>window.EXCALIDRAW_ASSET_PATH="./static/";</script><script id="lab-data" type="application/json">''' + data + '''</script><script src="static/lab.js"></script></body></html>''', serialize=False)
 
 
-def prepare(root, pack_path, rubric_path, source_root=None, new=False, mode='free', minutes=None, require_true=False, count=None):
+def prepare(root, pack_path, rubric_path, source_root=None, new=False, mode='free', minutes=None, require_true=False, count=None, paper_kind=None):
     root = Path(root).resolve()
     require(not root.is_symlink(), '档案根不能为符号链接')
     root.mkdir(parents=True, exist_ok=True)
     pointer = root / 'active.json'
+    requested = read(pack_path) if paper_kind else None
+    if paper_kind:
+        require(requested.get('exam', {}).get('kind') == paper_kind, '年度真题须提供正式试卷选答、总分和合格线规则')
     if pointer.exists() and not new:
         current = root / read(pointer)['attempt_id']
         if read(current / 'state.json')['status'] != 'archived':
+            if paper_kind:
+                existing = read(current / 'pack.json')
+                require(existing.get('exam', {}).get('kind') == paper_kind and existing['id'] == requested['id']
+                        and existing['version'] == requested['version'], '已有场次与所请求的正式试卷不一致；请保留原稿后选择续接或新开')
             return current
     pack, rubric = read(pack_path), read(rubric_path)
     source_root = Path(source_root or Path(pack_path).parent).resolve()
@@ -162,6 +229,11 @@ def prepare(root, pack_path, rubric_path, source_root=None, new=False, mode='fre
                  'created_at': time.time(), 'started_at': None, 'pause_started': None,
                  'paused_seconds': 0, 'answers': {q: {'markdown': '', 'scene': None, 'drawing_png': None, 'attachments': []}
                                                for q in questions(pack)}}
+        state['selected_case_ids'] = selection(pack, complete=False)
+        if pack.get('exam', {}).get('kind') == 'essay':
+            for answer in state['answers'].values():
+                answer['essay'] = {'abstract': '', 'body': ''}
+                answer['markdown'] = essay_markdown(answer['essay'])
         atomic(session / 'state.json', state)
         html(public / 'index.html', {'mode': 'exam', 'offline': False, 'pack': pack, 'state': state})
         html(public / 'offline.html', {'mode': 'exam', 'offline': True, 'pack': pack, 'state': state})
@@ -181,11 +253,18 @@ def image_data(value):
     require(len(raw) <= 8 * 1024 * 1024 and (raw.startswith(b'\x89PNG\r\n\x1a\n') or raw.startswith(b'\xff\xd8') or raw.startswith(b'RIFF')), '图片内容无效或过大')
 
 
-def validate_answers(answers, qids):
+def validate_answers(answers, qids, essay=False):
     require(isinstance(answers, dict) and set(answers) == set(qids), '跨场次或小问集合不匹配')
     for a in answers.values():
-        require(set(a) <= {'markdown', 'scene', 'drawing_png', 'attachments'}, '未知作答字段')
+        require(set(a) <= {'markdown', 'scene', 'drawing_png', 'attachments', 'essay'}, '未知作答字段')
         require(isinstance(a.get('markdown'), str) and len(a['markdown']) <= 40000, '正文过长或无效')
+        if essay:
+            parts = a.get('essay')
+            require(isinstance(parts, dict) and set(parts) == {'abstract', 'body'}
+                    and all(isinstance(v, str) for v in parts.values()) and a['markdown'] == essay_markdown(parts),
+                    '论文摘要、正文与证据原文不一致')
+        else:
+            require('essay' not in a, '案例题不能提交论文结构')
         scene = a.get('scene')
         if scene:
             require(isinstance(scene, dict) and isinstance(scene.get('elements'), list), '图稿结构无效')
@@ -225,8 +304,10 @@ class Session:
             require(body.get('revision') == s['revision'], '页面版本过期，请重新加载；本地输入仍可导出')
             self.check_frozen(s)
             now = time.time()
+            selected = body.get('selected_case_ids', s.get('selected_case_ids'))
+            s['selected_case_ids'] = selection(self.pack, selected, complete=action in ('start', 'submit') or s['started_at'] is not None)
             if 'answers' in body:
-                validate_answers(body['answers'], questions(self.pack))
+                validate_answers(body['answers'], questions(self.pack), self.pack.get('exam', {}).get('kind') == 'essay')
                 s['answers'] = body['answers']
             if action == 'start' and s['started_at'] is None:
                 s['started_at'] = now
@@ -296,10 +377,32 @@ def grade(session, evaluation_path):
     require(evaluation.get('schema_version') == 1 and evaluation.get('attempt_id') == s['attempt_id']
             and evaluation.get('submission_hash') == digest(sub) and evaluation.get('rubric_hash') == s['rubric_hash'], '评阅输入身份或版本不匹配')
     require(evaluation.get('reviewer') == 'current-agent' and evaluation.get('self_check'), '需记录当前代理自检结果')
+    selected = selection(engine.pack, sub.get('selected_case_ids'))
+    counted_questions = questions(engine.pack, selected)
     decisions = evaluation.get('decisions', [])
     byid = {d['point_id']: d for d in decisions}
-    points = {p['id']: p for p in rubric['points']}
+    points = {p['id']: p for p in rubric['points'] if p['question_id'] in counted_questions}
     require(len(byid) == len(decisions) and set(byid) == set(points), '采分点重复或未全部评阅')
+    references = dict(rubric.get('reference_answers', {}))
+    references.update(evaluation.get('reference_answers', {}))
+    require(set(counted_questions) <= set(references) <= set(questions(engine.pack)), '请为每个计分小问补齐完整参考答案')
+    for qid in counted_questions:
+        ref = references[qid]
+        require(ref.get('origin') in ('source', 'skill-generated', 'pending') and ref.get('source')
+                and isinstance(ref.get('markdown'), str) and ref['markdown'].strip(), '参考答案须有完整正文、来源与生成方式')
+        for figure in ref.get('images', []):
+            image_data(figure.get('data'))
+            require(figure.get('caption'), '参考答案图示缺少说明')
+        if ref['origin'] == 'pending':
+            require(any(byid[pid].get('status') == 'pending' for pid, point in points.items() if point['question_id'] == qid), '参考答案待核验时该小问必须保留待核验状态')
+        elif engine.pack.get('exam', {}).get('kind') == 'essay':
+            parts = ref.get('essay')
+            limits = engine.pack['exam']['essay_limits']
+            require(isinstance(parts, dict) and set(parts) == {'abstract', 'body'}
+                    and all(isinstance(v, str) and v.strip() for v in parts.values())
+                    and ref['markdown'] == essay_markdown(parts), '论文须补齐摘要和正文，不能用写作建议替代参考范文')
+            require(all(limits[name + '_min'] <= len(re.sub(r'\s', '', text)) <= limits[name + '_max'] for name, text in parts.items()), '参考范文字数应符合该试卷要求')
+    references = {qid: references[qid] for qid in counted_questions}
     results, qresults, dimensions = [], {}, {}
     for pid, p in points.items():
         d, answer = byid[pid], sub['answers'][p['question_id']]
@@ -323,12 +426,15 @@ def grade(session, evaluation_path):
         require(status != 'pending' or d.get('pending_reason'), '待核验需说明缺口')
         item = dict(p, **d, earned=p['weight'] if status == 'awarded' else 0)
         results.append(item)
-        qr = qresults.setdefault(p['question_id'], {'reference_known': 0, 'penalty': 0, 'pending': False, 'counts': {k: 0 for k in ('awarded', 'omitted', 'incorrect', 'pending')}})
+        qr = qresults.setdefault(p['question_id'], {'reference_known': 0, 'penalty': 0, 'pending': False, 'pending_weight': 0, 'counts': {k: 0 for k in ('awarded', 'omitted', 'incorrect', 'pending')}})
         qr['reference_known'] += item['earned']
         qr['pending'] |= status == 'pending'
         qr['counts'][status] += 1
-        dim = dimensions.setdefault(p['dimension'], {'earned': 0, 'max': 0, 'pending': False})
+        qr['pending_weight'] += p['weight'] if status == 'pending' else 0
+        dim = dimensions.setdefault(p['dimension'], {'earned': 0, 'max': 0, 'pending': False, 'lost': 0, 'incorrect': 0, 'omitted': 0})
         dim['earned'] += item['earned']; dim['max'] += p['weight']; dim['pending'] |= status == 'pending'
+        if status in ('omitted', 'incorrect'):
+            dim['lost'] += p['weight']; dim[status] += 1
     reference_penalties, official_causes = [], set()
     rules = {r['id']: r for r in rubric.get('reference_deductions', [])}
     require(len(rules) == len(rubric.get('reference_deductions', [])), '原始扣分规则身份重复')
@@ -366,7 +472,7 @@ def grade(session, evaluation_path):
         qresults[qid]['penalty'] += amount
         penalties.append(dict(error, amount=amount, deduplicated=bool(duplicate)))
     for qid, qr in qresults.items():
-        qr['max'] = questions(engine.pack)[qid]['max_score']
+        qr['max'] = counted_questions[qid]['max_score']
         qr['reference'] = None if qr['pending'] else qr['reference_known']
         qr['training'] = None if qr['pending'] else max(0, qr['reference_known'] - qr['penalty'])
     pending = any(q['pending'] for q in qresults.values())
@@ -376,6 +482,33 @@ def grade(session, evaluation_path):
                   training_score=None if pending else sum(q['training'] for q in qresults.values()),
                   max_score=sum(q['max'] for q in qresults.values()), elapsed_seconds=sub['elapsed_seconds'],
                   offline_elapsed_seconds=read(engine.path / 'offline-export.json').get('elapsed_seconds') if (engine.path / 'offline-export.json').exists() else None)
+    result['selected_case_ids'] = selected
+    result['reference_answers'] = references
+    exam = engine.pack.get('exam')
+    result['exam_outcome'] = None if not exam else {
+        'status': 'pending' if pending else 'pass' if result['reference_score'] >= exam['pass_score'] else 'fail',
+        'pass_score': exam['pass_score'], 'max_score': exam['max_score'],
+        'source': exam['pass_source'], 'basis': 'reference-estimate'}
+    result['weaknesses'] = {
+        'known_only': pending,
+        'questions': sorted(({'question_id': qid, 'lost': max(0, q['max'] - q['pending_weight'] - q['reference_known']),
+                              'max_score': q['max'], 'incorrect': q['counts']['incorrect'], 'omitted': q['counts']['omitted']}
+                             for qid, q in qresults.items()), key=lambda q: -q['lost']),
+        'dimensions': sorted((dict(name=name, **value) for name, value in dimensions.items()), key=lambda d: -d['lost'])}
+    if exam and exam['kind'] == 'essay':
+        essay_review = {}
+        for qid in counted_questions:
+            parts = sub['answers'][qid]['essay']
+            counts = {name: len(re.sub(r'\s', '', text)) for name, text in parts.items()}
+            limits = exam['essay_limits']
+            tasks = []
+            for task in rubric['essay_requirements'][qid]:
+                statuses = [byid[pid]['status'] for pid in task['point_ids']]
+                status = 'pending' if 'pending' in statuses else 'met' if all(v == 'awarded' for v in statuses) else 'partial' if 'awarded' in statuses else 'not-met'
+                tasks.append(dict(task, status=status))
+            essay_review[qid] = {'counts': counts, 'limits': limits, 'requirements': tasks,
+                                 'within_limits': {name: bool(parts[name].strip()) and limits[name + '_min'] <= counts[name] <= limits[name + '_max'] for name in parts}}
+        result['essay_review'] = essay_review
     history = engine.path / 'reviews'; history.mkdir(exist_ok=True)
     rid = 'review-' + digest(result)[:16]
     atomic(history / (rid + '.json'), result)
@@ -499,6 +632,7 @@ def main():
     p = subs.add_parser('prepare'); p.add_argument('--root', required=True); p.add_argument('--pack', required=True); p.add_argument('--rubric', required=True)
     p.add_argument('--source-root'); p.add_argument('--new', action='store_true'); p.add_argument('--true-question', action='store_true'); p.add_argument('--count', type=int)
     p.add_argument('--mode', choices=('free', 'timed'), default='free'); p.add_argument('--minutes', type=float)
+    p.add_argument('--paper-kind', choices=('case-analysis', 'essay'))
     for name in ('serve', 'status', 'grade', 'finalize', 'import-answer', 'revise-rubric'):
         p = subs.add_parser(name); p.add_argument('--session', required=True)
         if name == 'serve': p.add_argument('--port', type=int, default=0)
@@ -507,7 +641,7 @@ def main():
     a = parser.parse_args()
     try:
         if a.command == 'prepare':
-            result = {'session': str(prepare(a.root, a.pack, a.rubric, a.source_root, a.new, a.mode, a.minutes, a.true_question, a.count))}
+            result = {'session': str(prepare(a.root, a.pack, a.rubric, a.source_root, a.new, a.mode, a.minutes, a.true_question, a.count, a.paper_kind))}
         elif a.command == 'serve': serve(a.session, a.port); return
         elif a.command == 'status':
             e = Session(a.session); e.recover(); result = e.state()
@@ -519,10 +653,12 @@ def main():
             require(doc.get('pack_hash') == s['pack_hash'] and doc.get('rubric_hash') == s['rubric_hash']
                     and doc.get('attempt_id') == s['attempt_id'] and doc.get('status') == 'submitted', '导入答卷身份或提交状态无效')
             require(s['status'] == 'draft', '已有提交不能覆盖')
+            selected = selection(e.pack, doc.get('selected_case_ids'))
+            validate_answers(doc['answers'], questions(e.pack), e.pack.get('exam', {}).get('kind') == 'essay')
             if s['started_at'] is None:
-                e.update('start', {'attempt_id': s['attempt_id'], 'revision': s['revision']})
+                e.update('start', {'attempt_id': s['attempt_id'], 'revision': s['revision'], 'selected_case_ids': selected})
             s = e.state()
-            result = e.update('submit', {'attempt_id': s['attempt_id'], 'revision': s['revision'], 'answers': doc['answers'], 'reason': 'offline-import'})
+            result = e.update('submit', {'attempt_id': s['attempt_id'], 'revision': s['revision'], 'answers': doc['answers'], 'selected_case_ids': selected, 'reason': 'offline-import'})
             result['offline_elapsed_seconds'] = doc.get('elapsed_seconds')
             atomic(e.path / 'offline-export.json', doc)  # preserve untrusted client timer separately
         else:

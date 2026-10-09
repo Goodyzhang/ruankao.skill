@@ -36,7 +36,7 @@ def validate(ROOT):
             if metadata.is_file() and 'allow_implicit_invocation: false' not in metadata.read_text(encoding='utf-8'):
                 errors.append('Bank ingest must require explicit invocation')
         if name == 'soft-exam-lab':
-            required += ['scripts/lab.py', 'assets/frontend/dist/lab.js', 'assets/frontend/dist/lab.css', 'references/grading.md', 'references/runtime.md']
+            required += ['scripts/lab.py', 'assets/frontend/dist/lab.js', 'assets/frontend/dist/lab.css', 'references/grading.md', 'references/runtime.md', 'references/paper-rules.md']
             metadata = ROOT / 'skills' / name / 'agents/openai.yaml'
             if metadata.is_file() and 'allow_implicit_invocation: false' not in metadata.read_text(encoding='utf-8'):
                 errors.append('Lab must require explicit invocation')

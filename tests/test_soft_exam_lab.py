@@ -38,6 +38,7 @@ def fixtures():
     rubric = {'schema_version':1,'pack_id':pack['id'],'pack_version':'1','version':'1','basis':'inferred-training',
               'answer_source':{'reliable':True,'locator':'本自编题的显式系统约定','level':'authored-fixture'},
               'training_policy':'unit-weight-deduplicated-v1','points':[{'id':pid,'question_id':qid,'weight':1,'criterion':name,'correct':correct,'conditions':[cond],'equivalents':['保持条件与机制一致的专业同义表述'],'dimension':dim,'source':'自编题干版本1'} for pid,qid,name,correct,cond,dim in points]}
+    rubric['reference_answers'] = {qid: {'origin':'source', 'source':'本自编题的显式系统约定', 'markdown':'\n\n'.join(p['correct'] for p in rubric['points'] if p['question_id']==qid)} for qid in lab.questions(pack)}
     return pack,rubric
 
 

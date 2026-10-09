@@ -187,7 +187,7 @@ class LabRoutingTests(unittest.TestCase):
     write_records = ReviewRoutingTests.write_records
     assert_route = ReviewRoutingTests.assert_route
     def test_lab_explicit_and_resume_end_tutor_restrictions(self):
-        for request in ('$soft-exam-lab 来一道系统架构设计师案例题', '@soft-exam-lab 继续', '使用 soft-exam-lab 来三道题'):
+        for request in ('$soft-exam-lab 来一道系统架构设计师案例题', '$soft-exam-lab 做2018年系统架构设计师论文真题', '@soft-exam-lab 继续', '使用 soft-exam-lab 来三道题'):
             for reply in ('已提交', '继续作答', '结束并保留草稿', 'A1: 已提交', '继续批卷'):
                 with self.subTest(request=request, reply=reply):
                     self.assert_route([user('请解析这道软考题'), CONFIRMED, MARKER, user(request), CONFIRMED, MARKER, user(reply)], False)

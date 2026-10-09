@@ -1,12 +1,12 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.6.1](https://github.com/Goodyzhang/ruankao.skill/archive/refs/tags/v0.6.1.zip) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.7.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.7.0) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
 ## 1. 这套工具做什么
 
 发一道题，讲清考点，换条件练习，确认后留下可复习的记录。一章学完，将教材、知识点和错题二次蒸馏为图文复习册；练案例题时，打开本地作答环境，提交后逐点评阅。
 
-**v0.6.1 交互修复：** 作答区常驻“撤销”，每个小问保留最近 20 次正文编辑；正常输入与自动保存期间，恢复草稿按钮不再反复出现。
+**v0.7.0：按原卷作答与评阅。** 案例分析支持必答与选答，正式卷按75分计分；论文按原卷选一篇，分别填写摘要和正文。报告显示单科参考及格判定、主要失分位置，并在原作答下方给出完整参考答案或应试参考范文。
 
 **v0.6.0 新功能：在内建浏览器中登录“软考〇人（防谶）”，快速整理案例题和论文题。** 打开小节后，直接点名 `soft-exam-bank-ingest`，指定题号或整理剩余题目。Agent 保存题干和原图，合并同案例的小问，补上考场答案、采分要点与详细解析；论文生成完整应试模拟范文，整理中断后可续接。
 
@@ -16,7 +16,7 @@
 
 需要能实际看图的模型、浏览器工具与本地保存能力。优先使用内建浏览器，不要求特定 browser-use CLI；首次资料位置不明确时，用真实目录候选卡片引导。只读取题目、展开解析和导航，答案保存本地，不代填网站或交卷。
 
-[题库整理说明](docs/soft-exam-bank-ingest.md) · [案例作答实验室](docs/soft-exam-lab.md) · [新版本说明](docs/releases/v0.6.1.md)
+[题库整理说明](docs/soft-exam-bank-ingest.md) · [案例作答实验室](docs/soft-exam-lab.md) · [新版本说明](docs/releases/v0.7.0.md)
 
 ## 2. Skill 家族
 
@@ -26,7 +26,7 @@
 |---|---|---|
 | `soft-exam-question-tutor` | 单题讲解、错因诊断、变式 Grill、授权后章级归档 | 发送完整题图或文本并要求讲题 |
 | `soft-exam-bank-ingest` **新** | 浏览器案例／论文入库，原图保存、小问合并、逐问解析与续接 | 显式点名 |
-| `soft-exam-lab` | 案例题作答网页、计时绘图、严格逐点评阅与练习档案 | 显式点名 |
+| `soft-exam-lab` | 案例与论文作答、按原卷选题计分、逐点评阅和完整参考答案 | 显式点名 |
 | `soft-exam-review-book` | 已学章节二次蒸馏为图文、速查与自测 | 要求制作、续写或修订复习册 |
 | `soft-exam-prep` | 软件设计师中级学习计划、练习和复习进度 | 中级备考请求 |
 | `soft-exam-organizer` | 导入明确提交的完整中级历史对话 | 点名或提交历史导入任务 |
@@ -90,15 +90,15 @@
 使用 soft-exam-review-book，将系统架构设计师高级第三章“信息系统基础知识”做成图文、速查与自测复习册。重点比较 TPS、MIS、DSS、ES、OAS、ERP；按小节完成，整章结束后统一审阅。
 ```
 
-#### 案例题：作答与智能阅卷
+#### 案例与论文：作答与逐点评阅
 
-`soft-exam-lab` 打开本机作答网页，提供计时、Markdown／公式预览、题图放大、简易绘图和自动保存。用户交卷后，当前 Agent 依据冻结评分表逐点评阅，分别给出参考估分与严格训练分，以及失分对照、图形报告和强化 prompt。
+`soft-exam-lab` 打开本机作答网页，顶部展示原卷要求，右侧重复当前小问，支持选题、计时、正文撤销、Markdown／公式预览、绘图和自动保存。论文分别填写摘要和正文。交卷后，当前 Agent 依据冻结标准逐点评阅，报告给出参考估分、严格训练分、单科及格判定、主要失分位置及原作答下的完整参考答案。
 
 ```text
 @soft-exam-lab 为我来一道系统架构设计师软件系统设计案例题真题，就做一道。
 ```
 
-一道指完整案例大题及全部小问；一套默认三道专题案例题，缺方向或数量时弹卡。使用者无需 npm 或额外模型 API；Python 不可用时引导离线导出／导入答卷。未经核实年份题号的网站材料标为 `web-bank`，完整核验后可以普通练习，不冒充历年真题。
+指定年度案例或论文真题时默认按原卷整卷准备，核实必答、选答和75分总分。2018案例一必答、二至五选二，论文四选一；其它年份按原卷。明确单题时一道指完整案例及全部小问，未指定年度的一套默认三道专题案例题；真正缺少方向或数量时才弹卡。使用者无需 npm 或额外模型 API；Python 不可用时引导离线导出／导入答卷。未经核实年份题号的网站材料标为 `web-bank`，完整核验后可以普通练习，不冒充历年真题。
 
 ### 快速开始：完整初始化
 
@@ -106,10 +106,10 @@
 
 #### 1. 获取发布包
 
-下载 [v0.6.1 源码安装包](https://github.com/Goodyzhang/ruankao.skill/archive/refs/tags/v0.6.1.zip) 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.7.0 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.7.0) 下载 `ruankao-toolkit-v0.7.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.6.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.7.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -341,10 +341,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次补丁的验证范围见 [v0.6.1 更新说明](docs/releases/v0.6.1.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次更新的验证范围见 [v0.7.0 发布说明](docs/releases/v0.7.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.7.0 — 2026-10-09
+
+- 年度案例与论文按原卷选答和75分总分准备，选题随答卷冻结，报告显示单科参考及格判定与主要失分位置。
+- 作答区上方复述当前小问，论文分别填写摘要、正文，并按原卷论述要求逐点评阅。
+- 原作答下方新增完整参考答案；来源仅有建议时由 Skill 补成应试答案，论文提供完整参考范文并注明来源与模拟设定。
+- 修复论文刷新后的论题定位及未落盘图稿备份恢复，保留现有正文撤销、保存和归档流程。
+
+[发布说明、升级与验收范围](docs/releases/v0.7.0.md)。
 
 ### v0.6.1 — 2026-10-08
 

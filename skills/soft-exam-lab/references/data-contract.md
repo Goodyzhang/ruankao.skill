@@ -34,3 +34,46 @@
 ## archive-receipt.json
 
 `attempt_id / grade_hash / covered_points[] / files[]`。files 含实际绝对路径、SHA256；必须回读含本场身份的章级归档文件。covered_points 列出 omitted/incorrect 点以及实际额外扣分的 `extra:原因身份`。归档完成前状态不能清空。
+
+## 正式试卷 exam（pack.json 的可选字段）
+
+没有 `exam` 的包为单题、专题或全题练习，保持其原有分母；指定年度完整真题必须提供 `exam` 并使用 `prepare --paper-kind`。
+
+```json
+{
+  "kind": "case-analysis",
+  "instructions": "试题一必答，试题二至五任选两题。每题25分，满分75分。",
+  "required_case_ids": ["case-1"],
+  "choose_count": 2,
+  "max_score": 75,
+  "pass_score": 45,
+  "rules_source": "实际核验的原卷或官方试题分析书及页码",
+  "pass_source": "实际核验的该批次合格标准通知链接"
+}
+```
+
+`kind` 为 `case-analysis` 或 `essay`。`choose_count` 是必答以外的选答数量，各合法选题组合的分数必须等于 `max_score`。可提供来源明确的 `duration_minutes` 作展示；是否限时仍由本场计时模式决定。网页说明中应写出原卷超选处理规则，实际界面只允许选择规定数量。
+
+论文 `required_case_ids: []`、`choose_count: 1`，每候选论题只含一个75分小问，候选数量按原卷。另提供 `essay_limits`，如2018原卷核验后为 `{"abstract_min":0,"abstract_max":400,"body_min":2000,"body_max":3000}`。
+
+`state.json / submission.json` 新增 `selected_case_ids`。开始前可以保存未选齐的草稿，开始、作答中及交卷时必须符合选题数量，提交后冻结。`answers` 保留所有候选题草稿；`evaluation.decisions`、错误扣分和报告只包含选中题目的采分点。
+
+论文小问的 answer 新增 `essay: {abstract, body}`；其 `markdown` 必须精确等于 `"## 摘要\n\n" + abstract + "\n\n## 正文\n\n" + body`。文本证据仍使用合成后原文的 Python Unicode 字符偏移。离线导入必须同时携带选题和完整作答结构。
+
+## 论文审题映射（私有 rubric.json）
+
+论文评分表必须提供 `essay_requirements`，以每篇的小问 ID 为键、原卷论述要求数组为值。每项包含 `id / text / source / point_ids[]`；采分点必须属于该小问。报告按真实逐点结果展示已覆盖、部分覆盖、未覆盖或待核验，不能由关键词匹配代替语义判断。
+
+## 完整参考答案（私有评分表或 evaluation.json）
+
+`reference_answers` 以小问 ID 为键，内容包含：
+
+- `markdown`：完整应试参考答案。
+- `origin`：`source`（据完整可靠来源整理）、`skill-generated`（依题意和可靠依据生成）或 `pending`（存在未核实事项）。
+- `source`：实际依据、书名页码或链接；模拟范文须说明其假设。
+- `images[]`：可选，每图 `data` 为 PNG/JPEG/WebP data URI，另有 `caption`。
+- 论文另有 `essay: {abstract, body}`，与上述 Markdown 格式一致，参考范文须符合该卷字数要求。
+
+grade 要求每个计分小问有完整参考答案，evaluation 中的内容可补充评分表中的参考答案，但不得改变冻结采分标准。来源只有笼统建议时由当前 Agent 补成完整答案，不能把采分点摘要冒充完整范文。`pending` 参考答案要求对应小问确有待核验采分点。
+
+这些内容只进入提交后的报告，不放进公开题包。新报告新增 `selected_case_ids / reference_answers / exam_outcome / weaknesses`；论文报告另有 `essay_review`。合格判定使用参考估分，主要失分统计忽略未选题及待核验权重。历史报告没有完整参考答案时提示补充评阅，不伪造内容。
