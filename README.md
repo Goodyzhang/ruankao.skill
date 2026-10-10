@@ -1,8 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.8.1](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.1) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.8.2](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.2) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
-**当前补丁 v0.8.1：** 修正 tutor 的讲解与卡片续接、已发卡恢复和换题提醒，并修复“只看解析”后的重复催卡。[补丁说明](docs/releases/v0.8.1.md)。
+**当前补丁 v0.8.2：** 修复 Lab 参考答案与逐点评分各用一套依据的问题。完整答案与采分点统一保存在评分表中，出报告前必须逐题核对来源、答案和判定。[补丁说明](docs/releases/v0.8.2.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -13,6 +13,8 @@
 上图是经答卷作者授权展示的 **2018 年下半年试题一、问题 1 的真实作答节选**，保留原来的 6/8 分。绿色标出真正支撑得分的词句，黄色提示表述风险，红色标出明确错误。没有批注的部分保持原样。点击右侧引文，会定位并框出左侧相应片段；原始 Markdown 可展开查看。
 
 黄色提示不额外扣分。红色的影响取决于已有评分依据，反馈中会区分未得分、来源细则扣分和严格训练扣分，避免同因重复扣罚。完整参考答案放在你的原答卷下方；来源只有笼统建议时，Skill 会根据题干和可靠依据补成应试答案，并注明生成方式。
+
+**参考答案与评分使用同一版依据。** Agent 先核实原始资料，再从完整答案提取采分点；报告前逐题核对分类、空号、候选项、条件和方案顺序。运行器会拦截独立答案覆盖、来源分叉和缺少核对记录，无法解决的争议保留待核验。全文的语义审阅由当前 Agent 完成；更正会保留原答卷与旧报告。
 
 ### 从准备试卷到复盘
 
@@ -126,10 +128,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.8.1 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.1) 下载 `ruankao-toolkit-v0.8.1.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.8.2 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.2) 下载 `ruankao-toolkit-v0.8.2.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.8.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.8.2 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -361,10 +363,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次补丁的验证范围见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次补丁的验证范围见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.8.2 — 2026-10-10
+
+- 完整参考答案只来自冻结评分表，评阅文件不能另写或覆盖。
+- 答案来源与采分点来源一致，`correct` 直接摘自同版完整答案，案例和论文共用校验。
+- 出报告前逐题记录实际一致性核对；漏点、冲突和来源分叉会被拦截，争议保留待核验。
+- 更正通过评分表版本修订完成，保留原始提交、旧评分表和历史报告。
+
+[升级方式与验证范围](docs/releases/v0.8.2.md)。
 
 ### v0.8.1 — 2026-10-10
 

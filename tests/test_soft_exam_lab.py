@@ -38,8 +38,13 @@ def fixtures():
     rubric = {'schema_version':1,'pack_id':pack['id'],'pack_version':'1','version':'1','basis':'inferred-training',
               'answer_source':{'reliable':True,'locator':'本自编题的显式系统约定','level':'authored-fixture'},
               'training_policy':'unit-weight-deduplicated-v1','points':[{'id':pid,'question_id':qid,'weight':1,'criterion':name,'correct':correct,'conditions':[cond],'equivalents':['保持条件与机制一致的专业同义表述'],'dimension':dim,'source':'自编题干版本1'} for pid,qid,name,correct,cond,dim in points]}
-    rubric['reference_answers'] = {qid: {'origin':'source', 'source':'本自编题的显式系统约定', 'markdown':'\n\n'.join(p['correct'] for p in rubric['points'] if p['question_id']==qid)} for qid in lab.questions(pack)}
+    rubric['reference_answers'] = {qid: {'origin':'source', 'sources':['自编题干版本1'], 'markdown':'\n\n'.join(p['correct'] for p in rubric['points'] if p['question_id']==qid)} for qid in lab.questions(pack)}
     return pack,rubric
+
+
+def reference_checks(points):
+    return {qid: {'status':'consistent', 'checked_point_ids':[p['id'] for p in points if p['question_id']==qid],
+                  'note':'逐点对应本自编题显式约定；答案的顺序、条件、对象与采分点相同。'} for qid in {p['question_id'] for p in points}}
 
 
 class LabTests(unittest.TestCase):
@@ -58,7 +63,7 @@ class LabTests(unittest.TestCase):
         return self.action('submit',answers=a)
     def evaluation(self,status='omitted'):
         s=self.e.state();sub=lab.read(self.path/'submission.json')
-        return {'schema_version':1,'attempt_id':s['attempt_id'],'submission_hash':lab.digest(sub),'rubric_hash':s['rubric_hash'],'reviewer':'current-agent','self_check':{'evidence':'全部逐点反查'},'decisions':[{'point_id':p['id'],'status':status,'comment':'验收判定'} for p in self.rubric['points']], 'extra_errors':[]}
+        return {'schema_version':1,'attempt_id':s['attempt_id'],'submission_hash':lab.digest(sub),'rubric_hash':s['rubric_hash'],'reviewer':'current-agent','self_check':{'evidence':'全部逐点反查'},'reference_checks':reference_checks(self.rubric['points']),'decisions':[{'point_id':p['id'],'status':status,'comment':'验收判定'} for p in self.rubric['points']], 'extra_errors':[]}
     def run_grade(self,d):
         lab.atomic(self.root/'eval.json',d);return lab.grade(self.path,self.root/'eval.json')
     def test_default_resume_does_not_reset_draft(self):
@@ -195,6 +200,7 @@ class LabTests(unittest.TestCase):
                 if case.get('extra_error'):
                     text=answers['q-ttl']['markdown'];phrase=case['extra_error'];start=text.index(phrase);error={'question_id':'q-ttl','cause_id':'database-source','source':'Authored prompt','comment':'Contradicts explicit source-of-truth assumption','evidence':{'kind':'text','start':start,'end':start+len(phrase),'quote':phrase}};extras=[error]*(2 if case['name']=='重复额外错误' else 1)
                 evaluation={'schema_version':1,'attempt_id':st['attempt_id'],'submission_hash':lab.digest(sub),'rubric_hash':st['rubric_hash'],'reviewer':'current-agent','self_check':{'semantic':'Manually reviewed baseline; scripts validate math only'},'decisions':decisions,'extra_errors':extras}
+                evaluation['reference_checks']=reference_checks(self.rubric['points'])
                 file=self.root/'matrix-eval.json';lab.atomic(file,evaluation);result=lab.grade(path,file);self.assertEqual(result['reference_score'],case['reference']);self.assertEqual(result['training_score'],case['training'])
 
     def test_reference_answer_cannot_leak_into_public_pack(self):
@@ -211,6 +217,7 @@ class LabTests(unittest.TestCase):
         p=lab.prepare(self.root/'with-rule',self.root/'pack.json',self.root/'with-rule.json');e=lab.Session(p);st=e.state();e.update('start',{'attempt_id':st['attempt_id'],'revision':st['revision']});st=e.state();a=st['answers']
         for q in a:a[q]['markdown']='Fixture answer and separate error'
         e.update('submit',{'attempt_id':st['attempt_id'],'revision':st['revision'],'answers':a});st=e.state();sub=lab.read(p/'submission.json');ev={'schema_version':1,'attempt_id':st['attempt_id'],'submission_hash':lab.digest(sub),'rubric_hash':st['rubric_hash'],'reviewer':'current-agent','self_check':{'arithmetic':'Provided rule only'},'decisions':[{'point_id':point['id'],'status':'awarded','comment':'Fixed judgment fixture','evidence':[{'kind':'text','start':0,'end':7,'quote':'Fixture'}]} for point in r['points']],'reference_errors':[{'rule_id':'source-rule','cause_id':'error-1','comment':'Separate provided-rule error','evidence':{'kind':'text','start':19,'end':27,'quote':'separate'}}]}
+        ev['reference_checks']=reference_checks(r['points'])
         text=a['q-write']['markdown'];start=text.index('separate');ev['reference_errors'][0]['evidence']={'kind':'text','start':start,'end':start+8,'quote':'separate'};lab.atomic(self.root/'source-eval.json',ev);result=lab.grade(p,self.root/'source-eval.json');self.assertEqual(result['reference_score'],5.5);self.assertEqual(result['training_score'],5.5)
 
 if __name__=='__main__':unittest.main()

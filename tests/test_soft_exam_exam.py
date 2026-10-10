@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from test_soft_exam_lab import reference_checks
 
 REPO = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('exam_lab', REPO/'skills/soft-exam-lab/scripts/lab.py')
@@ -23,8 +24,8 @@ def fixture(essay=False):
                       'questions':[{'id':qid,'title':'论文作答' if essay else '问题1','prompt':'围绕项目、技术原理、实施结果作答。','complete':True,'max_score':75 if essay else 25}]})
         for i in range(5):
             points.append({'id':f'{qid}-p{i}','question_id':qid,'weight':15 if essay else 5,'criterion':f'验收采分点{i}',
-                           'conditions':['按自编要求判定'],'equivalents':[],'correct':'自编题约定的完整机制。','dimension':f'考点{n}','source':'自编验收'})
-        references[qid]={'origin':'skill-generated','source':'自编验收要求','markdown':'说明项目背景、采用的技术机制及实施结果。'}
+                           'conditions':['按自编要求判定'],'equivalents':[],'correct':'结合项目说明技术原理、实施过程和实践结果。','dimension':f'考点{n}','source':'自编验收'})
+        references[qid]={'origin':'skill-generated','sources':['自编验收'],'markdown':'结合项目说明技术原理、实施过程和实践结果。'}
         if essay:
             parts={'abstract':'介绍项目方案。','body':'结合项目说明技术原理、实施过程和实践结果。'}
             references[qid].update(essay=parts,markdown=lab.essay_markdown(parts))
@@ -78,7 +79,7 @@ class ExamRulesTests(unittest.TestCase):
             if status=='pending':d['pending_reason']='验收缺口'
             decisions.append(d)
         return {'schema_version':1,'attempt_id':state['attempt_id'],'submission_hash':lab.digest(sub),'rubric_hash':state['rubric_hash'],
-                'reviewer':'current-agent','self_check':{'fixture':'固定判定，仅验证规则与算分'},'decisions':decisions,'extra_errors':[]}
+                'reviewer':'current-agent','self_check':{'fixture':'固定判定，仅验证规则与算分'},'reference_checks':reference_checks(points),'decisions':decisions,'extra_errors':[]}
     def grade(self,evaluation):
         lab.atomic(self.root/'evaluation.json',evaluation)
         return lab.grade(self.path,self.root/'evaluation.json')
@@ -146,6 +147,12 @@ class ExamRulesTests(unittest.TestCase):
         self.assertEqual([t['status'] for t in result['essay_review']['q2']['requirements']],['met','met','not-met'])
         self.assertTrue(all(result['essay_review']['q2']['within_limits'].values()))
         self.assertIn('## 正文',result['reference_answers']['q2']['markdown'])
+
+    def test_essay_reference_cannot_disagree_with_scoring_points(self):
+        self.prepare(essay=True,mutate=lambda p,r:r['reference_answers']['q2'].update(markdown='与冻结技术机制相反的参考范文。'))
+        self.submit(['case2'])
+        with self.assertRaisesRegex(lab.LabError,'摘自同版'):self.grade(self.evaluation())
+        self.assertFalse((self.path/'grade.json').exists())
     def test_essay_rejects_multiple_selections(self):
         self.prepare(essay=True)
         with self.assertRaises(lab.LabError):self.action('start',selected_case_ids=['case1','case2'])

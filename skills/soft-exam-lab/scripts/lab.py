@@ -398,13 +398,28 @@ def grade(session, evaluation_path):
     byid = {d['point_id']: d for d in decisions}
     points = {p['id']: p for p in rubric['points'] if p['question_id'] in counted_questions}
     require(len(byid) == len(decisions) and set(byid) == set(points), '采分点重复或未全部评阅')
-    references = dict(rubric.get('reference_answers', {}))
-    references.update(evaluation.get('reference_answers', {}))
+    require('reference_answers' not in evaluation, '完整参考答案只能来自冻结评分表；请用 revise-rubric 修订后重新核对')
+    references = rubric.get('reference_answers', {})
     require(set(counted_questions) <= set(references) <= set(questions(engine.pack)), '请为每个计分小问补齐完整参考答案')
+    checks = evaluation.get('reference_checks', {})
+    require(isinstance(checks, dict) and set(checks) == set(counted_questions), '须逐小问完成参考答案与评分表的一致性核对')
     for qid in counted_questions:
         ref = references[qid]
-        require(ref.get('origin') in ('source', 'skill-generated', 'pending') and ref.get('source')
+        require(ref.get('origin') in ('source', 'skill-generated', 'pending')
                 and isinstance(ref.get('markdown'), str) and ref['markdown'].strip(), '参考答案须有完整正文、来源与生成方式')
+        qpoints = {pid: p for pid, p in points.items() if p['question_id'] == qid}
+        sources = ref.get('sources')
+        require(isinstance(sources, list) and all(isinstance(v, str) and v.strip() for v in sources)
+                and set(sources) == {p['source'] for p in qpoints.values()}, '参考答案须与本题采分点使用同一组已核实来源: ' + qid)
+        check = checks[qid]
+        checked = check.get('checked_point_ids', [])
+        require(isinstance(checked, list) and len(checked) == len(qpoints) and set(checked) == set(qpoints)
+                and isinstance(check.get('note'), str) and check['note'].strip(), '一致性核对须覆盖本题全部采分点并记录实际结论: ' + qid)
+        require(check.get('status') == ('pending' if ref['origin'] == 'pending' else 'consistent'),
+                '参考答案有未解决矛盾或核对结论不一致，禁止出报告: ' + qid)
+        if ref['origin'] != 'pending':
+            for pid, point in qpoints.items():
+                require(point['correct'] in ref['markdown'], '采分点 correct 必须摘自同版完整参考答案，不能独立编写: ' + pid)
         for figure in ref.get('images', []):
             image_data(figure.get('data'))
             require(figure.get('caption'), '参考答案图示缺少说明')
@@ -417,7 +432,7 @@ def grade(session, evaluation_path):
                     and all(isinstance(v, str) and v.strip() for v in parts.values())
                     and ref['markdown'] == essay_markdown(parts), '论文须补齐摘要和正文，不能用写作建议替代参考范文')
             require(all(limits[name + '_min'] <= len(re.sub(r'\s', '', text)) <= limits[name + '_max'] for name, text in parts.items()), '参考范文字数应符合该试卷要求')
-    references = {qid: references[qid] for qid in counted_questions}
+    references = {qid: dict(references[qid], source='；'.join(dict.fromkeys(references[qid]['sources']))) for qid in counted_questions}
     results, qresults, dimensions = [], {}, {}
     for pid, p in points.items():
         d, answer = byid[pid], sub['answers'][p['question_id']]

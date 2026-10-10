@@ -30,6 +30,7 @@
 - extra_errors：`question_id / cause_id / point_id`（可省略）`/ comment / source / evidence`。同一因使用同一身份，已因该错丢分不再叠罚。
 - warnings：可选数组，每项 `question_id / point_id`（可省略）`/ comment / source / evidence`。仅用于有依据的表述风险，evidence 必须是文本并可给 focus。该字段不接受 amount 等扣分字段，不改变参考分、训练分或错题统计。
 - recommendations：`priority / topic / reason / prompt`，prompt 包含实际误解与待验证迁移条件。
+- reference_checks：以计分小问 ID 为键，每项 `status / checked_point_ids[] / note`。status 为 `consistent` 或 `pending`；只允许全部计分小问、各自全部采分点恰好出现一次。note 记录本次依据、空号/条件/方案等实际核对结论及来源分歧的处理。未解决冲突不能写 consistent；pending 须对应 pending 参考答案和至少一个 pending 判定。已核实答案遇到不可读作答时，答案核对可为 consistent、作答判定仍为 pending。此记录随 evaluation 的 rubric_hash 绑定已核对版本。
 
 `grade.json` 和 `reviews/` 保存每次结果与离线HTML，分数、分布、维度从点结果计算。待核验总分为 null；已核验分数可以局部展示。脚本不检查同义/因果语义。
 
@@ -68,16 +69,18 @@
 
 论文评分表必须提供 `essay_requirements`，以每篇的小问 ID 为键、原卷论述要求数组为值。每项包含 `id / text / source / point_ids[]`；采分点必须属于该小问。报告按真实逐点结果展示已覆盖、部分覆盖、未覆盖或待核验，不能由关键词匹配代替语义判断。
 
-## 完整参考答案（私有评分表或 evaluation.json）
+## 完整参考答案（仅私有 rubric.json）
 
 `reference_answers` 以小问 ID 为键，内容包含：
 
 - `markdown`：完整应试参考答案。
 - `origin`：`source`（据完整可靠来源整理）、`skill-generated`（依题意和可靠依据生成）或 `pending`（存在未核实事项）。
-- `source`：实际依据、书名页码或链接；模拟范文须说明其假设。
+- `sources[]`：实际依据、书名页码或链接，集合必须等于本小问全部采分点 `source` 的集合。模拟项目假设写入正文。报告用此列表生成展示用 `source`，不采信另写的来源标签。
 - `images[]`：可选，每图 `data` 为 PNG/JPEG/WebP data URI，另有 `caption`。
 - 论文另有 `essay: {abstract, body}`，与上述 Markdown 格式一致，参考范文须符合该卷字数要求。
 
-grade 要求每个计分小问有完整参考答案，evaluation 中的内容可补充评分表中的参考答案，但不得改变冻结采分标准。来源只有笼统建议时由当前 Agent 补成完整答案，不能把采分点摘要冒充完整范文。`pending` 参考答案要求对应小问确有待核验采分点。
+grade 要求每个计分小问有完整参考答案，拒绝 evaluation 携带 `reference_answers`。非 pending 答案中须包含每个采分点 `correct` 的原文片段；从已核实完整答案提取这些片段，不独立生成两份结论。必要条件和同义边界由 Agent 一起审查。来源只有笼统建议时由当前 Agent 补成完整答案，不能把采分点摘要冒充完整范文。`pending` 参考答案要求对应小问确有待核验采分点，核对记录也必须 pending，报告不输出确定总分。
+
+旧场次和提交后生成的论文范文均通过现有 `revise-rubric` 加入新评分表，再更新 evaluation.rubric_hash、移除独立答案并完成本次 reference_checks。修订保留原表、原因和历史报告，不修改 submission.json。无完整答案、来源不一致、答案片段未绑定、漏核对或仍有冲突时，grade 在写报告前失败。语义审阅不能由这些字段检查替代。
 
 这些内容只进入提交后的报告，不放进公开题包。新报告新增 `selected_case_ids / reference_answers / exam_outcome / weaknesses`；论文报告另有 `essay_review`。合格判定使用参考估分，主要失分统计忽略未选题及待核验权重。历史报告没有完整参考答案时提示补充评阅，不伪造内容。

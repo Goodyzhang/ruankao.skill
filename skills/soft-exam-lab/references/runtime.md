@@ -30,6 +30,6 @@ serve 打印随机本机端口，Agent 应保存实际进程会话标识。优�
 
 事实错误经核验后：`revise-rubric --session ... --file ... --reason ...`。保存旧表和理由；原答卷不动，新评阅绑定新hash，旧HTML/JSON保留。不要向用户暗中修改标准。
 
-新报告需要每个计分小问的完整参考答案。旧版 evaluation 缺少该内容时先补齐，再调用 grade；原报告在 reviews 中保留。既有全题练习不会自动转换为正式试卷，不能将125分按比例换算成75分；需按实际选答与原卷规则重新准备和评阅。
+新报告只读取当前冻结评分表中的完整参考答案。旧场次的答案若在 evaluation 中，先按原始依据核实并移入新评分表：填写 sources，从正文提取 correct，执行 revise-rubric；随后更新 evaluation.rubric_hash，移除 evaluation.reference_answers，逐题完成 reference_checks，再调用 grade。禁止直接复制旧错误正文或只改版本值跳过核对。原报告在 reviews 中保留，submission.json 不动。既有全题练习不会自动转换为正式试卷，不能将125分按比例换算成75分；需按实际选答与原卷规则重新准备和评阅。
 
 评阅页默认展示三色批注的 Markdown 原答卷，原始文本可展开，参考答案位于下方。右侧引文突出实际得分或错误片段，点击后滚动到对应批注；案例与论文使用同一套逻辑。已有报告更新静态资源后可按原证据着色，精确词句和黄色风险提示需要 Agent 在新的评阅版本中补充 focus 与 warnings，原答卷和旧报告保留。
