@@ -15,3 +15,5 @@
 三色批注验证：公开仓库 `tests/test_soft_exam_annotations.py` 检查精确证据、风险提示不扣分与原答卷保真；`tests/test_lab_annotations.mjs` 检查重复词句、Unicode 偏移、Markdown 列表/表格/代码/公式与长论文。前端依赖装好后使用 `node --test --test-concurrency=1 tests/test_lab_annotations.mjs`，临时构建目录可通过 `SOFT_EXAM_FRONTEND_ROOT` 指定。实际浏览器检查右侧引文点击定位、左侧激活边框、原始 Markdown 展开，以及桌面和窄屏。用户明确授权的实际答卷可复制到隔离展示场景截图，不改原场次；其它示例标明自编。
 
 参考答案一致性：`tests/test_soft_exam_reference_consistency.py` 复现 evaluation 覆盖评分表并生成相反答案的旧行为；检验来源分叉、correct 不在正文、缺少/重复/跨题核对点、未解决冲突均被阻止，拒绝时已有报告不变。检验修订后原答卷保真、展示来源由评分表生成、争议只输出 pending。年度试卷测试继续覆盖只核对计分题和完整论文范文。真实报告逐题语义审核单列记录，不以程序通过声称自动理解答案。
+
+自动选答：`tests/test_soft_exam_auto_selection.py` 覆盖旧场次更正为75分并持续沿用、无须勾选开始作答、按实际题号而非数组顺序/得分取题、多答高分不进入总分和图表、少答仍为75分、补充题待核验不改变计分题合格结论、图稿/附件与纯底图区分、离线导入、报告入口一致及原提交保留。浏览器实际检查作答页可直接答选答题、报告的39/75不及格、补充题单列与主分数分离。

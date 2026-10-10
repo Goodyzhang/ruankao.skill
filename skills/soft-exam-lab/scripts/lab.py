@@ -87,8 +87,37 @@ def selection(pack, selected=None, complete=True):
     require(isinstance(selected, list) and len(selected) == len(set(selected))
             and set(selected) <= set(ids) and set(required) <= set(selected), '选答题重复、无效或缺少必答题')
     chosen = len(selected) - len(required)
-    require(chosen <= exam['choose_count'] and (not complete or chosen == exam['choose_count']), '请按试卷要求选齐计分题目')
+    require(exam.get('selection_policy') == 'answered-lowest-numbered'
+            or chosen <= exam['choose_count'] and (not complete or chosen == exam['choose_count']), '请按试卷要求选齐计分题目')
     return list(selected)
+
+
+def grading_cases(pack, submission):
+    """Separate counted answers from additional answers under the paper's rule."""
+    exam = pack.get('exam', {})
+    if exam.get('selection_policy') != 'answered-lowest-numbered':
+        return selection(pack, submission.get('selected_case_ids')), []
+    required = exam['required_case_ids']
+    answered = []
+    for case in sorted(pack['cases'], key=lambda c: c['source']['case_number']):
+        if case['id'] in required:
+            continue
+        for question in case['questions']:
+            answer = submission['answers'][question['id']]
+            scene = answer.get('scene')
+            drawing = (any(not e.get('isDeleted') and e.get('customData', {}).get('labSource') != 'question-background'
+                           for e in scene.get('elements', [])) if scene else bool(answer.get('drawing_png')))
+            if answer['markdown'].strip() or answer.get('attachments') or drawing:
+                answered.append(case['id'])
+                break
+    return required + answered[:exam['choose_count']], answered[exam['choose_count']:]
+
+
+def report_payload(pack, submission, result):
+    reassessment = result.get('exam_reassessment')
+    if reassessment:
+        pack = dict(pack, title=reassessment['title'], exam=reassessment['exam'])
+    return {'mode': 'report', 'pack': pack, 'state': submission, 'grade': result}
 
 
 def validate_exam(pack, rubric):
@@ -96,7 +125,7 @@ def validate_exam(pack, rubric):
     if not exam:
         return
     require(set(exam) <= {'kind', 'instructions', 'required_case_ids', 'choose_count', 'max_score',
-                         'pass_score', 'rules_source', 'pass_source', 'duration_minutes', 'essay_limits'}, '未知试卷规则字段')
+                         'pass_score', 'rules_source', 'pass_source', 'duration_minutes', 'essay_limits', 'selection_policy'}, '未知试卷规则字段')
     require(exam.get('kind') in ('case-analysis', 'essay') and exam.get('instructions')
             and exam.get('rules_source') and exam.get('pass_source'), '缺少试卷类型、作答要求或标准出处')
     ids = {c['id'] for c in pack['cases']}
@@ -109,6 +138,11 @@ def validate_exam(pack, rubric):
     require(isinstance(exam.get('max_score'), (int, float)) and exam['max_score'] > 0
             and isinstance(exam.get('pass_score'), (int, float)) and 0 < exam['pass_score'] <= exam['max_score'], '满分或合格线无效')
     require(exam['max_score'] == 75, '系统架构设计师正式试卷满分为75分；全题训练应使用练习模式')
+    require(exam.get('selection_policy') in (None, 'answered-lowest-numbered'), '未知超选计分规则')
+    if exam.get('selection_policy'):
+        numbers = [c['source'].get('case_number') for c in pack['cases']]
+        require(exam['kind'] == 'case-analysis' and all(type(n) is int and n > 0 for n in numbers)
+                and len(set(numbers)) == len(numbers), '自动计分须有已核实且不重复的案例题号')
     scores = {c['id']: c['max_score'] for c in pack['cases']}
     for chosen in combinations(ids - set(required), count):
         require(abs(sum(scores[i] for i in required + list(chosen)) - exam['max_score']) < 1e-6,
@@ -326,6 +360,7 @@ class Session:
                 if s['pause_started'] is not None:
                     s['paused_seconds'] += now - s['pause_started']
                     s['pause_started'] = None
+                s['selected_case_ids'], _ = grading_cases(self.pack, s)
                 s['status'], s['submitted_at'] = 'submitted', now
                 s['elapsed_seconds'] = max(0, now - s['started_at'] - s['paused_seconds'])
                 s['submission_reason'] = 'deadline' if expired else body.get('reason', 'user')
@@ -385,25 +420,36 @@ def grade(session, evaluation_path):
     engine = Session(session)
     engine.recover()
     s = engine.state()
-    require(s['status'] in ('submitted', 'graded'), '未提交，禁止评分')
+    evaluation = read(evaluation_path)
+    reassessment = evaluation.get('exam_reassessment', s.get('exam_reassessment'))
+    require(s['status'] in ('submitted', 'graded') or s['status'] == 'archived' and reassessment, '未提交或需明确重评口径，禁止评分')
     sub = read(engine.path / 'submission.json')
     rubric = read(engine.path / s['rubric_file'])
-    evaluation = read(evaluation_path)
     require(evaluation.get('schema_version') == 1 and evaluation.get('attempt_id') == s['attempt_id']
             and evaluation.get('submission_hash') == digest(sub) and evaluation.get('rubric_hash') == s['rubric_hash'], '评阅输入身份或版本不匹配')
     require(evaluation.get('reviewer') == 'current-agent' and evaluation.get('self_check'), '需记录当前代理自检结果')
-    selected = selection(engine.pack, sub.get('selected_case_ids'))
-    counted_questions = questions(engine.pack, selected)
+    pack = engine.pack
+    if reassessment:
+        require(not pack.get('exam') and isinstance(reassessment, dict)
+                and set(reassessment) == {'title', 'exam', 'request', 'reason'}
+                and all(isinstance(reassessment[k], str) and reassessment[k].strip() for k in ('title','request','reason')),
+                '旧练习转正式计分须记录用户请求、原因、报告标题及原卷规则')
+        require(isinstance(reassessment['exam'], dict) and reassessment['exam'].get('selection_policy') == 'answered-lowest-numbered', '旧案例重评须按已作答题号自动计分')
+        pack = dict(pack, title=reassessment['title'], exam=reassessment['exam'])
+        validate_exam(pack, rubric)
+    selected, supplemental = grading_cases(pack, sub)
+    counted_questions = questions(pack, selected)
+    reviewed_questions = questions(pack, selected + supplemental)
     decisions = evaluation.get('decisions', [])
     byid = {d['point_id']: d for d in decisions}
-    points = {p['id']: p for p in rubric['points'] if p['question_id'] in counted_questions}
+    points = {p['id']: p for p in rubric['points'] if p['question_id'] in reviewed_questions}
     require(len(byid) == len(decisions) and set(byid) == set(points), '采分点重复或未全部评阅')
     require('reference_answers' not in evaluation, '完整参考答案只能来自冻结评分表；请用 revise-rubric 修订后重新核对')
     references = rubric.get('reference_answers', {})
-    require(set(counted_questions) <= set(references) <= set(questions(engine.pack)), '请为每个计分小问补齐完整参考答案')
+    require(set(reviewed_questions) <= set(references) <= set(questions(pack)), '请为每个评阅小问补齐完整参考答案')
     checks = evaluation.get('reference_checks', {})
-    require(isinstance(checks, dict) and set(checks) == set(counted_questions), '须逐小问完成参考答案与评分表的一致性核对')
-    for qid in counted_questions:
+    require(isinstance(checks, dict) and set(checks) == set(reviewed_questions), '须逐小问完成参考答案与评分表的一致性核对')
+    for qid in reviewed_questions:
         ref = references[qid]
         require(ref.get('origin') in ('source', 'skill-generated', 'pending')
                 and isinstance(ref.get('markdown'), str) and ref['markdown'].strip(), '参考答案须有完整正文、来源与生成方式')
@@ -432,7 +478,7 @@ def grade(session, evaluation_path):
                     and all(isinstance(v, str) and v.strip() for v in parts.values())
                     and ref['markdown'] == essay_markdown(parts), '论文须补齐摘要和正文，不能用写作建议替代参考范文')
             require(all(limits[name + '_min'] <= len(re.sub(r'\s', '', text)) <= limits[name + '_max'] for name, text in parts.items()), '参考范文字数应符合该试卷要求')
-    references = {qid: dict(references[qid], source='；'.join(dict.fromkeys(references[qid]['sources']))) for qid in counted_questions}
+    references = {qid: dict(references[qid], source='；'.join(dict.fromkeys(references[qid]['sources']))) for qid in reviewed_questions}
     results, qresults, dimensions = [], {}, {}
     for pid, p in points.items():
         d, answer = byid[pid], sub['answers'][p['question_id']]
@@ -452,17 +498,18 @@ def grade(session, evaluation_path):
             else:
                 raise LabError('未知证据类型')
         require(status != 'pending' or d.get('pending_reason'), '待核验需说明缺口')
-        item = dict(p, **d, earned=p['weight'] if status == 'awarded' else 0)
+        item = dict(p, **d, earned=p['weight'] if status == 'awarded' else 0, counted=p['question_id'] in counted_questions)
         results.append(item)
         qr = qresults.setdefault(p['question_id'], {'reference_known': 0, 'penalty': 0, 'pending': False, 'pending_weight': 0, 'counts': {k: 0 for k in ('awarded', 'omitted', 'incorrect', 'pending')}})
         qr['reference_known'] += item['earned']
         qr['pending'] |= status == 'pending'
         qr['counts'][status] += 1
         qr['pending_weight'] += p['weight'] if status == 'pending' else 0
-        dim = dimensions.setdefault(p['dimension'], {'earned': 0, 'max': 0, 'pending': False, 'lost': 0, 'incorrect': 0, 'omitted': 0})
-        dim['earned'] += item['earned']; dim['max'] += p['weight']; dim['pending'] |= status == 'pending'
-        if status in ('omitted', 'incorrect'):
-            dim['lost'] += p['weight']; dim[status] += 1
+        if item['counted']:
+            dim = dimensions.setdefault(p['dimension'], {'earned': 0, 'max': 0, 'pending': False, 'lost': 0, 'incorrect': 0, 'omitted': 0})
+            dim['earned'] += item['earned']; dim['max'] += p['weight']; dim['pending'] |= status == 'pending'
+            if status in ('omitted', 'incorrect'):
+                dim['lost'] += p['weight']; dim[status] += 1
     reference_penalties, official_causes = [], set()
     rules = {r['id']: r for r in rubric.get('reference_deductions', [])}
     require(len(rules) == len(rubric.get('reference_deductions', [])), '原始扣分规则身份重复')
@@ -505,28 +552,35 @@ def grade(session, evaluation_path):
         require(related is None or related in points and points[related]['question_id'] == qid, '风险提示关联采分点不匹配')
         validate_text_evidence(warning.get('evidence', {}), sub['answers'][qid])
     for qid, qr in qresults.items():
-        qr['max'] = counted_questions[qid]['max_score']
+        qr['max'] = reviewed_questions[qid]['max_score']
+        qr['counted'] = qid in counted_questions
         qr['reference'] = None if qr['pending'] else qr['reference_known']
         qr['training'] = None if qr['pending'] else max(0, qr['reference_known'] - qr['penalty'])
     pending = any(q['pending'] for q in qresults.values())
+    counted_pending = any(q['pending'] for q in qresults.values() if q['counted'])
+    exam = pack.get('exam')
     result = dict(evaluation, results=results, questions=qresults, dimensions=dimensions, penalties=penalties,
                   basis=rubric['basis'], answer_source=rubric['answer_source'], reference_penalties=reference_penalties, pending=pending,
-                  reference_score=None if pending else sum(q['reference'] for q in qresults.values()),
-                  training_score=None if pending else sum(q['training'] for q in qresults.values()),
-                  max_score=sum(q['max'] for q in qresults.values()), elapsed_seconds=sub['elapsed_seconds'],
+                  reference_score=None if counted_pending else sum(q['reference'] for q in qresults.values() if q['counted']),
+                  training_score=None if counted_pending else sum(q['training'] for q in qresults.values() if q['counted']),
+                  max_score=exam['max_score'] if exam else sum(q['max'] for q in qresults.values()), elapsed_seconds=sub['elapsed_seconds'],
                   offline_elapsed_seconds=read(engine.path / 'offline-export.json').get('elapsed_seconds') if (engine.path / 'offline-export.json').exists() else None)
     result['selected_case_ids'] = selected
+    result['supplemental_case_ids'] = supplemental
+    result['reviewed_case_ids'] = selected + supplemental
+    result['unanswered_score'] = result['max_score'] - sum(q['max'] for q in qresults.values() if q['counted'])
+    if reassessment:
+        result['exam_reassessment'] = reassessment
     result['reference_answers'] = references
-    exam = engine.pack.get('exam')
     result['exam_outcome'] = None if not exam else {
-        'status': 'pending' if pending else 'pass' if result['reference_score'] >= exam['pass_score'] else 'fail',
+        'status': 'pending' if counted_pending else 'pass' if result['reference_score'] >= exam['pass_score'] else 'fail',
         'pass_score': exam['pass_score'], 'max_score': exam['max_score'],
         'source': exam['pass_source'], 'basis': 'reference-estimate'}
     result['weaknesses'] = {
-        'known_only': pending,
+        'known_only': counted_pending,
         'questions': sorted(({'question_id': qid, 'lost': max(0, q['max'] - q['pending_weight'] - q['reference_known']),
                               'max_score': q['max'], 'incorrect': q['counts']['incorrect'], 'omitted': q['counts']['omitted']}
-                             for qid, q in qresults.items()), key=lambda q: -q['lost']),
+                             for qid, q in qresults.items() if q['counted']), key=lambda q: -q['lost']),
         'dimensions': sorted((dict(name=name, **value) for name, value in dimensions.items()), key=lambda d: -d['lost'])}
     if exam and exam['kind'] == 'essay':
         essay_review = {}
@@ -544,17 +598,19 @@ def grade(session, evaluation_path):
         result['essay_review'] = essay_review
     history = engine.path / 'reviews'; history.mkdir(exist_ok=True)
     rid = 'review-' + digest(result)[:16]
+    shutil.copytree(SKILL / 'assets/frontend/dist', engine.path / 'public/static', dirs_exist_ok=True)
     atomic(history / (rid + '.json'), result)
     atomic(engine.path / 'grade.json', result)
-    payload = {'mode': 'report', 'pack': engine.pack, 'state': sub, 'grade': result}
+    payload = report_payload(pack, sub, result)
     html(engine.path / 'public/report.html', payload)
     html(history / (rid + '.html'), payload)  # use sibling symlink-free local resources below
-    if not (history / 'static').exists():
-        shutil.copytree(engine.path / 'public/static', history / 'static')
+    shutil.copytree(engine.path / 'public/static', history / 'static', dirs_exist_ok=True)
     if (engine.path / 'public/figures').exists() and not (history / 'figures').exists():
         shutil.copytree(engine.path / 'public/figures', history / 'figures')
     s['status'] = 'submitted' if pending else 'graded'
     s['grade_id'] = rid
+    if reassessment:
+        s['exam_reassessment'] = reassessment
     atomic(engine.path / 'state.json', s)
     return result
 
@@ -568,15 +624,15 @@ def finalize(session, receipt_path):
     require(result['submission_hash'] == s['submission_hash'] and result['rubric_hash'] == s['rubric_hash'] and s['grade_id'] == 'review-' + digest(result)[:16], '评阅与冻结答卷版本不一致')
     receipt = read(receipt_path)
     require(receipt.get('attempt_id') == s['attempt_id'] and receipt.get('grade_hash') == digest(result), '归档凭据版本不匹配')
-    required = {p['id'] for p in result['results'] if p['status'] in ('omitted', 'incorrect')}
-    required |= {'extra:' + p['cause_id'] for p in result['penalties'] if p['amount']}
+    required = {p['id'] for p in result['results'] if p.get('counted', True) and p['status'] in ('omitted', 'incorrect')}
+    required |= {'extra:' + p['cause_id'] for p in result['penalties'] if p['amount'] and result['questions'][p['question_id']].get('counted', True)}
     require(len(receipt.get('covered_points', [])) == len(set(receipt.get('covered_points', []))) and set(receipt.get('covered_points', [])) == required, '可靠失分点未全部归档或凭据重复')
     for f in receipt.get('files', []):
         path = Path(f['path'])
         require(path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == f['sha256'] and s['attempt_id'] in path.read_text(encoding='utf-8'), '归档未回读或哈希不一致')
     require(not required or receipt.get('files'), '失分点缺少归档文件')
     atomic(engine.path / 'archive-receipt.json', receipt)
-    payload = {'mode': 'report', 'pack': engine.pack, 'state': read(engine.path / 'submission.json'), 'grade': result}
+    payload = report_payload(engine.pack, read(engine.path / 'submission.json'), result)
     html(engine.path / 'public/index.html', payload)
     html(engine.path / 'public/offline.html', payload)
     s['status'], s['archived_at'] = 'archived', time.time()

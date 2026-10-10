@@ -30,9 +30,9 @@
 - extra_errors：`question_id / cause_id / point_id`（可省略）`/ comment / source / evidence`。同一因使用同一身份，已因该错丢分不再叠罚。
 - warnings：可选数组，每项 `question_id / point_id`（可省略）`/ comment / source / evidence`。仅用于有依据的表述风险，evidence 必须是文本并可给 focus。该字段不接受 amount 等扣分字段，不改变参考分、训练分或错题统计。
 - recommendations：`priority / topic / reason / prompt`，prompt 包含实际误解与待验证迁移条件。
-- reference_checks：以计分小问 ID 为键，每项 `status / checked_point_ids[] / note`。status 为 `consistent` 或 `pending`；只允许全部计分小问、各自全部采分点恰好出现一次。note 记录本次依据、空号/条件/方案等实际核对结论及来源分歧的处理。未解决冲突不能写 consistent；pending 须对应 pending 参考答案和至少一个 pending 判定。已核实答案遇到不可读作答时，答案核对可为 consistent、作答判定仍为 pending。此记录随 evaluation 的 rubric_hash 绑定已核对版本。
+- reference_checks：以计分小问 ID 为键，每项 `status / checked_point_ids[] / note`。status 为 `consistent` 或 `pending`；须覆盖全部评阅小问（计分题与补充批改题），各自采分点恰好出现一次。note 记录本次依据、空号/条件/方案等实际核对结论及来源分歧的处理。未解决冲突不能写 consistent；pending 须对应 pending 参考答案和至少一个 pending 判定。已核实答案遇到不可读作答时，答案核对可为 consistent、作答判定仍为 pending。此记录随 evaluation 的 rubric_hash 绑定已核对版本。
 
-`grade.json` 和 `reviews/` 保存每次结果与离线HTML，分数、分布、维度从点结果计算。待核验总分为 null；已核验分数可以局部展示。脚本不检查同义/因果语义。
+`grade.json` 和 `reviews/` 保存每次结果与离线HTML，分数、分布、维度从点结果计算。计分题待核验时总分为 null；仅补充题待核验不抹去已核实的计分总分。脚本不检查同义/因果语义。
 
 报告根据判定生成颜色：awarded 的文本证据为绿色，incorrect、reference_errors 与 extra_errors 的文本证据为红色，warnings 为黄色；遗漏和待核验不自动着色。重叠处红色优先于黄色、黄色优先于绿色，悬停保留相关评语；右侧各条反馈仍展示自己的依据。公式按完整公式高亮。没有 focus 的历史证据按原证据范围展示，不臆造精确得分词。
 
@@ -57,11 +57,13 @@
 }
 ```
 
-`kind` 为 `case-analysis` 或 `essay`。`choose_count` 是必答以外的选答数量，各合法选题组合的分数必须等于 `max_score`。可提供来源明确的 `duration_minutes` 作展示；是否限时仍由本场计时模式决定。网页说明中应写出原卷超选处理规则，实际界面只允许选择规定数量。
+`kind` 为 `case-analysis` 或 `essay`。`choose_count` 是必答以外的选答数量，各合法选题组合的分数必须等于 `max_score`。可提供来源明确的 `duration_minutes` 作展示；是否限时仍由本场计时模式决定。网页说明中应写出原卷超选处理规则，手动选题模式只允许选择规定数量。
+
+原卷规定按题号处理超选的案例卷，另提供 `selection_policy: answered-lowest-numbered`。此模式不要求手动勾选，允许作答全部候选题；各大题的 `source.case_number` 必须是核实后的正整数且互不重复。交卷从实际文字、附件和用户图稿自动确定 `selected_case_ids`：必答题加题号最小的规定数量已答选答题。`grade` 同样从原始答案重算，额外已答题列入补充批改。
 
 论文 `required_case_ids: []`、`choose_count: 1`，每候选论题只含一个75分小问，候选数量按原卷。另提供 `essay_limits`，如2018原卷核验后为 `{"abstract_min":0,"abstract_max":400,"body_min":2000,"body_max":3000}`。
 
-`state.json / submission.json` 新增 `selected_case_ids`。开始前可以保存未选齐的草稿，开始、作答中及交卷时必须符合选题数量，提交后冻结。`answers` 保留所有候选题草稿；`evaluation.decisions`、错误扣分和报告只包含选中题目的采分点。
+`state.json / submission.json` 新增 `selected_case_ids`。开始前可以保存未选齐的草稿，手动选题在开始、作答中及交卷时必须符合规定数量，提交后冻结；自动题号模式允许少答或多答，由提交内容决定计分范围。`answers` 保留所有候选题草稿；手动选题模式的 `evaluation.decisions`、错误扣分和报告只包含选中题目的采分点；自动题号模式同时包含补充批改题，以 counted 区分是否计入总分。
 
 论文小问的 answer 新增 `essay: {abstract, body}`；其 `markdown` 必须精确等于 `"## 摘要\n\n" + abstract + "\n\n## 正文\n\n" + body`。文本证据仍使用合成后原文的 Python Unicode 字符偏移。离线导入必须同时携带选题和完整作答结构。
 
@@ -79,8 +81,16 @@
 - `images[]`：可选，每图 `data` 为 PNG/JPEG/WebP data URI，另有 `caption`。
 - 论文另有 `essay: {abstract, body}`，与上述 Markdown 格式一致，参考范文须符合该卷字数要求。
 
-grade 要求每个计分小问有完整参考答案，拒绝 evaluation 携带 `reference_answers`。非 pending 答案中须包含每个采分点 `correct` 的原文片段；从已核实完整答案提取这些片段，不独立生成两份结论。必要条件和同义边界由 Agent 一起审查。来源只有笼统建议时由当前 Agent 补成完整答案，不能把采分点摘要冒充完整范文。`pending` 参考答案要求对应小问确有待核验采分点，核对记录也必须 pending，报告不输出确定总分。
+grade 要求每个评阅小问（计分与补充）有完整参考答案，拒绝 evaluation 携带 `reference_answers`。非 pending 答案中须包含每个采分点 `correct` 的原文片段；从已核实完整答案提取这些片段，不独立生成两份结论。必要条件和同义边界由 Agent 一起审查。来源只有笼统建议时由当前 Agent 补成完整答案，不能把采分点摘要冒充完整范文。`pending` 参考答案要求对应小问确有待核验采分点，核对记录也必须 pending，报告不输出确定总分。
 
 旧场次和提交后生成的论文范文均通过现有 `revise-rubric` 加入新评分表，再更新 evaluation.rubric_hash、移除独立答案并完成本次 reference_checks。修订保留原表、原因和历史报告，不修改 submission.json。无完整答案、来源不一致、答案片段未绑定、漏核对或仍有冲突时，grade 在写报告前失败。语义审阅不能由这些字段检查替代。
 
 这些内容只进入提交后的报告，不放进公开题包。新报告新增 `selected_case_ids / reference_answers / exam_outcome / weaknesses`；论文报告另有 `essay_review`。合格判定使用参考估分，主要失分统计忽略未选题及待核验权重。历史报告没有完整参考答案时提示补充评阅，不伪造内容。
+
+## 旧案例按真题重评与补充批改
+
+旧题包没有 `exam` 时，evaluation 可提供 `exam_reassessment: {title, exam, request, reason}`。request 摘录本次用户的真题计分要求，reason 说明旧计分口径问题；exam 是已核实的正式规则，必须启用上述自动题号策略。该字段只更正计分范围和报告标题，不修改原题包、原评分点或 submission.json，也不覆盖已有正式题包规则。
+
+成功后 state 与 grade 保存该记录，下一次 evaluation 省略时仍沿用。报告的 pack 为同一题包加上这份规则的展示副本，原文件保持原样；新评阅由已有 reviews 版本机制保留。
+
+evaluation 必须评阅必答、有效选答和全部多答题，并完成这些题的参考答案核对。grade 中 `selected_case_ids` 为计分题，`supplemental_case_ids` 为多答题，`reviewed_case_ids` 为两者合集；results 和 questions 的 `counted` 标识是否计入总分。分母始终为原卷满分，`unanswered_score` 表示少答选答题的空缺分值。参考分、训练分、合格结论及开头统计只由 counted 题目计算；多答题得分单独展示。多答题待核验不改变已核实计分题的合格结论，但完整评阅在补充题核验完成前仍未结束。
