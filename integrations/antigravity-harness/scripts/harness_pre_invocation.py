@@ -3,7 +3,7 @@ import sys
 
 from harness_common import (
     HARNESS_MARKER, current_flow_records, explanation_only_requested,
-    interaction_mode, is_soft_exam_context, read_recent_records,
+    interaction_mode, is_soft_exam_context, previous_suspended_question, read_recent_records,
 )
 
 if sys.platform == "win32":
@@ -45,6 +45,14 @@ def main():
         + interaction + "\n"
         "本流程仅允许 ask_question、view_file、replace_file_content、grep_search。"
     )
+    suspended = previous_suspended_question(data.get("transcriptPath", ""))
+    if suspended:
+        message += (
+            f"\n前一题 [{suspended}] 的后续状态需要核对。先核对 question_id 与 per_question；"
+            "只有本次确为新题且上一题仍未完成时，在新题正文第一行提醒一次："
+            "⚠️ 上一题 [题目标识] 仍待 [实际未完成步骤]，已保留进度。"
+            "已有授权不能说成待确认；不因提醒自动归档、不继承旧题授权，不另发旧题卡片。"
+        )
     print(
         json.dumps(
             {"injectSteps": [{"ephemeralMessage": message}]},

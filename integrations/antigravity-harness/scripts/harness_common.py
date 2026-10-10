@@ -193,6 +193,17 @@ def is_bank_ingest_request(request):
                 or re.search(prefix + r"(?:使用|调用)\s+soft-exam-bank-ingest\b", text))
 
 
+def is_question_material_update(request):
+    """Separate file/figure maintenance from an explicit request to explain a question."""
+    if re.search(r"(?:讲解|解析|解答|分析|诊断)[^。！？\n]{0,20}(?:这道题|这道软考题|这题|本题|第\s*\d+\s*题)|我选\s*[A-D]", request, re.I):
+        return False
+    return bool(re.search(
+        r"(?:替换|更换|提取|修复|备份|整理|收集|更新)[^。！？\n]{0,40}"
+        r"(?:题图|原图|图片|图表|题库|真题[^。！？\n]{0,12}(?:来源|PDF|图)|PDF[^。！？\n]{0,12}(?:图|题))",
+        request, re.I,
+    ))
+
+
 def current_flow_records(records):
     """Keep the current question across short replies, but stop at a new task."""
     latest_user_index = next(
@@ -210,7 +221,7 @@ def current_flow_records(records):
         start = index
         request = user_request(record).lower()
         # Chapter authoring ends inherited single-question restrictions.
-        if is_review_book_request(request) or is_lab_request(request) or is_bank_ingest_request(request):
+        if is_review_book_request(request) or is_lab_request(request) or is_bank_ingest_request(request) or is_question_material_update(request):
             return []
         if any(cue in request for cue in RUNTIME_CUES) and any(
             action in request for action in DIAGNOSTIC_ACTIONS
@@ -224,7 +235,11 @@ def current_flow_records(records):
 
 
 def is_soft_exam_context(transcript_path):
-    for record in current_flow_records(read_recent_records(transcript_path)):
+    return confirmed_question_flow(current_flow_records(read_recent_records(transcript_path)))
+
+
+def confirmed_question_flow(records):
+    for record in records:
         if record.get("type") == "USER_INPUT":
             request = user_request(record).lower()
             if (
@@ -242,6 +257,47 @@ def is_soft_exam_context(transcript_path):
         if record.get("type") == "EPHEMERAL_MESSAGE" and HARNESS_MARKER in text_content(record.get("content")):
             return True
     return False
+
+
+def previous_suspended_question(transcript_path):
+    """Suggest an earlier unfinished question for the agent to check against its state."""
+    records = read_recent_records(transcript_path)
+    flow = current_flow_records(records)
+    if not flow or flow[0].get("type") != "USER_INPUT":
+        return None
+    start = len(records) - len(flow)
+    if start <= 0 or any(r.get("type") == "PLANNER_RESPONSE" and re.search(
+        r"(?m)^⚠️?\s*(?:检测到)?上一题", text_content(r.get("content"))
+    ) for r in flow):
+        return None
+    prior = current_flow_records(records[:start])
+    if not confirmed_question_flow(prior) or explanation_only_requested(prior):
+        return None
+    explanation = next((i for i in range(len(prior)-1, -1, -1)
+        if prior[i].get("type") == "PLANNER_RESPONSE"
+        and "## 题目复原" in text_content(prior[i].get("content"))), None)
+    if explanation is None:
+        return None
+    ended = r"不归档|不用归档|结束本题|放弃本题|只看解析|只讲解|换题"
+    completed = r"(?m)^(?:本题|上一题|这题)?(?:已为您)?(?:已(?:圆满)?归档(?:完成)?|归档完成|全流程已归档完毕|流程已(?:圆满)?结束)"
+    pending_card = False
+    for record in prior[explanation+1:]:
+        kind = record.get("type")
+        if kind == "USER_INPUT" and re.search(ended, user_request(record)):
+            return None
+        if kind == "PLANNER_RESPONSE":
+            if re.search(completed, text_content(record.get("content"))):
+                return None
+            if record.get("tool_calls"):
+                pending_card = any(c.get("name") == "ask_question" for c in record["tool_calls"])
+        elif kind == "GENERIC" and pending_card:
+            if record.get("status", "DONE") == "DONE":
+                answer = re.search(r"(?m)^A\d+:\s*([^\n]+)", text_content(record.get("content")))
+                if answer and re.search(ended, answer[1]):
+                    return None
+            pending_card = False
+    label = re.search(r"20\d{2}\s*年[^\n]{0,24}?第\s*\d+\s*题", text_content(prior[explanation].get("content")))
+    return re.sub(r"\s+", "", label[0]) if label else "来源消息中的上一题（题号未识别）"
 
 
 def last_planner_response(transcript_path):

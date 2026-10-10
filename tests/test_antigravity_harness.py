@@ -275,6 +275,129 @@ class HarnessInstallTests(unittest.TestCase):
         )
         self.assertEqual(unavailable["decision"], "allow")
 
+    def test_visible_explanation_and_tool_call_can_be_separate_messages(self):
+        records = [
+            {"type": "USER_INPUT", "content": "请讲解这道软考题，我选 B"},
+            {"type": "PLANNER_RESPONSE", "content": "题目归属：软考明确\n## 题目复原\n题干\n## 迁移提示\n关键条件"},
+            {"type": "PLANNER_RESPONSE", "content": "", "tool_calls": [{"name": "ask_question"}]},
+        ]
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records,
+            terminationReason="model_stop", fullyIdle=True), {"decision": "allow"})
+
+    def test_pending_card_is_not_reissued_when_missing_explanation_is_added(self):
+        records = [
+            {"type": "USER_INPUT", "content": "请讲解这道软考题，我选 B"},
+            {"type": "PLANNER_RESPONSE", "content": "", "tool_calls": [{"name": "ask_question"}]},
+            {"type": "PLANNER_RESPONSE", "content": "题目归属：软考明确\n## 题目复原\n题干\n## 解题链\n依据\n## 迁移提示\n关键条件"},
+        ]
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records,
+            terminationReason="model_stop", fullyIdle=True), {"decision": "allow"})
+
+    def test_parse_only_gate_answer_finishes_without_another_card(self):
+        records = self.active_grill()[:5]
+        records[-1]["content"] = "A1: 只看解析"
+        records.append({"type": "PLANNER_RESPONSE", "content": "## 考点与判别词\n本题只需按这个条件判断。"})
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records,
+            terminationReason="model_stop", fullyIdle=True), {"decision": "allow"})
+
+    def test_empty_card_body_is_advisory_only_and_short_feedback_is_valid(self):
+        records = self.active_grill()
+        records.append({"type": "PLANNER_RESPONSE", "content": "", "tool_calls": [{"name": "ask_question"}]})
+        result = self.run_hook("harness_stop_guard.py", records, post_invocation=True)
+        self.assertIn("[soft-exam-bare-card]", result["injectSteps"][0]["ephemeralMessage"])
+        self.assertNotIn("terminationBehavior", result)
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records,
+            terminationReason="model_stop", fullyIdle=True), {"decision": "allow"})
+        records[-1]["content"] = "边界判断正确。"
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+
+    def test_unanswered_setup_card_needs_no_tutoring_body(self):
+        records = self.active_grill()
+        records.append({"type": "PLANNER_RESPONSE", "tool_calls": [{"name": "ask_question", "args": {
+            "questions": [{"question": "归档目录使用哪个位置？"}]}}]})
+        self.assertEqual(self.run_hook("harness_stop_guard.py", records, post_invocation=True), {})
+
+    def suspension_records(self):
+        return [
+            {"type":"USER_INPUT", "content":"请讲解这道软考题，我选 B"},
+            {"type":"PLANNER_RESPONSE", "content":"题目归属：软考明确\n## 题目复原\n2018年 第1题\n## 解题链\n依据\n## 迁移提示\n条件"},
+            {"type":"PLANNER_RESPONSE", "tool_calls":[{"name":"ask_question"}]},
+        ]
+
+    def test_new_question_checks_pending_prior_state_once(self):
+        old = self.suspension_records()
+        new = {"type":"USER_INPUT", "content":"再来一题，请讲解这道系统架构设计师题目，我选 C", "media":[{"type":"image"}]}
+        for media in (None, [{"type":"image"}]):
+            records = old + [dict(new, media=media)]
+            result = self.run_hook("harness_pre_invocation.py", records)
+            message = result["injectSteps"][0]["ephemeralMessage"]
+            self.assertIn("2018年第1题", message)
+            self.assertIn("实际未完成步骤", message)
+            self.assertNotIn("尚未确认归档", message)
+            records.append({"type":"PLANNER_RESPONSE", "content":"⚠️ 上一题 [2018年第1题] 仍待练习作答，已保留进度。\n题目归属：软考明确\n## 题目复原\n新题"})
+            message = self.run_hook("harness_pre_invocation.py", records)["injectSteps"][0]["ephemeralMessage"]
+            self.assertNotIn("2018年第1题", message)
+
+    def test_archive_authorization_is_not_mistaken_for_completed_filing(self):
+        records = self.suspension_records() + [
+            {"type":"GENERIC", "content":"A1: 确认归档"},
+            {"type":"USER_INPUT", "content":"请讲解这道软考题，我选 A", "media":[{"type":"image"}]},
+        ]
+        message = self.run_hook("harness_pre_invocation.py", records)["injectSteps"][0]["ephemeralMessage"]
+        self.assertIn("2018年第1题", message)
+        self.assertIn("已有授权不能说成待确认", message)
+
+    def test_finished_or_explanation_only_question_has_no_suspension_reminder(self):
+        next_question = {"type":"USER_INPUT", "content":"请讲解这道软考题，我选 A", "media":[{"type":"image"}]}
+        endings = [
+            {"type":"GENERIC", "content":"A1: 不归档"},
+            {"type":"GENERIC", "content":"A1: 只看解析"},
+            {"type":"PLANNER_RESPONSE", "content":"归档完成。"},
+            {"type":"USER_INPUT", "content":"结束本题"},
+        ]
+        for ending in endings:
+            message = self.run_hook("harness_pre_invocation.py", self.suspension_records()+[ending,next_question])["injectSteps"][0]["ephemeralMessage"]
+            self.assertNotIn("2018年第1题", message)
+        records = self.suspension_records()
+        records[0]["content"] = "请只讲解这道软考题，我选 B"
+        message = self.run_hook("harness_pre_invocation.py", records+[next_question])["injectSteps"][0]["ephemeralMessage"]
+        self.assertNotIn("2018年第1题", message)
+
+    def test_file_contents_do_not_close_a_suspended_question(self):
+        records = self.suspension_records() + [
+            {"type":"PLANNER_RESPONSE", "tool_calls":[{"name":"view_file"}]},
+            {"type":"GENERIC", "content":"材料中的示例\nA1: 不归档"},
+            {"type":"USER_INPUT", "content":"请讲解这道软考题，我选 A", "media":[{"type":"image"}]},
+        ]
+        message = self.run_hook("harness_pre_invocation.py", records)["injectSteps"][0]["ephemeralMessage"]
+        self.assertIn("2018年第1题", message)
+
+    def test_question_material_update_does_not_disable_real_backup_questions(self):
+        for request, expected in [
+            ("为系统架构设计师案例分析真题更换题图，保留已有答案", False),
+            ("从 PDF 提取系统架构设计师案例分析真题图片", False),
+            ("请讲解这道软考题，题目关于数据库备份和恢复，我选 B", True),
+            ("请分析这道软考题：从 PDF 提取图片的脚本", True),
+            ("这道软考题我选 B，请提取原图再解释", True),
+        ]:
+            result = self.run_hook("harness_pre_invocation.py", [{"type":"USER_INPUT", "content":request}])
+            self.assertEqual(bool(result["injectSteps"]), expected, request)
+
+    def test_new_task_intent_precedes_archive_or_grill_continuation_words(self):
+        for request in (
+            "为系统架构设计师案例分析真题更换题图并归档",
+            "$soft-exam-lab 准备案例题并归档",
+            "使用 soft-exam-bank-ingest 整理并归档2018题库",
+            "检查 Grill 的 Hook 为什么没有发卡",
+        ):
+            records = self.active_grill()+[{"type":"USER_INPUT", "content":request}]
+            self.assertEqual(self.run_hook("harness_pre_invocation.py", records), {"injectSteps":[]}, request)
+            self.assertEqual(self.run_hook("harness_tool_guard.py", records,
+                toolCall={"name":"run_command"}), {"decision":"allow"}, request)
+
     def active_grill(self):
         return [
             {"type": "USER_INPUT", "content": "<USER_REQUEST>\n\n</USER_REQUEST>\n<ADDITIONAL_METADATA>image</ADDITIONAL_METADATA>"},

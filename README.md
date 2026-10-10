@@ -1,6 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.8.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.0) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.8.1](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.1) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+
+**当前补丁 v0.8.1：** 修正 tutor 的讲解与卡片续接、已发卡恢复和换题提醒，并修复“只看解析”后的重复催卡。[补丁说明](docs/releases/v0.8.1.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -34,7 +36,7 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 使用者需要当前 Agent 的阅读与本地工具能力，以及 Python 3.9+；无需 npm 或额外模型 API。首次会确认题库和档案位置。未经核实年份、题号的材料仅作为普通练习，不冒充历年真题。
 
-[Lab 完整说明](docs/soft-exam-lab.md) · [本版更新与验证](docs/releases/v0.8.0.md) · [安装到你的工作区](#4-安装与使用)
+[Lab 完整说明](docs/soft-exam-lab.md) · [Lab 功能与验证](docs/releases/v0.8.0.md) · [安装到你的工作区](#4-安装与使用)
 
 ## 2. Skill 家族
 
@@ -124,10 +126,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.8.0 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.0) 下载 `ruankao-toolkit-v0.8.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.8.1 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.1) 下载 `ruankao-toolkit-v0.8.1.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.8.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.8.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -359,10 +361,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次更新的验证范围见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次补丁的验证范围见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.8.1 — 2026-10-10
+
+- tutor 讲解后同轮完成真实卡片调用，适配不同客户端的工具与消息记录方式。
+- 区分漏卡与缺正文：已发卡片不重发，空正文只提示核对，不按固定字数强制续写。
+- 换题时保留逐题进度，按实际未完成步骤提醒；不混用答复和归档授权。
+- 修复“只看解析”门控答复后的重复催卡，保留文字模式、目录选择、批量授权和其它 Skill 路由。
+
+[补丁审阅、升级与验证](docs/releases/v0.8.1.md)。
 
 ### v0.8.0 — 2026-10-09
 

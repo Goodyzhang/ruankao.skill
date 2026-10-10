@@ -13,6 +13,11 @@ from harness_common import (
 
 RECOVERY_MARKER = "[soft-exam-card-recovery]"
 BLOCKED_MARKER = "[soft-exam-card-blocked]"
+BARE_CARD_NOTICE = (
+    "[soft-exam-bare-card]\n本次卡片附近未见可见讲解或反馈，请按主 Skill 核对。"
+    "卡片已经发出，不重发、不强制续写；用户答复后按其最新选择继续。"
+    "前文已有适用讲解时沿用，确有缺失时补齐必要正文。"
+)
 TERMINAL_CHOICES = (
     "确认归档",
     "直接归档",
@@ -30,6 +35,7 @@ TERMINAL_CHOICES = (
     "结束本次学习",
     "结束本题",
     "退出",
+    "只看解析",
 )
 
 
@@ -69,6 +75,23 @@ def is_environment_card(call):
     ) for question in questions)
 
 
+def visible_body_since_answer(records):
+    """Visible prose may be separate from the call; no arbitrary length threshold."""
+    visible, pending_card = False, False
+    for record in records:
+        if record.get("type") == "PLANNER_RESPONSE":
+            visible |= bool(text_content(record.get("content")).strip())
+            if record.get("tool_calls"):
+                pending_card = any(c.get("name") == "ask_question" for c in record["tool_calls"])
+        elif record.get("type") == "GENERIC" and pending_card:
+            if record.get("status", "DONE") == "DONE" and re.search(
+                r"(?m)^A\d+:\s*\S", text_content(record.get("content")),
+            ):
+                visible = False
+            pending_card = False
+    return visible
+
+
 def card_check(data):
     transcript = data.get("transcriptPath", "")
     if not is_soft_exam_context(transcript):
@@ -88,6 +111,9 @@ def card_check(data):
     calls = planner.get("tool_calls") or []
     if calls:
         # A real call owns the next step, including a card awaiting its answer.
+        if any(call.get("name") == "ask_question" and not is_environment_card(call) for call in calls) \
+                and not visible_body_since_answer(records[:planner_index+1]):
+            return "bare_card", BARE_CARD_NOTICE, step
         return "real_tool_call", "", step
     if "当前会话未暴露结构化提问工具" in content:
         return "tool_unavailable", "", step
@@ -213,6 +239,8 @@ def main():
     check, reason, step = card_check(data)
     if not reason:
         response = default
+    elif check == "bare_card":
+        response = default if not post_invocation else {"injectSteps": [{"ephemeralMessage": reason}]}
     elif post_invocation:
         response = {
             "injectSteps": [{"ephemeralMessage": reason}],
