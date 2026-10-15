@@ -200,3 +200,73 @@ class LabRoutingTests(unittest.TestCase):
         self.assertFalse(harness.is_lab_request('案例里的 @soft-exam-lab 是命令吗？'))
     def test_new_tutor_after_lab_enters_normal_flow(self):
         self.assert_route([user('$soft-exam-lab 来一道题'),user('请解析这道软考题'),CONFIRMED],True)
+
+
+class EssayRoutingTests(unittest.TestCase):
+    setUp = ReviewRoutingTests.setUp
+    write_records = ReviewRoutingTests.write_records
+    assert_route = ReviewRoutingTests.assert_route
+    run_hook = ReviewRoutingTests.run_hook
+
+    def test_essay_prompt_review_and_writing_do_not_activate_tutor(self):
+        for request in (
+            '请分析这道系统架构设计师论文题目，按题干批改我的原稿',
+            '请用 soft-exam-architect-prep 分析这道系统架构设计师论文题目并批改原稿',
+            '请分析这道系统架构设计师论文题目',
+            '请批改这篇论文，并改成完整考场稿',
+            '请分析这道系统架构设计师论文题目中的概念是否准确，并批改原稿',
+            '根据论文题目写两段摘要与正文提纲',
+            '请给这篇系统架构设计师论文评分',
+            '请帮我写一篇系统架构设计师论文',
+            '写论文，题目是论微服务架构',
+            '这道系统架构设计师论文题目请你帮我写',
+        ):
+            with self.subTest(request=request):
+                # Old or mistaken assistant confirmation cannot turn authoring
+                # into a single-question session.
+                self.assert_route([user(request), CONFIRMED, MARKER], False)
+
+    def test_switch_to_essay_review_ends_prior_tutor_flow_and_short_replies(self):
+        for reply in ('继续', 'A1: 继续', '确认归档'):
+            with self.subTest(reply=reply):
+                self.assert_route([
+                    user('请解析这道软考题'), CONFIRMED, MARKER,
+                    user('请按这道系统架构设计师论文题目批改原稿'), CONFIRMED,
+                    user(reply), MARKER,
+                ], False)
+
+    def test_objective_question_or_concept_inside_essay_remains_tutor(self):
+        for request in (
+            '请讲解这篇论文里的这道软考选择题，我选 B',
+            '请分析论文中这道系统架构设计师客观题，为什么选 C？',
+            '请讲论文里的这道题，我选 B',
+            '论文里的这道题请继续解析，我选 B',
+            '请讲解论文里涉及的这个知识点',
+        ):
+            with self.subTest(request=request):
+                self.assert_route([
+                    user('请批改这篇论文'), user(request), CONFIRMED,
+                ], True)
+
+    def test_new_case_question_after_essay_review_enters_tutor(self):
+        self.assert_route([
+            user('请批改系统架构设计师论文'),
+            user('请解析这道系统架构设计师案例题'), CONFIRMED,
+        ], True)
+
+    def test_short_answer_continues_question_inside_essay(self):
+        self.assert_route([
+            user('请批改这篇论文'),
+            user('请讲论文里的这道题，我选 B'), CONFIRMED,
+            user('A1: 继续'),
+        ], True)
+
+    def test_essay_review_hooks_do_not_inject_cards_or_deny_tools(self):
+        self.write_records([
+            user('请解析这道软考题'), CONFIRMED, MARKER,
+            user('请分析这道系统架构设计师论文题目并改写原稿'),
+            CONFIRMED, MARKER, user('继续'),
+        ])
+        self.assertEqual(self.run_hook('harness_pre_invocation.py'), {'injectSteps': []})
+        self.assertEqual(self.run_hook('harness_tool_guard.py', toolCall={'name': 'run_command'}), {'decision': 'allow'})
+        self.assertEqual(self.run_hook('harness_stop_guard.py', terminationReason='model_stop', fullyIdle=True), {'decision': 'allow'})

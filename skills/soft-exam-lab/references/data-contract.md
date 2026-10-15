@@ -77,7 +77,7 @@
 
 - `markdown`：完整应试参考答案。
 - `origin`：`source`（据完整可靠来源整理）、`skill-generated`（依题意和可靠依据生成）或 `pending`（存在未核实事项）。
-- `sources[]`：实际依据、书名页码或链接，集合必须等于本小问全部采分点 `source` 的集合。模拟项目假设写入正文。报告用此列表生成展示用 `source`，不采信另写的来源标签。
+- `sources[]`：实际依据、书名页码或链接，集合必须等于本小问全部采分点 `source` 的集合。模拟模式与假设边界放在元数据或独立写作说明，项目设定融入考场正文，不插入真实性免责声明。报告用此列表生成展示用 `source`，不采信另写的来源标签。
 - `images[]`：可选，每图 `data` 为 PNG/JPEG/WebP data URI，另有 `caption`。
 - 论文另有 `essay: {abstract, body}`，与上述 Markdown 格式一致，参考范文须符合该卷字数要求。
 

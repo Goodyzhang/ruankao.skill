@@ -17,7 +17,7 @@
 - `verification.state` 为 `pending|verified`，证据存于 `evidence`，缺口存于 `unresolved`。只有完整、存在核验证据且无实质缺口的记录才可 verified。训练评分口径已明确、等价答案边界已解决的材料可核验为练习资料；不能因此宣称官方答案或真题身份已确认。
 - `assets` 每项含 `file`、`role: original|answer|editable`、实际文件的 `sha256`。公开题图只能引用 original。答案图和解析不进入公开包。
 - 案例包含 `pack` 和 `rubric`，字段按实验室 [data-contract.md](../../soft-exam-lab/references/data-contract.md)。一个记录对应一整道案例，全部小问使用稳定身份。`source.kind: web-bank` 表示未经核实年份题号的网站材料；可作普通练习，不能响应真题要求。
-- 论文包含 `essay.mode: exam-simulation`、`requirements`、`profile`、`abstract`、`body`、`coverage`。coverage 逐项覆盖 requirements。未规定字数时检查约 300 字摘要、约 2,300 字正文训练目标；脚本不裁切作文。论文首版不导出到实验室。
+- 论文包含 `essay.mode: exam-simulation`、`requirements`、`profile`、`abstract`、`body`、`coverage`。coverage 逐项覆盖 requirements。未规定字数时检查约 300 字摘要、约 2,200 字正文训练目标；脚本不裁切作文。论文首版不导出到实验室。
 - 题面、源解析、核验答案、逐点要点及教材链接都由模型写作并检查；脚本只校验结构和文件，不从关键词生成答案。
 
 ## 使用与恢复

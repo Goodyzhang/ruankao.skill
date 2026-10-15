@@ -1,8 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.8.4](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.4) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.9.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.9.0) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
-**当前补丁 v0.8.4：** Lab 准备好试卷后，先在正文显示可点击的 `127.0.0.1` 作答入口，默认打开本地页面并等待真实交卷，不再反复弹“继续作答”状态卡。[补丁说明](docs/releases/v0.8.4.md)。
+**v0.9.0：论文先看扣题和业务实践。** 普通论文写作与批改由高级备考 Skill 处理，Lab 论文评阅与题库模拟范文共用同一套方法：逐项回应题干、核对技术机制和本人行动，再调整摘要、结构与语言。已授权的应试模拟按可行性和自洽性评阅。[更新说明](docs/releases/v0.9.0.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -48,16 +48,16 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 | Skill | 用途 | 入口 |
 |---|---|---|
-| `soft-exam-lab` **本版更新** | 案例与论文作答、原文三色批注、按原卷计分及完整参考答案 | 显式点名 |
+| `soft-exam-lab` | 案例与论文作答、原文三色批注、按原卷计分及完整参考答案 | 显式点名 |
 | `soft-exam-question-tutor` | 单题讲解、错因诊断、变式 Grill、授权后章级归档 | 发送完整题图或文本并要求讲题 |
 | `soft-exam-bank-ingest` | 浏览器案例／论文入库，原图保存、小问合并、逐问解析与续接 | 显式点名 |
 | `soft-exam-review-book` | 已学章节二次蒸馏为图文、速查与自测 | 要求制作、续写或修订复习册 |
 | `soft-exam-prep` | 软件设计师中级学习计划、练习和复习进度 | 中级备考请求 |
 | `soft-exam-organizer` | 导入明确提交的完整中级历史对话 | 点名或提交历史导入任务 |
-| `soft-exam-architect-prep` | 系统架构设计师高级计划、案例、论文与周期复习 | 高级备考请求 |
+| `soft-exam-architect-prep` **本版更新** | 高级计划、案例、论文写作与批改、周期复习 | 高级备考请求，含单篇论文改稿 |
 | `soft-exam-architect-organizer` | 导入明确提交的完整高级历史对话 | 点名或提交历史导入任务 |
 
-题库整理与实验室仅接受 `$skill-name`、`@skill-name` 或“使用 skill-name”的实际调用；引用名称和初始化时提及不启动。已启动批次或场次可直接“继续”。普通讲题保持 tutor 路由；章节制作和题库批次不继承单题工具限制、强制 Grill 或逐题归档卡。
+题库整理与实验室仅接受 `$skill-name`、`@skill-name` 或“使用 skill-name”的实际调用；引用名称和初始化时提及不启动。已启动批次或场次可直接“继续”。普通客观题与案例题讲解保持 tutor 路由；单篇论文改稿走高级备考，不自动启动 Lab。章节制作和题库批次不继承单题工具限制、强制 Grill 或逐题归档卡。
 
 安装时保留八个完整目录与各自的 `references/`、`assets/`、`scripts/`，不能只复制入口文件。两级知识资料与空错题本随包提供，个人题库、登录信息与本机配置不进入发布包。
 
@@ -130,10 +130,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.8.4 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.4) 下载 `ruankao-toolkit-v0.8.4.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.9.0 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.9.0) 下载 `ruankao-toolkit-v0.9.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.8.4 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.9.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -277,7 +277,7 @@ npx skills add Goodyzhang/ruankao.skill -a antigravity
 - **归档**：“将本题归档到高级”。授权只用于本题；写入章级知识点和错题本后回读核验。下一题重新建立状态与授权。
 - **章节复习册**：“第五章已经学完，请制作图文速查复习册”。按小节取材、写作、生图、复核，整章完成后统一审阅；也可指定某个专题或局部修订。
 - **复习**：“今天有哪些 D1/D7/D21 到期？”依据实际完成日期计算，空日期不会被当作今天到期。
-- **论文**：“按我的论文项目底稿整理架构评估提纲”。先填真实事实与证据；缺失内容保持待补。示例角色、规模和指标不能直接变成个人经历。
+- **论文**：“按题干逐项批改这篇论文，并改成完整考场稿”。先给出原文的扣题证据、技术问题与具体改法，再写完整摘要和正文；用户已明确的真实经历或应试模拟口径持续沿用。模拟写作允许合理设计技术与结果，正文保持完整表达，设定说明另存。详见 [论文写作与批改](skills/soft-exam-architect-prep/references/paper-review.md)。
 - **历史导入**：“请用高级 organizer 整理下面这份完整历史对话”。只导入明确提交的材料；题干、选项或必要图片缺失时先补齐。
 
 ### 资料目录
@@ -366,10 +366,21 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次论文批改方法见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.9.0 — 2026-10-15
+
+- 新增统一论文写作与批改方法，普通改稿、Lab 评阅和题库模拟范文共用。
+- 先检查逐项扣题、技术机制、业务流程及本人行动，再检查结构和语言；反馈引用原文并给出可直接采用的修改。
+- 统一真实经历与应试模拟口径，模拟技术与效果按可行性及自洽性评阅，避免入口冲突和正文中的反复免责声明。
+- 补充十段式、两段摘要格式、全部要求回应与三个实践论点的组织方法；题面和可靠评分依据优先。
+- 匿名功能命名、教材术语、时间规模、指标比较条件纳入一致性核对。
+- 修复可选 Harness 将论文改稿误判为单题的问题；已安装该模块的工作区需同时更新 Hook 脚本。
+
+[升级方式与验证范围](docs/releases/v0.9.0.md)。
 
 ### v0.8.4 — 2026-10-15
 

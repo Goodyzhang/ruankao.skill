@@ -204,6 +204,51 @@ def is_question_material_update(request):
     ))
 
 
+def is_essay_question_request(request):
+    """Recognize tutoring about a question or concept found inside an essay."""
+    if "论文" not in request:
+        return False
+    explanation = r"(?:讲解|讲|解析|分析|解答|诊断|怎么做|为什么选)"
+    # A question or concept appearing inside an essay is still tutoring. The
+    # object of the request, rather than the surrounding material, controls it.
+    essay_question = (
+        r"论文[^。！？\n，,]{0,30}"
+        r"(?:客观题|选择题|判断题|知识题|知识点|考点|概念|这道题|这题|本题|第\s*\d+\s*题)"
+    )
+    explains_content = re.search(explanation + r"[^。！？\n，,]{0,30}" + essay_question, request) or re.search(
+        essay_question + r"[，,\s]*(?:请|继续|再|帮我|给我|为我|详细|仔细)*" + explanation,
+        request,
+    )
+    objective_question = re.search(
+        r"论文[^。！？\n，,]{0,30}(?:客观题|选择题|判断题|知识题|这道题|这题|本题|第\s*\d+\s*题)",
+        request,
+    )
+    revision = r"(?:改写|重写|改稿|批改|评阅|评改|评分|打分|点评|评审|润色|审校|修改|补写|扩写|缩写|替换段|考场稿)"
+    nearby = r"[^。！？\n]{0,80}"
+    revises_essay = re.search(revision + nearby + "论文", request) or re.search("论文" + nearby + revision, request)
+    return bool(explains_content and (objective_question or not revises_essay))
+
+
+def is_essay_authoring_request(request):
+    """Keep essay writing/review outside tutoring, including after a question."""
+    if "论文" not in request or is_essay_question_request(request):
+        return False
+    authoring = (
+        r"(?:写(?:一篇|一份|一段|这篇|这份|这个)|(?:帮我|为我|给我|替我|请你|请|直接|继续|重新|续)写|写(?=论文)|"
+        r"写作|编写|创作|撰写|改写|重写|改稿|批改|评阅|评改|评分|打分|点评|评审|润色|审题|审校|"
+        r"修改|补写|扩写|缩写|完善|整理|提纲|写作框架|考场稿|全文|过渡段)"
+    )
+    nearby = r"[^。！？\n]{0,80}"
+    if re.search(authoring + nearby + "论文", request) or re.search("论文" + nearby + authoring, request):
+        return True
+    # Analysing the essay prompt itself is prep's paper mode; explaining an
+    # objective question inside an essay was handled above.
+    return bool(re.search(
+        r"(?:分析|解析)[^。！？\n]{0,30}论文(?:题目|题)|论文(?:题目|题)[^。！？\n]{0,30}(?:分析|解析|怎么写|怎样写|如何写)",
+        request,
+    ))
+
+
 def current_flow_records(records):
     """Keep the current question across short replies, but stop at a new task."""
     latest_user_index = next(
@@ -221,13 +266,16 @@ def current_flow_records(records):
         start = index
         request = user_request(record).lower()
         # Chapter authoring ends inherited single-question restrictions.
-        if is_review_book_request(request) or is_lab_request(request) or is_bank_ingest_request(request) or is_question_material_update(request):
+        if (is_review_book_request(request) or is_lab_request(request)
+                or is_bank_ingest_request(request) or is_question_material_update(request)
+                or is_essay_authoring_request(request)):
             return []
         if any(cue in request for cue in RUNTIME_CUES) and any(
             action in request for action in DIAGNOSTIC_ACTIONS
         ):
             return []
-        if record.get("media") or "下一题" in request or "再来一题" in request:
+        if (record.get("media") or "下一题" in request or "再来一题" in request
+                or is_essay_question_request(request)):
             break
         if not is_continuation(request):
             break
