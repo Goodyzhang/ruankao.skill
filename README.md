@@ -1,8 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.8.3](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.3) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.8.4](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.4) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
-**当前补丁 v0.8.3：** 在 Lab 中说明“按照真题评分标准”，即可按原卷规则自动识别已答题并计分。案例超选时取题号较小的规定数量，多答题单列批改，网页总分保持75分并显示及格判定。[补丁说明](docs/releases/v0.8.3.md)。
+**当前补丁 v0.8.4：** Lab 准备好试卷后，先在正文显示可点击的 `127.0.0.1` 作答入口，默认打开本地页面并等待真实交卷，不再反复弹“继续作答”状态卡。[补丁说明](docs/releases/v0.8.4.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -21,7 +21,7 @@
 ### 从准备试卷到复盘
 
 1. **指定试卷或练习范围。** 年度案例按原卷必答、选答规则准备，页面顶部显示要求；2018 年案例一必答、二至五选二，满分 75 分。明确单题时，保留该大题的全部小问。其它年份以实际原卷为准。
-2. **在网页中作答。** 当前小问同时显示在右侧编辑区上方，支持计时、暂停、自动保存、常驻 20 步撤销、Markdown／公式预览和绘图。内建浏览器或 Chrome 等普通浏览器均可使用同一本机地址；草稿可导出续接。
+2. **在网页中作答。** Agent 在正文给出实际的 127 本地链接并打开页面，在当前会话等待交卷；网页交卷成功后无需再点聊天确认卡。当前小问同时显示在右侧编辑区上方，支持计时、暂停、自动保存、常驻 20 步撤销、Markdown／公式预览和绘图。内建浏览器或 Chrome 等普通浏览器均可使用同一本机地址；草稿可导出续接。
 3. **交卷后逐点复盘。** 当前 Agent 阅读冻结答卷和评分表，给出参考估分、严格训练分、单科及格判定与主要失分位置。彩色批注与引文使用同一组证据；遗漏和待核验不会被伪装成已写出的错误。可靠失分点按既有章节契约归档。
 
 ```text
@@ -130,10 +130,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.8.3 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.3) 下载 `ruankao-toolkit-v0.8.3.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.8.4 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.8.4) 下载 `ruankao-toolkit-v0.8.4.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.8.3 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.8.4 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -342,6 +342,7 @@ macOS / Linux 把 `py -3` 换成 `python3`。`--force` 只替换同名 Harness H
 | 现象 | 处理 |
 |---|---|
 | 没发现 Skill | 确认打开的是目标 Vault，检查 `.agents/skills/soft-exam-question-tutor/SKILL.md`，再新建会话 |
+| Lab 只有卡片、没有作答入口 | 升级到 v0.8.4 完整 Lab Skill；正文先显示已核验的 127 链接，默认打开页面并等待真实交卷。索要 URL 时直接重发正文链接，不再弹状态卡 |
 | 只讲题、不弹卡 | 升级到 v0.3.7 并用 `--force` 更新可选 Harness。PostInvocation 在每轮回复后检查漏卡并要求自动补发；以真实工具事件判断是否成功，正文中的调用文字不能替代卡片。工具未暴露时检查所选 Agent 的工具配置 |
 | 对话变长或回复“？”后再次漏卡 | v0.3.7 按当前题和真实卡片返回续接，不再依赖反馈标题；大段工具结果不会按 256 KiB 截断题目上下文。升级后重开工作区以加载新 Hook；执行结果见会话产物目录下 `soft-exam-card-events.jsonl` |
 | Grill 收尾后没有归档确认卡 | 提前达到掌握证据可以结束追问，但仍需本题的归档确认。v0.3.6 的 Stop Hook 会在已确认的单题流程中尝试补发原生归档卡；用户已明确结束、拒绝或确认归档时不重复发卡 |
@@ -365,10 +366,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次补丁的验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.8.4 — 2026-10-15
+
+- 作答交接先发正文与真实 127 链接；用户索要 URL 时直接重发入口。
+- 服务默认请求浏览器打开页面，提供 `--no-open` 供内建浏览器使用。
+- 新增有时限的交卷监听，依据冻结答卷接续评阅；默认不弹状态卡，超时不算提交。
+- 服务失效、用户中断与无等待工具时明确续接方式，不承诺未建立的后台阅卷。
+
+[升级方式与验证范围](docs/releases/v0.8.4.md)。
 
 ### v0.8.3 — 2026-10-10
 

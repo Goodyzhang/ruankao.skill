@@ -14,8 +14,10 @@ import shutil
 import tempfile
 import threading
 import time
+import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote, urlsplit
+from urllib.request import ProxyHandler, build_opener
 
 SKILL = Path(__file__).resolve().parents[1]
 ID = re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$')
@@ -643,7 +645,51 @@ def finalize(session, receipt_path):
     return s
 
 
-def serve(session, port=0):
+def service_url(engine):
+    """Return only a live loopback URL belonging to this attempt; ignore stale PID files."""
+    try:
+        service = read(engine.path / 'service.json')
+        aid = engine.state()['attempt_id']
+        port = service['port']
+        if service['attempt_id'] != aid or type(port) is not int or not 0 < port < 65536:
+            return None
+        url = 'http://127.0.0.1:' + str(port)
+        # Local handoff must not go through a user's HTTP proxy.
+        with build_opener(ProxyHandler({})).open(url + '/api/health', timeout=1) as response:
+            health = json.load(response)
+        return url if health.get('attempt_id') == aid else None
+    except (OSError, ValueError, KeyError):
+        return None
+
+
+def wait_for_submission(session, timeout=25, interval=1):
+    """Bounded, read-only handoff; a timeout or chat reply never submits an answer."""
+    require(0 <= timeout <= 60 and 0 < interval <= 5, '等待时长须为0到60秒，间隔须大于0且不超过5秒')
+    engine = Session(session)
+    deadline = time.monotonic() + timeout
+    while True:
+        state = engine.state()
+        engine.check_frozen(state)
+        status = state['status']
+        result = {'attempt_id': state['attempt_id'], 'status': status}
+        if status in ('submitted', 'graded', 'archived'):
+            frozen = read(engine.path / 'submission.json')
+            require(frozen.get('attempt_id') == state['attempt_id']
+                    and frozen.get('pack_hash') == state['pack_hash']
+                    and frozen.get('status') == 'submitted'
+                    and digest(frozen) == state.get('submission_hash'), '冻结答卷身份或哈希无效')
+            return dict(result, event=status, submission=str(engine.path / 'submission.json'))
+        require(status == 'draft', '未知场次状态')
+        url = service_url(engine)
+        if url is None:
+            return dict(result, event='service_unavailable')
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            return dict(result, event='timeout', url=url)
+        time.sleep(min(interval, remaining))
+
+
+def serve(session, port=0, open_browser=True):
     engine = Session(session); engine.recover()
     root = engine.path / 'public'
     class Handler(BaseHTTPRequestHandler):
@@ -661,6 +707,9 @@ def serve(session, port=0):
             if not self.origin_ok():
                 self.send(403, {'error': '不允许其它来源'}); return
             path = unquote(urlsplit(self.path).path)
+            if path == '/api/health':
+                state = engine.state()
+                self.send(200, {'attempt_id': state['attempt_id'], 'status': state['status']}); return
             if path == '/api/state':
                 self.send(200, engine.state()); return
             if path == '/':
@@ -697,7 +746,8 @@ def serve(session, port=0):
     server = ThreadingHTTPServer(('127.0.0.1', port), Handler)
     server.daemon_threads = True
     atomic(engine.path / 'service.json', {'pid': os.getpid(), 'port': server.server_port, 'attempt_id': engine.state()['attempt_id']})
-    print(json.dumps({'url': 'http://127.0.0.1:' + str(server.server_port), 'attempt_id': engine.state()['attempt_id']}, ensure_ascii=False), flush=True)
+    url = 'http://127.0.0.1:' + str(server.server_port)
+    print(json.dumps({'url': url, 'attempt_id': engine.state()['attempt_id']}, ensure_ascii=False), flush=True)
     def deadlines():
         while not stop.wait(1):
             try:
@@ -708,6 +758,16 @@ def serve(session, port=0):
                 pass  # disk error retains last good draft; API surfaces actual save failure
     stop = threading.Event()
     threading.Thread(target=deadlines, daemon=True).start()
+    def open_page():
+        try:
+            requested = bool(webbrowser.open(url, new=2))
+        except Exception:
+            requested = False
+        # OS acceptance is not proof the browser rendered the page.
+        print(json.dumps({'event': 'browser_open_requested' if requested else 'browser_open_failed',
+                          'url': url}, ensure_ascii=False), flush=True)
+    if open_browser:
+        threading.Thread(target=open_page, daemon=True).start()
     try:
         server.serve_forever()
     finally:
@@ -722,18 +782,24 @@ def main():
     p.add_argument('--source-root'); p.add_argument('--new', action='store_true'); p.add_argument('--true-question', action='store_true'); p.add_argument('--count', type=int)
     p.add_argument('--mode', choices=('free', 'timed'), default='free'); p.add_argument('--minutes', type=float)
     p.add_argument('--paper-kind', choices=('case-analysis', 'essay'))
-    for name in ('serve', 'status', 'grade', 'finalize', 'import-answer', 'revise-rubric'):
+    for name in ('serve', 'status', 'wait', 'grade', 'finalize', 'import-answer', 'revise-rubric'):
         p = subs.add_parser(name); p.add_argument('--session', required=True)
-        if name == 'serve': p.add_argument('--port', type=int, default=0)
+        if name == 'serve':
+            p.add_argument('--port', type=int, default=0)
+            p.add_argument('--no-open', action='store_true', help='由 Agent 内建浏览器打开，或无桌面时保留正文链接')
+        if name == 'wait':
+            p.add_argument('--timeout', type=float, default=25)
+            p.add_argument('--interval', type=float, default=1)
         if name in ('grade', 'finalize', 'import-answer'): p.add_argument('--file', required=True)
         if name == 'revise-rubric': p.add_argument('--file', required=True); p.add_argument('--reason', required=True)
     a = parser.parse_args()
     try:
         if a.command == 'prepare':
             result = {'session': str(prepare(a.root, a.pack, a.rubric, a.source_root, a.new, a.mode, a.minutes, a.true_question, a.count, a.paper_kind))}
-        elif a.command == 'serve': serve(a.session, a.port); return
+        elif a.command == 'serve': serve(a.session, a.port, not a.no_open); return
         elif a.command == 'status':
-            e = Session(a.session); e.recover(); result = e.state()
+            e = Session(a.session); e.recover(); result = dict(e.state(), url=service_url(e))
+        elif a.command == 'wait': result = wait_for_submission(a.session, a.timeout, a.interval)
         elif a.command == 'grade': result = grade(a.session, a.file)
         elif a.command == 'finalize': result = finalize(a.session, a.file)
         elif a.command == 'import-answer':
