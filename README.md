@@ -1,8 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.9.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.9.0) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.10.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.0) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
-**v0.9.0：论文先看扣题和业务实践。** 普通论文写作与批改由高级备考 Skill 处理，Lab 论文评阅与题库模拟范文共用同一套方法：逐项回应题干、核对技术机制和本人行动，再调整摘要、结构与语言。已授权的应试模拟按可行性和自洽性评阅。[更新说明](docs/releases/v0.9.0.md)。
+**v0.10.0：范文按题目组织论证，批改核对主张、实例和结果。** 普通论文写作与批改由高级备考 Skill 处理，Lab 评阅与题库模拟范文共用同一套方法。新增写作、评分和校准参考，形成 P01–P12 审查规则与 75 分训练表；局部材料只评已见内容，未展示部分保留待核。已授权的应试模拟直接补足合理设计，按题意、机制和自洽性评阅。[更新说明](docs/releases/v0.10.0.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -60,6 +60,17 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 题库整理与实验室仅接受 `$skill-name`、`@skill-name` 或“使用 skill-name”的实际调用；引用名称和初始化时提及不启动。已启动批次或场次可直接“继续”。普通客观题与案例题讲解保持 tutor 路由；单篇论文改稿走高级备考，不自动启动 Lab。章节制作和题库批次不继承单题工具限制、强制 Grill 或逐题归档卡。
 
 安装时保留八个完整目录与各自的 `references/`、`assets/`、`scripts/`，不能只复制入口文件。两级知识资料与空错题本随包提供，个人题库、登录信息与本机配置不进入发布包。
+
+### 论文范文与评阅
+
+先拆清题目要求，再决定每段要证明什么。范文将业务对象、本人决策、运行过程和验证结果写成完整文章；批改逐项定位原文，检查实例是否支撑主张、结果是否验证了相应措施。技术名称齐全、题目词反复出现或段数整齐，都不能代替这条论证链。
+
+- [共用写作与批改方法](skills/soft-exam-architect-prep/references/paper-review.md)：要求覆盖、技术机制、业务实践、前后一致和十段式训练预算。
+- [范文写作](skills/soft-exam-architect-prep/references/paper-writing.md)：按题意选择实例，展开规则、状态与交互，再回填摘要和结尾。
+- [评分与 P01–P12 审查规则](skills/soft-exam-architect-prep/references/paper-scoring.md)：题意 20、机制 20、实践 20、验证与一致性 10、结构表达 5；没有正式逐点依据时明确作为训练估分。
+- [合成样例校准](skills/soft-exam-architect-prep/references/paper-calibration.md)：检查评阅能否识别论证错位、保留有效内容、处理未知项并给出可用改稿。
+
+只提交一段或注明“未还原”的内容，不推断整篇漏答或给确定总分。十段式是训练结构；全文已建立清楚对应时，不强制每段重复题名，也不因组合多种架构风格扣分。真实经历与应试模拟沿用用户已确定的口径，模拟说明保留在元数据，正文直接成文。
 
 ## 3. 在线复习册与资产目录
 
@@ -130,10 +141,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.9.0 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.9.0) 下载 `ruankao-toolkit-v0.9.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.10.0 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.0) 下载 `ruankao-toolkit-v0.10.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.9.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.10.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -366,10 +377,21 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次论文批改方法见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次论文写作、训练评分与独立试用见 [v0.10.0 发布说明](docs/releases/v0.10.0.md)；共用批改方法与论文路由见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.10.0 — 2026-10-18
+
+- 新增范文写作、训练评分和合成样例校准参考，普通论文、Lab 评阅与题库模拟范文共用。
+- 用 P01–P12 逐项审查题意、主张与实例的关系、技术机制、本人行动及结果，反馈给出证据和可直接替换的段落。
+- 固定 75 分训练表，逐维说明得失；局部材料只评可见单元，未展示与未还原保留待核，不冒充漏答或确定总分。
+- 十段式服务于内容，拒绝按关键词、段数或单一架构风格机械评分；同一缺口不重复处罚。
+- 已授权模拟可直接补足合理架构、流程和验证，摘要、正文及结尾同步核对，正文不混入真实性辩解。
+- 完成四份合成材料的独立试用，覆盖论证错位、有效实例、组合架构与未还原内容；保留八个完整 Skill 及原有安装、资料和桥接组织方式。
+
+[升级方式与验证范围](docs/releases/v0.10.0.md)。
 
 ### v0.9.0 — 2026-10-15
 
