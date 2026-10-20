@@ -7,7 +7,11 @@ from harness_common import is_soft_exam_context
 ALLOWED_TOOLS = {
     "ask_question",
     "view_file",
+    "read_file",
     "replace_file_content",
+    "edit_file",
+    "write_file",
+    "multi_replace_file_content",
     "grep_search",
 }
 
@@ -44,8 +48,9 @@ def main():
     response = {
         "decision": "deny",
         "reason": (
-            "当前已确认处于软考单题流程。仅允许 ask_question、view_file、"
-            "replace_file_content、grep_search；请按 Skill 的输入、讲解、"
+            "当前已确认处于软考单题流程。仅允许 ask_question、view_file、read_file、"
+            "replace_file_content、edit_file、write_file、multi_replace_file_content、"
+            "grep_search；请按 Skill 的输入、讲解、"
             "卡片与归档契约继续。"
         ),
     }

@@ -102,6 +102,48 @@ class HarnessInstallTests(unittest.TestCase):
             sys.path.pop(0)
         return json.loads(output.getvalue())
 
+    def test_active_question_accepts_legacy_and_current_file_tools(self):
+        for name in (
+            "ask_question", "view_file", "read_file", "replace_file_content",
+            "edit_file", "write_file", "multi_replace_file_content", "grep_search",
+        ):
+            with self.subTest(tool=name):
+                result = self.run_hook(
+                    "harness_tool_guard.py", self.active_grill(), toolCall={"name": name}
+                )
+                self.assertEqual(result["decision"], "allow")
+
+    def test_authorized_archive_accepts_read_edit_create_and_multi_replace(self):
+        records = self.active_grill()
+        records[-1]["content"] = "Created At: now\nCompleted At: now\nA1: 确认归档（高级）"
+        for name in ("read_file", "edit_file", "write_file", "multi_replace_file_content"):
+            with self.subTest(tool=name):
+                result = self.run_hook(
+                    "harness_tool_guard.py", records, toolCall={"name": name}
+                )
+                self.assertEqual(result["decision"], "allow")
+
+    def test_unlisted_tools_stay_blocked_before_and_after_archive_authorization(self):
+        for authorized in (False, True):
+            records = self.active_grill()
+            if authorized:
+                records[-1]["content"] = "Completed At: now\nA1: 确认归档（高级）"
+            for name in ("run_command", "delete_file", "read_file_extra", "unknown_tool"):
+                with self.subTest(authorized=authorized, tool=name):
+                    result = self.run_hook(
+                        "harness_tool_guard.py", records, toolCall={"name": name}
+                    )
+                    self.assertEqual(result["decision"], "deny")
+
+    def test_reminder_and_denial_explain_current_file_tools(self):
+        records = self.active_grill()
+        reminder = self.run_hook("harness_pre_invocation.py", records)
+        denied = self.run_hook("harness_tool_guard.py", records, toolCall={"name": "run_command"})
+        for message in (reminder["injectSteps"][0]["ephemeralMessage"], denied["reason"]):
+            for name in ("read_file", "edit_file", "write_file", "multi_replace_file_content"):
+                with self.subTest(tool=name, message=message):
+                    self.assertIn(name, message)
+
     def test_pre_invocation_accepts_normal_antigravity_metadata(self):
         result = self.run_hook(
             "harness_pre_invocation.py",

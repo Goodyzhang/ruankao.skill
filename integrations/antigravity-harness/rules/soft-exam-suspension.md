@@ -18,7 +18,7 @@
 
 ## 工具边界
 
-已确认的单题流程只允许 ask_question、view_file、replace_file_content 和 grep_search。没有本地真题依据时，明确标为变式题；不得把生成题称为真题。
+已确认的单题流程只允许 ask_question、view_file、read_file、replace_file_content、edit_file、write_file、multi_replace_file_content 和 grep_search。write_file 用于已授权归档中首次创建章节文件；工具放行不代表取得归档授权，写入前仍须核对本题或明确批次的授权、目标及已有内容。没有本地真题依据时，明确标为变式题；不得把生成题称为真题。
 
 ## Harness 联动
 

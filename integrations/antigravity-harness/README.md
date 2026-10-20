@@ -5,7 +5,7 @@
 模块在已确认的软考单题会话中做三件事：
 
 1. 每次模型调用前注入短暂的续接提醒，降低长上下文中遗漏卡片调用的概率。
-2. 对全部工具调用执行白名单检查，仅允许 ask_question、view_file、replace_file_content、grep_search。
+2. 对全部工具调用执行白名单检查，仅允许 ask_question、view_file、read_file、replace_file_content、edit_file、write_file、multi_replace_file_content、grep_search。
 3. 每次模型回复完成后，PostInvocation 检查当前题是否缺少真实卡片，并通过 force_continue 让 Agent 补发；Stop 在完全空闲的 model_stop 阶段复用同一检查。
 
 图片附件或泛化的“这题”“讲解”等字样不会单独激活 Harness。它依赖明确软考信号或已经进入的单题流程，避免干扰普通图片、代码和文档任务。
@@ -30,6 +30,21 @@
 ### v0.9.0 论文改稿路由
 
 论文审题、写作、提纲与批改由 `soft-exam-architect-prep` 处理，退出单题工具限制与漏卡检查；从讲题切换到改论文时，短回复续接也不继承上一题约束。论文里某个客观知识题要求讲解时，仍走 tutor。升级 Skill 后，已安装 Harness 的工作区还须用下方安装器加 `--force` 更新脚本。
+
+### v0.10.1 文件工具兼容
+
+补齐当前运行时使用的 `read_file`、`edit_file`、`write_file` 和 `multi_replace_file_content`，保留旧工具名。修复用户已确认归档后，读取或编辑章节仍被 PreToolUse 拒绝的问题；注入提醒、拒绝说明和运行时规则同步更新。
+
+允许 `write_file`，以支持已授权归档时首次创建章节文件。Hook 按工具名称放行，不检查目标路径或授予归档授权；Agent 仍须遵守主 Skill 的逐题授权、章级目标、查重和写后回读契约。`run_command` 等白名单外工具在已确认的单题流程中继续返回 deny。
+
+**已有工作区须更新 Hook。** 仅升级 Skill 不会替换旧脚本。在新发布包根目录运行（Windows 将 `python3` 换为 `py -3`）：
+
+~~~sh
+python3 integrations/antigravity-harness/install_harness.py --workspace "../YourVault" --force --dry-run
+python3 integrations/antigravity-harness/install_harness.py --workspace "../YourVault" --force
+~~~
+
+`--force` 替换同名 Harness 脚本、规则及三个命名 Hook，保留其它 Hook。自行修改过同名文件的工作区应先备份并核对差异，再更新；更新后重新打开工作区并新建会话。
 
 ### 安装或更新现有工作区
 

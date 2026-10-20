@@ -43,7 +43,8 @@ def main():
         f"{HARNESS_MARKER}\n"
         "当前已确认处于软考单题流程。按执行与续接契约继续：\n"
         + interaction + "\n"
-        "本流程仅允许 ask_question、view_file、replace_file_content、grep_search。"
+        "本流程仅允许 ask_question、view_file、read_file、replace_file_content、"
+        "edit_file、write_file、multi_replace_file_content、grep_search。"
     )
     suspended = previous_suspended_question(data.get("transcriptPath", ""))
     if suspended:

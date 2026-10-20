@@ -1,8 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.10.0](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.0) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.10.1](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.1) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
-**v0.10.0：范文按题目组织论证，批改核对主张、实例和结果。** 普通论文写作与批改由高级备考 Skill 处理，Lab 评阅与题库模拟范文共用同一套方法。新增写作、评分和校准参考，形成 P01–P12 审查规则与 75 分训练表；局部材料只评已见内容，未展示部分保留待核。已授权的应试模拟直接补足合理设计，按题意、机制和自洽性评阅。[更新说明](docs/releases/v0.10.0.md)。
+**v0.10.1：修复 Antigravity 已授权归档被 Hook 拦截的问题。** 可选 Harness 兼容 `read_file`、`edit_file`、`write_file` 和 `multi_replace_file_content`，支持读取、编辑及首次创建章节档案。已有工作区须用 `--force` 更新 Harness；工具放行仍遵循本题或明确批次的归档授权。[更新说明](docs/releases/v0.10.1.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -54,7 +54,7 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 | `soft-exam-review-book` | 已学章节二次蒸馏为图文、速查与自测 | 要求制作、续写或修订复习册 |
 | `soft-exam-prep` | 软件设计师中级学习计划、练习和复习进度 | 中级备考请求 |
 | `soft-exam-organizer` | 导入明确提交的完整中级历史对话 | 点名或提交历史导入任务 |
-| `soft-exam-architect-prep` **本版更新** | 高级计划、案例、论文写作与批改、周期复习 | 高级备考请求，含单篇论文改稿 |
+| `soft-exam-architect-prep` | 高级计划、案例、论文写作与批改、周期复习 | 高级备考请求，含单篇论文改稿 |
 | `soft-exam-architect-organizer` | 导入明确提交的完整高级历史对话 | 点名或提交历史导入任务 |
 
 题库整理与实验室仅接受 `$skill-name`、`@skill-name` 或“使用 skill-name”的实际调用；引用名称和初始化时提及不启动。已启动批次或场次可直接“继续”。普通客观题与案例题讲解保持 tutor 路由；单篇论文改稿走高级备考，不自动启动 Lab。章节制作和题库批次不继承单题工具限制、强制 Grill 或逐题归档卡。
@@ -141,10 +141,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.10.0 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.0) 下载 `ruankao-toolkit-v0.10.0.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.10.1 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.1) 下载 `ruankao-toolkit-v0.10.1.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.10.0 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.10.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -352,6 +352,7 @@ macOS / Linux 把 `py -3` 换成 `python3`。`--force` 只替换同名 Harness H
 
 | 现象 | 处理 |
 |---|---|
+| 已确认归档，但 `read_file` / `edit_file` 被 Hook 拒绝 | 升级到 v0.10.1，并从新版包运行 Harness 安装器加 `--force`；仅更新 Skill 不会替换旧 Hook。自定义过同名脚本时先备份、核对差异 |
 | 没发现 Skill | 确认打开的是目标 Vault，检查 `.agents/skills/soft-exam-question-tutor/SKILL.md`，再新建会话 |
 | Lab 只有卡片、没有作答入口 | 升级到 v0.8.4 完整 Lab Skill；正文先显示已核验的 127 链接，默认打开页面并等待真实交卷。索要 URL 时直接重发正文链接，不再弹状态卡 |
 | 只讲题、不弹卡 | 升级到 v0.3.7 并用 `--force` 更新可选 Harness。PostInvocation 在每轮回复后检查漏卡并要求自动补发；以真实工具事件判断是否成功，正文中的调用文字不能替代卡片。工具未暴露时检查所选 Agent 的工具配置 |
@@ -377,10 +378,19 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次论文写作、训练评分与独立试用见 [v0.10.0 发布说明](docs/releases/v0.10.0.md)；共用批改方法与论文路由见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次 Harness 文件工具兼容与安装升级验证见 [v0.10.1 发布说明](docs/releases/v0.10.1.md)；论文写作、训练评分与独立试用见 [v0.10.0 发布说明](docs/releases/v0.10.0.md)；共用批改方法与论文路由见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.10.1 — 2026-10-20
+
+- 可选 Antigravity Harness 增加 `read_file`、`edit_file`、`write_file`、`multi_replace_file_content`，兼容当前运行时文件工具，保留旧名称。
+- 修复已授权归档的读取、编辑被拒绝问题；允许首次创建章节文件，归档仍按主 Skill 的授权与写后回读契约执行。
+- 同步注入提醒、拒绝说明与运行时规则；命令执行和其它白名单外工具继续受限。
+- 补充新旧工具名、归档授权前后边界及提示一致性的行为测试；已有工作区需用 `--force` 更新 Harness。
+
+[升级方式与验证范围](docs/releases/v0.10.1.md)。
 
 ### v0.10.0 — 2026-10-18
 
