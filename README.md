@@ -1,8 +1,8 @@
 # 软考学习 Toolkit · ruankao.skill
 
-[下载 v0.10.1](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.1) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
+[下载 v0.10.2](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.2) · [Lab 作答与批注](#1-案例与论文作答实验室) · [在线复习册](#3-在线复习册与资产目录) · [安装与使用](#4-安装与使用) · [更新日志](#5-更新日志)
 
-**v0.10.1：修复 Antigravity 已授权归档被 Hook 拦截的问题。** 可选 Harness 兼容 `read_file`、`edit_file`、`write_file` 和 `multi_replace_file_content`，支持读取、编辑及首次创建章节档案。已有工作区须用 `--force` 更新 Harness；工具放行仍遵循本题或明确批次的归档授权。[更新说明](docs/releases/v0.10.1.md)。
+**v0.10.2：论文逐段陪写罗盘、纯自然段去模板化与叙事流实践段。** `soft-exam-architect-prep` 支持“给一段糙逻辑、磨一段正文”的陪写模式，摘要先留空待正文完成后回填；正文采用纯自然段连贯行文（加粗／斜体标出得分锚点，不列小标题与数字列表），实践段摘除段首八股总结帽，按“具体业务对象与指标事实 → 初期运行暴露的岔子 → 架构师改造动作 → 段尾自然总结”循序渐进展开。[更新说明](docs/releases/v0.10.2.md)。
 
 ## 1. 案例与论文作答实验室
 
@@ -66,7 +66,7 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 先拆清题目要求，再决定每段要证明什么。范文将业务对象、本人决策、运行过程和验证结果写成完整文章；批改逐项定位原文，检查实例是否支撑主张、结果是否验证了相应措施。技术名称齐全、题目词反复出现或段数整齐，都不能代替这条论证链。
 
 - [共用写作与批改方法](skills/soft-exam-architect-prep/references/paper-review.md)：要求覆盖、技术机制、业务实践、前后一致和十段式训练预算。
-- [范文写作](skills/soft-exam-architect-prep/references/paper-writing.md)：按题意选择实例，展开规则、状态与交互，再回填摘要和结尾。
+- [范文写作](skills/soft-exam-architect-prep/references/paper-writing.md)：按题意选择实例，支持逐段陪写罗盘、纯自然段去模板化、被测系统靶子原则及去段首八股帽的叙事流展开，最后回填摘要和结尾。
 - [评分与 P01–P12 审查规则](skills/soft-exam-architect-prep/references/paper-scoring.md)：题意 20、机制 20、实践 20、验证与一致性 10、结构表达 5；没有正式逐点依据时明确作为训练估分。
 - [合成样例校准](skills/soft-exam-architect-prep/references/paper-calibration.md)：检查评阅能否识别论证错位、保留有效内容、处理未知项并给出可用改稿。
 
@@ -141,10 +141,10 @@ $soft-exam-lab 为我准备 2018 年下半年系统架构设计师论文真题�
 
 #### 1. 获取发布包
 
-从 [v0.10.1 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.1) 下载 `ruankao-toolkit-v0.10.1.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
+从 [v0.10.2 Release](https://github.com/Goodyzhang/ruankao.skill/releases/tag/v0.10.2) 下载 `ruankao-toolkit-v0.10.2.zip` 并解压。该包保留全部八个 Skill、实验室本地运行资源与 SMTP／POP3 样章，排除 `artifacts/`。也可以获取相同版本的完整 Git 仓库（包含知识库）：
 
 ```sh
-git clone --branch v0.10.1 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
+git clone --branch v0.10.2 --depth 1 https://github.com/Goodyzhang/ruankao.skill.git
 cd ruankao.skill
 ```
 
@@ -378,10 +378,20 @@ python3 -m unittest discover -s tests -v
 node --test tests/test_review_quiz_state.cjs
 ```
 
-本次 Harness 文件工具兼容与安装升级验证见 [v0.10.1 发布说明](docs/releases/v0.10.1.md)；论文写作、训练评分与独立试用见 [v0.10.0 发布说明](docs/releases/v0.10.0.md)；共用批改方法与论文路由见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
+本次论文陪写与自然段去八股规则见 [v0.10.2 发布说明](docs/releases/v0.10.2.md)；Harness 文件工具兼容与安装升级验证见 [v0.10.1 发布说明](docs/releases/v0.10.1.md)；论文写作、训练评分与独立试用见 [v0.10.0 发布说明](docs/releases/v0.10.0.md)；共用批改方法与论文路由见 [v0.9.0 发布说明](docs/releases/v0.9.0.md)；入口与监听补丁见 [v0.8.4 发布说明](docs/releases/v0.8.4.md)；自动计分验证范围见 [v0.8.3 发布说明](docs/releases/v0.8.3.md)；参考答案一致性修复见 [v0.8.2 发布说明](docs/releases/v0.8.2.md)；Tutor 续接修复见 [v0.8.1 发布说明](docs/releases/v0.8.1.md)；Lab 三色批注验证见 [v0.8.0 发布说明](docs/releases/v0.8.0.md)；既有安装与功能验证见 [v0.6.0 发布说明](docs/releases/v0.6.0.md)、[题库整理验收](docs/soft-exam-bank-ingest-validation.md) 和 [实验室验收](docs/soft-exam-lab-validation.md)。安装脚本与确定性保存、续接、路由均有行为测试；浏览器检查单列。Windows、其它 Agent 的真实卡片／浏览器与物理触控未实测。Node 仅用于开发验证，安装和离线阅读不需要它。
 
 
 ## 5. 更新日志
+
+### v0.10.2 — 2026-10-21
+
+- `soft-exam-architect-prep` 新增逐段陪写罗盘模式：用户给出分段糙逻辑时写到哪跟到哪，先留空摘要，待正文全部落盘后再按主体顺序回填。
+- 正文统一采用纯自然段连贯行文，避免章节小标题与数字列表排版；学习稿段前用括号提示职责与字数，段内用加粗与斜体标出核心得分锚点。
+- 明确被测／被治理系统的“靶子原则”，背景严控在 480～500 字内，只保留能直接引出平台痛点的靶子特征，防止旧论文肌肉记忆喧宾夺主。
+- 区分“纯答子题二概念段”与“承上启下架构落地过渡段”，过渡段尾用自然人话引出后续具体问题。
+- 实践段摘除段首高度概括的八股总结帽，按“具体业务对象与指标事实 → 初期运行暴露的岔子 → 架构师改造动作 → 段尾自然总结”循序渐进展开，并将个人 AI 助手配置代号转化为规范的企业级架构术语。
+
+[升级方式与验证范围](docs/releases/v0.10.2.md)。
 
 ### v0.10.1 — 2026-10-20
 
