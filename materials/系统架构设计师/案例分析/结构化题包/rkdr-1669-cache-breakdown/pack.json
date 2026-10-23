@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-cache-breakdown-pack",
+  "version": 1,
+  "title": "电商缓存击穿",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-cache-breakdown",
+      "title": "电商缓存击穿",
+      "stem": "阅读以下关于系统设计的叙述，回答问题。\n【说明】\n某电商平台为提升系统性能，采用MySQL作为主数据库，同时引入Redis作为缓存存储热点数据。系统主要支持商品信息查询、库存管理及订单存储等业务：商品详情页访问频繁，需快速响应；库存数据需实时准确，支持高并发修改；订单数据需长期保存，查询频率较低。\n设计中，Redis主要存储热门商品基本信息（如名称、价格）和实时库存数量、热销商品排名；MySQL存储完整商品数据、库存明细、订单全量信息及用户数据。",
+      "complete": false,
+      "max_score": 14,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号178～179"
+      },
+      "figures": [
+        {
+          "file": "../../assets/560bf79fc0c6e3c4.png",
+          "caption": "互斥锁方案架构图",
+          "source_locator": "网站题178附图"
+        },
+        {
+          "file": "../../assets/79c93e3ef4869107.png",
+          "caption": "逻辑过期方案架构图",
+          "source_locator": "网站题178附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-cache-breakdown-q1",
+          "title": "问题1（6分）",
+          "prompt": "王工基于互斥锁的缓存实现方案，补充架构图(1)~(6)。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-cache-breakdown-q2",
+          "title": "问题2（8分）",
+          "prompt": "李工逻辑过期方案，补充架构图(1)~(8)。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

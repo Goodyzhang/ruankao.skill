@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-sweeper-robot-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-115～117参考答案；嵌入式通识核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-sweeper-robot-p1",
+      "question_id": "rkdr-1669-sweeper-robot-q1",
+      "weight": 1,
+      "criterion": "空(1)紧急状态感知",
+      "correct": "（1）紧急状态感知（碰撞/跌落/离地检测汇入的功能模块）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题115参考答案；结构图核验"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p2",
+      "question_id": "rkdr-1669-sweeper-robot-q1",
+      "weight": 1,
+      "criterion": "空(2)跌落检测",
+      "correct": "（2）跌落检测（紧急状态感知的输入之一）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题115参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p3",
+      "question_id": "rkdr-1669-sweeper-robot-q1",
+      "weight": 1,
+      "criterion": "空(3)航向测量",
+      "correct": "（3）航向测量（姿态感知的输入之一，与运动里程计数并列）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题115参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p4",
+      "question_id": "rkdr-1669-sweeper-robot-q1",
+      "weight": 1,
+      "criterion": "空(4)单目视觉避障系统",
+      "correct": "（4）单目视觉避障系统（视觉感知的输入之一，与单目视觉定位系统并列）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题115参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p5",
+      "question_id": "rkdr-1669-sweeper-robot-q1",
+      "weight": 1,
+      "criterion": "空(5)扫地及吸尘单元",
+      "correct": "（5）扫地及吸尘单元（信息处理中心的执行输出之一，与自动充电、运动执行并列）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题115参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p6",
+      "question_id": "rkdr-1669-sweeper-robot-q2",
+      "weight": 2,
+      "criterion": "空(1)避障传感器",
+      "correct": "（1）红外测距传感器（编号5，结合视觉的障碍物探测）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "编号5"
+      ],
+      "dimension": "传感器选型",
+      "source": "网站题116参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p7",
+      "question_id": "rkdr-1669-sweeper-robot-q2",
+      "weight": 2,
+      "criterion": "空(2)(3)防跌落与碰撞",
+      "correct": "（2）数字式防跌落传感器（编号4）；（3）开关式传感器（编号2，碰撞检测）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "编号4/2"
+      ],
+      "dimension": "传感器选型",
+      "source": "网站题116参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p8",
+      "question_id": "rkdr-1669-sweeper-robot-q2",
+      "weight": 2,
+      "criterion": "空(4)里程计数",
+      "correct": "（4）槽型光耦模块（编号3，运动里程计数）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "编号3"
+      ],
+      "dimension": "传感器选型",
+      "source": "网站题116参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p9",
+      "question_id": "rkdr-1669-sweeper-robot-q2",
+      "weight": 4,
+      "criterion": "空(5)(6)航向与里程",
+      "correct": "（5）GGPM01A单轴角度陀螺仪（编号6，航向测量）；（6）霍尔码盘传感器（编号7，里程/速度测量）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "编号6/7"
+      ],
+      "dimension": "传感器选型",
+      "source": "网站题116参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p10",
+      "question_id": "rkdr-1669-sweeper-robot-q2",
+      "weight": 2,
+      "criterion": "USB摄像头定位",
+      "correct": "USB摄像头（编号1）对应视觉感知的双摄像头输入，表中已给出的定位项",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "传感器选型",
+      "source": "网站题116表图"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p11",
+      "question_id": "rkdr-1669-sweeper-robot-q3",
+      "weight": 4,
+      "criterion": "有效数据计算",
+      "correct": "（1）波特率9600b/s，每字节10位（1起始+8数据+1停止），每秒有效数据=9600/10=960字节",
+      "conditions": [
+        "计算列式"
+      ],
+      "equivalents": [],
+      "dimension": "串口通信",
+      "source": "网站题117参考答案"
+    },
+    {
+      "id": "rkdr-1669-sweeper-robot-p12",
+      "question_id": "rkdr-1669-sweeper-robot-q3",
+      "weight": 4,
+      "criterion": "时钟误差计算",
+      "correct": "（2）累计最大误差=(8+1+1)Δ≤1/4位，Δ≤1/40位，最大误差百分比=2.5%",
+      "conditions": [
+        "公式+结果"
+      ],
+      "equivalents": [],
+      "dimension": "串口通信",
+      "source": "网站题117参考答案"
+    }
+  ]
+}

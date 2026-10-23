@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9389-face-architecture-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题9389-105参考答案及解析；教程第2版§7核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9389-face-architecture-p1",
+      "question_id": "rkdr-9389-face-architecture-q1",
+      "weight": 3,
+      "criterion": "难点①描述语言差异",
+      "correct": "需求以非正式自然语言获取（业务用户/产品经理习惯日常语言表达），架构倾向正式结构化语言描述组件/接口/通信/交互，语言差异导致理解与沟通障碍",
+      "conditions": [
+        "三难点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "网站题105参考答案及解析"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p2",
+      "question_id": "rkdr-9389-face-architecture-q1",
+      "weight": 3,
+      "criterion": "难点②非功能需求规约",
+      "correct": "性能/安全性/可用性等非功能属性在需求中常描述为系统属性，在架构模型中形成规约较难——涉及多组件与交互需综合考量",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p3",
+      "question_id": "rkdr-9389-face-architecture-q1",
+      "weight": 3,
+      "criterion": "难点③一致性与可追溯",
+      "correct": "需求到架构映射需保持一致性与可追溯性：单一需求涉及多个架构关注点，一个架构元素对应多个需求，需需求管理与架构设计技术保证映射准确可追溯",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p4",
+      "question_id": "rkdr-9389-face-architecture-q2",
+      "weight": 2,
+      "criterion": "操作系统服务段",
+      "correct": "FACE基础：提供操作系统、运行时环境和OS级健康监控服务；通过OSGi框架为上层提供标准化OS接口，支持组件即插即用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p5",
+      "question_id": "rkdr-9389-face-architecture-q2",
+      "weight": 2,
+      "criterion": "I/O服务段",
+      "correct": "对专用I/O设备（1553/429等）抽象，简化平台服务段与硬件交互；因GPU与图形服务紧耦合，不抽象GPU驱动",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p6",
+      "question_id": "rkdr-9389-face-architecture-q2",
+      "weight": 2,
+      "criterion": "平台服务段",
+      "correct": "提供用户所需共性软件服务（系统级健康监控/配置管理/日志/流媒体等），细分平台公共服务、平台设备服务（GPS/EGI）、平台图像服务（ARINC739/GLX）三类",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p7",
+      "question_id": "rkdr-9389-face-architecture-q2",
+      "weight": 2,
+      "criterion": "传输服务段",
+      "correct": "为上层可移植组件段提供平台性数据交换服务（CORBA/DDS等标准接口），确保组件经标准接口通信，禁止组件间直接调用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p8",
+      "question_id": "rkdr-9389-face-architecture-q2",
+      "weight": 2,
+      "criterion": "可移植组件段",
+      "correct": "提供多组件使用能力与功能服务：公共服务（数据融合/燃油服务）+可移植组件两类，支持跨平台复用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p9",
+      "question_id": "rkdr-9389-face-architecture-q3",
+      "weight": 2,
+      "criterion": "紧耦合表现",
+      "correct": "①I/O操作与业务逻辑紧耦合（I/O变更影响业务）；②业务逻辑与底层系统紧耦合（业务变更需改底层）；③用户界面与业务逻辑紧耦合（界面变更影响业务）",
+      "conditions": [
+        "表现齐全"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p10",
+      "question_id": "rkdr-9389-face-architecture-q3",
+      "weight": 2,
+      "criterion": "封装问题表现",
+      "correct": "①ICD信息硬编码（ICD变更需改代码）；②组件间依赖过紧（一组件变更影响多组件）；③组件直接调用（接口变更需改多组件）",
+      "conditions": [
+        "表现齐全"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    },
+    {
+      "id": "rkdr-9389-face-architecture-p11",
+      "question_id": "rkdr-9389-face-architecture-q3",
+      "weight": 2,
+      "criterion": "解决方案",
+      "correct": "紧耦合→分离原则：隔离I/O/业务逻辑/表现层并定义明确接口协议通信；封装问题→提供数据源或槽的软件服务：分解紧耦合组件、平台相关部分加入计算环境、平台内提供数据源/槽软件服务并实现接口标准化",
+      "conditions": [
+        "两方案齐全"
+      ],
+      "equivalents": [],
+      "dimension": "架构设计",
+      "source": "架构设计"
+    }
+  ]
+}

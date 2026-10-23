@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-smart-home-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-171～173参考答案；教程第2版§14/§13核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-smart-home-p1",
+      "question_id": "rkdr-1669-smart-home-q1",
+      "weight": 2,
+      "criterion": "空(1)(2)用户终端层",
+      "correct": "(1)=（h）用户终端；(2)=（i）Android",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构分层",
+      "source": "网站题171参考答案；架构图核验"
+    },
+    {
+      "id": "rkdr-1669-smart-home-p2",
+      "question_id": "rkdr-1669-smart-home-q1",
+      "weight": 2,
+      "criterion": "空(3)(4)云平台层",
+      "correct": "(3)=（f）云平台（含数据库与(4)软件系统）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构分层",
+      "source": "网站题171参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-home-p3",
+      "question_id": "rkdr-1669-smart-home-q1",
+      "weight": 2,
+      "criterion": "空(5)(6)家庭网关层",
+      "correct": "(5)=（e）家庭网关（含(6)驱动程序与硬件平台）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构分层",
+      "source": "网站题171参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-home-p4",
+      "question_id": "rkdr-1669-smart-home-q1",
+      "weight": 6,
+      "criterion": "分层逻辑口径",
+      "correct": "六空与图四层结构自上而下对应；干扰项Wi-Fi/蓝牙/微服务/TCP-IP无对应空位",
+      "conditions": [
+        "层次对应完整"
+      ],
+      "equivalents": [],
+      "dimension": "架构分层",
+      "source": "网站题171题面"
+    },
+    {
+      "id": "rkdr-1669-smart-home-p5",
+      "question_id": "rkdr-1669-smart-home-q2",
+      "weight": 4,
+      "criterion": "云原生七模式",
+      "correct": "①服务化架构（微服务/小服务）；②Mesh化架构（中间件框架分离由Mesh进程完成）；③Serverless（事件驱动计算任务）；④存储计算分离（暂态数据用云服务保存）；⑤分布式事务（解决多数据源事务）；⑥可观测架构（Logging/Tracing/Metrics）；⑦事件驱动架构（应用/组件间集成架构模式）",
+      "conditions": [
+        "七种齐全"
+      ],
+      "equivalents": [],
+      "dimension": "云原生",
+      "source": "网站题172参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-home-p6",
+      "question_id": "rkdr-1669-smart-home-q2",
+      "weight": 4,
+      "criterion": "模式特点口径",
+      "correct": "每种模式配一句特点解释",
+      "conditions": [
+        "逐条解释"
+      ],
+      "equivalents": [],
+      "dimension": "云原生",
+      "source": "网站题172题面"
+    },
+    {
+      "id": "rkdr-1669-smart-home-p7",
+      "question_id": "rkdr-1669-smart-home-q3",
+      "weight": 5,
+      "criterion": "层次架构优势五条",
+      "correct": "①良好复用性（接口不变可用于它处）；②可维护性好；③可扩展性好（支持递增设计）；④合理分层降低耦合达到解耦；⑤相同逻辑与抽象级别内容同层更利于理解",
+      "conditions": [
+        "五条"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题173参考答案"
+    }
+  ]
+}

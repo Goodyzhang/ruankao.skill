@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9395-mlplatform-atam-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§7.3、§8.3；网站84解析（完整参考答案与逐空解析）",
+    "level": "教材与网站解析互证；逐点权重为训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9395-mlplatform-atam-b1",
+      "question_id": "rkdr-9395-mlplatform-atam-q1",
+      "weight": 1.5,
+      "criterion": "空(1) 属性名",
+      "correct": "性能",
+      "conditions": [
+        "由固定叶(f)流程启动延迟定位"
+      ],
+      "equivalents": [
+        "Performance"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-b2",
+      "question_id": "rkdr-9395-mlplatform-atam-q1",
+      "weight": 1.5,
+      "criterion": "空(2) 属性名",
+      "correct": "可修改性",
+      "conditions": [
+        "由固定叶(g)扩容人天定位"
+      ],
+      "equivalents": [
+        "Modifiability"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-b3",
+      "question_id": "rkdr-9395-mlplatform-atam-q1",
+      "weight": 1.5,
+      "criterion": "空(3) 描述编号",
+      "correct": "(3) (e) 宕机15秒启用备用",
+      "conditions": [
+        "故障恢复，与固定叶(c)同分支"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-b4",
+      "question_id": "rkdr-9395-mlplatform-atam-q1",
+      "weight": 1.5,
+      "criterion": "空(4) 描述编号",
+      "correct": "(4) (j) 界面响应0.5秒",
+      "conditions": [
+        "响应时间性能场景"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-b5",
+      "question_id": "rkdr-9395-mlplatform-atam-q1",
+      "weight": 1.5,
+      "criterion": "空(5) 描述编号",
+      "correct": "(5) (h) 操作记录审计",
+      "conditions": [
+        "审计归安全，与固定叶(b)同分支"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-b6",
+      "question_id": "rkdr-9395-mlplatform-atam-q1",
+      "weight": 1.5,
+      "criterion": "空(6) 描述编号",
+      "correct": "(6) (i) 界面修改3人天",
+      "conditions": [
+        "修改代价场景，与固定叶(g)同分支"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-inter-flex",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 3,
+      "criterion": "解释器流程灵活性",
+      "correct": "高：自定义流程规则+解释引擎，用户层面完全定义，无需改代码",
+      "conditions": [
+        "判断+机理+场景对应三件套"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-inter-ext",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 3,
+      "criterion": "解释器算法可扩展性",
+      "correct": "强：算法封装为组件，解释器动态装卸与调用",
+      "conditions": [
+        "判断+机理；可写动态加载/卸载或插件化注册"
+      ],
+      "equivalents": [
+        "动态加载/卸载组件"
+      ],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-pipe-flex",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 2.5,
+      "criterion": "管道过滤器流程灵活性",
+      "correct": "低：流程固化为过滤器拓扑，变化须改代码重建",
+      "conditions": [
+        "判断+机理"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-pipe-ext",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 2.5,
+      "criterion": "管道过滤器算法可扩展性",
+      "correct": "弱：增删组件须停机重新部署",
+      "conditions": [
+        "判断+机理；须体现停机重部署代价"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-impl-flex",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 2,
+      "criterion": "隐式调用流程灵活性",
+      "correct": "一般：事件机制组织流程，强于管道过滤器、弱于解释器，难支持拖拽自助定义",
+      "conditions": [
+        "判断+机理"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-impl-ext",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 2,
+      "criterion": "隐式调用算法可扩展性",
+      "correct": "一般：算法封装为事件处理函数可动态增删，介于两者之间",
+      "conditions": [
+        "判断+机理；须体现介于两种风格之间的定位"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    },
+    {
+      "id": "rkdr-9395-mlplatform-atam-concl",
+      "question_id": "rkdr-9395-mlplatform-atam-q2",
+      "weight": 1,
+      "criterion": "结论",
+      "correct": "选解释器架构风格，回扣拖拽定义流程+新算法加入场景",
+      "conditions": [
+        "须点名解释器并对应核心场景"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3、§8.3；网站84解析（含完整参考答案）"
+    }
+  ]
+}

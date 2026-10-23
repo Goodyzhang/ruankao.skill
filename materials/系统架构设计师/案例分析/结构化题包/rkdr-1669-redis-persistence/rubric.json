@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-redis-persistence-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-197参考答案；教程第2版§6.5.1核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-redis-persistence-p1",
+      "question_id": "rkdr-1669-redis-persistence-q1",
+      "weight": 4.5,
+      "criterion": "RDB方式及优缺点",
+      "correct": "RDB定期生成快照：优点=高性能（子进程持久化）/恢复快/节省空间；缺点=数据易丢失/创建子进程开销",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题197参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-persistence-p2",
+      "question_id": "rkdr-1669-redis-persistence-q1",
+      "weight": 4.5,
+      "criterion": "AOF方式及优缺点",
+      "correct": "AOF日志记录写命令：优点=数据安全性高（最多丢1秒）/精准恢复；缺点=文件体积大/性能开销大/恢复慢2-10倍",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题197参考答案"
+    }
+  ]
+}

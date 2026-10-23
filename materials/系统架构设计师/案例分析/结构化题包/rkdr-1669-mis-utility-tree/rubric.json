@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-mis-utility-tree-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题97答案为网站图片表（实际看图读取）；题98/99网站参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-mis-utility-tree-p1",
+      "question_id": "rkdr-1669-mis-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(1)性能",
+      "correct": "(1)=性能（分支叶：实时延迟≤2秒、1000终端并发）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题97答案表（图片载体）；效用树逻辑核验"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p2",
+      "question_id": "rkdr-1669-mis-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(2)可用性",
+      "correct": "(2)=可用性（分支叶：5分钟切换、单点故障30分钟修复）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题97答案表"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p3",
+      "question_id": "rkdr-1669-mis-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(3)=(f)",
+      "correct": "(3)=(f) 实时显示诊室设备状态延迟≤2秒（性能分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题97答案表"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p4",
+      "question_id": "rkdr-1669-mis-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(4)=(a)",
+      "correct": "(4)=(a) 网络隔离防外部攻击（安全性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题97答案表"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p5",
+      "question_id": "rkdr-1669-mis-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(5)=(d)",
+      "correct": "(5)=(d) 主库故障5分钟切换备用（可用性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题97答案表"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p6",
+      "question_id": "rkdr-1669-mis-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(6)=(b)",
+      "correct": "(6)=(b) 三个月内开发远程医疗咨询（可修改性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题97答案表"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p7",
+      "question_id": "rkdr-1669-mis-utility-tree-q2",
+      "weight": 1,
+      "criterion": "数据安全选(c)",
+      "correct": "数据安全：(c) 患者隐私数据加密存储和传输",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题98参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p8",
+      "question_id": "rkdr-1669-mis-utility-tree-q2",
+      "weight": 3,
+      "criterion": "数据安全技术手段",
+      "correct": "手段：①加密存储（AES-256等加密敏感字段）；②加密传输（TLS/SSL如HTTPS防中间人）；③访问控制（用户角色+业务双重控制）；④数据脱敏（姓名显示姓氏+星号）；⑤数据备份与灾难恢复",
+      "conditions": [
+        "答出3条"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题98参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p9",
+      "question_id": "rkdr-1669-mis-utility-tree-q2",
+      "weight": 1,
+      "criterion": "网络安全选(a)",
+      "correct": "网络安全：(a) 系统与医院内部网络隔离防外部攻击",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题98参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p10",
+      "question_id": "rkdr-1669-mis-utility-tree-q2",
+      "weight": 3,
+      "criterion": "网络安全技术手段",
+      "correct": "手段：①网络隔离（网闸物理隔离或防火墙）；②网络分段（VLAN逻辑隔离限制横向移动）；③边界防护（IDS/IPS监控阻断）；④零信任架构（永不信任始终验证）；⑤安全协议强化（TLS 1.3）；⑥网络沙箱（可疑流量隔离分析）",
+      "conditions": [
+        "答出3条"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题98参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p11",
+      "question_id": "rkdr-1669-mis-utility-tree-q3",
+      "weight": 1,
+      "criterion": "空(A)刺激源",
+      "correct": "（A）单个服务器（场景：单个服务器故障）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题99参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p12",
+      "question_id": "rkdr-1669-mis-utility-tree-q3",
+      "weight": 1,
+      "criterion": "空(B)响应",
+      "correct": "（B）将流量重定向到其他正常服务器，并通知管理员修复故障",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题99参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p13",
+      "question_id": "rkdr-1669-mis-utility-tree-q3",
+      "weight": 1,
+      "criterion": "空(C)响应度量",
+      "correct": "（C）服务无中断，修复时间≤30分钟",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题99参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p14",
+      "question_id": "rkdr-1669-mis-utility-tree-q3",
+      "weight": 1,
+      "criterion": "空(D)刺激",
+      "correct": "（D）系统同时处理大量用户访问",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题99参考答案"
+    },
+    {
+      "id": "rkdr-1669-mis-utility-tree-p15",
+      "question_id": "rkdr-1669-mis-utility-tree-q3",
+      "weight": 1,
+      "criterion": "空(E)环境",
+      "correct": "（E）挂号高峰期或诊疗高峰期",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题99参考答案"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-hospital-modeling-pack",
+  "version": 1,
+  "title": "医院管理信息系统：ERD/DFD/类图综合建模",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-hospital-modeling",
+      "title": "医院管理信息系统数据建模",
+      "stem": "医院管理信息系统：医生登录查看患者信息开处方、护士管理住院信息（床位分配、主管医生）、患者预约挂号查看结果费用、自动记录就诊历史、药房按处方配药管库存、财务结算打印发票、消息通知。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号10～12"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-hospital-modeling-q1",
+          "title": "问题1（10分）",
+          "prompt": "项目组准备绘制ERD，请帮忙找出3个强实体和2个弱实体。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-hospital-modeling-q2",
+          "title": "问题2（8分）",
+          "prompt": "项目组采用数据流图来实现功能建模，请举出数据流图中可能存在的4种以上常见异常的情况。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-hospital-modeling-q3",
+          "title": "问题3（7分）",
+          "prompt": "在UML建模中，类图用于描述系统中的类和它们之间的关系。请指出在UML建模中，类图的主要关系有哪些。",
+          "complete": true,
+          "max_score": 7
+        }
+      ]
+    }
+  ]
+}

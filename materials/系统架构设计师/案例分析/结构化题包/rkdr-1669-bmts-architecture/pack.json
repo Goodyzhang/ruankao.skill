@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-bmts-architecture-pack",
+  "version": 1,
+  "title": "宇航BMTS通信架构",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-bmts-architecture",
+      "title": "宇航BMTS通信架构",
+      "stem": "阅读以下关于嵌入式实时系统相关技术的叙述，在答题纸上回答问题。\n【说明】\n某公司长期从事宇航领域嵌入式实时系统的软件研制任务。公司为了适应未来嵌入式系统网络化、智能化和综合化的技术发展需要，决定重新考虑新产品的架构问题，经理将论证工作交给王工负责。王工经调研和分析，完成了新产品架构设计方案，提交公司高层讨论。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号189～190"
+      },
+      "figures": [
+        {
+          "file": "../../assets/47f085a9dc61b57e.png",
+          "caption": "表3-1 实时任务特征分类表：空(1)～(14)（题189）",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/06501583-a6f2-4a74-9de4-1c5da53a8586.png"
+        },
+        {
+          "file": "../../assets/0268330ebc826de9.png",
+          "caption": "图3-1 腰（Waistline）型通信模式架构风格（题190）",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/78ac940d-e11a-4791-b908-b157142b1671.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-bmts-architecture-q1",
+          "title": "问题1（14分）",
+          "prompt": "简单任务与复杂任务十方面特征：用(a)~(t)20个特征描述补充表3-1的空(1)~(14)。",
+          "complete": true,
+          "max_score": 14
+        },
+        {
+          "id": "rkdr-1669-bmts-architecture-q2",
+          "title": "问题2（11分）",
+          "prompt": "400字内说明基于BMTS的消息通信网络主要特征、三种消息的基本含义，并给出两种具有时间触发消息能力的网络总线。",
+          "complete": true,
+          "max_score": 11
+        }
+      ]
+    }
+  ]
+}

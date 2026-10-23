@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-pharmacy-partition-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-162～163～164参考答案；教程第2版核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-pharmacy-partition-p1",
+      "question_id": "rkdr-1669-pharmacy-partition-q1",
+      "weight": 9,
+      "criterion": "问题1（9分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题162参考答案"
+    },
+    {
+      "id": "rkdr-1669-pharmacy-partition-p2",
+      "question_id": "rkdr-1669-pharmacy-partition-q2",
+      "weight": 10,
+      "criterion": "问题2（10分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题163参考答案"
+    },
+    {
+      "id": "rkdr-1669-pharmacy-partition-p3",
+      "question_id": "rkdr-1669-pharmacy-partition-q3",
+      "weight": 6,
+      "criterion": "问题3（6分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题164参考答案"
+    }
+  ]
+}

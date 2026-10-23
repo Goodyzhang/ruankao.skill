@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph I["三类决策资料"]
+    IN["①内部：订单、库存、成本"]
+    OUT["②外部：需求、供应价格、竞争"]
+    FB["③反馈：完工、销售、客户反映"]
+  end
+  R["管理可复用分析资源<br/>数据；④模型：库存 / 排产<br/>⑤方法：统计 / 运筹<br/>⑥查找、增加、修改、删除"]
+  IN -->|提供数据| R
+  OUT -->|提供数据| R
+  FB -->|提供数据| R
+  R -->|调用数据、模型、方法| A["⑦加工<br/>汇总、分析、预测"]
+  USER["决策者"] <-->|输入 / 展示| UI["⑧对话、图形、What-if"]
+  UI -->|问题与假设| A
+  A -->|分析结果| UI
+  UI -->|修改假设| UI
+  SHARE["⑨分布传输与共享<br/>仅共享获准数据、模型、方法"] --- R
+  classDef base fill:#e9f4ff,stroke:#276d9d,color:#15344a;
+  class IN,OUT,FB,R,A,UI,SHARE base;

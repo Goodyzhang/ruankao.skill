@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-goa-architecture-pack",
+  "version": 1,
+  "title": "宇航嵌入式GOA开放式架构：四特点与接口表",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-goa-architecture",
+      "title": "宇航嵌入式软件GOA开放式架构",
+      "stem": "宇航嵌入式软件公司建立开放式架构：SAE AS4893 GOA框架，四特点与接口分类（iD直接接口/iL逻辑接口）。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号121/131～132"
+      },
+      "figures": [
+        {
+          "file": "../../assets/1eb6717dd3e82cc7.jpg",
+          "caption": "GOA开放式架构图（题121版）",
+          "source_locator": "https://image-t.chaiding.com/ruankao/73d779251690fd8316472f9bc8e4b7dc.jpg-ruankao"
+        },
+        {
+          "file": "../../assets/7cfc9a3d0fb60254.png",
+          "caption": "GOA开放式架构图（题131/132计分版）",
+          "source_locator": "https://image-t.chaiding.com/ruankao/c22a66707fe1562a3ccd5dbbc1262c90.png-ruankao"
+        },
+        {
+          "file": "../../assets/d88b382688b6dd95.png",
+          "caption": "GOA中的接口与功能表（题132版）：空(1)～(8)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/54d7f8b46b75f12435182c6c3d0ab265.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "title": "问题1（9分）",
+          "prompt": "请用300字以内的文字简要说明开放式架构的四个基本特点。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "q2",
+          "title": "问题2（16分）",
+          "prompt": "根据图所标注的接口在框架中的具体位置，请填写下表的（ ）～（8）处空白。",
+          "complete": true,
+          "max_score": 16
+        }
+      ]
+    }
+  ]
+}

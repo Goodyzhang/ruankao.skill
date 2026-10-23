@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-ddos-security-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-143～145参考答案；教程第2版§18/§4.1核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-ddos-security-p1",
+      "question_id": "rkdr-1669-ddos-security-q1",
+      "weight": 2,
+      "criterion": "被动攻击判定",
+      "correct": "被动攻击：C网络监听、E信息截取、I流量分析（获取信息不影响系统正常运行）",
+      "conditions": [
+        "三项齐全"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题143参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p2",
+      "question_id": "rkdr-1669-ddos-security-q1",
+      "weight": 2,
+      "criterion": "主被动判别口径",
+      "correct": "主动攻击改变信息或危害系统（威胁完整性有效性），被动攻击只获取信息（威胁机密性），可通过加密避免",
+      "conditions": [
+        "判别依据明确"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题143解析"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p3",
+      "question_id": "rkdr-1669-ddos-security-q1",
+      "weight": 2,
+      "criterion": "干扰项排除",
+      "correct": "重放/假冒/病毒/拒绝服务/数据篡改/抵赖均属主动攻击或其他类别",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题143题面"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p4",
+      "question_id": "rkdr-1669-ddos-security-q2",
+      "weight": 2,
+      "criterion": "空(1)重放攻击",
+      "correct": "（1）重放攻击破坏完整性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题144参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p5",
+      "question_id": "rkdr-1669-ddos-security-q2",
+      "weight": 2,
+      "criterion": "空(2)网络监听",
+      "correct": "（2）网络监听破坏保密性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题144参考答案"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p6",
+      "question_id": "rkdr-1669-ddos-security-q2",
+      "weight": 2,
+      "criterion": "空(3)拒绝服务",
+      "correct": "（3）拒绝服务破坏可用性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题144参考答案"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p7",
+      "question_id": "rkdr-1669-ddos-security-q2",
+      "weight": 2,
+      "criterion": "空(4)数据篡改",
+      "correct": "（4）数据篡改破坏完整性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题144参考答案"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p8",
+      "question_id": "rkdr-1669-ddos-security-q3",
+      "weight": 3,
+      "criterion": "攻击判定",
+      "correct": "DDoS攻击（分布式拒绝服务攻击）——依据：大量等待TCP连接、大量假源无用包、高流量拥塞、主机崩溃",
+      "conditions": [
+        "结论+依据"
+      ],
+      "equivalents": [],
+      "dimension": "安全架构",
+      "source": "网站题145参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p9",
+      "question_id": "rkdr-1669-ddos-security-q3",
+      "weight": 4,
+      "criterion": "抵抗方式五种",
+      "correct": "抵抗方式：①关闭不必要的服务；②及时更新系统补丁；③限制同时打开的Syn半连接数目；④缩短Syn半连接的timeout时间；⑤限制特定IP地址的访问",
+      "conditions": [
+        "至少四种（每空2分最高8分）"
+      ],
+      "equivalents": [],
+      "dimension": "安全架构",
+      "source": "网站题145参考答案"
+    },
+    {
+      "id": "rkdr-1669-ddos-security-p10",
+      "question_id": "rkdr-1669-ddos-security-q3",
+      "weight": 4,
+      "criterion": "缓解口径",
+      "correct": "网站解析注明DDoS目前无完全防御手段，上述方式为一定程度缓解",
+      "conditions": [
+        "口径准确"
+      ],
+      "equivalents": [],
+      "dimension": "安全架构",
+      "source": "网站题145解析"
+    }
+  ]
+}

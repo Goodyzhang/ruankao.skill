@@ -1,0 +1,49 @@
+[
+  {
+    "source_question": "59",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 59,
+    "paper": "试题四（25分）",
+    "stem": "阅读以下关于某电商平台数据架构的说明，回答下列问题。\n【说明】\n某电商平台计划升级其现有的数据存储系统，以支持日益增长的商品数据、用户信息及交易记录。该平台的目标是提高数据查询效率、增强数据安全性、以及实现数据的灵活扩展，以适应未来业务发展的需求。当前，平台主要使用MySQL关系型数据库存储结构化数据，但面临着查询性能瓶颈、数据备份恢复复杂度高以及难以高效处理大规模非结构化数据（如商品图片、用户评价等）的问题。\n项目团队经过调研，决定引入NoSQL数据库（如Cassandra）和分布式文件系统（如HDFS）来优化数据存储架构。Cassandra因其高可用性、线性扩展性和低延迟读写性能被选为处理高并发用户数据和商品信息的数据库，而HDFS则用于存储和处理大规模非结构化数据。",
+    "subquestion": {
+      "site_number": 59,
+      "label": "问题1（8分）",
+      "prompt": "请分析并比较MySQL与Cassandra在数据模型、可扩展性、一致性模型及适用场景方面的差异，并填写下表。",
+      "type": "解答题",
+      "max_score": 8
+    },
+    "source_answer": "（1）列式存储，灵活可扩展的数据模型（Cassandra数据模型）；（2）垂直和有限水平扩展（MySQL可扩展性）；（3）弱一致性（或者最终一致性）（Cassandra一致性模型）；（4）复杂查询、事务处理（MySQL适用场景）。",
+    "source_analysis": "解析：无（表格四空对应行序：数据模型/可扩展性/一致性模型/适用场景，答案按行给出）"
+  },
+  {
+    "source_question": "60",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 60,
+    "paper": "试题四（25分）",
+    "stem_same_as_q59": "电商平台数据架构升级（MySQL+Cassandra+HDFS）与题59共同背景一致",
+    "subquestion": {
+      "site_number": 60,
+      "label": "问题2（6分）",
+      "prompt": "在引入HDFS作为非结构化数据存储解决方案时，请阐述HDFS在数据可靠性、伸缩性和性能方面的优势，并说明HDFS是如何实现这些优势的。",
+      "type": "解答题",
+      "max_score": 6
+    },
+    "source_answer": "HDFS在数据可靠性、伸缩性和性能方面具有显著优势。（1）数据可靠性：通过数据冗余存储（默认为三副本）和自动容错机制（如数据块复制、心跳检测和数据块扫描等）确保高可靠性。（2）伸缩性：通过添加更多节点线性扩展存储容量，支持PB级数据存储。（3）性能：通过数据本地化、优化读写路径以及利用硬件特性（如磁盘并行读写）提高数据传输和处理效率。",
+    "source_analysis": "解析：无"
+  },
+  {
+    "source_question": "61",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 61,
+    "paper": "试题四（25分）",
+    "stem_same_as_q59": "电商平台数据架构升级（MySQL+Cassandra+HDFS）与题59共同背景一致",
+    "subquestion": {
+      "site_number": 61,
+      "label": "问题3（11分）",
+      "prompt": "考虑到电商平台对实时数据分析的需求，团队计划将部分实时数据从Cassandra同步到Kafka中，以支持实时数据流处理和分析。请说明为何选择Kafka作为实时数据流处理的中间件。",
+      "type": "解答题",
+      "max_score": 11
+    },
+    "source_answer": "(1)兼容性：Kafka能够收集和处理来自Cassandra的实时数据流。(2)可伸缩性：Kafka的分布式架构支持通过增加节点来线性伸缩，适应不断增长的数据量。(3)容错性：Kafka通过数据复制和分区机制提供强大的容错能力。(4)高吞吐量：支持高吞吐量的数据处理，也能够削峰填谷。(5)低延迟：Kafka能够满足电商平台对实时数据处理的需求。(6)发布-订阅模式：允许不同的消费者（如实时分析引擎、数据仓库等）独立地消费数据，互不影响。(7)持久化：数据持久化机制允许根据需要调整数据的保留策略和副本因子。(8)生态系统支持：拥有丰富的API和强大的生态系统支持，可无缝集成到现有数据处理和分析框架中。（答出6个即满分）"
+  }
+]

@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9394-vehicle-eval-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§8.1.3、§8.2.1、§8.3.6；网站138/139/140答案（原样存档，140为答案表图）",
+    "level": "教材与网站解析互相印证的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9394-vehicle-eval-p1perf",
+      "question_id": "rkdr-9394-vehicle-eval-q1",
+      "weight": 2,
+      "criterion": "空(1)填性能，与同分支叶h（帧率/分辨率）印证",
+      "conditions": [
+        "由h的响应度量推出性能"
+      ],
+      "equivalents": [
+        "写'性能(Performance)'"
+      ],
+      "correct": "(1) 性能",
+      "dimension": "质量属性",
+      "source": "网站138答案表；教材§8.3.6"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p2avail",
+      "question_id": "rkdr-9394-vehicle-eval-q1",
+      "weight": 2,
+      "criterion": "空(2)填可用性，与同分支叶j（断电重定向）印证",
+      "conditions": [
+        "由j的故障恢复场景推出可用性"
+      ],
+      "equivalents": [
+        "写'可用性(Availability)'"
+      ],
+      "correct": "(2) 可用性",
+      "dimension": "质量属性",
+      "source": "网站138答案表；教材§8.3.6"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p3b",
+      "question_id": "rkdr-9394-vehicle-eval-q1",
+      "weight": 2,
+      "criterion": "空(3)填(b)：正常负载0.5秒响应查询的性能场景",
+      "conditions": [
+        "环境＋响应度量齐全"
+      ],
+      "equivalents": [
+        "(k)亦性能相关但缺场景结构，不推荐"
+      ],
+      "correct": "(3) (b)",
+      "dimension": "质量属性场景",
+      "source": "网站138答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p4c",
+      "question_id": "rkdr-9394-vehicle-eval-q1",
+      "weight": 2,
+      "criterion": "空(4)填(c)：抵御99.999%黑客攻击的安全性场景",
+      "conditions": [
+        "攻击防抗归安全性"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(4) (c)",
+      "dimension": "质量属性场景",
+      "source": "网站138答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p5f",
+      "question_id": "rkdr-9394-vehicle-eval-q1",
+      "weight": 2,
+      "criterion": "空(5)填(f)：网络失效2分钟内启用备用的可用性场景",
+      "conditions": [
+        "故障恢复归可用性；j已被(2)支占用"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(5) (f)",
+      "dimension": "质量属性场景",
+      "source": "网站138答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p6g",
+      "question_id": "rkdr-9394-vehicle-eval-q1",
+      "weight": 2,
+      "criterion": "空(6)填(g)：1个月内添加中间件的可修改性场景",
+      "conditions": [
+        "修改代价归可修改性；n已被占用"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(6) (g)",
+      "dimension": "质量属性场景",
+      "source": "网站138答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p7m",
+      "question_id": "rkdr-9394-vehicle-eval-q2",
+      "weight": 1,
+      "criterion": "风险点选(m)：业务逻辑未共识致模块重复的隐患",
+      "conditions": [
+        "(m)含潜在问题决策→隐患"
+      ],
+      "equivalents": [
+        "理由表述等义即可"
+      ],
+      "correct": "(m) 系统架构风险",
+      "dimension": "评估概念",
+      "source": "网站139答案；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p8e",
+      "question_id": "rkdr-9394-vehicle-eval-q2",
+      "weight": 1,
+      "criterion": "敏感点选(e)：处理时间要求牵引协议与处理设计",
+      "conditions": [
+        "单属性牵引设计"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(e) 敏感点",
+      "dimension": "评估概念",
+      "source": "网站139答案；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p9i",
+      "question_id": "rkdr-9394-vehicle-eval-q2",
+      "weight": 1,
+      "criterion": "权衡点选(i)：加密级别同时影响安全性与性能",
+      "conditions": [
+        "两属性对抗"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(i) 权衡点",
+      "dimension": "评估概念",
+      "source": "网站139答案；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p10perfname",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 0.5,
+      "criterion": "性能属性名正确",
+      "conditions": [
+        "写'性能'"
+      ],
+      "equivalents": [
+        "Performance"
+      ],
+      "correct": "性能",
+      "dimension": "属性识别",
+      "source": "训练推定；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p11perfs1",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "性能策略一（增加计算资源或改善资源需求）",
+      "conditions": [
+        "属于性能策略族"
+      ],
+      "equivalents": [
+        "减少计算复杂度",
+        "减少计算开销（网站140答案表）"
+      ],
+      "correct": "增加计算资源/改善资源需求",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p12perfs2",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "性能策略二（资源管理并发/复制或资源调度）",
+      "conditions": [
+        "属于性能策略族"
+      ],
+      "equivalents": [
+        "缓存、FIFO、优先级队列",
+        "优先级队列、资源调度（网站140答案表）"
+      ],
+      "correct": "资源管理（并发、数据复制）或资源调度",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p13availname",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 0.5,
+      "criterion": "可用性属性名正确",
+      "conditions": [
+        "写'可用性'"
+      ],
+      "equivalents": [
+        "Availability"
+      ],
+      "correct": "可用性",
+      "dimension": "属性识别",
+      "source": "训练推定；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p14avails1",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "可用性策略一（Ping/Echo或心跳）",
+      "conditions": [
+        "属于可用性策略族"
+      ],
+      "equivalents": [
+        "探活机制",
+        "冗余、进程监视器（网站140答案表）"
+      ],
+      "correct": "Ping/Echo或心跳",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p15avails2",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "可用性策略二（主动冗余或异常检测）",
+      "conditions": [
+        "属于可用性策略族"
+      ],
+      "equivalents": [
+        "被动冗余、备用",
+        "进程监视器、冗余（网站140答案表）"
+      ],
+      "correct": "主动冗余或异常",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p16secname",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 0.5,
+      "criterion": "安全性属性名正确",
+      "conditions": [
+        "写'安全性'"
+      ],
+      "equivalents": [
+        "Security"
+      ],
+      "correct": "安全性",
+      "dimension": "属性识别",
+      "source": "训练推定；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p17secs1",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "安全性策略一（抵御攻击：认证/授权/限制访问）",
+      "conditions": [
+        "属于安全性策略族"
+      ],
+      "equivalents": [
+        "身份验证、访问控制",
+        "用户认证、用户授权、限制访问（网站140答案表）"
+      ],
+      "correct": "抵御攻击（认证、授权、限制访问）",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p18secs2",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "安全性策略二（攻击检测/从攻击中恢复/信息审计）",
+      "conditions": [
+        "属于安全性策略族"
+      ],
+      "equivalents": [
+        "入侵检测、审计追踪",
+        "追踪审计（网站140答案表）"
+      ],
+      "correct": "入侵检测或信息审计",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p19modname",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 0.5,
+      "criterion": "可修改性属性名正确",
+      "conditions": [
+        "写'可修改性'"
+      ],
+      "equivalents": [
+        "Modifiability"
+      ],
+      "correct": "可修改性",
+      "dimension": "属性识别",
+      "source": "训练推定；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p20mods1",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "可修改性策略一（软件模块泛化或限制模块间通信）",
+      "conditions": [
+        "属于可修改性策略族"
+      ],
+      "equivalents": [
+        "信息隐藏",
+        "抽象、信息隐藏（网站140答案表）"
+      ],
+      "correct": "软件模块泛化或限制模块间通信",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    },
+    {
+      "id": "rkdr-9394-vehicle-eval-p21mods2",
+      "question_id": "rkdr-9394-vehicle-eval-q3",
+      "weight": 1,
+      "criterion": "可修改性策略二（使用中介或延迟绑定）",
+      "conditions": [
+        "属于可修改性策略族"
+      ],
+      "equivalents": [
+        "中介者、运行时绑定",
+        "运行时注册（网站140答案表）"
+      ],
+      "correct": "使用中介或延迟绑定",
+      "dimension": "设计策略",
+      "source": "教材§8.1.3；网站137同族策略"
+    }
+  ]
+}

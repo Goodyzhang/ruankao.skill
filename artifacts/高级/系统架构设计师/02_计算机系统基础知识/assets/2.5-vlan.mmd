@@ -1,0 +1,26 @@
+---
+title: 2.5 补充关系：一台二层交换机可承载不同 VLAN
+---
+flowchart TB
+  condition[本例普通二层交换<br/>A 送入 VLAN 10 的未知目的单播；不含三层转发]
+  a[终端 A<br/>接入 VLAN 10]
+  b[终端 B<br/>接入 VLAN 10]
+  c[终端 C<br/>接入 VLAN 20]
+  d[终端 D<br/>接入 VLAN 20]
+  subgraph device[同一台物理交换机：逻辑广播域分开]
+    v10[VLAN 10 的 MAC 查表范围<br/>目的未知：向其余允许转发端口泛洪]
+    v20[VLAN 20 的 MAC 查表范围<br/>不接收 VLAN 10 的这次二层泛洪]
+  end
+  condition -.->|限定这次帧的条件| a
+  a -->|入端口归属 VLAN 10| v10
+  v10 -->|本例的其余同 VLAN 端口| b
+  c ---|物理接入，归属 VLAN 20| v20
+  d ---|物理接入，归属 VLAN 20| v20
+  gateway[跨 VLAN 通信另看三层网关与访问策略<br/>VLAN 分隔不等于所有跨 VLAN 流量都被禁止]
+  ports[实线箭头：本次帧的转发<br/>无尖端线：物理接入；不表示本次泛洪]
+  classDef vlan10 fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef vlan20 fill:#e8f6f0,stroke:#45836b,color:#204e3d;
+  classDef note fill:#fff4df,stroke:#b0803e,color:#573814;
+  class a,b,v10 vlan10;
+  class c,d,v20 vlan20;
+  class condition,gateway,ports note;

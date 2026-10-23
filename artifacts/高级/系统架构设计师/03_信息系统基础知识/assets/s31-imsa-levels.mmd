@@ -1,0 +1,25 @@
+flowchart TB
+  subgraph DUTY["五组织层级 · 2021指南｜上下只表示组织层级"]
+    direction TB
+    C["协同层<br/>企业内外信息互联共享<br/>实现跨企业业务协同<br/>例：内部共享计划，再与伙伴协调交期"]
+    E["企业层<br/>企业经营管理<br/>例：协调订单、采购和成本"]
+    W["车间层<br/>工厂或车间生产管理<br/>例：安排整车间生产任务"]
+    U["单元层<br/>企业内处理信息，监测和控制物理流程<br/>例：处理湿度并调整参数"]
+    D["设备层<br/>实现实际物理流程，并感知和操控<br/>例：读湿度、执行动作"]
+    C ~~~ E
+    E ~~~ W
+    W ~~~ U
+    U ~~~ D
+  end
+  subgraph TASK["同一工位的实际交换｜箭头只表示本例数据与指令"]
+    direction LR
+    S["湿度传感器"] -->|湿度数据| K["控制器"]
+    K -->|控制指令| A["执行装置"]
+  end
+  DUTY ~~~ TASK
+  TASK ~~~ RULE["按所问职责判层，不凭设备个数<br/>设备也可操控；软件可跨层<br/>工位实物不与五层固定逐项对应"]
+  classDef duty fill:#e8f3fa,stroke:#467b99,color:#193e56;
+  classDef task fill:#fff5df,stroke:#b88635,color:#553c15;
+  class C,E,W,U,D duty;
+  class S,K,A,RULE task;
+

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-es-education-pack",
+  "version": 1,
+  "title": "在线教育平台：Elasticsearch与数据同步",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-es-education",
+      "title": "在线教育平台数据架构升级（HBase+ES+Kafka）",
+      "stem": "在线教育平台非结构化数据激增；MySQL+ES存在搜索瓶颈、同步延迟、非结构化处理不足；引入HBase、优化ES集群、结合Kafka实时同步。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号68～70"
+      },
+      "figures": [
+        {
+          "file": "../../assets/e391b156385ed02c.png",
+          "caption": "MySQL与Elasticsearch特性对比表：搜索引擎原理/索引机制/数据模型/高可用模式/适用场景，空(1)～(5)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20250411/0623367680304de79b6e513f28d95d06.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-es-education-q1",
+          "title": "问题1（10分）",
+          "prompt": "请分析并比较MySQL与Elasticsearch在搜索引擎原理、索引机制、数据模型及适用场景方面的差异，并填写下表。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-es-education-q2",
+          "title": "问题2（5分）",
+          "prompt": "Elasticsearch在处理中文文本搜索时，需要依赖有效的分词机制。请阐述Elasticsearch中的分词原理，并说明如何实现自定义分词器以满足在线教育的特定业务需求。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-es-education-q3",
+          "title": "问题3（10分）",
+          "prompt": "团队计划将MySQL中的数据同步到Elasticsearch中，以支持搜索和数据分析。请说明数据从MySQL到Elasticsearch的同步方法有哪些。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

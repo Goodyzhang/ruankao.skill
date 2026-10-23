@@ -1,0 +1,18 @@
+flowchart TB
+ B["业务目标／战略"] -->|依赖| A["资产"]
+ A -->|具有| VAL["资产价值"]
+ T["威胁"] -->|利用| V["脆弱性"]
+ V -->|暴露| A
+ T -->|影响可能性| R["风险"]
+ VAL -->|影响后果| R
+ R -->|导出| N["安全需求"]
+ M["安全措施"] -->|满足| N
+ M -->|降低相关风险| R
+ R -->|实施后可能残留| RES["残余风险
+持续监视"]
+ M -->|未控或效果不足| RES
+ RES -->|可能诱发| E["安全事件"]
+ classDef control fill:#e5f2e7,stroke:#427b51,color:#193820;
+ classDef risk fill:#fff2df,stroke:#ac7632,color:#503215;
+ class M control;
+ class R,RES risk;

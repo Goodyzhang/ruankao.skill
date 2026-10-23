@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-erp-utility-tree-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题84答案为网站图片表（实际看图读取）；题85/86网站参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-erp-utility-tree-p1",
+      "question_id": "rkdr-1669-erp-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(1)性能",
+      "correct": "(1)=性能（分支叶：200机构并发、报表≤5分钟）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题84答案表（图片载体）；效用树逻辑核验"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p2",
+      "question_id": "rkdr-1669-erp-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(2)可用性",
+      "correct": "(2)=可用性（分支叶：30秒切换、DDoS保障可用）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题84答案表"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p3",
+      "question_id": "rkdr-1669-erp-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(3)=(f)",
+      "correct": "(3)=(f) 供应商价格数据更新双因素认证（安全性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题84答案表"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p4",
+      "question_id": "rkdr-1669-erp-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(4)=(a)",
+      "correct": "(4)=(a) 200个分支机构同时在线（性能分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题84答案表"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p5",
+      "question_id": "rkdr-1669-erp-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(5)=(d)",
+      "correct": "(5)=(d) 数据库故障30秒切换（可用性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题84答案表"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p6",
+      "question_id": "rkdr-1669-erp-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(6)=(h)",
+      "correct": "(6)=(h) 三周内修改兼容纯血鸿蒙（可修改性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题84答案表"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p7",
+      "question_id": "rkdr-1669-erp-utility-tree-q2",
+      "weight": 2,
+      "criterion": "效用树结构",
+      "correct": "效用树结构：树根——质量属性——属性分类——质量属性场景",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构评估",
+      "source": "网站题85参考答案"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p8",
+      "question_id": "rkdr-1669-erp-utility-tree-q2",
+      "weight": 1,
+      "criterion": "优先级对(H,L)",
+      "correct": "(H、L)表示该场景重要且易实现",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构评估",
+      "source": "网站题85参考答案"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p9",
+      "question_id": "rkdr-1669-erp-utility-tree-q2",
+      "weight": 2,
+      "criterion": "CBAM思想",
+      "correct": "CBAM思想：架构策略影响系统的质量属性，反过来这些质量属性又会为系统的项目干系人带来收益（效用）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构评估",
+      "source": "网站题85参考答案"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p10",
+      "question_id": "rkdr-1669-erp-utility-tree-q3",
+      "weight": 4,
+      "criterion": "场景(b)四要素",
+      "correct": "场景(b)：刺激=财务操作事件；环境=系统正常运行时；制品=财务审计日志；响应=对日志归档并加校验",
+      "conditions": [
+        "四要素齐全"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题86参考答案"
+    },
+    {
+      "id": "rkdr-1669-erp-utility-tree-p11",
+      "question_id": "rkdr-1669-erp-utility-tree-q3",
+      "weight": 4,
+      "criterion": "场景(g)四要素",
+      "correct": "场景(g)：刺激=DDoS攻击；环境=资源不足；制品=财务核心功能；响应=流量清洗、资源分配",
+      "conditions": [
+        "四要素齐全"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题86参考答案"
+    }
+  ]
+}

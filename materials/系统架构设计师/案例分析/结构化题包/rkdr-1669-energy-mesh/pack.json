@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-energy-mesh-pack",
+  "version": 1,
+  "title": "能源监测系统：Service Mesh、Serverless与K8s",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-energy-mesh",
+      "title": "能源监测与管理系统（微服务+云原生）",
+      "stem": "能源企业监测管理系统：电水气表实时采集、微服务拆分；Service Mesh三机制、Serverless账单任务、K8s弹性伸缩滚动更新。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号140～142"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-energy-mesh-q1",
+          "title": "问题1（8分）",
+          "prompt": "请用300字以内的文字说明什么是服务网格（Service Mesh），以及它在微服务架构中如何实现服务发现、负载均衡和熔断机制。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-energy-mesh-q2",
+          "title": "问题2（11分）",
+          "prompt": "请用300字以内的文字说明Serverless的基本特征，并分析其在此场景下的优点。",
+          "complete": true,
+          "max_score": 11
+        },
+        {
+          "id": "rkdr-1669-energy-mesh-q3",
+          "title": "问题3（6分）",
+          "prompt": "请用200字以内的文字说明在云原生环境下，如何通过容器编排工具Kubernetes实现应用的弹性伸缩和滚动更新。",
+          "complete": true,
+          "max_score": 6
+        }
+      ]
+    }
+  ]
+}

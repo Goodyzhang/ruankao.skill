@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-pharmacy-partition-pack",
+  "version": 1,
+  "title": "药店口罩预约数据管理",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-pharmacy-partition",
+      "title": "药店口罩预约数据管理",
+      "stem": "阅读以下关于数据管理的叙述，在答题纸上回答问题1至问题3。\n【说明】\n某全国连锁药店企业在新冠肺炎疫情期间，紧急推出在线口罩预约业务系统。该业务系统为普通用户提供口罩商品查询、购买、订单查询等业务，为后台管理人员提供订单查询、订单地点分布汇总、物流调度等功能。该系统核心的关系模式为预约订单信息表。\n推出业务系统后，几天内业务迅速增长到每日10万多笔预约订单，系统数据库服务器压力剧增，导致该业务交易响应速度迅速降低，甚至出现部分用户页面无法刷新、预约订单服务无响应的情况。为此，该企业紧急成立技术团队，由张工负责，以期尽快解决该问题。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号162～163～164"
+      },
+      "figures": [
+        {
+          "file": "../../assets/4cea084b8fdd4304.png",
+          "caption": "表4-1 物理分区模式比较表",
+          "source_locator": "网站题162附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-pharmacy-partition-q1",
+          "title": "问题1（9分）",
+          "prompt": "100字内说明索引过多的副作用。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-1669-pharmacy-partition-q2",
+          "title": "问题2（10分）",
+          "prompt": "填补表4-1物理分区模式比较表(a)~(d)，并100字内解释李工选择列表分区的原因。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-pharmacy-partition-q3",
+          "title": "问题3（6分）",
+          "prompt": "200字内简要说明主从复制的三种模式。",
+          "complete": true,
+          "max_score": 6
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-erp-utility-tree-pack",
+  "version": 1,
+  "title": "制造业ERP：效用树、ATAM/CBAM与场景要素",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-erp-utility-tree",
+      "title": "新一代ERP系统架构评估",
+      "stem": "制造业集团ERP整合财务/供应链/生产管理；关键质量属性场景(a)~(h)（并发、审计日志、报表时限、切换、扩展、双因素认证、抗攻击、鸿蒙兼容）。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号84～86"
+      },
+      "figures": [
+        {
+          "file": "../../assets/6d72fccdcc8733c3.png",
+          "caption": "图1 ERP系统效用树：安全性/(1)/(2)/可修改性四分支，空(1)～(6)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20251010/5929ebd93b674c968a7313f0c92141ca.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-erp-utility-tree-q1",
+          "title": "问题1（12分）",
+          "prompt": "请给出合适的质量属性填入图1中(1)、(2)空白处；并选择题干(a)～(h)序号填入(3)～(6)空白处，完成效用树。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-erp-utility-tree-q2",
+          "title": "问题2（5分）",
+          "prompt": "ATAM效用树结构与优先级对、CBAM思想填空。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-erp-utility-tree-q3",
+          "title": "问题3（8分）",
+          "prompt": "针对质量属性场景(b)和(g)分别写出刺激、环境、制品和响应要素。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

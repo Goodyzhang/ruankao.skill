@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-traffic-utility-tree-pack",
+  "version": 1,
+  "title": "智慧交通信号效用树",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-traffic-utility-tree",
+      "title": "智慧交通信号效用树",
+      "stem": "阅读以下关于软件架构评估的说明，回答下列问题。\n【说明】\n某城市交通管理部门计划开发一套智慧交通信号控制系统，用于实时优化路口信号灯配时，提升道路通行效率并减少拥堵。在系统需求分析与架构设计阶段，用户提出的部分需求和关键质量属性场景如下：\n(a)信号灯转换的响应时间必须低于1秒，以确保实时性；\n(b)系统需支持未来扩展至全市500个路口，无需重大架构修改；\n(c)系统需具备防DDoS攻击能力，保障通信安全；\n(d)系统停机收缩表空间期间无法响应用户请求，但是维护之后响应时间会缩短；\n(e)新增交通摄像头或传感器需在1周内集成到系统中；\n(f)标准传感器相互兼容，更换型号不会影响开发适配；\n(g)单个传感器节点故障不应导致整个路口信号灯失效；\n(h)系统需支持每秒处理至少500个路口的实时车流量数据；\n(i)如果不加密存储交通数据有可能发生泄露；\n(j)系统升级时需保证业务连续性，避免信号灯全城熄灭；\n(k)用户（如交通管理员）的登录密码需每30天强制更换。\n开发团队正在组织架构评估会议，需对系统设计进行质量属性分析。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号206～207"
+      },
+      "figures": [
+        {
+          "file": "../../assets/2cd1f863e16cb57f.png",
+          "caption": "图1 效用树（题面模板图沿用矿山名，内容为交通场景）",
+          "source_locator": "网站题206附图"
+        },
+        {
+          "file": "../../assets/b77e2995eb5daf33.png",
+          "caption": "参考答案表",
+          "source_locator": "网站题206附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-traffic-utility-tree-q1",
+          "title": "问题1（12分）",
+          "prompt": "效用树填空：(1)(2)质量属性+(3)~(6)场景序号(a)~(k)。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-traffic-utility-tree-q2",
+          "title": "问题2（13分）",
+          "prompt": "从(a)~(k)各选一个作为权衡点、风险点、非风险点示例并300字内说明理由。",
+          "complete": true,
+          "max_score": 13
+        }
+      ]
+    }
+  ]
+}

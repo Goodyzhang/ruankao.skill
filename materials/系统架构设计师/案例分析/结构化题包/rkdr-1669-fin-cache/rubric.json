@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-fin-cache-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-126～127参考答案；教程第2版§6.5.1核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-fin-cache-p1",
+      "question_id": "rkdr-1669-fin-cache-q1",
+      "weight": 4,
+      "criterion": "缓存作用",
+      "correct": "分布式数据库缓存的主要作用：减少数据库访问压力，提高数据访问速度，从而提升系统整体性能",
+      "conditions": [
+        "作用完整"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题126参考答案"
+    },
+    {
+      "id": "rkdr-1669-fin-cache-p2",
+      "question_id": "rkdr-1669-fin-cache-q1",
+      "weight": 3,
+      "criterion": "成本差异",
+      "correct": "成本：ElastiCache按需付费云服务，初期成本低、业务增长后长期成本可能较高；自建Redis自行承担硬件和维护成本，长期成本可控",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题126参考答案"
+    },
+    {
+      "id": "rkdr-1669-fin-cache-p3",
+      "question_id": "rkdr-1669-fin-cache-q1",
+      "weight": 3,
+      "criterion": "灵活性差异",
+      "correct": "灵活性：ElastiCache提供多种配置选项但可能受限于云服务商设定；自建Redis可根据业务需求自由配置和优化",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题126参考答案"
+    },
+    {
+      "id": "rkdr-1669-fin-cache-p4",
+      "question_id": "rkdr-1669-fin-cache-q1",
+      "weight": 3,
+      "criterion": "扩展性差异",
+      "correct": "扩展性：ElastiCache支持自动扩展但可能受限于云服务商扩展策略；自建Redis可通过增加节点和重新分片灵活扩展",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题126参考答案"
+    },
+    {
+      "id": "rkdr-1669-fin-cache-p5",
+      "question_id": "rkdr-1669-fin-cache-q2",
+      "weight": 4,
+      "criterion": "主从模式",
+      "correct": "主从模式——优点：读写分离、同步非阻塞服务、负载均衡；缺点：容错性差、数据一致性差、在线扩容困难",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题127参考答案"
+    },
+    {
+      "id": "rkdr-1669-fin-cache-p6",
+      "question_id": "rkdr-1669-fin-cache-q2",
+      "weight": 4,
+      "criterion": "哨兵模式",
+      "correct": "哨兵模式——优点：自动故障转移、监控与通知、简化运维管理；缺点：部署复杂、网络通信频繁、在线扩容困难",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题127参考答案"
+    },
+    {
+      "id": "rkdr-1669-fin-cache-p7",
+      "question_id": "rkdr-1669-fin-cache-q2",
+      "weight": 4,
+      "criterion": "集群模式",
+      "correct": "集群模式——优点：无中心架构、可用性好、伸缩性较好、降低运维成本；缺点：配置复杂、数据一致性差、客户端实现复杂、资源隔离性差（每个模式答出4点即满分）",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题127参考答案"
+    }
+  ]
+}

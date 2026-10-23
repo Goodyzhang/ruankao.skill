@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-partition-os-pack",
+  "version": 1,
+  "title": "分区化操作系统（未标分值，暂缓出题）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）；两问未标分值。",
+  "cases": [
+    {
+      "id": "rkdr-1669-partition-os",
+      "title": "宇航计算机分区化操作系统（VxWorks653类）",
+      "stem": "宇航计算机单处理器化改造：分区化OS（时间/空间隔离、健康监控）；三子系统P1/P2/P3移植，Tick=1ms主框架40ms调度表设计。",
+      "complete": true,
+      "max_score": 1,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号107～108（未标分值）"
+      },
+      "figures": [
+        {
+          "file": "../../assets/880ea6f466f9f122.png",
+          "caption": "分区化操作系统架构图",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20251010/34a99c1cda2849d39035b45e61f7c90d.png-ruankao"
+        },
+        {
+          "file": "../../assets/7b518b91737d5626.png",
+          "caption": "表3-1任务情况与表3-2分区调度表：空(1)～(10)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20251010/7660a61d1a0d4bdcba2076f32fac580b.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-partition-os-q1",
+          "title": "问题1（分值未标）",
+          "prompt": "请用300字以内文字说明该类操作系统中分区化技术的主要特点。",
+          "complete": true,
+          "max_score": 0.5
+        },
+        {
+          "id": "rkdr-1669-partition-os-q2",
+          "title": "问题2（分值未标）",
+          "prompt": "完善表3-2分区调度表设计，在空（1）～（10）填写正确内容。",
+          "complete": true,
+          "max_score": 0.5
+        }
+      ]
+    }
+  ]
+}

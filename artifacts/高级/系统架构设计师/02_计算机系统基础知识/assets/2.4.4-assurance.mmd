@@ -1,0 +1,20 @@
+flowchart TB
+  system[系统用途、失效条件与危害分析] --> allocation[结合架构/隔离分配安全需求与软件保证级别]
+  allocation --> plan[软件计划：协调活动、标准和受控数据]
+  subgraph develop[开发过程：逐步形成产品]
+    req[高层需求] --> design[架构与低层需求]
+    design --> code[源代码]
+    code --> integrate[集成为目标可执行代码]
+  end
+  plan --> develop
+  verify[验证：评审/分析/基于需求测试与覆盖检查] -->|核对产物与目标| develop
+  develop -->|生命周期数据| evidence[需求/设计/代码/测试与分析记录]
+  verify -->|产生测试与分析记录| evidence
+  evidence -->|发现问题/派生需求反馈| system
+  cm[配置管理：标识/基线/变更/归档] -->|控制| evidence
+  qa[质量保证：审计过程和产物] -->|检查遵循计划| plan
+  liaison[审定联络：沟通符合性方法与证据] -->|组织提交| evidence
+  plan -.-> verify
+  plan -.-> cm
+  plan -.-> qa
+  plan -.-> liaison

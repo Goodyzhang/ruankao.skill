@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-llm-quality-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-95～96参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-llm-quality-p1",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(1)需求(b)性能",
+      "correct": "（1）性能（需求b：导入导出1分钟内完成）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p2",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(2)需求(d)性能",
+      "correct": "（2）性能（需求d：查询响应2秒内）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p3",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(3)需求(e)安全性",
+      "correct": "（3）安全性（需求e：数据与操作记录安全防未授权访问）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p4",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(4)需求(f)功能性",
+      "correct": "（4）功能性（需求f：多语言接口、自动补全与搜索关联）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p5",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(5)需求(g)可修改性",
+      "correct": "（5）可修改性（需求g：扩容2人5天完成）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p6",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(6)需求(i)功能性",
+      "correct": "（6）功能性（需求i：按任务类型调用相应大语言模型）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p7",
+      "question_id": "rkdr-1669-llm-quality-q1",
+      "weight": 2,
+      "criterion": "空(7)需求(j)性能",
+      "correct": "（7）性能（需求j：搜索结果3秒内返回）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题95参考答案"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p8",
+      "question_id": "rkdr-1669-llm-quality-q2",
+      "weight": 3,
+      "criterion": "两策略机制",
+      "correct": "(1)ping/echo：监控组件定期发送ping请求并等待响应检测故障（收到的回应表明通路正常，超时或未收到则可能故障）；心跳：节点间定期交换心跳消息确认服务状态，连续一段时间未收到某节点心跳则判定故障并触发恢复或切换",
+      "conditions": [
+        "两机制齐全"
+      ],
+      "equivalents": [],
+      "dimension": "可用性",
+      "source": "网站题96参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p9",
+      "question_id": "rkdr-1669-llm-quality-q2",
+      "weight": 4,
+      "criterion": "心跳更优理由",
+      "correct": "(2)理由：①资源消耗少——心跳由被监控组件主动发简短消息，ping/echo需监控端发请求等回应，消耗更多网络与处理器资源（心跳长连接vs ping短连接）；②降低网络负载——心跳消息短且频率较低；③故障检测更快——心跳周期性发送，节点故障时监控组件立即察觉，ping/echo受网络延迟与消息丢失影响",
+      "conditions": [
+        "三条理由"
+      ],
+      "equivalents": [],
+      "dimension": "可用性",
+      "source": "网站题96参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-llm-quality-p10",
+      "question_id": "rkdr-1669-llm-quality-q2",
+      "weight": 4,
+      "criterion": "需求(h)口径",
+      "correct": "针对需求(h)（云服务器故障1分钟检测、1小时恢复）的可用性战术选型题结构：机制+对比+结论",
+      "conditions": [
+        "结构完整"
+      ],
+      "equivalents": [],
+      "dimension": "可用性",
+      "source": "网站题96题面"
+    }
+  ]
+}

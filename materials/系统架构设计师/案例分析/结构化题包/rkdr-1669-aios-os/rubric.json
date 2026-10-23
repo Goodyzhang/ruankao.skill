@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-aios-os-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-90～91参考答案；教程第2版核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-aios-os-p1",
+      "question_id": "rkdr-1669-aios-os-q1",
+      "weight": 8,
+      "criterion": "问题1（8分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题90参考答案"
+    },
+    {
+      "id": "rkdr-1669-aios-os-p2",
+      "question_id": "rkdr-1669-aios-os-q2",
+      "weight": 7,
+      "criterion": "问题2（7分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题91参考答案"
+    }
+  ]
+}

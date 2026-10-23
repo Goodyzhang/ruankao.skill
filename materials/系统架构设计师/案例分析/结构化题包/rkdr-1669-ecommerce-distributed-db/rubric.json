@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-ecommerce-distributed-db-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-16～17参考答案；教程第2版§6.1.6/§6.5.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p1",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q2",
+      "weight": 1.5,
+      "criterion": "全局外模式",
+      "correct": "全局外模式：全局应用的用户视图，是全局概念模式的子集，直接与用户（或应用程序）交互",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式数据库",
+      "source": "网站题16参考答案；教程第2版§6.1.6"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p2",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q2",
+      "weight": 1.5,
+      "criterion": "全局概念模式",
+      "correct": "全局概念模式：定义分布式数据库中数据的整体逻辑结构，数据如同未分布一样定义",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式数据库",
+      "source": "网站题16参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p3",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q2",
+      "weight": 1.5,
+      "criterion": "分片模式",
+      "correct": "分片模式：将一个关系模式分解为几个数据片",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式数据库",
+      "source": "网站题16参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p4",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q2",
+      "weight": 1.5,
+      "criterion": "分布模式",
+      "correct": "分布模式：定义数据片段（分片结果）的存放节点",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式数据库",
+      "source": "网站题16参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p5",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q2",
+      "weight": 1.5,
+      "criterion": "局部概念模式",
+      "correct": "局部概念模式：局部数据库的概念模式",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式数据库",
+      "source": "网站题16参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p6",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q2",
+      "weight": 1.5,
+      "criterion": "局部内模式",
+      "correct": "局部内模式：局部数据库的内模式",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式数据库",
+      "source": "网站题16参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p7",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q3",
+      "weight": 2,
+      "criterion": "按列存储查询高效",
+      "correct": "列式数据库按列族存储，特定列查询能更快定位数据，提高查询效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据存储",
+      "source": "网站题17参考答案；教程第2版§6.5.2列族数据库"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p8",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q3",
+      "weight": 2,
+      "criterion": "分布式并行与扩展",
+      "correct": "支持分布式存储和并行处理，可处理PB级数据量，扩展性好",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据存储",
+      "source": "网站题17参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p9",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q3",
+      "weight": 2,
+      "criterion": "压缩降低成本",
+      "correct": "提供高效的数据压缩与存储机制，降低存储成本",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据存储",
+      "source": "网站题17参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db-p10",
+      "question_id": "rkdr-1669-ecommerce-distributed-db-q3",
+      "weight": 2,
+      "criterion": "大数据平台集成",
+      "correct": "能与Hadoop等大数据处理平台无缝集成，系统复杂度低",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据存储",
+      "source": "网站题17参考答案"
+    }
+  ]
+}

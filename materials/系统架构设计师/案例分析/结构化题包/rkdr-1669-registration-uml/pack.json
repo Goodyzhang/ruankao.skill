@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-registration-uml-pack",
+  "version": 1,
+  "title": "预约挂号系统建模",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-registration-uml",
+      "title": "预约挂号系统建模",
+      "stem": "阅读以下关于软件系统设计与建模的叙述，在答题纸上回答问题1至问题3。\n【说明】\n某医院拟委托软件公司开发一套预约挂号管理系统，以便为患者提供更好的就医体验，为医院提供更加科学的预约管理。本系统的主要功能描述如下：(a)注册登录，(b)信息浏览，(c)账号管理，(d)预约挂号，(e)查询与取消预约，(f)号源管理，(g)报告查询，(h)预约管理，(i)报表管理和(j)科室管理等。",
+      "complete": false,
+      "max_score": 10,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号103"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-registration-uml-q1",
+          "title": "问题2（10分）",
+          "prompt": "UML2.0序列图中存在哪些元素。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

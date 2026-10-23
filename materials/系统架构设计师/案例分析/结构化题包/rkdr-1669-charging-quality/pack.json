@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-charging-quality-pack",
+  "version": 1,
+  "title": "新能源充电管理系统：质量属性场景六要素与归类",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-charging-quality",
+      "title": "电动车充电管理系统质量属性与架构评估",
+      "stem": "新能源充电管理系统升级：动态充电策略、高峰智能分配、第三方平台集成；需求与质量属性(a)~(n)；微服务与分布式集群两种方案正接受专家评估。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号49～52"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-charging-quality-q1",
+          "title": "问题1（6分）",
+          "prompt": "质量属性场景6要素有哪些，作用是什么。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-charging-quality-q2",
+          "title": "问题2（6分）",
+          "prompt": "“集成第三方支付平台的新API”与“单点故障恢复时间不超过5分钟”分别是质量属性场景6要素的什么。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-charging-quality-q3",
+          "title": "问题3（7分）",
+          "prompt": "给出题干描述的(a)~(n)中对应的质量属性。",
+          "complete": true,
+          "max_score": 7
+        },
+        {
+          "id": "rkdr-1669-charging-quality-q4",
+          "title": "问题4（6分）",
+          "prompt": "AES-256 算法固定16字节，用户敏感数据可能会超过16字节，应该如何处理。",
+          "complete": true,
+          "max_score": 6
+        }
+      ]
+    }
+  ]
+}

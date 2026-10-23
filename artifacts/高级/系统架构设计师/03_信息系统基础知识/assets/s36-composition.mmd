@@ -1,0 +1,15 @@
+flowchart TB
+  O["OAS：四资源组成<br/>实线无箭头＝组成；虚线＝条件"]
+  O --- C["计算机设备<br/>主机／终端／输入输出外设"]
+  O --- A["办公设备<br/>电话／传真／复印／会议设备"]
+  O --- N["数据通信及网络设备<br/>连接节点，传递信息"]
+  O --- W["软件系统"]
+  W --- V["按本版软件用途分组"]
+  V --- S["系统软件：运行支持<br/>操作系统／网络软件"]
+  V --- P["专用软件：办公业务程序"]
+  V --- U["支持软件：辅助程序<br/>文字处理／DBMS／邮件／图形"]
+  U -.->|"语境条件"| H["DBMS分类限本版语境<br/>采购来源不单独决定类别"]
+  classDef core fill:#d9eafa,stroke:#25577e,color:#102e47
+  classDef group fill:#f5f8fb,stroke:#8097ab,color:#102e47
+  class O,W core
+  class C,A,N,V,S,P,U,H group

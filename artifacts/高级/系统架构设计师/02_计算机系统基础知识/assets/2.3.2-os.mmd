@@ -1,0 +1,13 @@
+stateDiagram-v2
+  direction LR
+  state "就绪：有执行条件，等 CPU" as Ready
+  state "运行：正在 CPU 上执行" as Running
+  state "阻塞：等资源或事件" as Blocked
+  Ready --> Running: 调度分派
+  Running --> Ready: 时间片到 / 抢占
+  Running --> Blocked: 需等待的 I/O / P 条件不满足
+  Blocked --> Ready: 事件完成 / 唤醒
+  note right of Running
+    P 条件满足：继续执行
+    本例单逻辑 CPU 不同时运行两个执行流
+  end note

@@ -1,0 +1,15 @@
+flowchart TB
+  subgraph SM[状态机：一条预约的局部状态变化]
+    Initial(("起点")) --> Draft(["草稿"])
+    Draft -->|提交：校验通过且有余量| Confirmed(["已确认"])
+    Confirmed -->|取消| Cancelled(["已取消"])
+  end
+  subgraph AC[活动：提交处理的控制流示意]
+    Start(("起点")) --> Check(["校验信息"])
+    Check --> Decision{"通过且有余量？"}
+    Decision -->|是| Save(["保存预约"])
+    Save --> Notice(["发送通知"])
+    Notice --> Finish(("本次活动结束"))
+    Decision -->|否| Refuse(["拒绝提交"])
+    Refuse --> RefuseFinish(("本次活动结束"))
+  end

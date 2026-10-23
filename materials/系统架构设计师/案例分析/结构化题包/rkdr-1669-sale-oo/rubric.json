@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-sale-oo-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-180～182参考答案；教程第2版§5.3.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-sale-oo-p1",
+      "question_id": "rkdr-1669-sale-oo-q1",
+      "weight": 4,
+      "criterion": "三类设计类职责",
+      "correct": "设计类分三类：实体类（映射需求中的每个实体，保存需存储在永久存储体中的信息）；边界类/接口类（封装在用例内、外流动的信息或数据流）；控制类（控制用例工作的类，一般由动宾结构短语转化来的名词）",
+      "conditions": [
+        "三职责齐全"
+      ],
+      "equivalents": [],
+      "dimension": "OO设计",
+      "source": "网站题180参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p2",
+      "question_id": "rkdr-1669-sale-oo-q1",
+      "weight": 4,
+      "criterion": "实体类实例",
+      "correct": "实体类实例：商品、订单、注册用户、送货信息、购物车等（答2个）",
+      "conditions": [
+        "2个实例"
+      ],
+      "equivalents": [],
+      "dimension": "OO设计",
+      "source": "网站题180参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p3",
+      "question_id": "rkdr-1669-sale-oo-q1",
+      "weight": 4,
+      "criterion": "边界类与控制类实例",
+      "correct": "边界类实例：商品信息页面、订单信息录入页面、订单表单（答2个）；控制类实例：订单结算、订单支付、备货、出货（答2个）",
+      "conditions": [
+        "各2个"
+      ],
+      "equivalents": [],
+      "dimension": "OO设计",
+      "source": "网站题180参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p4",
+      "question_id": "rkdr-1669-sale-oo-q2",
+      "weight": 1,
+      "criterion": "区别一面向",
+      "correct": "区别(1)：活动图是面向对象的，流程图是面向过程的",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题181参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p5",
+      "question_id": "rkdr-1669-sale-oo-q2",
+      "weight": 1,
+      "criterion": "区别二描述对象",
+      "correct": "区别(2)：活动图描述对象活动顺序关系所遵循的规则，着重表现系统行为而非处理过程；流程图着重描述处理过程（顺序/分支/循环，严格顺序与时间关系）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题181参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p6",
+      "question_id": "rkdr-1669-sale-oo-q2",
+      "weight": 1,
+      "criterion": "区别三并发",
+      "correct": "区别(3)：活动图能够表示并发活动的情形，流程图不能",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题181参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p7",
+      "question_id": "rkdr-1669-sale-oo-q3",
+      "weight": 4,
+      "criterion": "空(a)(b)",
+      "correct": "(a)=取消；(b)=待结算",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题182参考答案；状态图核验"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p8",
+      "question_id": "rkdr-1669-sale-oo-q3",
+      "weight": 2,
+      "criterion": "空(c)超时条件",
+      "correct": "(c)=大于30分钟（转移条件）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题182参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p9",
+      "question_id": "rkdr-1669-sale-oo-q3",
+      "weight": 2,
+      "criterion": "空(d)订单生效",
+      "correct": "(d)=订单生效（状态）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题182参考答案"
+    },
+    {
+      "id": "rkdr-1669-sale-oo-p10",
+      "question_id": "rkdr-1669-sale-oo-q3",
+      "weight": 2,
+      "criterion": "空(e)用户签收",
+      "correct": "(e)=用户签收（转移事件，至交易完成）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题182参考答案"
+    }
+  ]
+}

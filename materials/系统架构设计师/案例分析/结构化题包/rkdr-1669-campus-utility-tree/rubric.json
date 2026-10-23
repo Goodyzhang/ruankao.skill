@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-campus-utility-tree-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题156答案为网站图片表（实际看图读取）；题157/158网站参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-campus-utility-tree-p1",
+      "question_id": "rkdr-1669-campus-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(1)安全性",
+      "correct": "(1)=安全性（分支叶：b三级审核、h端到端加密）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题156答案表（图片载体）；树结构互证"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p2",
+      "question_id": "rkdr-1669-campus-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(2)可用性",
+      "correct": "(2)=可用性（分支叶：d勒索恢复4小时、f灾备切换5分钟）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题156答案表"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p3",
+      "question_id": "rkdr-1669-campus-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(3)=(g)",
+      "correct": "(3)=(g) 选课高峰响应≤2秒（性能分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题156答案表"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p4",
+      "question_id": "rkdr-1669-campus-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(4)=(h)",
+      "correct": "(4)=(h) 敏感数据端到端加密（安全性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题156答案表"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p5",
+      "question_id": "rkdr-1669-campus-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(5)=(e)",
+      "correct": "(5)=(e) UI适配移动端10天完成（可修改性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题156答案表"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p6",
+      "question_id": "rkdr-1669-campus-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(6)=(f)",
+      "correct": "(6)=(f) 主服务器故障5分钟切换灾备（可用性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题156答案表"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p7",
+      "question_id": "rkdr-1669-campus-utility-tree-q2",
+      "weight": 5,
+      "criterion": "SAAM分析过程",
+      "correct": "SAAM分析过程：场景开发、架构描述、单个场景评估、场景交互评估、总体评估",
+      "conditions": [
+        "五步齐全"
+      ],
+      "equivalents": [],
+      "dimension": "架构评估",
+      "source": "网站题157参考答案"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p8",
+      "question_id": "rkdr-1669-campus-utility-tree-q3",
+      "weight": 3,
+      "criterion": "场景(d)四要素",
+      "correct": "场景(d)：刺激源=勒索病毒软件；环境=系统未及时更新安全补丁；响应=执行数据恢复操作；响应度量=数据恢复完成时间≤4小时",
+      "conditions": [
+        "四要素齐全"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题158参考答案"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p9",
+      "question_id": "rkdr-1669-campus-utility-tree-q3",
+      "weight": 3,
+      "criterion": "场景(g)四要素",
+      "correct": "场景(g)：刺激源=大量学生用户（≥5000人）；环境=开放选课高峰时段；响应=系统处理选课请求并返回结果；响应度量=请求响应时间≤2秒",
+      "conditions": [
+        "四要素齐全"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题158参考答案"
+    },
+    {
+      "id": "rkdr-1669-campus-utility-tree-p10",
+      "question_id": "rkdr-1669-campus-utility-tree-q3",
+      "weight": 2,
+      "criterion": "要素口径",
+      "correct": "本题四要素（无制品项），刺激源写具体实体（勒索病毒软件/大量学生用户）",
+      "conditions": [
+        "口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题158题面"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-smart-home-pack",
+  "version": 1,
+  "title": "智能家居云平台：架构填图、云原生模式与层次优势",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-smart-home",
+      "title": "智能家居管理系统（云平台分层架构）",
+      "stem": "智能家居管理系统：设备控制与状态反馈、实时存储查询、习惯挖掘建议；张工家庭网关方案 vs 李工云平台方案，采用李工。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号171～173"
+      },
+      "figures": [
+        {
+          "file": "../../assets/e044d88bcfab997b.png",
+          "caption": "图5-1 智能家居系统架构图：用户终端/云平台/家庭网关/家电设备四层，空(1)～(6)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/5dc3d3b0-5a1f-454f-88bd-3dff082bb86c.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-smart-home-q1",
+          "title": "问题1（12分）",
+          "prompt": "请从(a)~(j)中进行选择，补充完善图5-1中空(1)~(6)处的内容，协助李工完成该系统的架构设计方案。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-smart-home-q2",
+          "title": "问题2（8分）",
+          "prompt": "请列举出主要的云原生架构模式并简要解释每种模式的特点。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-smart-home-q3",
+          "title": "问题3（5分）",
+          "prompt": "根据李工建议，该系统采用层次架构，请用300字以内的文字分析层次型架构优势。",
+          "complete": true,
+          "max_score": 5
+        }
+      ]
+    }
+  ]
+}

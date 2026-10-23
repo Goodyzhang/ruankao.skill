@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-java-ssh-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-4～6参考答案及解析；教程第2版§13章核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-java-ssh-p1",
+      "question_id": "rkdr-1669-java-ssh-q1",
+      "weight": 2,
+      "criterion": "表现层及功能",
+      "correct": "表现层（对应View）：展现数据，负责View组件实现模式、显示粒度、页面跳转与事件触发，服务客户端请求",
+      "conditions": [
+        "写出“表现层”并对应View/界面展现"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题4参考答案及解析；教程第2版§13.2"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p2",
+      "question_id": "rkdr-1669-java-ssh-q1",
+      "weight": 2,
+      "criterion": "业务逻辑组件层及功能",
+      "correct": "业务逻辑组件层（对应Controller）：支持由表现层（某些情况由持久层）发起的业务数据逻辑处理",
+      "conditions": [
+        "写出“业务逻辑组件层”并对应Controller/业务逻辑"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题4参考答案及解析；教程第2版§13.3"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p3",
+      "question_id": "rkdr-1669-java-ssh-q1",
+      "weight": 2,
+      "criterion": "持久层及功能",
+      "correct": "持久层（对应Model）：实现持久化存储，支持与数据库等外部资源通信",
+      "conditions": [
+        "写出“持久层”并对应Model/持久化"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题4参考答案及解析；教程第2版§13.4"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p4",
+      "question_id": "rkdr-1669-java-ssh-q2",
+      "weight": 3,
+      "criterion": "Struts特点",
+      "correct": "Struts：出现早、使用广泛、现成标签与样例多；组件页面显示粒度粗、框架类限制死板，给表示层开发带来额外代码开销",
+      "conditions": [
+        "写出表示层定位与优缺点各一"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题5参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p5",
+      "question_id": "rkdr-1669-java-ssh-q2",
+      "weight": 3,
+      "criterion": "Spring特点",
+      "correct": "Spring：基于IoC与AOP的业务组件层轻量级框架，依赖注入实现Bean装配、实现事务管理；不具备分布式处理能力",
+      "conditions": [
+        "写出IoC/AOP与事务，指出无分布式能力"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题5参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p6",
+      "question_id": "rkdr-1669-java-ssh-q2",
+      "weight": 3,
+      "criterion": "Hibernate特点",
+      "correct": "Hibernate：开源O/R Mapping框架，轻量封装JDBC，用Java反射机制实现透明性，映射灵活支持1:1到m:n；缺点是限制对象模型（如一个持久类不能映射多表）",
+      "conditions": [
+        "写出ORM定位与优缺点各一"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题5参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p7",
+      "question_id": "rkdr-1669-java-ssh-q2",
+      "weight": 3,
+      "criterion": "结合方式",
+      "correct": "结合方式：Struts负责Web表现与请求调度，Spring以IoC容器组装业务组件并管理事务（整合Struts Action与Hibernate），Hibernate负责对象-关系持久化，构成SSH集成架构",
+      "conditions": [
+        "三框架职责分明并说明Spring纽带整合"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题5题面“结合方式”要求；教程第2版§13.4.3、§13.7 SSH案例"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p8",
+      "question_id": "rkdr-1669-java-ssh-q3",
+      "weight": 4,
+      "criterion": "轻量级框架侧重点",
+      "correct": "轻量级框架侧重减小开发复杂度：基于POJO不依赖容器，开发调试效率高、开源生态成熟；事务功能弱、不具备分布式处理能力，适用于中小型企业应用",
+      "conditions": [
+        "侧重点=降低复杂度+适用中小型"
+      ],
+      "equivalents": [],
+      "dimension": "框架对比",
+      "source": "网站题6参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-java-ssh-p9",
+      "question_id": "rkdr-1669-java-ssh-q3",
+      "weight": 3,
+      "criterion": "重量级框架侧重点",
+      "correct": "EJB重量级框架强调高可伸缩性：基础结构服务与底层分配由容器/服务器处理，容器通过减少数据库访问次数及分布式处理提供性能方案，适用于大型企业应用",
+      "conditions": [
+        "侧重点=高可伸缩+容器承担基础服务+适用大型"
+      ],
+      "equivalents": [],
+      "dimension": "框架对比",
+      "source": "网站题6参考答案及解析"
+    }
+  ]
+}

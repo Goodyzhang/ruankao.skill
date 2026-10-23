@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-odp-distributed-pack",
+  "version": 1,
+  "title": "ODP分布式系统（未标分值，暂缓出题）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-odp-distributed",
+      "title": "电信分布式系统ODP架构设计",
+      "stem": "电信分布式系统基于ISO ODP规范：五视点、分布式基础设施三方面支撑、分布式对象互操作机制。",
+      "complete": true,
+      "max_score": 1,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号139（未标分值）"
+      },
+      "figures": [
+        {
+          "file": "../../assets/13a4f1268a773dbb.jpg",
+          "caption": "ODP五视点填图：空(1)～(5)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/5ec35cc907e4086c2c31a2b28e314ec8.jpg-ruankao"
+        },
+        {
+          "file": "../../assets/c1400462af947563.jpg",
+          "caption": "分布式对象互操作机制图：空(1)～(2)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/81e68307f50c4ea7a6d3ba505924650c.jpg-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "title": "问题1（分值未标）",
+          "prompt": "ODP五个标准视点填图。",
+          "complete": true,
+          "max_score": 0.34
+        },
+        {
+          "id": "q2",
+          "title": "问题2（分值未标）",
+          "prompt": "三方面说明现有分布式基础设施的基本支撑。",
+          "complete": true,
+          "max_score": 0.33
+        },
+        {
+          "id": "q3",
+          "title": "问题3（分值未标）",
+          "prompt": "填互操作机制图并说明一次分布式对象调用的详细步骤。",
+          "complete": true,
+          "max_score": 0.33
+        }
+      ]
+    }
+  ]
+}

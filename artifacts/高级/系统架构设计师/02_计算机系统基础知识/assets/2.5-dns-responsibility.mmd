@@ -1,0 +1,37 @@
+---
+title: 2.5 补充关系：DNS 查询方式按继续查询的责任判断
+---
+flowchart TB
+  recursive ~~~ nonrecursive
+  nonrecursive ~~~ boundary
+  subgraph recursive[接受递归服务：被请求者代为完成解析]
+    rclient[请求方<br/>发出代办请求]
+    rserver[接受代办的解析器<br/>保留请求上下文]
+    rwork[已有有效结果可直接回答<br/>无结果时按需继续查询]
+    rresult[最终答案或失败<br/>交回原请求方]
+    rclient -->|递归服务已接受| rserver
+    rserver -->|代为解析| rwork
+    rwork -->|完成本次代办| rresult
+    rresult -->|应答| rclient
+  end
+  subgraph nonrecursive[非递归请求：被询问者不代为追问]
+    nclient[发起此次查询的一方]
+    nserver[被询问的 DNS 服务]
+    available[已有可用答案]
+    referral[引荐下一权威服务]
+    error[错误应答]
+    follow[查询者决定是否跟进<br/>引荐不是目标主机 A 记录]
+    nclient -->|非递归查询| nserver
+    nserver -->|可返回| available
+    nserver -->|可返回| referral
+    nserver -->|可返回| error
+    referral -->|发起方负责继续| follow
+    follow -.->|选择继续时，发出下一次查询| nclient
+  end
+  boundary[向左或向右的应答箭头不决定查询模式<br/>递归解析器是服务角色；根/TLD/子域是命名层级]
+  classDef role fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef result fill:#e8f6f0,stroke:#45836b,color:#204e3d;
+  classDef note fill:#fff4df,stroke:#b0803e,color:#573814;
+  class rclient,rserver,rwork,nclient,nserver role;
+  class rresult,available,referral,error result;
+  class follow,boundary note;

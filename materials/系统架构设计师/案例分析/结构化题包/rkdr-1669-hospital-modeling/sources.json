@@ -1,0 +1,52 @@
+[
+  {
+    "source_question": "10",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 10,
+    "paper": "试题二（25分）",
+    "paper_note": "网站试卷号与题7的试题二重复（不同案例），案例身份不能只靠试题号",
+    "stem": "阅读以下关于医院管理信息系统的叙述，在答题纸上回答问题1至问题3。\n【说明】\n一家医院计划开发一套管理信息系统，以提高医疗服务的效率和质量。该系统的基本需求包括：\n（ ）医生需通过身份验证登录系统，才能查看患者信息和开处方；\n（ ）护士可以管理患者的住院信息，如床位分配、主管医生等；\n（ ）患者可以通过系统预约挂号，查看检查结果和费用明细；\n（ ）系统自动记录患者的就诊历史，并支持医生查看患者的历史病历；\n（ ）药房人员根据处方中的开药信息配药，并管理药品库存；\n（ ）财务部门管理患者的费用结算和发票打印；\n（ ）系统支持医生、护士和患者之间的消息通知功能。\n项目组准备绘制ERD，请帮忙找出3个强实体和2个弱实体。",
+    "stem_note": "需求条目前有（ ）空号，原样保留；本页题面把问题要求并入了说明段尾",
+    "subquestion": {
+      "site_number": 10,
+      "label": "问题1（10分）",
+      "prompt": "项目组准备绘制ERD，请帮忙找出3个强实体和2个弱实体。",
+      "type": "解答题",
+      "max_score": 10
+    },
+    "source_answer": "强实体是有唯一主键的独立实体，包括医生、护士、患者、药房人员、就诊历史、处方、药品、库存、费用结算单、发票、消息等等。\n弱实体是依赖于强实体存在的实体，它们没有自己的主键，或者其主键部分地依赖于强实体的主键。包括床位分配、主管医生、开药信息等。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "11",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 11,
+    "paper": "试题二（25分）",
+    "stem_same_as_q10": "医院管理信息系统需求（ ）1～7条与题10共同背景一致",
+    "subquestion": {
+      "site_number": 11,
+      "label": "问题2（8分）",
+      "prompt": "项目组采用数据流图来实现功能建模，请举出数据流图中可能存在的4种以上常见异常的情况。",
+      "type": "解答题",
+      "max_score": 8
+    },
+    "source_answer": "（1）黑洞：只有输入没有输出的处理步骤；（2）奇迹/白洞：只有输出没有输入的处理步骤；（3）灰洞：输入不足以产生输出的处理步骤；（4）父图与子图不匹配：父图中加工的输入输出数据流与子图相应部分不一致；（5）数据存储之间的直接数据流；（6）外部实体之间的直接数据流；（7）外部实体与数据存储之间的直接数据流。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "12",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 12,
+    "paper": "试题二（25分）",
+    "stem_same_as_q10": "医院管理信息系统需求（ ）1～7条与题10共同背景一致",
+    "subquestion": {
+      "site_number": 12,
+      "label": "问题3（7分）",
+      "prompt": "在UML建模中，类图用于描述系统中的类和它们之间的关系。请指出在UML建模中，类图的主要关系有哪些。",
+      "type": "解答题",
+      "max_score": 7
+    },
+    "source_answer": "类图的主要关系包括：继承（Generalization）、实现（Realization）、关联（Association）、聚合（Aggregation）、组合（Composition）、依赖（Dependency）等。",
+    "source_analysis": "无（网站仅给答案）"
+  }
+]

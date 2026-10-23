@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-fmea-comm-pack",
+  "version": 1,
+  "title": "嵌入式通信软件FMEA：概念、实施与FMECA表",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-fmea-comm",
+      "title": "嵌入式软件FMEA分析（通信软件DY系统）",
+      "stem": "某软件公司通信软件项目由FC/DY/GD系统组成，DY系统按通信协议与FC通信；项目定为安全关键系统II类(致命)，开展软件FMEA分析。CSU01通信模块：总线通信控制器自动收发帧数据，INT0中断通知CPU，CRC校验由外部电路完成。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号31～33"
+      },
+      "figures": [
+        {
+          "file": "../../assets/46224dd907a56ecd.png",
+          "caption": "某设备通信软件的约定层次图：设备→FC/DY/GD系统→CSCI/HWCI→CSU/CSC层级",
+          "source_locator": "https://image-t.chaiding.com/ruankao/9b42184bf66de3c56c74d849f908087f.png-ruankao"
+        },
+        {
+          "file": "../../assets/23b2939f272eb992.png",
+          "caption": "CSU01通信模块FMEA步骤的主要内容表：五步骤，具体内容空(1)～(5)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/f341673d19db37aacde1ee15481a7055.png-ruankao"
+        },
+        {
+          "file": "../../assets/ab35ef330e20e004.png",
+          "caption": "通信模块INT0-ISR的软件FMECA表(局部)行1～3：空(1)～(4)，SRPN 224/224/210",
+          "source_locator": "https://image-t.chaiding.com/ruankao/bef595ebb4cf5152a7c43ce1eab72ce2.png-ruankao"
+        },
+        {
+          "file": "../../assets/3f1c9330febbc778.png",
+          "caption": "通信模块INT0-ISR的软件FMECA表(局部)行4～5：空(5)～(7)，SRPN 210/336",
+          "source_locator": "https://image-t.chaiding.com/ruankao/715a752005ee2e59f892146fc9279f66.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-fmea-comm-q1",
+          "title": "问题1（8分）",
+          "prompt": "FMEA是FMA和FEA的组合……FMEA实际是一组系列化的活动，其主要活动包括（ ）（ ）（ ）；FMEA又细分为（ ）FMEA、（ ）FMEA、（ ）FMEA和（ ）FMEA四类。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-fmea-comm-q2",
+          "title": "问题2（10分）",
+          "prompt": "针对CSU01通信模块，简要描述实施FMEA的具体内容，填写完成下表的（ ）～（5）。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-fmea-comm-q3",
+          "title": "问题3（7分）",
+          "prompt": "下表给出CSU01通信模块的软件FMECA表(局部)，请根据题描述填写表中的（ ）～（7）。注：SRPN=SESR×SOPR×SDDR。",
+          "complete": true,
+          "max_score": 7
+        }
+      ]
+    }
+  ]
+}

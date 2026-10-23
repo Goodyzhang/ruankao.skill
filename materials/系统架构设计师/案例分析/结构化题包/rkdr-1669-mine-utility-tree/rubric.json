@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-mine-utility-tree-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题183答案为网站图片表（实际看图读取）；题184/185网站参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-mine-utility-tree-p1",
+      "question_id": "rkdr-1669-mine-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(1)性能",
+      "correct": "(1)=性能（分支叶：(3)(f)实时展示延迟≤3秒、(h)1000+200终端并发）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题183答案表（图片载体）；树结构互证"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p2",
+      "question_id": "rkdr-1669-mine-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(2)安全性",
+      "correct": "(2)=安全性（分支叶：(5)(a)隔离防入侵、(c)加密存储传输）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题183答案表"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p3",
+      "question_id": "rkdr-1669-mine-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(3)=(f)",
+      "correct": "(3)=(f) 实时展示终端状态延迟≤3秒（性能分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题183答案表"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p4",
+      "question_id": "rkdr-1669-mine-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(4)=(d)",
+      "correct": "(4)=(d) 主服务器故障3分钟切换备用（可用性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题183答案表"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p5",
+      "question_id": "rkdr-1669-mine-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(5)=(a)",
+      "correct": "(5)=(a) 核心部件与互联网隔离（安全性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题183答案表"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p6",
+      "question_id": "rkdr-1669-mine-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(6)=(e)",
+      "correct": "(6)=(e) 新增矿区设备无缝集成（可修改性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题183答案表"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p7",
+      "question_id": "rkdr-1669-mine-utility-tree-q2",
+      "weight": 2,
+      "criterion": "ATAM四阶段（口径一）",
+      "correct": "ATAM四阶段：①需求收集；②架构视图描述；③属性模型构造和分析；④架构决策与折中",
+      "conditions": [
+        "四阶段齐全"
+      ],
+      "equivalents": [
+        "演示/调查和分析/测试/报告（口径二）"
+      ],
+      "dimension": "架构评估",
+      "source": "网站题184参考答案"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p8",
+      "question_id": "rkdr-1669-mine-utility-tree-q2",
+      "weight": 2,
+      "criterion": "ATAM四阶段（口径二）",
+      "correct": "另一口径：①演示；②调查和分析；③测试；④报告（网站注明两种口径均可）",
+      "conditions": [
+        "任一口径"
+      ],
+      "equivalents": [],
+      "dimension": "架构评估",
+      "source": "网站题184参考答案"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p9",
+      "question_id": "rkdr-1669-mine-utility-tree-q3",
+      "weight": 3,
+      "criterion": "选型结论与实时性",
+      "correct": "更适合事件驱动风格。实时性：事件驱动基于事件消息传递机制迅速响应内外事件，终端状态变化立即触发事件由处理服务更新展示；管道-过滤器经多级管道过滤器传递处理增加延迟",
+      "conditions": [
+        "结论+实时性"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题185参考答案"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p10",
+      "question_id": "rkdr-1669-mine-utility-tree-q3",
+      "weight": 3,
+      "criterion": "可维护性维度",
+      "correct": "可维护性：事件驱动中事件生产者与消费者解耦，状态变化与展示逻辑不需直接通信依赖，可维护性高；管道-过滤器可能需修改多级构件",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题185参考答案"
+    },
+    {
+      "id": "rkdr-1669-mine-utility-tree-p11",
+      "question_id": "rkdr-1669-mine-utility-tree-q3",
+      "weight": 3,
+      "criterion": "安全性维度",
+      "correct": "安全性：事件驱动中事件生产者和消费者可处在不同安全级别彼此隔离；管道-过滤器需各级紧密耦合，容易造成安全隐患",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题185参考答案"
+    }
+  ]
+}

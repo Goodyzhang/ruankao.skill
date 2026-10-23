@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-order-modeling-pack",
+  "version": 1,
+  "title": "电商订单管理：状态机填空、状态图元素与参与者",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-order-modeling",
+      "title": "订单管理系统面向对象建模",
+      "stem": "电商平台订单管理系统：商品销售、库存管理、用户评价、优惠券发放；需求含登录下单、库存预警、状态通知、评价关联、券定期核销、批量导入与报表打印。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号81～83"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-order-modeling-q1",
+          "title": "问题1（10分）",
+          "prompt": "项目团队分析系统需求后，共得到订单的11种状态，请根据题目所述需求，填写空白(a)~(e)。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-order-modeling-q2",
+          "title": "问题2（5分）",
+          "prompt": "项目团队决定采用状态图来描述订单状态及变化条件，请回答状态图有哪些常见元素。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-order-modeling-q3",
+          "title": "问题3（10分）",
+          "prompt": "请从题目中找出所有的参与者并至少列出关联的一个用例。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

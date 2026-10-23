@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-oss-redis-pack",
+  "version": 1,
+  "title": "社交媒体存储升级：MySQL/OSS/Redis主从与缓存雪崩",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-oss-redis",
+      "title": "社交媒体平台存储架构升级（OSS+Redis）",
+      "stem": "社交媒体平台MySQL集群高并发查询瓶颈，海量图片短视频本地存储难扩展；引入阿里云OSS对象存储与Redis集群。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号92～94"
+      },
+      "figures": [
+        {
+          "file": "../../assets/d92f3962ea4d9989.png",
+          "caption": "MySQL与对象存储特性对比表：数据存储方式/访问延迟/持久化机制/典型数据类型/适用场景，空(1)～(5)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20251010/86bae00a036041848f788ade6fb39f6a.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-oss-redis-q1",
+          "title": "问题1（10分）",
+          "prompt": "分析MySQL数据库存储与对象存储（如阿里云OSS）的技术差异，填写下表。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-oss-redis-q2",
+          "title": "问题2（10分）",
+          "prompt": "简述Redis主从复制模式读写分离的原理和过程，并说明其如何保障可用性。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-oss-redis-q3",
+          "title": "问题3（5分）",
+          "prompt": "Redis集群方案需要解决缓存雪崩问题，请说明缓存雪崩产生的原因，并提出两种以上解决方案。",
+          "complete": true,
+          "max_score": 5
+        }
+      ]
+    }
+  ]
+}

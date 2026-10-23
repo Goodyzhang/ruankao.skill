@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-insurance-legacy-pack",
+  "version": 1,
+  "title": "保险集团中间业务：遗留系统策略、数据迁移与REST",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-insurance-legacy",
+      "title": "保险集团中间业务系统升级（区域中心→全国中心）",
+      "stem": "保险集团中间业务系统区域自建差异巨大；重新开发集中控制系统并须支持全部现有中间业务；REST vs RPC选型。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号125（单条完整案例）"
+      },
+      "figures": [
+        {
+          "file": "../../assets/d38521ff5249348c.jpg",
+          "caption": "遗留系统策略相关题面附图",
+          "source_locator": "https://image-t.chaiding.com/ruankao/580fdfa6c689f6d28d8d01b9098f032e.jpg-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-insurance-legacy-q1",
+          "title": "问题1（8分）",
+          "prompt": "在如何对待遗留系统上存在淘汰策略和继承策略两种策略。请简要解释这两种策略，并说明新开发的中间业务系统适合采用哪种策略及其原因。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-insurance-legacy-q2",
+          "title": "问题2（5分）",
+          "prompt": "新旧系统切换时存在数据迁移工作。请简要说明数据迁移准备工作的内容。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-insurance-legacy-q3",
+          "title": "问题3（12分）",
+          "prompt": "请用300字描述REST与RPC两种风格的不同之处，以及REST风格的设计原则包括哪些。",
+          "complete": true,
+          "max_score": 12
+        }
+      ]
+    }
+  ]
+}

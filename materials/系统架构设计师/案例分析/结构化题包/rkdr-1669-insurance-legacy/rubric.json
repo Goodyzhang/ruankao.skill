@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-insurance-legacy-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-125参考答案；教程第2版§10/§15.4.4核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-insurance-legacy-p1",
+      "question_id": "rkdr-1669-insurance-legacy-q1",
+      "weight": 2,
+      "criterion": "淘汰策略定义",
+      "correct": "淘汰策略：遗留系统技术含量低、业务价值低，需全面重新开发新系统替代；一般为企业业务根本变化、遗留系统不适应需要，或维护人员流失/文档丢失；评价后发现开发新系统比维护改造旧系统成本更经济",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "遗留系统",
+      "source": "网站题125参考答案"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p2",
+      "question_id": "rkdr-1669-insurance-legacy-q1",
+      "weight": 2,
+      "criterion": "继承策略定义",
+      "correct": "继承策略：遗留系统技术含量低，已满足企业运作的功能或性能要求，但有较高业务价值，企业业务尚需依赖；开发新系统时需完全兼容遗留系统的功能模型和数据模型",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "遗留系统",
+      "source": "网站题125参考答案"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p3",
+      "question_id": "rkdr-1669-insurance-legacy-q1",
+      "weight": 2,
+      "criterion": "策略选择",
+      "correct": "适合继承策略：总部需管理所有中间业务，各区域系统技术不满足全国中心需求需重新开发；同时新系统必须支持当前各区域所有中间业务，须完全兼容现有功能模型和数据模型",
+      "conditions": [
+        "结论+理由"
+      ],
+      "equivalents": [],
+      "dimension": "遗留系统",
+      "source": "网站题125参考答案"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p4",
+      "question_id": "rkdr-1669-insurance-legacy-q1",
+      "weight": 2,
+      "criterion": "策略矩阵口径",
+      "correct": "淘汰/继承属遗留系统演化策略矩阵（低价值高价值×低技术高技术）的两种，另两种为改造/集成",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "改造策略/集成策略"
+      ],
+      "dimension": "遗留系统",
+      "source": "教程第2版§10核验"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p5",
+      "question_id": "rkdr-1669-insurance-legacy-q2",
+      "weight": 3,
+      "criterion": "数据迁移准备七项",
+      "correct": "数据迁移准备：(1)待迁移数据源详细说明（存放方式/数据量/时间跨度）；(2)建立新旧数据库数据字典、历史数据质量分析、数据结构差异分析；(3)新旧系统代码数据差异分析；(4)建立数据库表映射关系及无法映射字段处理方法；(5)开发或购买、部署ETL工具；(6)编写数据转换测试计划和校验程序；(7)制定数据转换应急措施",
+      "conditions": [
+        "七项齐全"
+      ],
+      "equivalents": [],
+      "dimension": "数据迁移",
+      "source": "网站题125参考答案"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p6",
+      "question_id": "rkdr-1669-insurance-legacy-q2",
+      "weight": 2,
+      "criterion": "迁移口径",
+      "correct": "围绕“各区域系统差异巨大”的前提，准备工作的目标是摸清差异、建立映射、工具与校验兜底",
+      "conditions": [
+        "前提呼应"
+      ],
+      "equivalents": [],
+      "dimension": "数据迁移",
+      "source": "网站题125题面"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p7",
+      "question_id": "rkdr-1669-insurance-legacy-q3",
+      "weight": 4,
+      "criterion": "REST与RPC三点差异",
+      "correct": "差异：①REST更轻量化——RPC提供方与调用方接口依赖太高带来编码格式复杂性，REST只依赖定义好的规则；②REST跨平台好——任何语言调用方按接口定义实现，RPC对平台有限制难复用；③REST完全基于HTTP——资源操作含GET/POST/PUT/PATCH/DELETE/COPY/HEAD等方法",
+      "conditions": [
+        "三点"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题125参考答案"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p8",
+      "question_id": "rkdr-1669-insurance-legacy-q3",
+      "weight": 4,
+      "criterion": "REST五原则",
+      "correct": "REST设计原则：(1)网络上的所有事物都被抽象为资源；(2)每个资源对应唯一的资源标识；(3)通过通用的连接件接口对资源进行操作；(4)对资源的各种操作不会改变资源标识；(5)所有操作都是无状态的",
+      "conditions": [
+        "五条齐全"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题125参考答案"
+    },
+    {
+      "id": "rkdr-1669-insurance-legacy-p9",
+      "question_id": "rkdr-1669-insurance-legacy-q3",
+      "weight": 4,
+      "criterion": "选型口径",
+      "correct": "项目组采用邹工REST方案的理由与中间业务系统集成需求相扣",
+      "conditions": [
+        "场景相扣"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题125题面"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-ecommerce-distributed-db-pack",
+  "version": 1,
+  "title": "电商平台分布式数据架构（问题1缺失，暂缓出题）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-ecommerce-distributed-db",
+      "title": "电商平台数据架构（分布式数据库与列式存储）",
+      "stem": "多商家入驻电商平台：商品展示、购物车、订单管理、支付结算、物流跟踪；海量商品/用户/订单/交易数据，促销期高并发；在分布式数据库与集中式数据库之间做架构选择。",
+      "complete": false,
+      "max_score": 17,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号16～17（问题1未捕获）"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-ecommerce-distributed-db-q2",
+          "title": "问题2（9分）",
+          "prompt": "请以300字以内的文字说明分布式数据库有哪些模式，并简要解释。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-1669-ecommerce-distributed-db-q3",
+          "title": "问题3（8分）",
+          "prompt": "电商平台需要处理大量的交易记录，这些记录对于后续的数据分析和审计非常重要。请说明为什么使用列式数据库（如HBase）来存储交易记录是一个合适的选择，并用300字以内的文字进行解释。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

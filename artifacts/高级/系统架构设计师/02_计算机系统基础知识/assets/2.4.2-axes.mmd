@@ -1,0 +1,9 @@
+flowchart LR
+  system[同一个系统] -->|观察用途与部署| embedded[嵌入式？<br/>面向特定应用并嵌入设备]
+  system -->|观察时间要求| realtime[实时？<br/>逻辑正确＋时间条件]
+  system -->|观察失效后果| safety[安全攸关？<br/>失效可能造成不可接受风险]
+  realtime --> hard[强/硬实时：截止期违约不可接受]
+  realtime --> soft[弱/软实时：按服务目标容忍部分延误]
+  embedded -.->|三种属性可同时成立| combined[嵌入式＋实时＋安全攸关]
+  realtime -.->|实时性与后果分开判定| combined
+  safety -.->|可与其它属性相交| combined

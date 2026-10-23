@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-eai-soa-integration-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题40：模型按教程第2版§12/§15核验作答（网站答案空缺）；题41～42：软考达人网站参考答案",
+    "level": "混合来源训练推定（题40模型核验、题41/42网站答案）"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-eai-soa-integration-p1",
+      "question_id": "rkdr-1669-eai-soa-integration-q1",
+      "weight": 2,
+      "criterion": "空(1) 陈工集成方法",
+      "correct": "（1）基于SOA的应用集成方法：将遗产系统用Web Service包装、暴露统一格式接口，并采用ESB连接，集成方法规范统一",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "企业应用集成",
+      "source": "模型核验作答（网站题40答案空缺、解析为略）；教程第2版§12/§15"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p2",
+      "question_id": "rkdr-1669-eai-soa-integration-q1",
+      "weight": 2,
+      "criterion": "空(2) 魏工需求符合度",
+      "correct": "（2）能够实现功能整合，但集成层次多、方法复杂多样，增值服务能力弱，对企业集成需求符合程度一般",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "企业应用集成",
+      "source": "模型核验作答（同上）"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p3",
+      "question_id": "rkdr-1669-eai-soa-integration-q1",
+      "weight": 2,
+      "criterion": "空(3) 陈工需求符合度",
+      "correct": "（3）既能实现功能整合，又能在现有功能基础上提供增值服务，对企业集成需求符合程度高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "企业应用集成",
+      "source": "模型核验作答（同上）"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p4",
+      "question_id": "rkdr-1669-eai-soa-integration-q1",
+      "weight": 2,
+      "criterion": "空(4) 魏工体系结构",
+      "correct": "（4）以消息代理中间件为中心连接各遗产系统的中心化（星型）集成架构",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "消息代理中间件架构"
+      ],
+      "dimension": "企业应用集成",
+      "source": "模型核验作答（同上）"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p5",
+      "question_id": "rkdr-1669-eai-soa-integration-q1",
+      "weight": 2,
+      "criterion": "空(5) 陈工体系结构",
+      "correct": "（5）基于ESB（企业服务总线）的总线型体系结构，服务提供者与消费者通过统一接口松耦合连接",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "企业应用集成",
+      "source": "模型核验作答（同上）"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p6",
+      "question_id": "rkdr-1669-eai-soa-integration-q1",
+      "weight": 2,
+      "criterion": "空(6) 陈工可扩展性",
+      "correct": "（6）采用统一接口与总线连接，系统耦合度低，新增服务只需接入ESB，可扩展性好",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "企业应用集成",
+      "source": "模型核验作答（同上）"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p7",
+      "question_id": "rkdr-1669-eai-soa-integration-q2",
+      "weight": 3,
+      "criterion": "联邦服务",
+      "correct": "联邦服务：提供将各种类型数据聚合的能力，既支持关系型数据，也支持XML、文本和内容数据等非关系型数据；所有数据仍按自身方式管理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "搜索服务（任选三条口径的第四备选）"
+      ],
+      "dimension": "SOA信息服务",
+      "source": "网站题41参考答案"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p8",
+      "question_id": "rkdr-1669-eai-soa-integration-q2",
+      "weight": 3,
+      "criterion": "复制服务",
+      "correct": "复制服务：提供远程数据的本地访问能力，通过自动的实时复制和数据转换在本地维护数据源副本；本地数据和数据源在技术实现上可以独立",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "搜索服务（任选三条口径的第四备选）"
+      ],
+      "dimension": "SOA信息服务",
+      "source": "网站题41参考答案"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p9",
+      "question_id": "rkdr-1669-eai-soa-integration-q2",
+      "weight": 3,
+      "criterion": "转换服务",
+      "correct": "转换服务：用于数据源格式到目标格式的转换，可以是批量的或基于记录的",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "搜索服务（任选三条口径的第四备选）"
+      ],
+      "dimension": "SOA信息服务",
+      "source": "网站题41参考答案"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p11",
+      "question_id": "rkdr-1669-eai-soa-integration-q3",
+      "weight": 2,
+      "criterion": "服务粒度控制",
+      "correct": "服务构建注意点①：对服务粒度的控制",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "SOA服务构建",
+      "source": "网站题42参考答案"
+    },
+    {
+      "id": "rkdr-1669-eai-soa-integration-p12",
+      "question_id": "rkdr-1669-eai-soa-integration-q3",
+      "weight": 2,
+      "criterion": "无状态服务设计",
+      "correct": "服务构建注意点②：对无状态服务的设计",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "SOA服务构建",
+      "source": "网站题42参考答案"
+    }
+  ]
+}

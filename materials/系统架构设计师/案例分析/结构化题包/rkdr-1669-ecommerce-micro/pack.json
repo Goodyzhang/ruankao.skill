@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-ecommerce-micro-pack",
+  "version": 1,
+  "title": "电商在线购物：RESTful、容器化与服务网格",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-ecommerce-micro",
+      "title": "电商在线购物系统微服务架构",
+      "stem": "电商在线购物系统微服务架构（用户中心/商品/订单/支付/物流/推荐）；王工RESTful+分布式缓存，张工服务治理+容器化。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号109～111"
+      },
+      "figures": [
+        {
+          "file": "../../assets/c5daae56224d4bf9.png",
+          "caption": "服务网格与企业服务总线对比表：实现原理/作用/治理能力/调用方式/适用场景，空(1)～(5)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/76a2a337-80ea-4901-b424-c7dfeab64bb0.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-ecommerce-micro-q1",
+          "title": "问题1（10分）",
+          "prompt": "请以200字以内的文字说明在微服务架构中RESTful API的优势。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-ecommerce-micro-q2",
+          "title": "问题2（10分）",
+          "prompt": "请以300字以内的文字阐述容器化技术在微服务架构中的作用。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-ecommerce-micro-q3",
+          "title": "问题3（5分）",
+          "prompt": "请比较服务网格技术（Service Mesh）与企业服务总线（ESB）的差异，并填写下表。",
+          "complete": true,
+          "max_score": 5
+        }
+      ]
+    }
+  ]
+}

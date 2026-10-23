@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-library-uml-pack",
+  "version": 1,
+  "title": "图书管理系统：UML建模（参与者/实体类/顺序图）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-library-uml",
+      "title": "图书管理系统UML建模",
+      "stem": "图书馆图书管理系统：读者登录借阅、管理员入库出库归还分类、搜索预约查看历史、自动记录借阅并定期生成报告、批量导入与账户管理、在线续借、归还超时记录违约。采用UML建模。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号7～9"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-library-uml-q1",
+          "title": "问题1（10分）",
+          "prompt": "请根据题目所述需求，说明图书管理系统中有哪些参与者。并列举项目中使用的所有实体类。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-library-uml-q2",
+          "title": "问题2（7分）",
+          "prompt": "在UML建模中，顺序图用于描述对象之间交互的顺序。请指出在UML建模中，顺序图中的消息有哪些类型？对题目所述图书管理系统的需求建模时，“读者借阅图书”场景中的消息类型可能包括哪些？",
+          "complete": true,
+          "max_score": 7
+        },
+        {
+          "id": "rkdr-1669-library-uml-q3",
+          "title": "问题3（8分）",
+          "prompt": "请列举顺序图中常见的几种元素。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

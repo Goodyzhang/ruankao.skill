@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-eai-soa-integration-pack",
+  "version": 1,
+  "title": "企业应用集成：EAI与SOA方案对比、信息服务与服务构建",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：问题1六空为模型核验推定（网站无答案），问题2/3按网站参考答案推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-eai-soa-integration",
+      "title": "企业应用集成方案选型（传统EAI vs SOA）",
+      "stem": "某大型企业异构遗产系统（J2EE/.NET、异地、多协议）需功能整合并提供增值服务。魏工建议传统应用集成（分层+消息代理中间件），陈工建议SOA（Web Service包装+ESB连接），项目组采用陈工建议。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号40～42"
+      },
+      "figures": [
+        {
+          "file": "../../assets/de1d9564814bbfc9.jpg",
+          "caption": "应用系统集成方案对比表：集成方法/需求符合度/体系结构/可扩展性，空(1)～(6)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/a96bafced351482222daefb6834d17b9.jpg-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-eai-soa-integration-q1",
+          "title": "问题1（12分）",
+          "prompt": "请分析比较两种集成方案的优点和不足，将表中的（ ）～（6）空缺处的内容填写完整。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-eai-soa-integration-q2",
+          "title": "问题2（9分）",
+          "prompt": "基于SOA的企业集成通过信息服务提供集成数据的能力，请用300字以内的文字列举3种基于SOA的企业集成中的“数据整合——信息服务”，并给出简要说明。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-1669-eai-soa-integration-q3",
+          "title": "问题3（4分）",
+          "prompt": "结合你的系统架构设计经验，请用300字以内的文字简要说明FT公司项目组在对该企业构建SOA架构时，除了注意原有系统架构中的集成需求之外，还需要在服务构建时重点关注哪些问题。",
+          "complete": true,
+          "max_score": 4
+        }
+      ]
+    }
+  ]
+}

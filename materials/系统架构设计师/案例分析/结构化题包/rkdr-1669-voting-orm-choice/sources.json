@@ -1,0 +1,52 @@
+[
+  {
+    "source_question": "34",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 34,
+    "paper": "试题五",
+    "paper_note": "网站未标总分（仅'试题五'）；小问分值以题面为准",
+    "stem": "阅读以下关于Web系统架构的设计的叙述，回答下列问题。\n【说明】\n某信息技术公司计划开发一套在线投票系统，用于为市场调研、信息调查和销售反馈等业务提供服务。系统计划通过大量宣传和奖品鼓励快速积累用户，用户规模扩大后联系相关企业提供信息服务，并按信息服务种类和用户投票数量收取费用。\n为降低开发成本和提高开发效率，项目组决定采用轻量级Java EE开发框架设计系统应用架构。除满足主要功能需求外，还需考虑：1.项目开发采用MySQL数据库存储数据，但将来可能移植到其他数据库平台；2.系统开发过程中尽可能降低或消除SQL语句开发的工作量；3.投票系统中数据之间的关系复杂，需要支持数据对象的聚合和继承等关系。\n项目组基于MVC模式设计出投票系统架构，包括表示层、业务逻辑层、数据持久层和数据层。讨论数据持久层技术方案时，老王建议采用成熟的Hibernate框架，小李则认为iBatis更加灵活、更适合作为投票系统数据持久层开发技术。",
+    "subquestion": {
+      "site_number": 34,
+      "label": "问题1（8分）",
+      "prompt": "Hibernate与iBatis均提供ORM技术，请用300以内文字说明什么是ORM技术，以及有什么优点？",
+      "type": "解答题",
+      "max_score": 8
+    },
+    "source_answer": "ORM全称Object Relational Mapping（对象关系映射）：通过使用描述对象和数据之间映射的元数据，将程序中的对象自动持久化到关系数据库中。优点：（1）提高开发效率，降低开发成本；（2）使开发更加对象化；（3）可移植；（4）可以很方便地引入数据缓存之类的附加功能。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "35",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 35,
+    "paper": "试题五",
+    "stem_same_as_q34": "在线投票系统（Hibernate vs iBatis，三条考虑因素）与题34共同背景一致",
+    "subquestion": {
+      "site_number": 35,
+      "label": "问题2（9分）",
+      "prompt": "针对在线投票系统的实际应用需求和要求，项目组应选用哪种技术实现数据持久层?请用200字以内文字说明其采用该技术的原因。",
+      "type": "解答题",
+      "max_score": 9
+    },
+    "source_answer": "项目组应该采用Hibernate框架。原因：（1）Hibernate支持多种不同类型数据库，满足项目组数据库移植需求；（2）Hibernate相对于iBatis减少了SQL语句开发的工作量；（3）iBatis生成的PO是扁平化的，无法像Hibernate一样支持对象的继承和聚合等立体化关系。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "36",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 36,
+    "paper": "试题五",
+    "stem_same_as_q34": "在线投票系统（Hibernate vs iBatis）与题34共同背景一致",
+    "subquestion": {
+      "site_number": 36,
+      "label": "问题3（8分）",
+      "prompt": "数据持久层是Web应用系统框架中重要的组成部分，主流的数据持久层技术分别基于不同的技术方案，请在下表中（ ）～（ ）处分别根据(a)～(d)所列技术的方案类别填入其序号。技术清单：(a)BMP、CMP；(b)iBatis/MyBatis；(c)Spring JdbcTemplate；(d)TopLink、JDO、Hibernate。",
+      "type": "解答题",
+      "max_score": 8
+    },
+    "score_note": "试题五未标总分；已知三问8+9+8=25推定总分25",
+    "source_answer": "（1）JDBC封装→(c)Spring JdbcTemplate；（2）SQL Mapping→(b)iBatis/MyBatis；（3）O/R Mapping→(d)TopLink、JDO、Hibernate；（4）Entity Bean→(a)BMP、CMP。",
+    "source_analysis": "无（网站仅给答案）"
+  }
+]

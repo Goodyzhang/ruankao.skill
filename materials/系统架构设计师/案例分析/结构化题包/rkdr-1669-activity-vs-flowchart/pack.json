@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-activity-vs-flowchart-pack",
+  "version": 1,
+  "title": "在线电商系统：活动图元素与流程图对比",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-activity-vs-flowchart",
+      "title": "流程图与活动图选型（在线电商系统）",
+      "stem": "传统线下成衣经销商开发在线电商系统；系统设计阶段就流程建模工具分歧：张工主张传统流程图，李工主张活动图。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号24～25"
+      },
+      "figures": [
+        {
+          "file": "../../assets/54ddb86ded76aa34.png",
+          "caption": "图2 在线电商系统局部活动图：三泳道（客户/系统/供应商），空号(1)～(5)位置原样保留",
+          "source_locator": "https://image-t.chaiding.com/ruankao/8191415dce690e45be7f5b5c7013c6e7.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-activity-vs-flowchart-q1",
+          "title": "问题1（15分）",
+          "prompt": "李工为了介绍活动图的优势，画了一张局部活动图为例。请补充说明在下图中的（ ）~（ ）分别是什么元素，并以300字以内的文字介绍5个元素各自特点。",
+          "complete": true,
+          "max_score": 15
+        },
+        {
+          "id": "rkdr-1669-activity-vs-flowchart-q2",
+          "title": "问题2（10分）",
+          "prompt": "请以300字以内的文字说明流程图与活动图的主要区别。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

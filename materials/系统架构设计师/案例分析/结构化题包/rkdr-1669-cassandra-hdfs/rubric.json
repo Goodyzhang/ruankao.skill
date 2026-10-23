@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-cassandra-hdfs-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-59～61参考答案；教程第2版§6.5.2/§19核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p1",
+      "question_id": "rkdr-1669-cassandra-hdfs-q1",
+      "weight": 2,
+      "criterion": "空(1) Cassandra数据模型",
+      "correct": "（1）列式存储，灵活可扩展的数据模型",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题59参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p2",
+      "question_id": "rkdr-1669-cassandra-hdfs-q1",
+      "weight": 2,
+      "criterion": "空(2) MySQL可伸缩性",
+      "correct": "（2）垂直和有限水平扩展",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题59参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p3",
+      "question_id": "rkdr-1669-cassandra-hdfs-q1",
+      "weight": 2,
+      "criterion": "空(3) Cassandra一致性",
+      "correct": "（3）弱一致性（或最终一致性）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "最终一致性"
+      ],
+      "dimension": "NoSQL",
+      "source": "网站题59参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p4",
+      "question_id": "rkdr-1669-cassandra-hdfs-q1",
+      "weight": 2,
+      "criterion": "空(4) MySQL适用场景",
+      "correct": "（4）复杂查询、事务处理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "事务性处理"
+      ],
+      "dimension": "NoSQL",
+      "source": "网站题59参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p5",
+      "question_id": "rkdr-1669-cassandra-hdfs-q2",
+      "weight": 2,
+      "criterion": "HDFS可靠性",
+      "correct": "可靠性：数据冗余存储（默认三副本）+自动容错机制（数据块复制、心跳检测、数据块扫描）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式文件系统",
+      "source": "网站题60参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p6",
+      "question_id": "rkdr-1669-cassandra-hdfs-q2",
+      "weight": 2,
+      "criterion": "HDFS伸缩性",
+      "correct": "伸缩性：添加节点线性扩展存储容量，支持PB级数据存储",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式文件系统",
+      "source": "网站题60参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p7",
+      "question_id": "rkdr-1669-cassandra-hdfs-q2",
+      "weight": 2,
+      "criterion": "HDFS性能",
+      "correct": "性能：数据本地化、优化读写路径、利用硬件特性（磁盘并行读写）提高传输处理效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式文件系统",
+      "source": "网站题60参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p8",
+      "question_id": "rkdr-1669-cassandra-hdfs-q3",
+      "weight": 1.5,
+      "criterion": "Kafka理由①～③",
+      "correct": "兼容性（收集处理Cassandra实时数据流）；可伸缩性（分布式架构加节点线性伸缩）；容错性（数据复制和分区机制）",
+      "conditions": [
+        "任答6条满分，本点覆盖前3条"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题61参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p9",
+      "question_id": "rkdr-1669-cassandra-hdfs-q3",
+      "weight": 1.5,
+      "criterion": "Kafka理由④～⑥",
+      "correct": "高吞吐量（削峰填谷）；低延迟（满足实时处理需求）；发布-订阅模式（不同消费者独立消费互不影响）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题61参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p10",
+      "question_id": "rkdr-1669-cassandra-hdfs-q3",
+      "weight": 1.5,
+      "criterion": "Kafka理由⑦～⑧",
+      "correct": "持久化（保留策略和副本因子可调）；生态系统支持（丰富API，无缝集成现有处理分析框架）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题61参考答案"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p11",
+      "question_id": "rkdr-1669-cassandra-hdfs-q3",
+      "weight": 3,
+      "criterion": "答足6条口径",
+      "correct": "8条理由中答出6条即满分；本点为“答足条数”训练扣分口径",
+      "conditions": [
+        "六条及以上"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题61题面要求"
+    },
+    {
+      "id": "rkdr-1669-cassandra-hdfs-p12",
+      "question_id": "rkdr-1669-cassandra-hdfs-q3",
+      "weight": 3.5,
+      "criterion": "机制解释口径",
+      "correct": "所选理由能与电商实时数据流场景相扣（从Cassandra同步到Kafka支撑实时分析）",
+      "conditions": [
+        "与场景相扣"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题61题面"
+    }
+  ]
+}

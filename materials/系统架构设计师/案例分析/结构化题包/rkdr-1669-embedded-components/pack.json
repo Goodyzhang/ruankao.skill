@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-embedded-components-pack",
+  "version": 1,
+  "title": "嵌入式构件库：获取/策略/标准与GENESYS四接口",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-embedded-components",
+      "title": "嵌入式构件设计（构件库改造与RS-232驱动构件）",
+      "stem": "飞行器电子设备公司建立可复用软件构件库；实施困难集中在软件架构变更与构件抽取界面。BSP构件开发须符合GENESYS规范的构件通用接口（LIF/局部/TDI/TII）。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号53～55"
+      },
+      "figures": [
+        {
+          "file": "../../assets/dc5c739434b17c6c.png",
+          "caption": "有关构件的6种说法判断表：空(1)～(6)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/c2562620-776b-46bf-9e33-db573832fe5b.png"
+        },
+        {
+          "file": "../../assets/d9330ad9ed27aa72.png",
+          "caption": "GENESYS规范定义的构件通用接口图：局部接口/链接接口LIF/相关接口TDI/技术无关接口TII",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/3db842b1-f808-4658-8c04-42423e4377fc.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-embedded-components-q1",
+          "title": "问题1（9分）",
+          "prompt": "请用200字以内文字说明获取构件的方法有哪几种?开发构件通常采用哪几种策略?并列举出两种主流构件标准。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-1669-embedded-components-q2",
+          "title": "问题2（6分）",
+          "prompt": "请根据你对构件的理解，判断下表给出的有关构件的说法是否正确。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-embedded-components-q3",
+          "title": "问题3（10分）",
+          "prompt": "现需要针对BSP中常用的RS-232串行驱动程序设计一个可复用的软构件，请说明该软构件四类接口的具体功能。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

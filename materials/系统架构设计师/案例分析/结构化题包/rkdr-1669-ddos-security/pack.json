@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-ddos-security-pack",
+  "version": 1,
+  "title": "证券网络安全：被动攻击、安全属性与DDoS缓解",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-ddos-security",
+      "title": "证券公司网络架构安全（DDoS攻击分析）",
+      "stem": "证券公司网络遭同一攻击：大量TCP等待连接、假源无用包、拥塞、主机崩溃；被动攻击判别与攻击-属性映射。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号143～145"
+      },
+      "figures": [
+        {
+          "file": "../../assets/82aceb03ba7850b5.png",
+          "caption": "攻击方式与安全属性表：重放攻击/网络监听/拒绝服务/数据篡改，空(1)～(4)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/2cf0055e-2514-4c2f-a518-b503333bd0f5.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-ddos-security-q1",
+          "title": "问题1（6分）",
+          "prompt": "以下哪些行为属于信息安全中的被动攻击方式（九选项）。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-ddos-security-q2",
+          "title": "问题2（8分）",
+          "prompt": "请分析以下攻击方式，是破坏哪一种安全属性。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-ddos-security-q3",
+          "title": "问题3（11分）",
+          "prompt": "请根据王工所描述的现象，分析这是一种什么样的网络攻击。可以采取何种方式来抵抗这种攻击。",
+          "complete": true,
+          "max_score": 11
+        }
+      ]
+    }
+  ]
+}

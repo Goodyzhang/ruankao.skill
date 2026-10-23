@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-webx-rental-pack",
+  "version": 1,
+  "title": "房企云管系统：WebX对比、持久层支持矩阵与水平分割",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-webx-rental",
+      "title": "互联网租房云管业务系统（WebX+持久层+反规范化）",
+      "stem": "房企转型互联网租房，开发基于Web的云管业务系统（租户/系统管理/业务三视图多Web应用）；对比WebX与Spring MVC；订单表按月拆分做反规范化。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号74（单条完整案例）"
+      },
+      "figures": [
+        {
+          "file": "../../assets/84f5628071893297.jpg",
+          "caption": "表4-1 两种持久化方案对项目需求的支持情况：4行需求，Hibernate/MyBatis六空填A/B",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20250701/167d107f17984b9ab8f7e6e9c8cf6cdb.jpg"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-webx-rental-q1",
+          "title": "问题1（5分）",
+          "prompt": "请用300字以内文字，从多应用支持、基础服务支持以及可扩展性这三个方面对WebX与Spring MVC框架进行对比。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-webx-rental-q2",
+          "title": "问题2（12分）",
+          "prompt": "请分析两种持久化方案对表4-1中所列项目需求的支持情况，将候选答案序号A或B填入表4-1相应位置。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-webx-rental-q3",
+          "title": "问题3（8分）",
+          "prompt": "王工采用的是哪种反规范化方法？请用300字以内的文字解释说明该方法，并指出其优缺点。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

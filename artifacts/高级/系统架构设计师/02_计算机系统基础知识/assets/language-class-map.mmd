@@ -1,0 +1,14 @@
+classDiagram
+  class 场地
+  class 研讨室
+  class 预约
+  class 预约接口 {
+    <<interface>>
+    提交预约()
+  }
+  class 预约服务
+  class 预约页面
+  场地 <|-- 研讨室 : 泛化
+  预约接口 <|.. 预约服务 : 实现
+  预约接口 <.. 预约页面 : 依赖
+  场地 "1" -- "0..*" 预约 : 关联

@@ -1,0 +1,13 @@
+flowchart LR
+ subgraph Scanner["扫描器五模块（功能信息流）"]
+  C["用户配置控制台"] -->|本次配置| A["当前活动扫描知识库"]
+  A -->|本次任务与知识| E["扫描引擎"]
+  D["漏洞数据库"] -->|通用检测信息| E
+  E -->|进度与结果| A
+  A -->|结果记录| O["结果存储器与报告工具"]
+ end
+ E -->|探测| T["外部：受检目标"]
+ T -->|回应| E
+ O -->|保存与输出| R["外部：结果报告"]
+ classDef external fill:#f6ecd8,stroke:#aa7d39,color:#25334c;
+ class T,R external;

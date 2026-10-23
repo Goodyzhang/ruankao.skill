@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-oss-redis-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-92～94参考答案（含分值给分点）；教程第2版§6.5核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-oss-redis-p1",
+      "question_id": "rkdr-1669-oss-redis-q1",
+      "weight": 2,
+      "criterion": "空(1) MySQL存储方式",
+      "correct": "（1）基于磁盘的表结构存储",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "存储架构",
+      "source": "网站题92参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p2",
+      "question_id": "rkdr-1669-oss-redis-q1",
+      "weight": 2,
+      "criterion": "空(2) OSS访问延迟",
+      "correct": "（2）低延迟（毫秒级）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "存储架构",
+      "source": "网站题92参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p3",
+      "question_id": "rkdr-1669-oss-redis-q1",
+      "weight": 2,
+      "criterion": "空(3) MySQL持久化",
+      "correct": "（3）基于binlog的主从复制",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "存储架构",
+      "source": "网站题92参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p4",
+      "question_id": "rkdr-1669-oss-redis-q1",
+      "weight": 2,
+      "criterion": "空(4) OSS数据类型",
+      "correct": "（4）非结构化数据",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "存储架构",
+      "source": "网站题92参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p5",
+      "question_id": "rkdr-1669-oss-redis-q1",
+      "weight": 2,
+      "criterion": "空(5) MySQL适用场景",
+      "correct": "（5）复杂查询、事务处理、高频读写场景",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "存储架构",
+      "source": "网站题92参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p6",
+      "question_id": "rkdr-1669-oss-redis-q2",
+      "weight": 3,
+      "criterion": "原理与过程",
+      "correct": "原理：主节点向从节点同步数据，主处理写、从同步数据并分担读，实现读写分离和高可用。过程：①全量同步——从节点发SYNC指令，主节点生成RDB快照发送，从节点写入并加载RDB文件；②增量同步——全量复制后主从保持TCP连接，主节点将后续写命令实时写入复制流，从节点异步执行保持最终一致",
+      "conditions": [
+        "原理+全量+增量"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题93参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p7",
+      "question_id": "rkdr-1669-oss-redis-q2",
+      "weight": 3,
+      "criterion": "可用性保障",
+      "correct": "可用性：主节点故障时需手工选择准备升主的从节点，将其他从节点的主节点指向新主节点，配置客户端将写操作指向新主节点",
+      "conditions": [
+        "手工切换流程"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题93参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p8",
+      "question_id": "rkdr-1669-oss-redis-q2",
+      "weight": 4,
+      "criterion": "结构口径",
+      "correct": "原理3分+过程4分（全量2增量2）+可用性3分合计10分的答题结构对齐",
+      "conditions": [
+        "三段齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题93题面"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p9",
+      "question_id": "rkdr-1669-oss-redis-q3",
+      "weight": 1,
+      "criterion": "雪崩原因",
+      "correct": "缓存雪崩：缓存节点宕机或大量缓存数据集中过期，导致数据库请求激增",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Redis缓存",
+      "source": "网站题94参考答案"
+    },
+    {
+      "id": "rkdr-1669-oss-redis-p10",
+      "question_id": "rkdr-1669-oss-redis-q3",
+      "weight": 4,
+      "criterion": "解决方案（答两个即可）",
+      "correct": "方案：①缓存过期时间随机化（在原过期时间上加随机范围使过期分散）；②缓存永不过期（热点数据永不过期，后台定期更新）；③分布式锁（互斥锁，失效瞬间仅一个线程查库更新缓存，其余等待）；④多级缓存策略（本地缓存Caffeine+分布式Redis再加一层）",
+      "conditions": [
+        "两种以上"
+      ],
+      "equivalents": [],
+      "dimension": "Redis缓存",
+      "source": "网站题94参考答案"
+    }
+  ]
+}

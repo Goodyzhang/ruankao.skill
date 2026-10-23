@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9395-promo-atam-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§7.3.5、§8.3；网站83解析（含逐空理由）；本地章级笔记2022下案例旁证",
+    "level": "教材与网站解析互证；分值与逐点权重为训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9395-promo-atam-b1",
+      "question_id": "rkdr-9395-promo-atam-q1",
+      "weight": 2,
+      "criterion": "空(1) 属性名",
+      "correct": "安全性",
+      "conditions": [
+        "由固定叶(b)攻击检测报警定位"
+      ],
+      "equivalents": [
+        "Security"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-b2",
+      "question_id": "rkdr-9395-promo-atam-q1",
+      "weight": 2,
+      "criterion": "空(2) 属性名",
+      "correct": "可修改性",
+      "conditions": [
+        "由固定叶(g)存储扩展人天定位"
+      ],
+      "equivalents": [
+        "Modifiability"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-b3",
+      "question_id": "rkdr-9395-promo-atam-q1",
+      "weight": 2,
+      "criterion": "空(3) 描述编号",
+      "correct": "(3) (e) 支付3秒确认",
+      "conditions": [
+        "处理时间口径性能场景；无第二等价条目"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-b4",
+      "question_id": "rkdr-9395-promo-atam-q1",
+      "weight": 2,
+      "criterion": "空(4) 描述编号",
+      "correct": "(4) (j) 用户操作记录审计",
+      "conditions": [
+        "审计归安全性；填(i)可测试性不给分"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-b5",
+      "question_id": "rkdr-9395-promo-atam-q1",
+      "weight": 2,
+      "criterion": "空(5) 描述编号",
+      "correct": "(5) (h) 宕机10秒热备份",
+      "conditions": [
+        "故障恢复场景，与固定叶(f)同分支"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-b6",
+      "question_id": "rkdr-9395-promo-atam-q1",
+      "weight": 2,
+      "criterion": "空(6) 描述编号",
+      "correct": "(6) (k) 外观调整4人天",
+      "conditions": [
+        "修改代价场景，与固定叶(g)同分支"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-mod",
+      "question_id": "rkdr-9395-promo-atam-q2",
+      "weight": 3,
+      "criterion": "可修改性比较",
+      "correct": "解释器强：规则为独立语法，改规则不改类；面向对象需改具体类",
+      "conditions": [
+        "须双向比较并给机理"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-flex",
+      "question_id": "rkdr-9395-promo-atam-q2",
+      "weight": 3,
+      "criterion": "个性化灵活性比较",
+      "correct": "解释器强：按用户特征解释执行，千人千面；面向对象逻辑固定",
+      "conditions": [
+        "须区分于可修改性维度"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-perf",
+      "question_id": "rkdr-9395-promo-atam-q2",
+      "weight": 3,
+      "criterion": "性能比较",
+      "correct": "面向对象强：直接调用开销小；解释器运行期动态绑定解释执行开销大",
+      "conditions": [
+        "须承认解释器性能劣势"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    },
+    {
+      "id": "rkdr-9395-promo-atam-concl",
+      "question_id": "rkdr-9395-promo-atam-q2",
+      "weight": 4,
+      "criterion": "结论与题干依据",
+      "correct": "选解释器：核心目标是灵活性且性能不做过多考虑，灵活收益大于性能损失",
+      "conditions": [
+        "必须回扣题干两句设定；缺题干依据扣分"
+      ],
+      "equivalents": [
+        "选解释器风格"
+      ],
+      "dimension": "架构风格",
+      "source": "系统架构设计师教程（第2版）§7.3.5、§8.3；网站83解析；本地章级笔记 2022下电商折扣案例旁证"
+    }
+  ]
+}

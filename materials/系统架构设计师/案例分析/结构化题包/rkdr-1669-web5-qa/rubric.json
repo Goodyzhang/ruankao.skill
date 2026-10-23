@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-web5-qa-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-208～209～210参考答案；教程第2版核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-web5-qa-p1",
+      "question_id": "rkdr-1669-web5-qa-q1",
+      "weight": 11,
+      "criterion": "问题1（11分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题208参考答案"
+    },
+    {
+      "id": "rkdr-1669-web5-qa-p2",
+      "question_id": "rkdr-1669-web5-qa-q2",
+      "weight": 10,
+      "criterion": "问题2（10分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题209参考答案"
+    },
+    {
+      "id": "rkdr-1669-web5-qa-p3",
+      "question_id": "rkdr-1669-web5-qa-q3",
+      "weight": 4,
+      "criterion": "问题3（4分）要点",
+      "correct": "见记录markdown核验答案",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "综合",
+      "source": "网站题210参考答案"
+    }
+  ]
+}

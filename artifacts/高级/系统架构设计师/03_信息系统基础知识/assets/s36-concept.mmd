@@ -1,0 +1,11 @@
+flowchart TB
+  O["OAS：群体办公信息的人机处理<br/>目标：效率与质量"]
+  O ---|"按信息形态"| M["数据／文字／声音<br/>静态图形／动态图像（本版）"]
+  O ---|"按办公活动"| A["处理数据／文字处理／分类归档<br/>沟通／决策：可以交叠"]
+  O ---|"按参与角色"| R["主管／专业人员／秘书／办事员<br/>常见分工，不规定系统层数"]
+  O ---|"依设计支柱"| P["行为科学：主导；系统科学：理论基础<br/>计算机技术＋通信技术结合应用"]
+  M --- X["一份文稿可以承载多种媒体<br/>形态与活动不一一对应"]
+  classDef core fill:#d9eafa,stroke:#25577e,color:#102e47
+  classDef group fill:#f5f8fb,stroke:#8097ab,color:#102e47
+  class O core
+  class M,A,R,P,X group

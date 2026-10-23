@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-hospital-lis-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-75～77参考答案；教程第2版§5.3.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-hospital-lis-p1",
+      "question_id": "rkdr-1669-hospital-lis-q1",
+      "weight": 2,
+      "criterion": "参与者：系统用户",
+      "correct": "系统用户（登录使用功能的抽象角色）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题75参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p2",
+      "question_id": "rkdr-1669-hospital-lis-q1",
+      "weight": 4,
+      "criterion": "参与者：业务角色五种",
+      "correct": "医生、患者、护士、医学检验师、系统管理员",
+      "conditions": [
+        "五种齐全"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题75参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p3",
+      "question_id": "rkdr-1669-hospital-lis-q1",
+      "weight": 2,
+      "criterion": "参与者：时间与打印机",
+      "correct": "时间（一周未缴费自动作废的定时触发）、打印机（打印电子检验单的外部设备）",
+      "conditions": [
+        "两个辅助参与者齐全"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题75参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p4",
+      "question_id": "rkdr-1669-hospital-lis-q2",
+      "weight": 2,
+      "criterion": "模式选型：桥接模式",
+      "correct": "选择桥接模式（Bridge Pattern）",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [
+        "抽象工厂/策略（需充分理由，本题主解桥接）"
+      ],
+      "dimension": "设计模式",
+      "source": "网站题76参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p5",
+      "question_id": "rkdr-1669-hospital-lis-q2",
+      "weight": 3,
+      "criterion": "桥接适用理由",
+      "correct": "桥接模式核心思想：将抽象与实现解耦使两者独立变化；场景两个独立变化维度=抽象维度（检验业务：详细检测/快速检测）与实现维度（设备控制：读取数据/转换）；通过组合优雅分离两维度",
+      "conditions": [
+        "两维度识别+组合解耦"
+      ],
+      "equivalents": [],
+      "dimension": "设计模式",
+      "source": "网站题76参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p6",
+      "question_id": "rkdr-1669-hospital-lis-q3",
+      "weight": 2,
+      "criterion": "空(a)(b)状态",
+      "correct": "（a）已缴费；（b）采样中",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题77参考答案；状态图核验"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p7",
+      "question_id": "rkdr-1669-hospital-lis-q3",
+      "weight": 2,
+      "criterion": "空(c)(d)超时作废",
+      "correct": "（c）一周之内未缴费（转移条件）；（d）已作废（状态）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题77参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p8",
+      "question_id": "rkdr-1669-hospital-lis-q3",
+      "weight": 2,
+      "criterion": "空(e)作废转移",
+      "correct": "（e）作废检验单并退费（转移事件，检测中→已作废）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题77参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p9",
+      "question_id": "rkdr-1669-hospital-lis-q3",
+      "weight": 2,
+      "criterion": "空(f)检测中",
+      "correct": "（f）检测中（状态，之后到达已完成）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题77参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-lis-p10",
+      "question_id": "rkdr-1669-hospital-lis-q3",
+      "weight": 4,
+      "criterion": "状态图口径",
+      "correct": "六空与需求(8)状态枚举（待缴费/已缴费/采样中/检测中/已完成/已作废）及需求(6)(7)事件一致",
+      "conditions": [
+        "全部对齐"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题77题干与答案"
+    }
+  ]
+}

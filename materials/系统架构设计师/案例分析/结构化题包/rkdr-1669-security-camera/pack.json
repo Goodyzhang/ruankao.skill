@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-security-camera-pack",
+  "version": 1,
+  "title": "智能安防系统",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-security-camera",
+      "title": "智能安防系统",
+      "stem": "阅读以下关于智能安防应用的叙述，在答题纸上回答问题1至问题3。\n【说明】\n随着人们生活水平的提高，人们对于居家安全也越来越重视。某软件公司长期从事智能移动应用开发，现决定开发一套适用于家庭使用的便捷式智能安防系统。系统包括两个层面：其一为硬件层面，基于嵌入式操作系统实现动态拍摄并上传到视频服务器；其二为用户软件层面，基于Web界面，用户通过安全认证后可在线查看监控视频。项目组重点讨论的需求：（ ）系统终端用户的界面呈现较丰富，包括图片、视频及语音消息。（ ）付费VIP客户视频可以保存18个月，普通用户视频只能保存1个月，滚动覆盖。（ ）系统上线后需应对大量客户端并发请求处理，并发用户数可能会有上万人的规模；系统预期用户呈明显地域集中分布特征。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号212"
+      },
+      "figures": [
+        {
+          "file": "../../assets/e3a69ff1665cc76e.jpg",
+          "caption": "表5-1 技术手段可行性分析",
+          "source_locator": "网站题212附图"
+        },
+        {
+          "file": "../../assets/ea3f371bcba9779f.jpg",
+          "caption": "表5-2 选择嵌入式操作系统的8种观点",
+          "source_locator": "网站题212附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-security-camera-q1",
+          "title": "问题1（12分）",
+          "prompt": "五种技术手段（HTML静态化/缓存/P2P/集群镜像/负载均衡）可行性分析填表5-1。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-security-camera-q2",
+          "title": "问题2（5分）",
+          "prompt": "300字内说明嵌入式系统的主要特点。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-security-camera-q3",
+          "title": "问题3（8分）",
+          "prompt": "判断表5-2选择嵌入式操作系统的8种观点是否正确。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

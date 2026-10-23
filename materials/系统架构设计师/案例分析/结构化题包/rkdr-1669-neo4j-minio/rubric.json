@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-neo4j-minio-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-65～67参考答案；教程第2版§6核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-neo4j-minio-p1",
+      "question_id": "rkdr-1669-neo4j-minio-q1",
+      "weight": 2,
+      "criterion": "空(1) Neo4j数据模型",
+      "correct": "（1）图模型（节点-边结构）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题65参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p2",
+      "question_id": "rkdr-1669-neo4j-minio-q1",
+      "weight": 2,
+      "criterion": "空(2) MySQL查询复杂度",
+      "correct": "（2）高（多表JOIN）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题65参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p3",
+      "question_id": "rkdr-1669-neo4j-minio-q1",
+      "weight": 2,
+      "criterion": "空(3) Neo4j一致性",
+      "correct": "（3）弱一致性（或者最终一致性）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "最终一致性"
+      ],
+      "dimension": "NoSQL",
+      "source": "网站题65参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p4",
+      "question_id": "rkdr-1669-neo4j-minio-q1",
+      "weight": 2,
+      "criterion": "空(4) Neo4j适用场景",
+      "correct": "（4）多对多关系分析、社交网络查询",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "关联网络分析"
+      ],
+      "dimension": "NoSQL",
+      "source": "网站题65参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p5",
+      "question_id": "rkdr-1669-neo4j-minio-q2",
+      "weight": 2,
+      "criterion": "MinIO可靠性",
+      "correct": "可靠性：数据冗余（多副本）和自动修复机制（检测副本一致性）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "对象存储",
+      "source": "网站题66参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p6",
+      "question_id": "rkdr-1669-neo4j-minio-q2",
+      "weight": 2,
+      "criterion": "MinIO伸缩性",
+      "correct": "伸缩性：水平扩展存储容量，支持PB级非结构化数据（PDF、DICOM影像）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "对象存储",
+      "source": "网站题66参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p7",
+      "question_id": "rkdr-1669-neo4j-minio-q2",
+      "weight": 2,
+      "criterion": "MinIO性能",
+      "correct": "性能：分布式存储加速读写，支持多线程访问",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "对象存储",
+      "source": "网站题66参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p8",
+      "question_id": "rkdr-1669-neo4j-minio-q3",
+      "weight": 3,
+      "criterion": "主从复制优缺点",
+      "correct": "主从复制：优点=部署简单、读写分离、数据备份、高可用；缺点=主库崩溃后从库不会自动升主，需人工干预；适用=读多写少、数据备份",
+      "conditions": [
+        "优点缺点场景齐全"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题67参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p9",
+      "question_id": "rkdr-1669-neo4j-minio-q3",
+      "weight": 3,
+      "criterion": "主主复制优缺点",
+      "correct": "主主复制：优点=双主可写、故障自动切换；缺点=数据冲突风险、需应用层处理冲突；适用=双向同步、小规模高可靠",
+      "conditions": [
+        "优点缺点场景齐全"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题67参考答案"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p10",
+      "question_id": "rkdr-1669-neo4j-minio-q3",
+      "weight": 3,
+      "criterion": "对比结构完整",
+      "correct": "两种集群按“优点/缺点/适用场景”三段对仗作答",
+      "conditions": [
+        "三段齐全"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题67题面要求"
+    },
+    {
+      "id": "rkdr-1669-neo4j-minio-p11",
+      "question_id": "rkdr-1669-neo4j-minio-q3",
+      "weight": 2,
+      "criterion": "机制解释口径",
+      "correct": "能解释复制机制差异（binlog单向vs双向、切换方式人工vs自动）与冲突成因",
+      "conditions": [
+        "机制方向正确"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "教程第2版§6核验"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>23 种设计模式识图</title>
+<style>
+:root{color-scheme:light;--blue:#1d4ed8;--green:#047857;--amber:#b45309}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f6f8;color:#1f2937;font:18px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}a{color:#1d4ed8}header{max-width:1280px;margin:auto;padding:34px 28px 20px}h1{font-size:32px;line-height:1.35;margin:0 0 12px}header p{margin:8px 0}.toolbar{position:sticky;top:0;background:#fff;border-block:1px solid #dde1e7;z-index:5;padding:12px 24px}.tools{max-width:1224px;margin:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}input{font:inherit;min-width:240px;flex:1;padding:9px 12px;border:1px solid #bdc5d0;border-radius:7px}button{font:inherit;font-size:16px;padding:9px 14px;background:#fff;color:#273445;border:1px solid #bdc5d0;border-radius:7px;cursor:pointer}button[aria-pressed=true]{background:#243c5a;color:#fff;border-color:#243c5a}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #87b8f5;outline-offset:2px}#count{font-size:14px;color:#5c6878;white-space:nowrap}.layout{max-width:1280px;margin:24px auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;padding:0 24px}.toc{position:sticky;top:94px;max-height:calc(100vh - 114px);overflow:auto;padding:16px;background:white;border:1px solid #e0e4eb;border-radius:9px;align-self:start}.toc h2{font-size:17px;margin:0 0 8px}.toc a{display:block;font-size:15px;text-decoration:none;padding:3px 0}.toc .group{font-size:14px;font-weight:700;margin:14px 0 3px}main{min-width:0}.guide,.card,.appendix{background:white;border:1px solid #e0e4eb;border-radius:10px;padding:24px;margin:0 0 24px}.card{scroll-margin-top:110px;border-top:5px solid var(--cat)}.card h2{font-size:26px;line-height:1.4;margin:0 0 8px}.english{font-weight:500;font-size:19px;color:#556477}.badge{display:inline-block;background:var(--cat);color:white;padding:2px 11px;border-radius:5px;font-size:14px}.aliases{font-size:15px;color:#64748b;margin-left:12px}.card img{display:block;width:100%;height:auto;margin:22px 0 12px;border:1px solid #edf0f4}.open-image{font-size:14px;text-align:right;display:block}.card h3{font-size:18px;margin:22px 0 6px}.card p{margin:8px 0}.card ul{margin:6px 0;padding-left:24px}.card li{margin:4px 0}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid #dbe0e6;padding:9px 12px;text-align:left;vertical-align:top}th{background:#f1f4f8}details{margin:14px 0}summary{cursor:pointer;font-weight:600}.guide h2,.appendix h2{font-size:22px;margin:0 0 12px}.empty{display:none;padding:24px;background:white;border-radius:8px}.source{font-size:15px;color:#526175}.toplink{font-size:14px}footer{max-width:1280px;margin:0 auto;padding:10px 28px 36px;font-size:14px;color:#657285}[hidden]{display:none!important}@media(max-width:1050px){.layout{grid-template-columns:1fr}.toc{position:static;max-height:none}.toc a{display:inline-block;margin-right:14px}.toc .group{display:inline-block;margin-right:10px}.toolbar{padding:10px 16px}.guide,.card,.appendix{padding:18px}.layout{padding:0 14px;gap:16px}.card{scroll-margin-top:160px}}@media(max-width:600px){body{font-size:16px}h1{font-size:26px}header{padding:24px 18px 16px}.card h2{font-size:23px}.tools{gap:7px}input{min-width:100%;font-size:16px}button{font-size:14px;padding:6px 9px}.toc{padding:14px}table{font-size:14px}}
+</style></head><body>
+<header id="top"><h1>23 种设计模式识图</h1><p>看类图的继承、持有与协作关系，再理解模式的目的和优点。</p><p><a href="23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%9B%BE%E6%89%8B%E5%86%8C.md">Markdown 手册</a> · <a href="README.md">图卡目录</a></p></header>
+<div class="toolbar"><div class="tools"><input id="search" type="search" placeholder="搜索模式、角色、别名或例子" aria-label="搜索模式"><button data-cat="全部" aria-pressed="true">全部</button>
+<button data-cat="创建型" aria-pressed="false">创建型 5</button>
+<button data-cat="结构型" aria-pressed="false">结构型 7</button>
+<button data-cat="行为型" aria-pressed="false">行为型 11</button>
+<span id="count">显示 23 / 23</span></div></div><div class="layout"><nav class="toc" aria-label="模式索引"><h2>模式索引</h2>
+<div class="group" style="color:#1d4ed8">创建型 · 对象如何产生</div>
+<a href="#p01" data-jump="p01">01 单例</a>
+<a href="#p02" data-jump="p02">02 工厂方法</a>
+<a href="#p03" data-jump="p03">03 抽象工厂</a>
+<a href="#p04" data-jump="p04">04 建造者</a>
+<a href="#p05" data-jump="p05">05 原型</a>
+<div class="group" style="color:#047857">结构型 · 类与对象怎样搭成更大的结构</div>
+<a href="#p06" data-jump="p06">06 适配器</a>
+<a href="#p07" data-jump="p07">07 桥接</a>
+<a href="#p08" data-jump="p08">08 组合</a>
+<a href="#p09" data-jump="p09">09 装饰器</a>
+<a href="#p10" data-jump="p10">10 外观</a>
+<a href="#p11" data-jump="p11">11 享元</a>
+<a href="#p12" data-jump="p12">12 代理</a>
+<div class="group" style="color:#b45309">行为型 · 职责和协作怎样安排</div>
+<a href="#p13" data-jump="p13">13 职责链</a>
+<a href="#p14" data-jump="p14">14 命令</a>
+<a href="#p15" data-jump="p15">15 解释器</a>
+<a href="#p16" data-jump="p16">16 迭代器</a>
+<a href="#p17" data-jump="p17">17 中介者</a>
+<a href="#p18" data-jump="p18">18 备忘录</a>
+<a href="#p19" data-jump="p19">19 观察者</a>
+<a href="#p20" data-jump="p20">20 状态</a>
+<a href="#p21" data-jump="p21">21 策略</a>
+<a href="#p22" data-jump="p22">22 模板方法</a>
+<a href="#p23" data-jump="p23">23 访问者</a>
+</nav><main><section class="guide"><h2>先认结构，再辨目的</h2><p>类图中的审批者保存同类型的 successor，并有多个具体审批者子类，这就是职责链的重要识图线索。<a href="#p13" data-jump="p13">先看 13 职责链</a>。</p><p>这些是常见简化图，实际类名可以改变。策略与状态、装饰器与代理的骨架可能相近，还要结合方法职责和题干目的判断。</p><details><summary>UML 图例与读图提示</summary>
+<div class="table-wrap"><table><thead><tr><th>符号</th><th>怎样读</th><th>看什么</th></tr></thead><tbody><tr><td>实线＋空心三角形</td><td>子类指向父类</td><td>先找抽象角色及其具体实现。</td></tr><tr><td>虚线＋空心三角形</td><td>实现类指向接口</td><td>接口实现的常用画法；本图册主要用抽象类统一展示。</td></tr><tr><td>实线关联及引用箭头</td><td>持有者引用被指向的对象</td><td>看属性类型与箭头共同确认“谁持有谁”。</td></tr><tr><td>虚线依赖箭头</td><td>调用、创建或使用某类型</td><td>创建与调用标签表示依赖，不能看成继承。</td></tr><tr><td>空心菱形</td><td>共享聚合，菱形在整体端</td><td>不是父子继承；题图可能用普通关联表达持有。</td></tr><tr><td>实心菱形</td><td>组合所有权，菱形在整体端</td><td>本图册用文件夹拥有孩子作为组合的例子。</td></tr><tr><td>1 / 0..*</td><td>一个 / 零到多个</td><td>装饰器包装一个组件，组合节点可含多个孩子。</td></tr><tr><td>+ / - / # / static</td><td>公有 / 私有 / 受保护 / 静态</td><td>方法和属性也是识图线索。</td></tr></tbody></table></div>
+<p class="source">抽象角色主要用抽象类统一展示。图例参照 <a href="https://www.omg.org/spec/UML/2.2/Superstructure/PDF/">OMG UML 规范</a>；分类按 <a href="https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780321770462">GoF 原书目录</a>。</p></details></section><div id="empty" class="empty">没有匹配的模式。可清空搜索或选择“全部”。</div>
+<article id="p01" class="card" data-category="创建型" data-search="单例 singleton 创建型 应用内只保留一份全局配置管理器。 一个类里同时出现私有构造器、静态自身引用和静态获取入口。 singleton 对应 configmanager；client 是读取配置的业务模块。 业务模块调用 getinstance()，拿到同一管理器，再读取配置。 单件" style="--cat:#1d4ed8">
+<h2>01 单例 <span class="english">Singleton</span></h2><span class="badge">创建型</span>
+<span class="aliases">别名：单件</span>
+<a href="../assets/79954545f60e8f0e.png" target="_blank" rel="noopener"><img src="../assets/79954545f60e8f0e.png" alt="单例 UML 识图卡"></a><a class="open-image" href="../assets/79954545f60e8f0e.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>一个类里同时出现私有构造器、静态自身引用和静态获取入口。</p>
+<h3>例子与角色</h3><p>应用内只保留一份全局配置管理器。</p><p>Singleton 对应 ConfigManager；Client 是读取配置的业务模块。</p>
+<h3>怎样协作</h3><p>业务模块调用 getInstance()，拿到同一管理器，再读取配置。</p>
+<h3>主要优点</h3><ul><li>统一管理唯一实例与访问入口，避免调用者各自创建配置副本。</li><li>可以集中控制实例的创建时机。</li></ul>
+<h3>代价与易混点</h3><p>会引入全局状态；并发创建与测试隔离仍需具体实现保证。</p><p>只有一个工厂不等于单例；关键是受控的唯一实例。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p02" class="card" data-category="创建型" data-search="工厂方法 factory method 创建型 邮件通知与短信通知由各自的通知工厂创建。 creator 与 product 各有继承层次；具体 creator 覆盖一个返回 product 的工厂方法。 creator 是通知创建者；product 是通知；creatora／producta 对应邮件，creatorb／productb 对应短信。 调用 creator 的业务流程，由子类的 factorymethod() 决定返回哪种 product。 " style="--cat:#1d4ed8">
+<h2>02 工厂方法 <span class="english">Factory Method</span></h2><span class="badge">创建型</span>
+
+<a href="../assets/0d5b7a7bcb377a18.png" target="_blank" rel="noopener"><img src="../assets/0d5b7a7bcb377a18.png" alt="工厂方法 UML 识图卡"></a><a class="open-image" href="../assets/0d5b7a7bcb377a18.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Creator 与 Product 各有继承层次；具体 Creator 覆盖一个返回 Product 的工厂方法。</p>
+<h3>例子与角色</h3><p>邮件通知与短信通知由各自的通知工厂创建。</p><p>Creator 是通知创建者；Product 是通知；CreatorA／ProductA 对应邮件，CreatorB／ProductB 对应短信。</p>
+<h3>怎样协作</h3><p>调用 Creator 的业务流程，由子类的 factoryMethod() 决定返回哪种 Product。</p>
+<h3>主要优点</h3><ul><li>使用产品的代码依赖抽象产品，减少与具体构造过程的耦合。</li><li>新增具体产品时，可以增加相应创建者子类。</li></ul>
+<h3>代价与易混点</h3><p>产品种类增加时，创建者子类通常也会增加。</p><p>工厂方法侧重由子类决定一种产品的创建；抽象工厂侧重成套产品族。简单工厂不属于这 23 种 GoF 模式。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p03" class="card" data-category="创建型" data-search="抽象工厂 abstract factory 创建型 windows 界面工厂与 macos 界面工厂分别创建同风格的按钮和复选框。 工厂接口有 createa()、createb() 多个创建方法；多个产品等级分别有继承层次。 factory1 的 a1／b1 属于同一产品族；factory2 的 a2／b2 属于另一产品族。a、b 是不同产品等级。 先选定一个具体工厂，再由它创建相互配套的 a 和 b，客户端使用产品抽象。 " style="--cat:#1d4ed8">
+<h2>03 抽象工厂 <span class="english">Abstract Factory</span></h2><span class="badge">创建型</span>
+
+<a href="../assets/f66baf1d0e45f72d.png" target="_blank" rel="noopener"><img src="../assets/f66baf1d0e45f72d.png" alt="抽象工厂 UML 识图卡"></a><a class="open-image" href="../assets/f66baf1d0e45f72d.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>工厂接口有 createA()、createB() 多个创建方法；多个产品等级分别有继承层次。</p>
+<h3>例子与角色</h3><p>Windows 界面工厂与 macOS 界面工厂分别创建同风格的按钮和复选框。</p><p>Factory1 的 A1／B1 属于同一产品族；Factory2 的 A2／B2 属于另一产品族。A、B 是不同产品等级。</p>
+<h3>怎样协作</h3><p>先选定一个具体工厂，再由它创建相互配套的 A 和 B，客户端使用产品抽象。</p>
+<h3>主要优点</h3><ul><li>使同一产品族保持一致，避免混用不同风格的配套对象。</li><li>替换具体工厂可以切换整套产品，而使用方仍依赖抽象。</li></ul>
+<h3>代价与易混点</h3><p>新增一个产品等级时，通常需要修改抽象工厂及所有具体工厂。</p><p>产品族是同一品牌／风格的一套 A+B；产品等级是所有 A 或所有 B，不能混为一谈。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p04" class="card" data-category="创建型" data-search="建造者 builder 创建型 按同一套装配步骤制作不同配置的电脑。 director 持有 builder；builder 有多个 buildpart 步骤；concretebuilder 产出 product。 director 是装配流程；builder 是构造步骤；concretebuilder 是某配置的装配器；product 是成品电脑。 director 按顺序调用 buildparta()、buildpartb()，由具体建造者组装并返回结果。 生成器" style="--cat:#1d4ed8">
+<h2>04 建造者 <span class="english">Builder</span></h2><span class="badge">创建型</span>
+<span class="aliases">别名：生成器</span>
+<a href="../assets/30ffb52958f97652.png" target="_blank" rel="noopener"><img src="../assets/30ffb52958f97652.png" alt="建造者 UML 识图卡"></a><a class="open-image" href="../assets/30ffb52958f97652.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Director 持有 Builder；Builder 有多个 buildPart 步骤；ConcreteBuilder 产出 Product。</p>
+<h3>例子与角色</h3><p>按同一套装配步骤制作不同配置的电脑。</p><p>Director 是装配流程；Builder 是构造步骤；ConcreteBuilder 是某配置的装配器；Product 是成品电脑。</p>
+<h3>怎样协作</h3><p>Director 按顺序调用 buildPartA()、buildPartB()，由具体建造者组装并返回结果。</p>
+<h3>主要优点</h3><ul><li>复用稳定的构造流程，让不同建造者生成不同表示。</li><li>将复杂对象的分步构造与最终产品分离，便于逐步装配。</li></ul>
+<h3>代价与易混点</h3><p>需要额外的步骤接口与建造者；简单对象不一定值得这样组织。</p><p>Builder 强调分步骤构造一个复杂结果；抽象工厂强调创建一套相关产品。Director 在实际实现中可以省略。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p05" class="card" data-category="创建型" data-search="原型 prototype 创建型 从现有海报模板克隆一份，再修改标题和图片。 prototype 定义 clone()，多个具体原型继承它；客户端面向原型复制。 prototype 是模板抽象；concreteprototypea／b 是不同模板；client 是编辑器。 客户端持有某个原型并调用 clone()，再调整复制对象的差异。 " style="--cat:#1d4ed8">
+<h2>05 原型 <span class="english">Prototype</span></h2><span class="badge">创建型</span>
+
+<a href="../assets/0d2550fde3bd822c.png" target="_blank" rel="noopener"><img src="../assets/0d2550fde3bd822c.png" alt="原型 UML 识图卡"></a><a class="open-image" href="../assets/0d2550fde3bd822c.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Prototype 定义 clone()，多个具体原型继承它；客户端面向原型复制。</p>
+<h3>例子与角色</h3><p>从现有海报模板克隆一份，再修改标题和图片。</p><p>Prototype 是模板抽象；ConcretePrototypeA／B 是不同模板；Client 是编辑器。</p>
+<h3>怎样协作</h3><p>客户端持有某个原型并调用 clone()，再调整复制对象的差异。</p>
+<h3>主要优点</h3><ul><li>减少客户端对具体构造类与构造细节的依赖。</li><li>适合已有对象作为创建样板的场景，可复用其初始化状态。</li></ul>
+<h3>代价与易混点</h3><p>复制共享引用还是复制完整对象图，需要明确浅拷贝与深拷贝边界。</p><p>原型靠复制已有对象创建新对象；单例要求受控地保留唯一实例。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p06" class="card" data-category="结构型" data-search="适配器 adapter 结构型 新系统要求 request()，旧支付 sdk 只提供 specificrequest()。 adapter 继承 target，却持有接口不同的 adaptee；调用被转换后再转发。 target 是新系统接口；adaptee 是旧 sdk；adapter 是转换包装；client 使用 target。 client 调用 target.request()，adapter 在内部转成 adaptee.specificrequest()。 " style="--cat:#047857">
+<h2>06 适配器 <span class="english">Adapter</span></h2><span class="badge">结构型</span>
+
+<a href="../assets/f623d3cedd02f0fe.png" target="_blank" rel="noopener"><img src="../assets/f623d3cedd02f0fe.png" alt="适配器 UML 识图卡"></a><a class="open-image" href="../assets/f623d3cedd02f0fe.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Adapter 继承 Target，却持有接口不同的 Adaptee；调用被转换后再转发。</p>
+<h3>例子与角色</h3><p>新系统要求 request()，旧支付 SDK 只提供 specificRequest()。</p><p>Target 是新系统接口；Adaptee 是旧 SDK；Adapter 是转换包装；Client 使用 Target。</p>
+<h3>怎样协作</h3><p>Client 调用 Target.request()，Adapter 在内部转成 Adaptee.specificRequest()。</p>
+<h3>主要优点</h3><ul><li>复用已有实现，减少对旧组件的修改。</li><li>让使用方继续依赖它熟悉的目标接口。</li></ul>
+<h3>代价与易混点</h3><p>增加转换层；语义不兼容时，改方法名并不能解决问题。</p><p>本图是对象适配器。适配器转换已有接口；桥接预先分离两个可独立变化的维度。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p07" class="card" data-category="结构型" data-search="桥接 bridge 结构型 普通／加急消息与邮件／短信渠道，可以分别扩展。 两条独立继承层次横向相连：abstraction 持有 implementor。 abstraction 是消息业务抽象；refinedabstraction 是加急消息；implementor 是发送渠道；实现 a／b 是邮件与短信。 业务抽象执行 operation()，再委托 impl.operationimpl() 完成渠道相关部分。 " style="--cat:#047857">
+<h2>07 桥接 <span class="english">Bridge</span></h2><span class="badge">结构型</span>
+
+<a href="../assets/8024df34dec479dc.png" target="_blank" rel="noopener"><img src="../assets/8024df34dec479dc.png" alt="桥接 UML 识图卡"></a><a class="open-image" href="../assets/8024df34dec479dc.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>两条独立继承层次横向相连：Abstraction 持有 Implementor。</p>
+<h3>例子与角色</h3><p>普通／加急消息与邮件／短信渠道，可以分别扩展。</p><p>Abstraction 是消息业务抽象；RefinedAbstraction 是加急消息；Implementor 是发送渠道；实现 A／B 是邮件与短信。</p>
+<h3>怎样协作</h3><p>业务抽象执行 operation()，再委托 impl.operationImpl() 完成渠道相关部分。</p>
+<h3>主要优点</h3><ul><li>让业务种类与实现渠道独立扩展，减少两维组合导致的子类膨胀。</li><li>使用组合连接两端，便于替换底层实现。</li></ul>
+<h3>代价与易混点</h3><p>需要提前识别真正独立的变化维度，并增加抽象层。</p><p>左边的 Abstraction 持有右边实现，题图若使用空心菱形，菱形在 Abstraction 端。桥接不是命令队列。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p08" class="card" data-category="结构型" data-search="组合 composite 结构型 文件与文件夹都能执行统一操作，文件夹还可以包含文件或子文件夹。 leaf 与 composite 都继承 component；composite 的 children 指回 component。 component 是文件系统节点；leaf 是文件；composite 是文件夹；client 统一使用 component。 对叶子调用 operation() 直接工作；对容器调用相同操作，再递归访问孩子。 " style="--cat:#047857">
+<h2>08 组合 <span class="english">Composite</span></h2><span class="badge">结构型</span>
+
+<a href="../assets/75138d518630fb28.png" target="_blank" rel="noopener"><img src="../assets/75138d518630fb28.png" alt="组合 UML 识图卡"></a><a class="open-image" href="../assets/75138d518630fb28.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Leaf 与 Composite 都继承 Component；Composite 的 children 指回 Component。</p>
+<h3>例子与角色</h3><p>文件与文件夹都能执行统一操作，文件夹还可以包含文件或子文件夹。</p><p>Component 是文件系统节点；Leaf 是文件；Composite 是文件夹；Client 统一使用 Component。</p>
+<h3>怎样协作</h3><p>对叶子调用 operation() 直接工作；对容器调用相同操作，再递归访问孩子。</p>
+<h3>主要优点</h3><ul><li>统一操作单个对象和对象集合。</li><li>自然表达整体—部分的树形结构，便于递归扩展。</li></ul>
+<h3>代价与易混点</h3><p>统一接口可能包含叶子不适用的管理操作；约束孩子类型时需额外设计。</p><p>组合是结构型。解释器也可能呈树形，但它关心语法规则和 interpret() 的求值。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p09" class="card" data-category="结构型" data-search="装饰器 decorator 结构型 基础咖啡可以按需叠加牛奶、糖等附加能力。 decorator 与 concretecomponent 同属 component；decorator 又持有一个 component。 component 是饮品接口；concretecomponent 是基础咖啡；concretedecoratora／b 是加奶、加糖包装。 外层装饰器先后执行自己的附加逻辑，并把统一接口调用委托给内部 component；可以再套一层。 装饰" style="--cat:#047857">
+<h2>09 装饰器 <span class="english">Decorator</span></h2><span class="badge">结构型</span>
+<span class="aliases">别名：装饰</span>
+<a href="../assets/9c30e5d727f33ad6.png" target="_blank" rel="noopener"><img src="../assets/9c30e5d727f33ad6.png" alt="装饰器 UML 识图卡"></a><a class="open-image" href="../assets/9c30e5d727f33ad6.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Decorator 与 ConcreteComponent 同属 Component；Decorator 又持有一个 Component。</p>
+<h3>例子与角色</h3><p>基础咖啡可以按需叠加牛奶、糖等附加能力。</p><p>Component 是饮品接口；ConcreteComponent 是基础咖啡；ConcreteDecoratorA／B 是加奶、加糖包装。</p>
+<h3>怎样协作</h3><p>外层装饰器先后执行自己的附加逻辑，并把统一接口调用委托给内部 component；可以再套一层。</p>
+<h3>主要优点</h3><ul><li>在运行时按需组合职责，减少为每种组合建立子类。</li><li>包装前后仍保持同一抽象接口。</li></ul>
+<h3>代价与易混点</h3><p>包装层多时，调试、对象身份及执行顺序更难追踪。</p><p>动态添加职责仍属结构型。装饰器与代理的骨架可能相同，须看是叠加能力还是控制访问。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p10" class="card" data-category="结构型" data-search="外观 facade 结构型 订单外观统一协调库存、支付和配送三个子系统。 client 只连接一个 facade，facade 再连接多个功能不同的子系统；不要求继承树。 facade 是订单入口；subsystema／b／c 分别负责库存、支付和配送。 client 调用 facade.placeorder()，由外观按业务顺序协调各子系统。 " style="--cat:#047857">
+<h2>10 外观 <span class="english">Facade</span></h2><span class="badge">结构型</span>
+
+<a href="../assets/fab2d242cb3bd2f9.png" target="_blank" rel="noopener"><img src="../assets/fab2d242cb3bd2f9.png" alt="外观 UML 识图卡"></a><a class="open-image" href="../assets/fab2d242cb3bd2f9.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Client 只连接一个 Facade，Facade 再连接多个功能不同的子系统；不要求继承树。</p>
+<h3>例子与角色</h3><p>订单外观统一协调库存、支付和配送三个子系统。</p><p>Facade 是订单入口；SubsystemA／B／C 分别负责库存、支付和配送。</p>
+<h3>怎样协作</h3><p>Client 调用 Facade.placeOrder()，由外观按业务顺序协调各子系统。</p>
+<h3>主要优点</h3><ul><li>为复杂子系统提供较易使用的统一入口。</li><li>减少客户端直接依赖许多子系统细节的情况。</li></ul>
+<h3>代价与易混点</h3><p>外观过大可能变成集中所有职责的庞大类。</p><p>外观简化入口；适配器转换接口；中介者主要协调同事对象之间的交互。外观通常不禁止直接访问子系统。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p11" class="card" data-category="结构型" data-search="享元 flyweight 结构型 大量文字共享字形轮廓；位置、颜色等上下文由外部传入。 factory 有按 key 索引的对象池；flyweight.operation() 接受外在状态。 flyweightfactory 管理字形池；concreteflyweight 保存字形等内在状态；client 提供位置等外在状态。 按 key 从池中取得共享对象，再把本次使用的 extrinsicstate 传给 operation()。 " style="--cat:#047857">
+<h2>11 享元 <span class="english">Flyweight</span></h2><span class="badge">结构型</span>
+
+<a href="../assets/199768e96ce9fe71.png" target="_blank" rel="noopener"><img src="../assets/199768e96ce9fe71.png" alt="享元 UML 识图卡"></a><a class="open-image" href="../assets/199768e96ce9fe71.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Factory 有按 key 索引的对象池；Flyweight.operation() 接受外在状态。</p>
+<h3>例子与角色</h3><p>大量文字共享字形轮廓；位置、颜色等上下文由外部传入。</p><p>FlyweightFactory 管理字形池；ConcreteFlyweight 保存字形等内在状态；Client 提供位置等外在状态。</p>
+<h3>怎样协作</h3><p>按 key 从池中取得共享对象，再把本次使用的 extrinsicState 传给 operation()。</p>
+<h3>主要优点</h3><ul><li>多个相似对象共享内在状态，减少重复对象占用。</li><li>共享对象的取得与复用由工厂集中管理。</li></ul>
+<h3>代价与易混点</h3><p>必须区分内在、外在状态，并承担池管理和查找的成本。</p><p>享元属结构型，重心是共享对象结构；它不要求像单例那样全系统只有一个对象，也不要求所有对象都共享。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p12" class="card" data-category="结构型" data-search="代理 proxy 结构型 图片代理延迟加载大图，并在访问前执行权限或缓存检查。 proxy 与 realsubject 继承同一个 subject；proxy 持有真实对象并代为响应相同接口。 subject 是图片接口；realsubject 真正加载、显示图片；proxy 控制什么时候或是否转交请求。 client 调用 subject.request()，代理先控制访问，再按需要调用真实对象。 " style="--cat:#047857">
+<h2>12 代理 <span class="english">Proxy</span></h2><span class="badge">结构型</span>
+
+<a href="../assets/25ba0e577c063592.png" target="_blank" rel="noopener"><img src="../assets/25ba0e577c063592.png" alt="代理 UML 识图卡"></a><a class="open-image" href="../assets/25ba0e577c063592.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Proxy 与 RealSubject 继承同一个 Subject；Proxy 持有真实对象并代为响应相同接口。</p>
+<h3>例子与角色</h3><p>图片代理延迟加载大图，并在访问前执行权限或缓存检查。</p><p>Subject 是图片接口；RealSubject 真正加载、显示图片；Proxy 控制什么时候或是否转交请求。</p>
+<h3>怎样协作</h3><p>Client 调用 Subject.request()，代理先控制访问，再按需要调用真实对象。</p>
+<h3>主要优点</h3><ul><li>在统一接口后集中实现延迟加载、远程访问或访问控制。</li><li>使用方通常可以透明使用代理或真实对象。</li></ul>
+<h3>代价与易混点</h3><p>增加间接调用；远程代理等情形还会引入额外失败与延迟语义。</p><p>控制访问属于结构型。代理有时也持有 Subject，因此不能仅凭图形外观与装饰器区分。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p13" class="card" data-category="行为型" data-search="职责链 chain of responsibility 行为型 采购单依次交给主任、副董事长，额度不足就向后传。 handler 的 next 指回 handler；具体处理者共同继承它。 handler 是审批抽象；director、vicepresident 是两级审批者；request 是采购单。 能审批就处理，否则交给 next；链尾也可能无人处理。 责任链" style="--cat:#b45309">
+<h2>13 职责链 <span class="english">Chain of Responsibility</span></h2><span class="badge">行为型</span>
+<span class="aliases">别名：责任链</span>
+<a href="../assets/a4e926880180ba9a.png" target="_blank" rel="noopener"><img src="../assets/a4e926880180ba9a.png" alt="职责链 UML 识图卡"></a><a class="open-image" href="../assets/a4e926880180ba9a.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Handler 的 next 指回 Handler；具体处理者共同继承它。</p>
+<h3>例子与角色</h3><p>采购单依次交给主任、副董事长，额度不足就向后传。</p><p>Handler 是审批抽象；Director、VicePresident 是两级审批者；Request 是采购单。</p>
+<h3>怎样协作</h3><p>能审批就处理，否则交给 next；链尾也可能无人处理。</p>
+<h3>主要优点</h3><ul><li>发送者不必指定最终审批者。</li><li>可调整处理者的次序与组合。</li></ul>
+<h3>代价与易混点</h3><p>请求可能无人处理，排查需沿链追踪。</p><p>职责链逐级寻找处理者；观察者通常通知多个订阅者。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p14" class="card" data-category="行为型" data-search="命令 command 行为型 遥控器按钮保存开灯命令，按下后让灯执行开灯动作。 invoker 持有 command；具体命令另外持有 receiver。 invoker 是按钮；command 是命令抽象；concretecommand 是开灯命令；receiver 是灯。 按钮调用 execute()，开灯命令再调用灯的 on()。 " style="--cat:#b45309">
+<h2>14 命令 <span class="english">Command</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/5a1d66b3868cf4eb.png" target="_blank" rel="noopener"><img src="../assets/5a1d66b3868cf4eb.png" alt="命令 UML 识图卡"></a><a class="open-image" href="../assets/5a1d66b3868cf4eb.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Invoker 持有 Command；具体命令另外持有 Receiver。</p>
+<h3>例子与角色</h3><p>遥控器按钮保存开灯命令，按下后让灯执行开灯动作。</p><p>Invoker 是按钮；Command 是命令抽象；ConcreteCommand 是开灯命令；Receiver 是灯。</p>
+<h3>怎样协作</h3><p>按钮调用 execute()，开灯命令再调用灯的 on()。</p>
+<h3>主要优点</h3><ul><li>请求发起者与实际执行者分离。</li><li>请求对象化后便于排队与记录。</li></ul>
+<h3>代价与易混点</h3><p>每类命令可能增加一个类；撤销需另行实现。</p><p>命令封装请求；访问者通过 accept 和 visit 扩展元素操作。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p15" class="card" data-category="行为型" data-search="解释器 interpreter 行为型 用“已付款 and 有库存”组成简单规则，并根据当前数据求值。 表达式有 interpret(context)；非终结符保存子表达式。 abstractexpression 是表达式抽象；terminalexpression 判断条件；nonterminalexpression 表示二元 and；context 保存数据。 and 分别解释左右表达式，再合并布尔结果。 " style="--cat:#b45309">
+<h2>15 解释器 <span class="english">Interpreter</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/db1d3206759e0966.png" target="_blank" rel="noopener"><img src="../assets/db1d3206759e0966.png" alt="解释器 UML 识图卡"></a><a class="open-image" href="../assets/db1d3206759e0966.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>表达式有 interpret(context)；非终结符保存子表达式。</p>
+<h3>例子与角色</h3><p>用“已付款 AND 有库存”组成简单规则，并根据当前数据求值。</p><p>AbstractExpression 是表达式抽象；TerminalExpression 判断条件；NonterminalExpression 表示二元 AND；Context 保存数据。</p>
+<h3>怎样协作</h3><p>AND 分别解释左右表达式，再合并布尔结果。</p>
+<h3>主要优点</h3><ul><li>用对象结构直接表达简单语法。</li><li>可递归组合已有表达式。</li></ul>
+<h3>代价与易混点</h3><p>复杂语法会产生许多类，执行效率也可能受限。</p><p>解释器属行为型；组合属结构型，二者都可能画成树。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p16" class="card" data-category="行为型" data-search="迭代器 iterator 行为型 按播放列表顺序取得下一首歌，播放器无需读取内部数组。 aggregate 创建 iterator；具体迭代器持有具体聚合并记录游标。 aggregate 是列表抽象；concreteaggregate 保存歌曲；iterator 是遍历抽象；concreteiterator 管理位置。 先 createiterator()，再用 hasnext()、next() 逐项访问。 " style="--cat:#b45309">
+<h2>16 迭代器 <span class="english">Iterator</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/105e684af70439e5.png" target="_blank" rel="noopener"><img src="../assets/105e684af70439e5.png" alt="迭代器 UML 识图卡"></a><a class="open-image" href="../assets/105e684af70439e5.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Aggregate 创建 Iterator；具体迭代器持有具体聚合并记录游标。</p>
+<h3>例子与角色</h3><p>按播放列表顺序取得下一首歌，播放器无需读取内部数组。</p><p>Aggregate 是列表抽象；ConcreteAggregate 保存歌曲；Iterator 是遍历抽象；ConcreteIterator 管理位置。</p>
+<h3>怎样协作</h3><p>先 createIterator()，再用 hasNext()、next() 逐项访问。</p>
+<h3>主要优点</h3><ul><li>隐藏集合内部表示。</li><li>多个迭代器可分别维护遍历位置。</li></ul>
+<h3>代价与易混点</h3><p>增加遍历对象；遍历时修改集合需约定行为。</p><p>迭代器管理遍历过程；访问者封装施加于元素的操作。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p17" class="card" data-category="行为型" data-search="中介者 mediator 行为型 对话框中的按钮、输入框、列表通过一个协调者联动。 同事对象指向 mediator，具体中介者集中协调多个同事。 colleague 是控件抽象；colleaguea／b 是不同控件；concretemediator 是对话框协调逻辑。 控件报告发生的事件，中介者决定通知哪个控件更新，控件之间减少直接引用。 调停者" style="--cat:#b45309">
+<h2>17 中介者 <span class="english">Mediator</span></h2><span class="badge">行为型</span>
+<span class="aliases">别名：调停者</span>
+<a href="../assets/dc8e7cc82d7170e8.png" target="_blank" rel="noopener"><img src="../assets/dc8e7cc82d7170e8.png" alt="中介者 UML 识图卡"></a><a class="open-image" href="../assets/dc8e7cc82d7170e8.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>同事对象指向 Mediator，具体中介者集中协调多个同事。</p>
+<h3>例子与角色</h3><p>对话框中的按钮、输入框、列表通过一个协调者联动。</p><p>Colleague 是控件抽象；ColleagueA／B 是不同控件；ConcreteMediator 是对话框协调逻辑。</p>
+<h3>怎样协作</h3><p>控件报告发生的事件，中介者决定通知哪个控件更新，控件之间减少直接引用。</p>
+<h3>主要优点</h3><ul><li>将多对多交互集中到协调对象，减少同事之间的相互依赖。</li><li>同事类更便于复用，交互规则可以在中介者中调整。</li></ul>
+<h3>代价与易混点</h3><p>中介者可能承担过多逻辑，成为复杂的协调中心。</p><p>观察者偏向一对多通知；中介者还决定交互规则。同事对象不一定必须继承同一父类，本图采用常见抽象同事画法。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p18" class="card" data-category="行为型" data-search="备忘录 memento 行为型 编辑器保存文档快照，用户撤销时恢复旧状态。 originator 生成／恢复 memento，caretaker 保存快照但不解释其内部状态。 originator 是编辑器；memento 是状态快照；caretaker 是历史管理器。 历史管理器保存由编辑器创建的快照；恢复时将快照交还编辑器。 " style="--cat:#b45309">
+<h2>18 备忘录 <span class="english">Memento</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/9fe6fe29ea6ddcf8.png" target="_blank" rel="noopener"><img src="../assets/9fe6fe29ea6ddcf8.png" alt="备忘录 UML 识图卡"></a><a class="open-image" href="../assets/9fe6fe29ea6ddcf8.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Originator 生成／恢复 Memento，Caretaker 保存快照但不解释其内部状态。</p>
+<h3>例子与角色</h3><p>编辑器保存文档快照，用户撤销时恢复旧状态。</p><p>Originator 是编辑器；Memento 是状态快照；Caretaker 是历史管理器。</p>
+<h3>怎样协作</h3><p>历史管理器保存由编辑器创建的快照；恢复时将快照交还编辑器。</p>
+<h3>主要优点</h3><ul><li>在不向管理者公开内部状态细节的前提下保存与恢复状态。</li><li>将历史保存职责从业务对象中分离。</li></ul>
+<h3>代价与易混点</h3><p>快照多或状态大时，会增加存储与复制成本。</p><p>备忘录保存状态；命令保存请求。撤销功能可以同时使用两者，不能见到“撤销”就只选其中一个。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p19" class="card" data-category="行为型" data-search="观察者 observer 行为型 天气站更新温度后，多个显示屏分别刷新。 subject 持有一组 observer；通知方法逐个调用 update()。 subject 是被观察目标；concretesubject 是天气站；concreteobservera／b 是两个显示屏。 显示屏先订阅；目标状态变化后执行 notify()，分别通知各个观察者。 " style="--cat:#b45309">
+<h2>19 观察者 <span class="english">Observer</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/3adfb498f53c44ac.png" target="_blank" rel="noopener"><img src="../assets/3adfb498f53c44ac.png" alt="观察者 UML 识图卡"></a><a class="open-image" href="../assets/3adfb498f53c44ac.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Subject 持有一组 Observer；通知方法逐个调用 update()。</p>
+<h3>例子与角色</h3><p>天气站更新温度后，多个显示屏分别刷新。</p><p>Subject 是被观察目标；ConcreteSubject 是天气站；ConcreteObserverA／B 是两个显示屏。</p>
+<h3>怎样协作</h3><p>显示屏先订阅；目标状态变化后执行 notify()，分别通知各个观察者。</p>
+<h3>主要优点</h3><ul><li>发布者依赖观察者抽象，便于增加或移除订阅者。</li><li>用一对多依赖传播变化，避免目标直接耦合每种显示实现。</li></ul>
+<h3>代价与易混点</h3><p>通知顺序、循环更新和订阅生命周期需要管理。</p><p>观察者是多个接收者分别收到通知；职责链沿后继逐个尝试处理；中介者集中协调多方交互。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p20" class="card" data-category="行为型" data-search="状态 state 行为型 售货机在可售、售罄等状态下，对同一购买请求表现不同。 context 持有 state，多种 concretestate 封装各自的状态相关行为。 context 是售货机；concretestatea／b 分别表示可售、售罄；state 是状态行为抽象。 context 将请求交给当前 state.handle(context)；状态变化时替换当前状态对象。 " style="--cat:#b45309">
+<h2>20 状态 <span class="english">State</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/edccfa3a4b6473b3.png" target="_blank" rel="noopener"><img src="../assets/edccfa3a4b6473b3.png" alt="状态 UML 识图卡"></a><a class="open-image" href="../assets/edccfa3a4b6473b3.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Context 持有 State，多种 ConcreteState 封装各自的状态相关行为。</p>
+<h3>例子与角色</h3><p>售货机在可售、售罄等状态下，对同一购买请求表现不同。</p><p>Context 是售货机；ConcreteStateA／B 分别表示可售、售罄；State 是状态行为抽象。</p>
+<h3>怎样协作</h3><p>Context 将请求交给当前 state.handle(context)；状态变化时替换当前状态对象。</p>
+<h3>主要优点</h3><ul><li>将某个状态下的行为集中到相应状态类，减少散落的状态条件分支。</li><li>状态行为与切换意图可以显式表达，便于扩展状态。</li></ul>
+<h3>代价与易混点</h3><p>状态类可能增多，转换规则也需要保持清楚。</p><p>State 与 Strategy 的类图骨架可能相同。状态关心状态变化导致行为变化；策略关心同一任务的算法替换。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p21" class="card" data-category="行为型" data-search="策略 strategy 行为型 订单价格可以选择满减算法或折扣算法。 context 持有 strategy，并把同一项计算委托给可替换的算法子类。 context 是订单计价器；concretestrategya／b 是满减、折扣算法；strategy 定义算法入口。 选定策略后调用 context.execute()，由当前 strategy.algorithm() 完成算法。 " style="--cat:#b45309">
+<h2>21 策略 <span class="english">Strategy</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/dc3fefe6004c0124.png" target="_blank" rel="noopener"><img src="../assets/dc3fefe6004c0124.png" alt="策略 UML 识图卡"></a><a class="open-image" href="../assets/dc3fefe6004c0124.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Context 持有 Strategy，并把同一项计算委托给可替换的算法子类。</p>
+<h3>例子与角色</h3><p>订单价格可以选择满减算法或折扣算法。</p><p>Context 是订单计价器；ConcreteStrategyA／B 是满减、折扣算法；Strategy 定义算法入口。</p>
+<h3>怎样协作</h3><p>选定策略后调用 Context.execute()，由当前 strategy.algorithm() 完成算法。</p>
+<h3>主要优点</h3><ul><li>把不同算法封装为可替换对象，减少计价器内部的大段选择分支。</li><li>算法可以独立测试和扩展，并可在运行时替换。</li></ul>
+<h3>代价与易混点</h3><p>使用方或配置需要知道策略差异；策略对象数量可能增加。</p><p>策略不等于自动状态切换。模板方法依靠继承复用步骤骨架；策略通过持有另一个对象替换算法。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p22" class="card" data-category="行为型" data-search="模板方法 template method 行为型 报表导出都先读数据、再格式化、最后写出，不同格式只改具体步骤。 同一父类中既有模板方法，又有待子类实现的基本步骤；图的核心是继承。 abstractclass 固定导出流程；concreteclassa／b 分别实现 pdf、csv 的步骤。 templatemethod() 按既定顺序调用 step1()、step2()，实际步骤执行子类实现。 " style="--cat:#b45309">
+<h2>22 模板方法 <span class="english">Template Method</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/243d879e272edd02.png" target="_blank" rel="noopener"><img src="../assets/243d879e272edd02.png" alt="模板方法 UML 识图卡"></a><a class="open-image" href="../assets/243d879e272edd02.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>同一父类中既有模板方法，又有待子类实现的基本步骤；图的核心是继承。</p>
+<h3>例子与角色</h3><p>报表导出都先读数据、再格式化、最后写出，不同格式只改具体步骤。</p><p>AbstractClass 固定导出流程；ConcreteClassA／B 分别实现 PDF、CSV 的步骤。</p>
+<h3>怎样协作</h3><p>templateMethod() 按既定顺序调用 step1()、step2()，实际步骤执行子类实现。</p>
+<h3>主要优点</h3><ul><li>复用稳定流程，减少重复的组织代码。</li><li>把允许变化的步骤明确留给子类。</li></ul>
+<h3>代价与易混点</h3><p>对子类有继承耦合；流程骨架变化可能影响所有子类。</p><p>模板方法的变化点在继承层次里；策略的变化点在 Context 持有的策略对象里。模板方法并不表示所有方法都抽象。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<article id="p23" class="card" data-category="行为型" data-search="访问者 visitor 行为型 对稳定的文件／文件夹元素结构，分别增加统计大小、病毒扫描等操作。 element 与 visitor 两套继承层次；元素有 accept(visitor)，访问者有按元素类型区分的 visita／visitb。 elementa／b 是不同元素；concretevisitor1／2 是不同操作；objectstructure 保存元素集合。 elementa.accept(v) 内调用 v.visita(this)，再由具体访问者执行对应操作，体现双分派。 " style="--cat:#b45309">
+<h2>23 访问者 <span class="english">Visitor</span></h2><span class="badge">行为型</span>
+
+<a href="../assets/735622518b9c84f5.png" target="_blank" rel="noopener"><img src="../assets/735622518b9c84f5.png" alt="访问者 UML 识图卡"></a><a class="open-image" href="../assets/735622518b9c84f5.png" target="_blank" rel="noopener">查看原尺寸图片</a>
+<h3>先看哪里</h3><p>Element 与 Visitor 两套继承层次；元素有 accept(visitor)，访问者有按元素类型区分的 visitA／visitB。</p>
+<h3>例子与角色</h3><p>对稳定的文件／文件夹元素结构，分别增加统计大小、病毒扫描等操作。</p><p>ElementA／B 是不同元素；ConcreteVisitor1／2 是不同操作；ObjectStructure 保存元素集合。</p>
+<h3>怎样协作</h3><p>ElementA.accept(v) 内调用 v.visitA(this)，再由具体访问者执行对应操作，体现双分派。</p>
+<h3>主要优点</h3><ul><li>在元素类型较稳定时，便于增加新的跨元素操作。</li><li>同一种操作可以集中在一个具体访问者中。</li></ul>
+<h3>代价与易混点</h3><p>增加元素类型往往要修改 Visitor 接口及所有具体访问者，也可能要求暴露访问所需信息。</p><p>访问者把新操作放到访问者层次；命令把请求对象化。accept() 与按元素重载的 visit() 是关键。</p>
+<a class="toplink" href="#top">回到分类与搜索</a></article>
+<section class="appendix"><h2>易混模式对照</h2>
+<div class="table-wrap"><table><thead><tr><th>相近组合</th><th>判别主线</th><th>类别</th></tr></thead><tbody><tr><td>工厂方法／抽象工厂／建造者</td><td>一个产品的多态创建／一套产品族／分步骤组装复杂结果</td><td>都属创建型</td></tr><tr><td>适配器／桥接</td><td>转换已有的不兼容接口／分开两个可独立扩展的维度</td><td>都属结构型</td></tr><tr><td>装饰器／代理</td><td>叠加职责／控制访问；两者类图骨架可能相同</td><td>都属结构型</td></tr><tr><td>组合／解释器</td><td>统一操作部件树／按语法树求值；不能看到树就只选组合</td><td>结构型／行为型</td></tr><tr><td>策略／状态／模板方法</td><td>替换算法／随状态改变行为／父类固定步骤骨架</td><td>都属行为型</td></tr><tr><td>观察者／中介者／职责链</td><td>一对多通知／中心协调交互／沿后继尝试处理</td><td>都属行为型</td></tr><tr><td>命令／备忘录／访问者</td><td>请求对象化／状态快照／把新操作放在访问者层次</td><td>都属行为型</td></tr></tbody></table></div>
+<p>装饰器的“动态添加职责”归结构型；命令的“请求封装成对象”归行为型。不要只凭“职责”“封装”两个词归类。</p><p class="source">本地章节：<a href="https://github.com/Goodyzhang/ruankao.skill/blob/main/materials/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88/%E7%AC%94%E8%AE%B0/%E7%9F%A5%E8%AF%86%E7%82%B9/05-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md">第五章软件工程基础知识</a>。图像、例子和说明由本轮专题制作；图片采用相对路径，无外部脚本或字体依赖。</p></section></main></div>
+<footer>23 张识图卡 · 创建型 5 / 结构型 7 / 行为型 11 · 学习图卡</footer>
+<script>
+const cards=[...document.querySelectorAll('.card')],buttons=[...document.querySelectorAll('button[data-cat]')],search=document.getElementById('search');let category='全部';
+function filterCards(){const q=search.value.trim().toLocaleLowerCase();let count=0;cards.forEach(c=>{const show=(category==='全部'||c.dataset.category===category)&&(!q||c.dataset.search.includes(q));c.hidden=!show;if(show)count++});document.getElementById('count').textContent=`显示 ${count} / 23`;document.getElementById('empty').style.display=count?'none':'block';buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cat===category)))}
+buttons.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.cat;filterCards()}));search.addEventListener('input',filterCards);
+document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();category='全部';search.value='';filterCards();const target=document.getElementById(a.dataset.jump);history.replaceState(null,'','#'+a.dataset.jump);target.scrollIntoView({behavior:'smooth',block:'start'})}));
+filterCards();
+</script></body></html>

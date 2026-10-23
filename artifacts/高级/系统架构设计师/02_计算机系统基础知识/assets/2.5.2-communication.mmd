@@ -1,0 +1,32 @@
+---
+title: 2.5.2 通信技术：功能变换与资源共享
+---
+flowchart TB
+  receive ~~~ sharing
+  scope[教材发送侧概念模型<br/>实际系统可选择、合并或联合实现这些功能]
+  subgraph tx[一种示例功能顺序；箭头表示送入后续处理]
+    source[信源编码<br/>形成表示、压缩去冗余]
+    coding[信道编码<br/>增加检错纠错冗余]
+    interleave[交织<br/>重排位置，分散突发错误]
+    shaping[脉冲成形<br/>约束频谱与带宽需求]
+    modulation[调制<br/>符号映射到传输信号]
+    source --> coding --> interleave --> shaping --> modulation
+  end
+  scope -.->|限定本图模型| source
+  medium[信道传播<br/>可能受到噪声与干扰]
+  receive[接收侧作对应恢复<br/>解调、判决、去交织、译码等]
+  modulation -->|发送信号| medium
+  medium -->|接收信号| receive
+  recover[交织本身不纠错<br/>与所选信道编码配合；能力取决于码与错误模式]
+  interleave -.->|功能边界| recover
+  subgraph sharing[多路数据或多用户共享资源]
+    mux[复用：一条信道承载多路数据<br/>TDM / FDM / CDM]
+    access[多址：多个用户共享接入资源<br/>TDMA / FDMA / CDMA]
+    allocate[用户区分与资源分配<br/>三种方法是并列技术选项]
+    mux -.->|相关技术基础| access
+    access -->|还需要| allocate
+  end
+  classDef function fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef condition fill:#fff4df,stroke:#b0803e,color:#573814;
+  class source,coding,interleave,shaping,modulation,medium,receive,mux,access,allocate function;
+  class scope,recover condition;

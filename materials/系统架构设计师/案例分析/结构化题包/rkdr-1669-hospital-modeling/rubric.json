@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-hospital-modeling-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-10～12参考答案；教程§6.3.3/§5.3.1核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-hospital-modeling-p1",
+      "question_id": "rkdr-1669-hospital-modeling-q1",
+      "weight": 2,
+      "criterion": "强实体判定标准",
+      "correct": "强实体：有唯一主键、不依赖其他实体即可独立标识存在的实体",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据库建模",
+      "source": "网站题10参考答案；教程第2版§6.3.3；章级知识点“强实体与弱实体”"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p2",
+      "question_id": "rkdr-1669-hospital-modeling-q1",
+      "weight": 3,
+      "criterion": "强实体举例（3个）",
+      "correct": "强实体任举3个：医生、患者、药品（亦可护士、药房人员、处方、发票、费用结算单等，与需求对应即可）",
+      "conditions": [
+        "3个与需求对应且确有独立主键"
+      ],
+      "equivalents": [],
+      "dimension": "数据库建模",
+      "source": "网站题10参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p3",
+      "question_id": "rkdr-1669-hospital-modeling-q1",
+      "weight": 2,
+      "criterion": "弱实体判定标准",
+      "correct": "弱实体：没有自己的完整主键或主键部分依赖于强实体主键，存在以强实体存在为前提",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据库建模",
+      "source": "网站题10参考答案；教程第2版§6.3.3"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p4",
+      "question_id": "rkdr-1669-hospital-modeling-q1",
+      "weight": 3,
+      "criterion": "弱实体举例（2个）",
+      "correct": "弱实体任举2个：床位分配（依赖患者/住院信息）、开药信息（依赖处方）",
+      "conditions": [
+        "2个依赖关系说清宿主"
+      ],
+      "equivalents": [
+        "网站另列“主管医生”，建模上更常作为属性或联系，见教学说明"
+      ],
+      "dimension": "数据库建模",
+      "source": "网站题10参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p5",
+      "question_id": "rkdr-1669-hospital-modeling-q2",
+      "weight": 2,
+      "criterion": "黑洞",
+      "correct": "黑洞：只有输入没有输出的处理（加工）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "有进无出"
+      ],
+      "dimension": "结构化分析",
+      "source": "网站题11参考答案；教程第2版§5.3.1"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p6",
+      "question_id": "rkdr-1669-hospital-modeling-q2",
+      "weight": 2,
+      "criterion": "奇迹/白洞",
+      "correct": "奇迹（白洞）：只有输出没有输入的处理（加工）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "凭空产生输出"
+      ],
+      "dimension": "结构化分析",
+      "source": "网站题11参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p7",
+      "question_id": "rkdr-1669-hospital-modeling-q2",
+      "weight": 1,
+      "criterion": "灰洞",
+      "correct": "灰洞：输入不足以产生输出的处理（加工）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "进少出多"
+      ],
+      "dimension": "结构化分析",
+      "source": "网站题11参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p8",
+      "question_id": "rkdr-1669-hospital-modeling-q2",
+      "weight": 2,
+      "criterion": "父图与子图不平衡",
+      "correct": "父图与子图不匹配：父图中加工的输入/输出数据流与子图的相应部分不一致（不守恒）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "结构化分析",
+      "source": "网站题11参考答案；教程第2版§5.3.1父子图平衡"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p9",
+      "question_id": "rkdr-1669-hospital-modeling-q2",
+      "weight": 1,
+      "criterion": "非法直接数据流",
+      "correct": "非法直接数据流：数据存储之间、外部实体之间、外部实体与数据存储之间的直接数据流",
+      "conditions": [
+        "三类任举其一即可，答全更稳"
+      ],
+      "equivalents": [],
+      "dimension": "结构化分析",
+      "source": "网站题11参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p10",
+      "question_id": "rkdr-1669-hospital-modeling-q3",
+      "weight": 2,
+      "criterion": "泛化/继承",
+      "correct": "泛化（继承，Generalization）：is-a关系，子类复用父类结构与行为",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "继承"
+      ],
+      "dimension": "UML建模",
+      "source": "网站题12参考答案；章级知识点三十六"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p11",
+      "question_id": "rkdr-1669-hospital-modeling-q3",
+      "weight": 1,
+      "criterion": "实现",
+      "correct": "实现（Realization）：类与接口之间的关系",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题12参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p12",
+      "question_id": "rkdr-1669-hospital-modeling-q3",
+      "weight": 1,
+      "criterion": "关联",
+      "correct": "关联（Association）：对象间的结构性连接",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题12参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p13",
+      "question_id": "rkdr-1669-hospital-modeling-q3",
+      "weight": 1,
+      "criterion": "聚合",
+      "correct": "聚合（Aggregation）：整体-部分，部分可独立存在（空心菱形）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题12参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p14",
+      "question_id": "rkdr-1669-hospital-modeling-q3",
+      "weight": 1,
+      "criterion": "组合",
+      "correct": "组合（Composition）：整体-部分且生命周期一致（实心菱形）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题12参考答案"
+    },
+    {
+      "id": "rkdr-1669-hospital-modeling-p15",
+      "question_id": "rkdr-1669-hospital-modeling-q3",
+      "weight": 1,
+      "criterion": "依赖",
+      "correct": "依赖（Dependency）：使用关系，一方变化影响另一方（虚线箭头）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题12参考答案"
+    }
+  ]
+}

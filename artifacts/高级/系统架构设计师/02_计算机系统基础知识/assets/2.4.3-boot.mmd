@@ -1,0 +1,9 @@
+flowchart TB
+  host[宿主机：编辑→编译→链接<br/>生成适配目标平台的代码] -->|串口/网络/JTAG等加载与调试| target[目标机：运行程序并连接受控对象]
+  reset[上电/复位：进入启动流程] -->|典型依赖次序| chip[片级：芯片时钟/核心与寄存器等初始化]
+  chip --> board[板级：板上内存/外设等就绪]
+  board --> system[系统级：运行时/内核/任务与应用启动]
+  code[启动软件也可配置芯片<br/>CMSIS Cortex-M示例：Reset_Handler调用SystemInit] -.-> chip
+  system -->|启动目标应用| target
+  target --> check[目标环境验证功能、I-O及时限]
+  boundary[具体芯片会细分/调整步骤；裸机无需OS] -.-> system

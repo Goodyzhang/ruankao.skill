@@ -1,0 +1,16 @@
+flowchart TB
+  M["信息管理者<br/>组织信息工作、制定规则"]
+  S["信息源<br/>订单、生产进度、市场信息"]
+  P["信息处理器<br/>加工数据、模型分析、计划比较"]
+  U["信息用户<br/>使用信息安排资源"]
+  S -->|提供数据| P
+  P -->|提供信息| U
+  M -->|规范| S
+  M <-->|管理与反馈| P
+  M -->|规范| U
+  N["四部件是概念职责<br/>处理器不单指CPU；管理者不固定某职务"]
+  P -.- N
+  classDef main fill:#e5f6fa,stroke:#19748b,color:#153440;
+  classDef note fill:#fff6df,stroke:#a97717,color:#3f3218;
+  class M,S,P,U main;
+  class N note;

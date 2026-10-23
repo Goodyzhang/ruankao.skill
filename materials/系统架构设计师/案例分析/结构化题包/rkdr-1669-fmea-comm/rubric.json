@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-fmea-comm-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-31～33参考答案及解析；教程第2版§9核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-fmea-comm-p1",
+      "question_id": "rkdr-1669-fmea-comm-q1",
+      "weight": 3,
+      "criterion": "FMEA三项主要活动",
+      "correct": "主要活动：(1)找出产品/过程中潜在的故障模式；(2)根据相应评价体系对潜在故障模式进行风险量化评估；(3)列出故障起因/机理，寻找预防或改进措施",
+      "conditions": [
+        "三项齐全且顺序正确"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题31参考答案及解析；教程第2版§9"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p2",
+      "question_id": "rkdr-1669-fmea-comm-q1",
+      "weight": 4,
+      "criterion": "FMEA四类细分",
+      "correct": "四类：(4)设计FMEA、(5)过程FMEA、(6)使用FMEA、(7)服务FMEA",
+      "conditions": [
+        "四类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题31参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p3",
+      "question_id": "rkdr-1669-fmea-comm-q1",
+      "weight": 1,
+      "criterion": "FMEA概念定位",
+      "correct": "FMEA=FMA(故障模式分析)+FEA(故障影响分析)的组合，在产品研制初期进行",
+      "conditions": [
+        "概念表述完整"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题31题干与解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p4",
+      "question_id": "rkdr-1669-fmea-comm-q2",
+      "weight": 2,
+      "criterion": "空(1) 故障模式确定",
+      "correct": "（1）根据通信协议，按接收数据功能和发送数据功能分别确定故障模式",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题32参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p5",
+      "question_id": "rkdr-1669-fmea-comm-q2",
+      "weight": 2,
+      "criterion": "空(2) 故障原因分析",
+      "correct": "（2）故障原因分为总线通信控制器原因、对方发送的原因和自身程序的原因",
+      "conditions": [
+        "三方面齐全"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题32参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p6",
+      "question_id": "rkdr-1669-fmea-comm-q2",
+      "weight": 2,
+      "criterion": "空(3) 故障影响分析",
+      "correct": "（3）针对每个故障模式分析其对本模块直至整个DY系统造成的影响",
+      "conditions": [
+        "分层影响链"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题32参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p7",
+      "question_id": "rkdr-1669-fmea-comm-q2",
+      "weight": 2,
+      "criterion": "空(4) 危害性分析",
+      "correct": "（4）采用风险优先数RPN方法进行该通信模块的危害性分析",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "SRPN"
+      ],
+      "dimension": "可靠性",
+      "source": "网站题32参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p8",
+      "question_id": "rkdr-1669-fmea-comm-q2",
+      "weight": 2,
+      "criterion": "空(5) 改进措施",
+      "correct": "（5）根据故障模式、原因、影响及危害性分析结果，综合考虑故障影响及SRPN值，对每个故障模式制定相应改进措施",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题32参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p9",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(1) 程序写地址不当",
+      "correct": "（1）程序写0C300H地址单元不当（行1故障原因）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p10",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(2) 无法响应中断",
+      "correct": "（2）无法响应INT0中断（行2最终影响）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p11",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(3) 线路误码",
+      "correct": "（3）线路误码（行3故障原因）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p12",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(4) 通信错误",
+      "correct": "（4）通信错误（行3最终影响）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p13",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(5) 程序控制错误",
+      "correct": "（5）程序控制错误（行4局部影响）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p14",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(6) SRPN计算",
+      "correct": "（6）210（行4 SRPN=SESR7×SOPR6×SDDR5）",
+      "conditions": [
+        "乘法计算正确"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案；表图数字核验"
+    },
+    {
+      "id": "rkdr-1669-fmea-comm-p15",
+      "question_id": "rkdr-1669-fmea-comm-q3",
+      "weight": 1,
+      "criterion": "空(7) 行5故障原因/影响",
+      "correct": "（7）数据发送始终不成功（行5故障原因；网站原文重复打字两次，校订为单次）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题33参考答案"
+    }
+  ]
+}

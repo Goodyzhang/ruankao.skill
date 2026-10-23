@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-rtos-arm-pack",
+  "version": 1,
+  "title": "嵌入式实时系统机械臂",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-rtos-arm",
+      "title": "嵌入式实时系统机械臂",
+      "stem": "阅读以下关于嵌入式实时系统设计的描述，回答下列问题。\n【说明】\n某工业自动化公司正在开发一款基于嵌入式实时操作系统的智能控制设备，用于工厂生产线的高精度机械臂控制。系统需要满足以下要求：（ ）机械臂的运动控制任务需在10ms内响应外部传感器信号；（ ）系统需同时管理30个任务，包括高优先级的电机控制、中优先级的数据采集和低优先级的日志记录；（ ）系统内存资源有限，需合理分配任务的堆栈空间以避免溢出。\n开发团队在任务调度和资源管理方案上产生分歧：张工主张采用轮询调度（Round-Robin），认为其简单易实现；李工认为应采用基于优先级的抢占式调度（Priority-based Preemptive Scheduling），以保障高实时性任务。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号104～105～106"
+      },
+      "figures": [
+        {
+          "file": "../../assets/77c3ed267bc9cf64.png",
+          "caption": "表：轮询调度与抢占式调度对比",
+          "source_locator": "网站题104附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-rtos-arm-q1",
+          "title": "问题1（9分）",
+          "prompt": "200字内说明嵌入式实时操作系统的定义、3个核心特性及提高实时性的关键技术。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-1669-rtos-arm-q2",
+          "title": "问题2（8分）",
+          "prompt": "完成轮询调度与抢占式调度对比表(1)~(4)。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-rtos-arm-q3",
+          "title": "问题3（8分）",
+          "prompt": "300字内介绍静态堆栈分配与动态堆栈扩展各自的优缺点。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

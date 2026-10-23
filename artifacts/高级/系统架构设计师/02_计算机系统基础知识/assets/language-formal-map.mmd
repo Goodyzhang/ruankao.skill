@@ -1,0 +1,12 @@
+flowchart LR
+  State["合法原状态<br/>S 的成员均来自 USER<br/>cap 是非负整数<br/>|S| ≤ cap"]
+  Pre["成功 Add 前提<br/>u? 属于 USER<br/>u? 不是 S 的成员<br/>|S| &lt; cap"]
+  Post["成功后置<br/>S′ = S ∪ {u?}：并入新成员<br/>cap′ = cap"]
+  Proof["给定契约的结论<br/>S′ 的成员均来自 USER<br/>|S′| = |S| + 1 ≤ cap′"]
+  Boundary["前提失败时不适用成功后置<br/>失败行为需另定义<br/>未证明实际并发实现"]
+  State -->|在合法状态上检查操作| Pre
+  Pre -->|满足全部前提才承诺| Post
+  State -.->|原状态类型与不变量| Proof
+  Pre -.->|新成员与整数余量| Proof
+  Post -->|结合前提证明| Proof
+  Pre -.->|不满足时| Boundary

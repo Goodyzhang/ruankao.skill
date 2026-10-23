@@ -1,0 +1,15 @@
+flowchart TB
+  ROOT["智能制造系统架构 · 2021指南<br/>同一任务，三个观察问题"] ---|观察维度| LIFE
+  ROOT ---|观察维度| ORG
+  ROOT ---|观察维度| INT
+  LIFE["生命周期<br/>产品在做什么？"] ---|活动取值| LV["设计 · 生产 · 物流 · 销售 · 服务<br/>原型研发至回收再制造<br/>可迭代，行业构成和顺序可不同"]
+  ORG["系统层级<br/>观察哪项组织职责？"] ---|层级取值| OV["设备 · 单元 · 车间 · 企业 · 协同<br/>按实际职责识别<br/>不凭设备个数或软件名称"]
+  INT["智能特征<br/>实际体现什么要求？"] ---|要求取值| IV["资源要素 · 互联互通 · 融合共享<br/>系统集成 · 新兴业态<br/>五项要求，不作成熟度评分"]
+  LV -.-|本例定位| LE["烘干属于生产活动"]
+  OV -.-|本例定位| OE["处理湿度、监测控制：单元职责"]
+  IV -.-|本例定位| IE["协议接口实际传湿度：互联互通"]
+  classDef axes fill:#e6f2fa,stroke:#3a7399,color:#193e56;
+  classDef example fill:#fff5df,stroke:#b88635,color:#553c15;
+  class LIFE,ORG,INT,LV,OV,IV axes;
+  class LE,OE,IE example;
+

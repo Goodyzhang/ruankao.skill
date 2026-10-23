@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-iot-edge-cloud-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-153～155参考答案；教程第2版§14核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p1",
+      "question_id": "rkdr-1669-iot-edge-cloud-q1",
+      "weight": 2,
+      "criterion": "资源协同",
+      "correct": "资源协同：边缘节点提供本地计算、存储及网络资源管理，同时接受云端统一调度，实现资源动态分配",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边云协同",
+      "source": "网站题153参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p2",
+      "question_id": "rkdr-1669-iot-edge-cloud-q1",
+      "weight": 2,
+      "criterion": "数据协同",
+      "correct": "数据协同：边缘采集并初步处理终端数据，按规则筛选后上传云端；云端负责长期存储与深度分析，形成分层数据流转路径降低传输成本",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边云协同",
+      "source": "网站题153参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p3",
+      "question_id": "rkdr-1669-iot-edge-cloud-q1",
+      "weight": 2,
+      "criterion": "智能协同",
+      "correct": "智能协同：边缘执行AI模型推理，云端进行模型训练并更新边缘端，形成分布式智能闭环",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边云协同",
+      "source": "网站题153参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p4",
+      "question_id": "rkdr-1669-iot-edge-cloud-q1",
+      "weight": 2,
+      "criterion": "应用管理协同",
+      "correct": "应用管理协同：边缘节点部署应用并管理其运行，云端提供开发、测试及全局应用生命周期管理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边云协同",
+      "source": "网站题153参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p5",
+      "question_id": "rkdr-1669-iot-edge-cloud-q1",
+      "weight": 2,
+      "criterion": "业务与服务协同",
+      "correct": "业务管理协同：边缘承载模块化应用或数字孪生实例，云端按需编排跨边缘-云的业务流程；服务协同：边缘按云端策略提供部分服务，云端统筹服务分布策略与核心能力",
+      "conditions": [
+        "两条合并计"
+      ],
+      "equivalents": [],
+      "dimension": "边云协同",
+      "source": "网站题153参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p6",
+      "question_id": "rkdr-1669-iot-edge-cloud-q1",
+      "weight": 2,
+      "criterion": "六类口径",
+      "correct": "六类协同（资源/数据/智能/应用管理/业务管理/服务）完整作答",
+      "conditions": [
+        "六类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "边云协同",
+      "source": "网站题153题面"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p7",
+      "question_id": "rkdr-1669-iot-edge-cloud-q2",
+      "weight": 2,
+      "criterion": "空(1) MQTT协议类型",
+      "correct": "（1）轻量级发布-订阅协议",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网通信",
+      "source": "网站题154参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p8",
+      "question_id": "rkdr-1669-iot-edge-cloud-q2",
+      "weight": 2,
+      "criterion": "空(2) HTTP带宽占用",
+      "correct": "（2）较高（需频繁建立TCP连接）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网通信",
+      "source": "网站题154参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p9",
+      "question_id": "rkdr-1669-iot-edge-cloud-q2",
+      "weight": 2,
+      "criterion": "空(3) HTTP实时性",
+      "correct": "（3）基于轮询，延迟高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网通信",
+      "source": "网站题154参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p10",
+      "question_id": "rkdr-1669-iot-edge-cloud-q2",
+      "weight": 2,
+      "criterion": "空(4) MQTT适用场景",
+      "correct": "（4）设备状态监控、传感器数据上报",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网通信",
+      "source": "网站题154参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p11",
+      "question_id": "rkdr-1669-iot-edge-cloud-q3",
+      "weight": 1,
+      "criterion": "X.509双向认证",
+      "correct": "X.509证书：设备与边缘节点双向认证",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网安全",
+      "source": "网站题155参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p12",
+      "question_id": "rkdr-1669-iot-edge-cloud-q3",
+      "weight": 1,
+      "criterion": "OAuth2.0令牌验证",
+      "correct": "OAuth 2.0：中心云通过Token验证设备身份",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网安全",
+      "source": "网站题155参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p13",
+      "question_id": "rkdr-1669-iot-edge-cloud-q3",
+      "weight": 1,
+      "criterion": "TLS传输加密",
+      "correct": "TLS加密：传输层加密指令数据",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网安全",
+      "source": "网站题155参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p14",
+      "question_id": "rkdr-1669-iot-edge-cloud-q3",
+      "weight": 1,
+      "criterion": "指令签名",
+      "correct": "指令签名：使用HMAC或数字签名验证指令来源",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网安全",
+      "source": "网站题155参考答案"
+    },
+    {
+      "id": "rkdr-1669-iot-edge-cloud-p15",
+      "question_id": "rkdr-1669-iot-edge-cloud-q3",
+      "weight": 1,
+      "criterion": "黑白名单",
+      "correct": "黑白名单机制：限制设备仅访问特定API端点",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "物联网安全",
+      "source": "网站题155参考答案"
+    }
+  ]
+}

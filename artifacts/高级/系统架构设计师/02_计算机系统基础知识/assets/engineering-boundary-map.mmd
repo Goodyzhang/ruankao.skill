@@ -1,0 +1,13 @@
+flowchart TB
+  subgraph SERVICE["本例关注系统：教室通行服务"]
+    direction LR
+    S["预约软件"] ---|"接口"| D["门禁设备"]
+    P["操作人员"] ---|"遵循与执行"| R["处置流程"]
+    F["供电设施"] ---|"支持"| D
+    R ---|"约束处置"| S
+    P ---|"使用与维护"| D
+  end
+  U["使用者与运行环境"] <-->|"使用、结果与条件"| SERVICE
+  N["框表示本例范围；内部关系表示协作/依赖，非执行顺序"]
+  classDef core fill:#e5f5f6,stroke:#187e8b,color:#153451;
+  class S,D,P,R,F core;

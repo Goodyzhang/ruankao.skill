@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-activity-vs-flowchart-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-24～25参考答案；教程UML活动图口径核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p1",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q1",
+      "weight": 3,
+      "criterion": "空(1) 并发分岔",
+      "correct": "（1）并发分岔（fork/同步条）：将流程拆分为多个并行路径，多个活动可同时进行，提高处理效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "分岔/同步条"
+      ],
+      "dimension": "UML活动图",
+      "source": "网站题24参考答案；图(1)指向下订单后的水平同步条"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p2",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q1",
+      "weight": 3,
+      "criterion": "空(2) 并发汇合",
+      "correct": "（2）并发汇合（join）：将多个并行路径重新合并，所有并发活动完成后再继续后续流程，保证流程完整性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "汇合"
+      ],
+      "dimension": "UML活动图",
+      "source": "网站题24参考答案；图(2)指向生成送货单/收款后的垂直同步条"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p3",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q1",
+      "weight": 3,
+      "criterion": "空(3) 泳道",
+      "correct": "（3）泳道：将活动按角色或实体分类，清晰展示各参与者职责和交互",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "泳道/泳道分区"
+      ],
+      "dimension": "UML活动图",
+      "source": "网站题24参考答案；图(3)指向客户泳道分区"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p4",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q1",
+      "weight": 3,
+      "criterion": "空(4) 监护表达式",
+      "correct": "（4）监护表达式（guard condition）：分支结构中使用的条件判断，决定流程在何种条件下选择特定路径",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "监护条件"
+      ],
+      "dimension": "UML活动图",
+      "source": "网站题24参考答案；图(4)指向\"用户取消或订单超时\"转移标注"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p5",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q1",
+      "weight": 3,
+      "criterion": "空(5) 分支/判定",
+      "correct": "（5）分支（判定节点）：活动中根据条件不同选择不同执行路径，用菱形表示，是活动图重要决策点",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "判定/decision"
+      ],
+      "dimension": "UML活动图",
+      "source": "网站题24参考答案；图(5)指向是/否菱形"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p6",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q2",
+      "weight": 2,
+      "criterion": "区别一：描述对象",
+      "correct": "流程图描述处理过程（顺序/分支/循环，严格顺序与时间关系）；活动图描述对象活动顺序关系所遵循的规则，侧重系统行为而非处理过程",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML活动图",
+      "source": "网站题25参考答案"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p7",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q2",
+      "weight": 2,
+      "criterion": "区别二：并发",
+      "correct": "流程图不能表示并发活动；活动图能够表示并发活动",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML活动图",
+      "source": "网站题25参考答案"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p8",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q2",
+      "weight": 2,
+      "criterion": "区别三：面向",
+      "correct": "流程图面向过程；活动图面向对象",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML活动图",
+      "source": "网站题25参考答案"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p9",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q2",
+      "weight": 2,
+      "criterion": "区别四：结束节点",
+      "correct": "流程图只能有一个结束节点；活动图可以有多个结束节点",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML活动图",
+      "source": "网站题25参考答案"
+    },
+    {
+      "id": "rkdr-1669-activity-vs-flowchart-p10",
+      "question_id": "rkdr-1669-activity-vs-flowchart-q2",
+      "weight": 2,
+      "criterion": "区别五：专用元素",
+      "correct": "流程图没有专用元素表达消息传递、时间延迟等操作；活动图有这类图形元素",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML活动图",
+      "source": "网站题25参考答案"
+    }
+  ]
+}

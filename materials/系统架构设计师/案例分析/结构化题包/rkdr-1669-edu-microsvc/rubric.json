@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-edu-microsvc-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-112～114参考答案；教程第2版§14核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-edu-microsvc-p1",
+      "question_id": "rkdr-1669-edu-microsvc-q1",
+      "weight": 2,
+      "criterion": "API网关作用（答4条满分）",
+      "correct": "八条作用答出4条即满分：封装系统架构提供统一接口/路由转发（按URL、头部、请求体路由到微服务实例）/负载均衡（分配多实例提高伸缩可用）/聚合响应（并行调用多服务并聚合返回）/认证与授权（请求到达微服务前验证）/限流与熔断（保护微服务免受流量洪峰和故障）/协议转换（客户端与微服务协议互转）/缓存（常见请求缓存减少后端调用）",
+      "conditions": [
+        "四条以上"
+      ],
+      "equivalents": [],
+      "dimension": "微服务治理",
+      "source": "网站题112参考答案"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p2",
+      "question_id": "rkdr-1669-edu-microsvc-q1",
+      "weight": 3,
+      "criterion": "机制词口径",
+      "correct": "答出路由/负载均衡/认证授权/限流熔断等机制词",
+      "conditions": [
+        "机制词齐全"
+      ],
+      "equivalents": [],
+      "dimension": "微服务治理",
+      "source": "网站题112题面"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p3",
+      "question_id": "rkdr-1669-edu-microsvc-q1",
+      "weight": 3,
+      "criterion": "场景挂接口径",
+      "correct": "作用与李工“API网关+服务发现优化微服务架构”方案相扣",
+      "conditions": [
+        "场景相扣"
+      ],
+      "equivalents": [],
+      "dimension": "微服务治理",
+      "source": "网站题112题面"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p4",
+      "question_id": "rkdr-1669-edu-microsvc-q2",
+      "weight": 2,
+      "criterion": "DevOps与CI/CD定义",
+      "correct": "DevOps是促进开发和运维团队紧密合作的文化与方法集合，通过自动化工具和技术提高软件交付速度和质量；CI/CD是DevOps实践中的关键流程",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "DevOps",
+      "source": "网站题113参考答案"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p5",
+      "question_id": "rkdr-1669-edu-microsvc-q2",
+      "weight": 4,
+      "criterion": "加速机制四条",
+      "correct": "(1)自动化测试：每次代码提交触发自动化测试，确保新代码不破坏现有功能；(2)快速反馈：自动化测试和构建迅速反馈，及时发现修复问题；(3)频繁部署：微服务部署量大手工困难，自动化持续部署将测试过的代码快速部署到生产，实现快速迭代；(4)确保环境一致性：自动化部署保证开发/测试/生产环境一致，减少环境差异问题",
+      "conditions": [
+        "四条"
+      ],
+      "equivalents": [],
+      "dimension": "DevOps",
+      "source": "网站题113参考答案"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p6",
+      "question_id": "rkdr-1669-edu-microsvc-q2",
+      "weight": 4,
+      "criterion": "微服务适配口径",
+      "correct": "结合微服务“部署大量服务、手工部署困难”的特点阐述",
+      "conditions": [
+        "结合微服务特点"
+      ],
+      "equivalents": [],
+      "dimension": "DevOps",
+      "source": "网站题113题面"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p7",
+      "question_id": "rkdr-1669-edu-microsvc-q3",
+      "weight": 2,
+      "criterion": "优势四条",
+      "correct": "优势：(1)独立开发与部署（聚焦局部提高效率灵活性）；(2)技术栈多样性（各服务选最适合技术栈）；(3)故障隔离（单服务故障不影响整体）；(4)易于扩展（水平/垂直扩展灵活调整资源）",
+      "conditions": [
+        "四条"
+      ],
+      "equivalents": [],
+      "dimension": "微服务架构",
+      "source": "网站题114参考答案"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p8",
+      "question_id": "rkdr-1669-edu-microsvc-q3",
+      "weight": 3,
+      "criterion": "挑战与应对三条",
+      "correct": "挑战及应对：(1)分布式复杂性（通信依赖管理复杂）→API网关、服务发现、分布式事务方案；(2)数据一致性→最终一致性模型、分布式事务或补偿事务；(3)运维复杂性→DevOps和CI/CD自动化运维监控",
+      "conditions": [
+        "挑战+应对成对"
+      ],
+      "equivalents": [],
+      "dimension": "微服务架构",
+      "source": "网站题114参考答案"
+    },
+    {
+      "id": "rkdr-1669-edu-microsvc-p9",
+      "question_id": "rkdr-1669-edu-microsvc-q3",
+      "weight": 2,
+      "criterion": "两面性结构口径",
+      "correct": "优势与挑战应对两段式作答，应对策略与在线教育场景相扣",
+      "conditions": [
+        "结构完整"
+      ],
+      "equivalents": [],
+      "dimension": "微服务架构",
+      "source": "网站题114题面"
+    }
+  ]
+}

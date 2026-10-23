@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9394-campus-utility-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§8.2.1、§8.3.6、§4.8.1及GB/T 22239-2019；网站144答案（原样存档）",
+    "level": "教材与网站解析互相印证的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9394-campus-utility-p1perf",
+      "question_id": "rkdr-9394-campus-utility-q1",
+      "weight": 2,
+      "criterion": "空(1)填性能，与同分支叶(a)0.5秒响应印证",
+      "conditions": [
+        "由(a)的响应度量推出性能"
+      ],
+      "equivalents": [
+        "写'性能(Performance)'"
+      ],
+      "correct": "(1) 性能",
+      "dimension": "质量属性",
+      "source": "网站144答案表；教材§8.3.6"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p2mod",
+      "question_id": "rkdr-9394-campus-utility-q1",
+      "weight": 2,
+      "criterion": "空(2)填可修改性，与同分支叶(h)30人月添加中间件印证",
+      "conditions": [
+        "由(h)的修改代价推出可修改性"
+      ],
+      "equivalents": [
+        "写'可修改性(Modifiability)'"
+      ],
+      "correct": "(2) 可修改性",
+      "dimension": "质量属性",
+      "source": "网站144答案表；教材§8.3.6"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p3e",
+      "question_id": "rkdr-9394-campus-utility-q1",
+      "weight": 2,
+      "criterion": "空(3)填(e)：高峰负载10秒内完成支付的性能场景",
+      "conditions": [
+        "环境（高峰负载）＋响应度量（10秒）"
+      ],
+      "equivalents": [
+        "(a)同为性能叶可互换"
+      ],
+      "correct": "(3) (e)",
+      "dimension": "质量属性场景",
+      "source": "网站144答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p4j",
+      "question_id": "rkdr-9394-campus-utility-q1",
+      "weight": 2,
+      "criterion": "空(4)填(j)：断电3秒内重定向备用站点的可用性场景",
+      "conditions": [
+        "故障恢复归可用性；d已被固定占用"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(4) (j)",
+      "dimension": "质量属性场景",
+      "source": "网站144答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p5l",
+      "question_id": "rkdr-9394-campus-utility-q1",
+      "weight": 2,
+      "criterion": "空(5)填(l)：按校方要求1人月内改界面风格的可修改性场景",
+      "conditions": [
+        "修改代价归可修改性；i留给问题二风险点"
+      ],
+      "equivalents": [
+        "(i)同为可修改性但避免一字母两用"
+      ],
+      "correct": "(5) (l)",
+      "dimension": "质量属性场景",
+      "source": "网站144答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p6m",
+      "question_id": "rkdr-9394-campus-utility-q1",
+      "weight": 2,
+      "criterion": "空(6)填(m)：WAF防应用层攻击的安全性场景",
+      "conditions": [
+        "攻击防抗归安全性"
+      ],
+      "equivalents": [
+        "(k)数据库授权可用性同为安全性场景，等价可接受"
+      ],
+      "correct": "(6) (m)",
+      "dimension": "质量属性场景",
+      "source": "网站144答案表；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p7riskdef",
+      "question_id": "rkdr-9394-campus-utility-q2",
+      "weight": 2,
+      "criterion": "风险点定义：潜在的、存在问题的架构决策所带来的隐患",
+      "conditions": [
+        "含'潜在的/存在问题的'限定"
+      ],
+      "equivalents": [
+        "'存在隐患的架构决策'等义表述"
+      ],
+      "correct": "架构风险是架构设计中潜在的、存在问题的架构决策所带来的隐患",
+      "dimension": "评估概念",
+      "source": "网站144解析；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p8sensdef",
+      "question_id": "rkdr-9394-campus-utility-q2",
+      "weight": 2,
+      "criterion": "敏感点定义：实现特定质量属性的一个或多个构件特性",
+      "conditions": [
+        "须指明构件特性而非整个系统"
+      ],
+      "equivalents": [
+        "'对某质量属性起决定作用的构件特性'等义"
+      ],
+      "correct": "敏感点是为了实现某种特定质量属性，一个或多个构件所具有的特性",
+      "dimension": "评估概念",
+      "source": "网站144解析；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p9tradedef",
+      "question_id": "rkdr-9394-campus-utility-q2",
+      "weight": 2,
+      "criterion": "权衡点定义：影响多个质量属性且都是敏感点",
+      "conditions": [
+        "含'多个质量属性'与'都是敏感点'递进"
+      ],
+      "equivalents": [
+        "'多个质量属性的敏感点'等义"
+      ],
+      "correct": "权衡点是影响多个质量属性、并对多个质量属性都是敏感点的属性",
+      "dimension": "评估概念",
+      "source": "网站144解析；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p10riskpick",
+      "question_id": "rkdr-9394-campus-utility-q2",
+      "weight": 0.67,
+      "criterion": "风险点选(i)：紧耦合致修改的既有隐患",
+      "conditions": [
+        "选(i)"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(i)",
+      "dimension": "概念应用",
+      "source": "网站144解析"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p11senspick",
+      "question_id": "rkdr-9394-campus-utility-q2",
+      "weight": 0.67,
+      "criterion": "敏感点选(g)：处理时间要求牵引协议与处理设计",
+      "conditions": [
+        "选(g)"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(g)",
+      "dimension": "概念应用",
+      "source": "网站144解析"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p12tradepick",
+      "question_id": "rkdr-9394-campus-utility-q2",
+      "weight": 0.66,
+      "criterion": "权衡点选(f)：加密算法安全升性能降",
+      "conditions": [
+        "选(f)"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(f)",
+      "dimension": "概念应用",
+      "source": "网站144解析"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p13coverage",
+      "question_id": "rkdr-9394-campus-utility-q3",
+      "weight": 1.25,
+      "criterion": "区别一：覆盖范围扩大到全社会",
+      "conditions": [
+        "覆盖各地区、各单位、各部门、各企业、各机构"
+      ],
+      "equivalents": [
+        "'覆盖全社会'表述"
+      ],
+      "correct": "等保2.0覆盖各地区、各单位、各部门、各企业、各机构，即覆盖全社会",
+      "dimension": "等级保护",
+      "source": "网站144解析"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p14objects",
+      "question_id": "rkdr-9394-campus-utility-q3",
+      "weight": 1.25,
+      "criterion": "区别二：保护对象扩展到新技术应用",
+      "conditions": [
+        "含云平台、物联网、工控系统、大数据、移动互联中至少三类"
+      ],
+      "equivalents": [
+        "列举其中若干新技术对象"
+      ],
+      "correct": "保护对象从网络、信息系统扩展到云平台、物联网、工控系统、大数据、移动互联等新技术应用",
+      "dimension": "等级保护",
+      "source": "网站144解析；GB/T 22239-2019"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p15trust",
+      "question_id": "rkdr-9394-campus-utility-q3",
+      "weight": 1.25,
+      "criterion": "区别三：可信验证列入各级别各环节主要功能要求",
+      "conditions": [
+        "含'可信验证'与'各级别/各环节'"
+      ],
+      "equivalents": [
+        "主动防御、可信计算表述"
+      ],
+      "correct": "将可信验证列入各级别和各环节的主要功能要求",
+      "dimension": "等级保护",
+      "source": "网站144解析；GB/T 22239-2019"
+    },
+    {
+      "id": "rkdr-9394-campus-utility-p16standard",
+      "question_id": "rkdr-9394-campus-utility-q3",
+      "weight": 1.25,
+      "criterion": "区别四：标准名称改为《网络安全等级保护基本要求》并与《网络安全法》衔接",
+      "conditions": [
+        "名称变更＋法律衔接"
+      ],
+      "equivalents": [
+        "依据GB/T 22239-2019（2019-12-01实施）"
+      ],
+      "correct": "《信息系统安全等级保护基本要求》改为《网络安全等级保护基本要求》，与《网络安全法》保持一致",
+      "dimension": "等级保护",
+      "source": "网站144解析；GB/T 22239-2019"
+    }
+  ]
+}

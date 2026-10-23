@@ -1,0 +1,19 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'PingFang SC, Microsoft YaHei, sans-serif','fontSize':'23px','primaryColor':'#e9f1f5','primaryTextColor':'#183149','lineColor':'#386b89'},'flowchart':{'htmlLabels':true,'curve':'linear','nodeSpacing':34,'rankSpacing':46}}}%%
+flowchart LR
+ subgraph BATCH[ ]
+ direction TB
+ A[批处理<br/>事务文件：这一批事件] -->|成批数据| B[定期处理]
+ M[原主文件<br/>已有业务状态] -->|已有数据| B
+ B -->|更新并输出| C[主文件与周期报表]
+ C --- N1[间隔内主文件可能过时<br/>可查询已处理快照]
+ R[RJE：远程作业录入] -.->|可提交成批作业| A
+ end
+ subgraph ONLINE[ ]
+ direction TB
+ D[OLTP<br/>联机输入一笔事务] -->|即时处理| E[执行规则并更新业务数据]
+ E -->|返回| F[处理结果与查询响应]
+ F --- N2[及时响应不等于零延迟<br/>仍需权限与可靠性措施]
+ end
+ BATCH ~~~ ONLINE
+ classDef note fill:#fff2d7,stroke:#bd8b48;
+ class N1,N2 note;

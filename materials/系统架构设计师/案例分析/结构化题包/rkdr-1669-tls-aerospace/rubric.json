@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-tls-aerospace-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-37～39参考答案；表3-1五空为模型按教程§16核验补充（网站答案文字未含表格内容）",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-tls-aerospace-p1",
+      "question_id": "rkdr-1669-tls-aerospace-q1",
+      "weight": 2,
+      "criterion": "TLS层次特点",
+      "correct": "TLS特点：应用软件仅与操作系统服务相关不直接操作硬件；OS通过模块支持层访问硬件与具体硬件无关；模块支持层将硬件抽象成标准操作；三层栈划分实现硬件快速更改升级且应用升级不引起硬件变更",
+      "conditions": [
+        "至少三条特点"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题37参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p2",
+      "question_id": "rkdr-1669-tls-aerospace-q1",
+      "weight": 2,
+      "criterion": "应用层内涵",
+      "correct": "应用层：完成宇航设备具体工作，由多个功能任务组成，功能任务间隔离由操作系统层实现（对应需求数据隔离）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题37参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p3",
+      "question_id": "rkdr-1669-tls-aerospace-q1",
+      "weight": 2,
+      "criterion": "操作系统层内涵",
+      "correct": "操作系统层：实现应用软件与硬件隔离，提供丰富计算机资源服务与标准API（如POSIX），确保应用软件可升级（对应需求软硬件无关）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题37参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p4",
+      "question_id": "rkdr-1669-tls-aerospace-q1",
+      "weight": 2,
+      "criterion": "模块支持层内涵",
+      "correct": "模块支持层：为OS管理硬件资源提供统一管理方法，用抽象标准接口实现软硬件无关性，便于硬件外场快速更换LRM（对应需求LRM与故障处理）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题37参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p5",
+      "question_id": "rkdr-1669-tls-aerospace-q2",
+      "weight": 2,
+      "criterion": "表3-1空①②",
+      "correct": "①Linux工作方式=操作系统与应用程序处于不同存储空间（内核态/用户态）；②Linux多任务支持=支持多任务（进程/线程）操作",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站答案文字未含表格，按表图行目与教材§16核验作答"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p6",
+      "question_id": "rkdr-1669-tls-aerospace-q2",
+      "weight": 2,
+      "criterion": "表3-1空③④",
+      "correct": "③VxWorks实时性=实时系统（硬实时）；④VxWorks安全性=操作系统与应用程序处于同一存储空间，无隔离",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站答案文字未含表格，按表图行目与教材§16核验作答"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p7",
+      "question_id": "rkdr-1669-tls-aerospace-q2",
+      "weight": 2,
+      "criterion": "表3-1空⑤",
+      "correct": "⑤Linux安全性=内核态与用户态隔离，安全性较强",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站答案文字未含表格，按表图行目与教材§16核验作答"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p8",
+      "question_id": "rkdr-1669-tls-aerospace-q2",
+      "weight": 2,
+      "criterion": "选型结论",
+      "correct": "选择类似Linux的嵌入式操作系统",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [
+        "VxWorks（若理由充分，本案例语境下优先Linux）"
+      ],
+      "dimension": "嵌入式OS",
+      "source": "网站题38参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p9",
+      "question_id": "rkdr-1669-tls-aerospace-q2",
+      "weight": 2,
+      "criterion": "选型理由",
+      "correct": "理由：①Linux安全性较强，内核系统态/应用用户态，防止应用破坏OS；②调度最小单位线程归属进程，进程有独立资源，经MMU实现多功能应用间隔离；③嵌入式Linux支持硬件抽象，可实现TLS结构并分离硬件抽象与OS，方便硬件外场快速更换",
+      "conditions": [
+        "三条方向正确"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站题38参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p10",
+      "question_id": "rkdr-1669-tls-aerospace-q3",
+      "weight": 1,
+      "criterion": "故障三分类",
+      "correct": "故障分类：①硬件故障（CPU、存储器、定时器等）；②应用软件故障（数值越界、异常、超时等）；③操作系统故障（越权访问、死锁、资源枯竭等）",
+      "conditions": [
+        "三类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题39参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p11",
+      "question_id": "rkdr-1669-tls-aerospace-q3",
+      "weight": 2,
+      "criterion": "滤波算法两种",
+      "correct": "滤波算法任举两种：门限算法、递减算法、递增算法、周期滤波算法",
+      "conditions": [
+        "两种"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题39参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p12",
+      "question_id": "rkdr-1669-tls-aerospace-q3",
+      "weight": 2,
+      "criterion": "容错算法两种",
+      "correct": "容错算法任举两种：N+1备份、冷备、温备、热备",
+      "conditions": [
+        "两种"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题39参考答案"
+    },
+    {
+      "id": "rkdr-1669-tls-aerospace-p13",
+      "question_id": "rkdr-1669-tls-aerospace-q3",
+      "weight": 2,
+      "criterion": "答全口径",
+      "correct": "分类+两种滤波+两种容错三部分齐全（训练扣分口径下去重点）",
+      "conditions": [
+        "三部分完整"
+      ],
+      "equivalents": [],
+      "dimension": "可靠性",
+      "source": "网站题39题面要求"
+    }
+  ]
+}

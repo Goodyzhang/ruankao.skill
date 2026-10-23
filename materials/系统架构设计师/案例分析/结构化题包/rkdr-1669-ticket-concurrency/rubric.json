@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-ticket-concurrency-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-100～102参考答案；教程第2版§6.1.3/§6.2.3核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-ticket-concurrency-p1",
+      "question_id": "rkdr-1669-ticket-concurrency-q1",
+      "weight": 2,
+      "criterion": "存储异常问题",
+      "correct": "不满足3NF带来的问题：数据冗余和更新异常。数据冗余——代理商名称和客服电话存在于两个关系模式，机票代理中该代理商代理多少个航班就被重复存储多少次；更新异常——代理商名称或客服电话变更时需同时修改两个关系模式，否则数据不一致",
+      "conditions": [
+        "两类问题+举例"
+      ],
+      "equivalents": [],
+      "dimension": "规范化",
+      "source": "网站题100参考答案"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p2",
+      "question_id": "rkdr-1669-ticket-concurrency-q1",
+      "weight": 2,
+      "criterion": "异常举例",
+      "correct": "举例：代理商A代理10个航班，其名称、客服电话在机票代理表中重复10次；更名时若只改代理商表不改机票代理表则查询出旧名称",
+      "conditions": [
+        "举例具体"
+      ],
+      "equivalents": [],
+      "dimension": "规范化",
+      "source": "网站题100参考答案"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p3",
+      "question_id": "rkdr-1669-ticket-concurrency-q1",
+      "weight": 2,
+      "criterion": "解决方案两种",
+      "correct": "方案：①程序实现——修改代理商关系模式数据时由程序同步修改机票代理关系模式；②触发器实现——在代理商关系模式上加修改触发器，修改时同步更新机票代理关系模式",
+      "conditions": [
+        "两种方案"
+      ],
+      "equivalents": [],
+      "dimension": "规范化",
+      "source": "网站题100参考答案"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p4",
+      "question_id": "rkdr-1669-ticket-concurrency-q2",
+      "weight": 5,
+      "criterion": "并发售票结果",
+      "correct": "第一个代理商能正确售票；第二个代理商查询剩余票数时正确（为1张），但剩余票数减一操作出错——该机票已被第一个代理商售出，第二个代理商无票可售",
+      "conditions": [
+        "两代理商结果都说明"
+      ],
+      "equivalents": [],
+      "dimension": "并发控制",
+      "source": "网站题101参考答案；表4-1核验"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p5",
+      "question_id": "rkdr-1669-ticket-concurrency-q2",
+      "weight": 4,
+      "criterion": "三类不一致",
+      "correct": "并发操作三类数据不一致：丢失修改、读脏数据、不可重复读",
+      "conditions": [
+        "三类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "并发控制",
+      "source": "网站题101参考答案"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p6",
+      "question_id": "rkdr-1669-ticket-concurrency-q3",
+      "weight": 3,
+      "criterion": "读写锁填空",
+      "correct": "（1）加写锁；（2）加读锁；（3）加写锁；（4）被阻塞；（5）得到通知；（6）加写锁",
+      "conditions": [
+        "六空正确"
+      ],
+      "equivalents": [],
+      "dimension": "并发控制",
+      "source": "网站题102参考答案；表4-2核验"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p7",
+      "question_id": "rkdr-1669-ticket-concurrency-q3",
+      "weight": 4,
+      "criterion": "读写锁缺点",
+      "correct": "缺点：读写锁造成读写操作互相阻塞，实际使用户操作被串行化，降低系统并发性能；设计不好的情况下可能出现资源交叉锁定，形成死锁",
+      "conditions": [
+        "两点"
+      ],
+      "equivalents": [],
+      "dimension": "并发控制",
+      "source": "网站题102参考答案"
+    },
+    {
+      "id": "rkdr-1669-ticket-concurrency-p8",
+      "question_id": "rkdr-1669-ticket-concurrency-q3",
+      "weight": 3,
+      "criterion": "锁机制口径",
+      "correct": "写锁独占、读锁共享相容的判定口径与序列表时序对应",
+      "conditions": [
+        "时序对应"
+      ],
+      "equivalents": [],
+      "dimension": "并发控制",
+      "source": "网站题102题面"
+    }
+  ]
+}

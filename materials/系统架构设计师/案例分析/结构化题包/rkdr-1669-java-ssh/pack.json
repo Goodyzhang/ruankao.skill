@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-java-ssh-pack",
+  "version": 1,
+  "title": "Java企业级应用：三层框架与轻量级框架选型",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-java-ssh",
+      "title": "Java企业级应用系统开发架构（J2EE vs SSH选型）",
+      "stem": "某软件公司开发中小型企业应用，进度要求紧迫。刘工建议J2EE 5.0+EJB 3.0；杜工建议Struts、Spring和Hibernate轻量级开源框架结合。项目组比较后采用杜工建议。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号4～6"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-java-ssh-q1",
+          "title": "问题1（6分）",
+          "prompt": "Java企业级应用框架一般被划分为3个层次，请用150字以内的文字说明都有哪3个层次?功能分别是什么?",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-java-ssh-q2",
+          "title": "问题2（12分）",
+          "prompt": "请用200字以内的文字叙述Struts、Spring和Hibernate开源框架特点和结合方式。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-java-ssh-q3",
+          "title": "问题3（7分）",
+          "prompt": "请用200字以内的文字说明基于Struts、Spring和Hibernate的轻量级框架与基于EJB的重量级框架解决问题的侧重点有什么不同?",
+          "complete": true,
+          "max_score": 7
+        }
+      ]
+    }
+  ]
+}

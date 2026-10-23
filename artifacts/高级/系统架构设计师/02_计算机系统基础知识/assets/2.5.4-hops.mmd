@@ -1,0 +1,31 @@
+---
+title: 2.5.4 组网技术：处理对象与逐跳封装
+---
+flowchart TB
+  objects ~~~ scope
+  subgraph objects[常见互联设备：按本例处理对象判断工作层]
+    repeater[L1 中继器<br/>再生信号<br/>不按 MAC 或 IP 选路]
+    switch[L2 交换机<br/>对象：帧与 MAC 表<br/>学源 MAC，查目的 MAC]
+    routing[L3 路由器<br/>对象：IP 包与转发表<br/>查目的 IP 最长匹配前缀]
+  end
+  scope[下面是普通 IPv4 单播、无 NAT 的两网段示例<br/>同一 IP 源/目的跨路由保持；TTL 等首部字段会变化]
+  subgraph hops[帧的链路封装按下一跳改变]
+    a[终端 A 产生 IP 包<br/>源 IP=A；目的 IP=B]
+    first[第一网段的以太网帧<br/>源 MAC=A；目的 MAC=路由器入口]
+    router[路由器收到帧后<br/>移去旧链路封装；查转发表；TTL 减 1]
+    second[第二网段的新以太网帧<br/>源 MAC=路由器出口；目的 MAC=B]
+    b[终端 B 接收本机帧中的 IP 包<br/>交付相应上层协议]
+    a -->|已知下一跳 MAC 后封装| first
+    first -->|经二层网络送到网关| router
+    router -->|转发条件满足，封装下一跳| second
+    second -->|经二层网络送到目的终端| b
+  end
+  scope -.->|限定逐跳示例| a
+  switch -.->|本例二层转发<br/>不改这对 MAC| first
+  routing -.->|本例的三层转发角色| router
+  classDef layer fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef frame fill:#e8f6f0,stroke:#45836b,color:#204e3d;
+  classDef condition fill:#fff4df,stroke:#b0803e,color:#573814;
+  class repeater,switch,routing,a,router,b layer;
+  class first,second frame;
+  class scope condition;

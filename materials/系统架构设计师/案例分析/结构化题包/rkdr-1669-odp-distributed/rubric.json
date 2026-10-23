@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-odp-distributed-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-139参考答案；教程第2版§12核验（分值未标，pending）",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-odp-distributed-p10",
+      "question_id": "q1",
+      "weight": 0.34,
+      "criterion": "ODP五视点",
+      "correct": "企业业务/逻辑信息/计算接口/分布式工程/技术选择",
+      "conditions": [
+        "五空"
+      ],
+      "equivalents": [],
+      "dimension": "信息系统架构",
+      "source": "网站题139参考答案"
+    },
+    {
+      "id": "rkdr-1669-odp-distributed-p11",
+      "question_id": "q2",
+      "weight": 0.33,
+      "criterion": "三方面支撑",
+      "correct": "构件管理/互操作/公共服务",
+      "conditions": [
+        "三方面"
+      ],
+      "equivalents": [],
+      "dimension": "信息系统架构",
+      "source": "网站题139参考答案"
+    },
+    {
+      "id": "rkdr-1669-odp-distributed-p12",
+      "question_id": "q3",
+      "weight": 0.33,
+      "criterion": "互操作机制与八步",
+      "correct": "桩/框架填空+八步调用过程",
+      "conditions": [
+        "链路完整"
+      ],
+      "equivalents": [],
+      "dimension": "信息系统架构",
+      "source": "网站题139参考答案"
+    }
+  ]
+}

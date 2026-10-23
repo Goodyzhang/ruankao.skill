@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-redis-persistence-pack",
+  "version": 1,
+  "title": "Redis持久化（问题1/2缺失，暂缓出题）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）；问题1/2未捕获。",
+  "cases": [
+    {
+      "id": "rkdr-1669-redis-persistence",
+      "title": "Redis持久化（RDB与AOF）",
+      "stem": "Redis内存数据结构存储系统：微秒级读写、持久化方案与集群模式部署、高可用与企业级扩展。",
+      "complete": false,
+      "max_score": 9,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号197（问题3）"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-redis-persistence-q1",
+          "title": "问题3（9分）",
+          "prompt": "给出redis数据库的两种持久化的方式，并说明两种持久化方式的优缺点。",
+          "complete": true,
+          "max_score": 9
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9394-video-atam-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§8.2.1、§8.3及 https://www.sei.cmu.edu/library/atam-method-for-architecture-evaluation/；网站原解析独立保留",
+    "level": "教材与原始技术资料核验的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9394-video-atam-blank1",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "识别固定需求11所在分支",
+      "correct": "(1) 可用性",
+      "conditions": [
+        "位置与需求11停运上限匹配"
+      ],
+      "equivalents": [
+        "Availability"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank2",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "识别固定需求8所在分支",
+      "correct": "(2) 可修改性",
+      "conditions": [
+        "位置与修改时间匹配"
+      ],
+      "equivalents": [
+        "Modifiability"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank3",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "性能第一个叶子",
+      "correct": "(3) 1",
+      "conditions": [
+        "需求1或2，两个性能叶子不得重复"
+      ],
+      "equivalents": [
+        "2"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank4",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "性能第二个叶子",
+      "correct": "(4) 2",
+      "conditions": [
+        "需求1或2，两个性能叶子不得重复"
+      ],
+      "equivalents": [
+        "1"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank5",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "可用性新增叶子",
+      "correct": "(5) 12",
+      "conditions": [
+        "不能重复固定叶子11；须是恢复场景"
+      ],
+      "equivalents": [
+        "10"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank6",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "安全性第一个叶子",
+      "correct": "(6) 3",
+      "conditions": [
+        "3/4/7中选一个；两个安全叶子不得重复"
+      ],
+      "equivalents": [
+        "4",
+        "7"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank7",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "安全性第二个叶子",
+      "correct": "(7) 7",
+      "conditions": [
+        "3/4/7中选另一个；两个安全叶子不得重复"
+      ],
+      "equivalents": [
+        "3",
+        "4"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-blank8",
+      "question_id": "rkdr-9394-video-atam-q1",
+      "weight": 1,
+      "criterion": "可修改性新增叶子",
+      "correct": "(8) 6",
+      "conditions": [
+        "按本题分类口径：代码规范降低修改复杂度；末段扩展要求有明确文字解释亦可，不冒充原编号13"
+      ],
+      "equivalents": [
+        "末段：预留扩展点以扩展重组"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-sensitivity",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 2,
+      "criterion": "敏感点定义",
+      "correct": "构件或关系特性对实现质量属性至关重要",
+      "conditions": [
+        "需指出架构特性与质量属性的重要影响；不能限定为仅一个属性"
+      ],
+      "equivalents": [
+        "构件属性变化显著影响某质量目标"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-tradeoff",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 2,
+      "criterion": "权衡点定义",
+      "correct": "多个质量属性共享的敏感点",
+      "conditions": [
+        "同一个架构特性显著影响多个属性"
+      ],
+      "equivalents": [
+        "一种决策同时影响安全性与性能"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-risk",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 2,
+      "criterion": "风险定义",
+      "correct": "可能不能支持优先质量目标的架构决策",
+      "conditions": [
+        "须有决策、目标与隐患，不能只说有风险"
+      ],
+      "equivalents": [
+        "尚未验证的假设可能导致质量目标失败"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-nonrisk",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 2,
+      "criterion": "非风险定义",
+      "correct": "分析表明在给定条件下支持目标的决策",
+      "conditions": [
+        "不宣称永远不会有任何风险"
+      ],
+      "equivalents": [
+        "合理假设和场景下满足特定质量属性"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-a",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 1,
+      "criterion": "a分类与理由",
+      "correct": "权衡点：保密性与处理时间",
+      "conditions": [
+        "同一传输决策影响安全性与性能"
+      ],
+      "equivalents": [],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-b",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 1,
+      "criterion": "b分类与理由",
+      "correct": "风险点：修改目标带来进度成本隐患",
+      "conditions": [
+        "不把成本增加本身认定为已证实架构失败"
+      ],
+      "equivalents": [],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-c",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 1,
+      "criterion": "c分类与理由",
+      "correct": "非风险点：可适当放宽的最佳实践",
+      "conditions": [
+        "以题面允许适当放宽为假设；非风险可复评"
+      ],
+      "equivalents": [],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-d",
+      "question_id": "rkdr-9394-video-atam-q2",
+      "weight": 1,
+      "criterion": "d分类与理由",
+      "correct": "风险点：外部媒体云依赖可能不能支撑可用性目标",
+      "conditions": [
+        "不无依据宣称云必然不达标；回答敏感点须说明依赖参数对系统可用性的影响"
+      ],
+      "equivalents": [
+        "敏感点：媒体云可用性影响系统可用性，并解释参数和目标"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-presentation",
+      "question_id": "rkdr-9394-video-atam-q3",
+      "weight": 1,
+      "criterion": "描述介绍阶段",
+      "correct": "方法、业务驱动、架构",
+      "conditions": [
+        "三个核心输入，不能只有阶段标题"
+      ],
+      "equivalents": [
+        "演示阶段"
+      ],
+      "dimension": "ATAM过程",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-analysis",
+      "question_id": "rkdr-9394-video-atam-q3",
+      "weight": 1.5,
+      "criterion": "调查分析阶段",
+      "correct": "识别方法、效用树、架构分析",
+      "conditions": [
+        "效用树与分析均出现"
+      ],
+      "equivalents": [],
+      "dimension": "ATAM过程",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-testing",
+      "question_id": "rkdr-9394-video-atam-q3",
+      "weight": 1.5,
+      "criterion": "测试阶段",
+      "correct": "利益相关者头脑风暴、场景排序、再分析",
+      "conditions": [
+        "不是代码测试；场景排序与再分析均需"
+      ],
+      "equivalents": [],
+      "dimension": "ATAM过程",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    },
+    {
+      "id": "rkdr-9394-video-atam-report",
+      "question_id": "rkdr-9394-video-atam-q3",
+      "weight": 1,
+      "criterion": "报告阶段",
+      "correct": "提交评估结果和关键风险权衡",
+      "conditions": [
+        "不能称已经完成架构改造"
+      ],
+      "equivalents": [
+        "最终阶段"
+      ],
+      "dimension": "ATAM过程",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；CMU/SEI-2000-TR-004；网站133～135解析"
+    }
+  ]
+}

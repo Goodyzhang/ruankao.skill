@@ -1,0 +1,38 @@
+---
+title: 2.5.1 网络的基本概念：先确定指标观察对象
+---
+flowchart TB
+  link ~~~ packet
+  subgraph link[链路与观察窗口]
+    channel[信号带宽 B<br/>单位 Hz]
+    limit[模型中的容量上界<br/>还取决于信噪比或信号状态数]
+    window[给定观察窗口]
+    throughput[实际吞吐量<br/>实际通过比特数 ÷ 时间<br/>计量范围须说明]
+    usage[链路利用率<br/>忙时 ÷ 观察时间]
+    channel -->|按选定信道模型影响| limit
+    window -->|观测实际完成量| throughput
+    window -->|观测占用时间比例| usage
+  end
+  subgraph packet[单包的一跳一程时延模型]
+    rate[本例恒定发送率 R<br/>单位 bit/s]
+    size[包长 L：bit]
+    send[发送时延：L / R<br/>将整包比特送入链路所需时间]
+    path[距离 d：m；传播速度 v：m/s]
+    prop[传播时延：d / v<br/>信号在介质中的传播时间]
+    proc[处理时延<br/>检查与处理当前包]
+    queue[排队时延：等待发送服务<br/>负载接近服务能力时通常增加]
+    total[本跳一程总时延<br/>处理 + 排队 + 发送 + 传播]
+    size -->|决定待发送长度| send
+    path -->|决定传播时间| prop
+    proc -->|计入| total
+    queue -->|计入| total
+    send -->|计入| total
+    prop -->|计入| total
+  end
+  rate -->|给定发送率| send
+  roundtrip[RTT 观察一次往返<br/>不直接代替四项之一<br/>还需考虑回程与应答处理]
+  total -.->|往返估计还需回程与应答条件| roundtrip
+  classDef measure fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef bound fill:#fff4df,stroke:#b0803e,color:#573814;
+  class channel,rate,window,throughput,usage,size,path,proc,queue measure;
+  class limit,total,roundtrip bound;

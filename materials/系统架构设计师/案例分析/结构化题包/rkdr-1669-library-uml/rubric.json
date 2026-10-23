@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-library-uml-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-7～9参考答案；教程UML建模口径核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-library-uml-p1",
+      "question_id": "rkdr-1669-library-uml-q1",
+      "weight": 2,
+      "criterion": "参与者：读者",
+      "correct": "读者（借阅、搜索、预约、续借等直接使用者）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题7参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p2",
+      "question_id": "rkdr-1669-library-uml-q1",
+      "weight": 2,
+      "criterion": "参与者：图书馆管理员",
+      "correct": "图书馆管理员（入库/出库/归还/分类、批量导入、账户管理）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题7参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p3",
+      "question_id": "rkdr-1669-library-uml-q1",
+      "weight": 2,
+      "criterion": "参与者：系统时间",
+      "correct": "系统时间（定时事件发起者：定期生成借阅报告、归还超时自动检查）",
+      "conditions": [
+        "定时触发类需求要找时间参与者"
+      ],
+      "equivalents": [
+        "时钟/定时器"
+      ],
+      "dimension": "UML建模",
+      "source": "网站题7参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p4",
+      "question_id": "rkdr-1669-library-uml-q1",
+      "weight": 4,
+      "criterion": "实体类列举",
+      "correct": "实体类：图书、图书信息、图书分类、读者账户、借阅记录、借阅报告、违约记录（与需求逐条对应，答出主要实体类且与需求对应即可）",
+      "conditions": [
+        "实体类来自名词分析且与七条需求对应",
+        "“图书/图书信息”网站口径并列保留，训练边界：可合并为“图书”"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题7参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p5",
+      "question_id": "rkdr-1669-library-uml-q2",
+      "weight": 4,
+      "criterion": "消息类型列举",
+      "correct": "顺序图消息类型：同步消息、异步消息、返回消息、自关联消息（Self-Message）",
+      "conditions": [
+        "四类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题8参考答案；教程第2版§9（UML交互图）；章级知识点三十六"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p6",
+      "question_id": "rkdr-1669-library-uml-q2",
+      "weight": 3,
+      "criterion": "借书场景消息举例",
+      "correct": "“读者借阅图书”场景：同步消息（提交借阅请求并等待借阅成功/失败结果）、返回消息（系统返回图书详情/借阅结果）、异步消息（如预约/通知类请求不等待）等，举例与场景相容即可",
+      "conditions": [
+        "至少给出两类消息并配场景动作"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题8参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p7",
+      "question_id": "rkdr-1669-library-uml-q3",
+      "weight": 2,
+      "criterion": "对象",
+      "correct": "对象（Object）：系统中具有特定职责和行为的实体",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题9参考答案；章级知识点三十六"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p8",
+      "question_id": "rkdr-1669-library-uml-q3",
+      "weight": 2,
+      "criterion": "生命线",
+      "correct": "生命线（Lifeline）：对象在交互过程中存在的时间线",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题9参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p9",
+      "question_id": "rkdr-1669-library-uml-q3",
+      "weight": 2,
+      "criterion": "激活/控制焦点",
+      "correct": "激活（Activation）/控制焦点（Focus of Control）：对象正在执行动作或处于活动状态的时间段",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "控制焦点"
+      ],
+      "dimension": "UML建模",
+      "source": "网站题9参考答案"
+    },
+    {
+      "id": "rkdr-1669-library-uml-p10",
+      "question_id": "rkdr-1669-library-uml-q3",
+      "weight": 2,
+      "criterion": "消息与交互片段（任答4种满分口径）",
+      "correct": "消息（Message）与交互片段（Interaction Fragment）：消息触发接收对象动作；交互片段用组合算子表示循环、条件分支。本小问按“答出4种即满分”口径：任四种各2分，多答不加分",
+      "conditions": [
+        "对象/生命线/激活/消息/交互片段任四种"
+      ],
+      "equivalents": [
+        "交互片段可替换消息等"
+      ],
+      "dimension": "UML建模",
+      "source": "网站题9参考答案（答出4种即满分）"
+    }
+  ]
+}

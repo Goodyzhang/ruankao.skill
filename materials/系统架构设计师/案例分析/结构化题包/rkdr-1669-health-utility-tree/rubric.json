@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-health-utility-tree-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题198答案为网站图片表（实际看图读取）；题199/200网站参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-health-utility-tree-p1",
+      "question_id": "rkdr-1669-health-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(1)可修改性",
+      "correct": "(1)=可修改性（分支叶：(3)(a)3人月医保适配、(f)2周新增功能）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题198答案表（图片载体）；树结构互证"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p2",
+      "question_id": "rkdr-1669-health-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(2)性能",
+      "correct": "(2)=性能（分支叶：(6)(d)响应<1秒、(h)API日调1万次）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题198答案表"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p3",
+      "question_id": "rkdr-1669-health-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(3)=(a)",
+      "correct": "(3)=(a) 医保政策变更3人月适配（可修改性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题198答案表"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p4",
+      "question_id": "rkdr-1669-health-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(4)=(g)",
+      "correct": "(4)=(g) 主库故障90秒无缝切换（可用性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题198答案表"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p5",
+      "question_id": "rkdr-1669-health-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(5)=(e)",
+      "correct": "(5)=(e) 病历数据加密脱敏（安全性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题198答案表"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p6",
+      "question_id": "rkdr-1669-health-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(6)=(d)",
+      "correct": "(6)=(d) 高峰预约响应<1秒（性能分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题198答案表"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p7",
+      "question_id": "rkdr-1669-health-utility-tree-q2",
+      "weight": 2,
+      "criterion": "互操作性判定",
+      "correct": "场景(h)除性能外还关注互操作性——本软件系统与其他系统交换数据和相互调用服务的难易程度",
+      "conditions": [
+        "判定+解释"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题199参考答案"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p8",
+      "question_id": "rkdr-1669-health-utility-tree-q2",
+      "weight": 2,
+      "criterion": "运行期口径",
+      "correct": "互操作性属运行期质量属性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题199题面"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p9",
+      "question_id": "rkdr-1669-health-utility-tree-q3",
+      "weight": 3,
+      "criterion": "选型结论与性能",
+      "correct": "更适合管道-过滤器风格。性能：管道-过滤器以高效流水线方式对数据多级并行处理，性能优秀；虚拟机风格需解释执行加密脱敏指令，性能差",
+      "conditions": [
+        "结论+性能"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题200参考答案"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p10",
+      "question_id": "rkdr-1669-health-utility-tree-q3",
+      "weight": 3,
+      "criterion": "可维护性维度",
+      "correct": "可维护性：管道-过滤器修改加密/脱敏算法或处理顺序时可单独替换某个构件或连接件，可维护性高；虚拟机风格有的算法实现需修改解释器本身，可维护性稍差",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题200参考答案"
+    },
+    {
+      "id": "rkdr-1669-health-utility-tree-p11",
+      "question_id": "rkdr-1669-health-utility-tree-q3",
+      "weight": 3,
+      "criterion": "安全性维度",
+      "correct": "安全性：管道-过滤器数据流清晰明了，每个过滤器只访问完成任务所必需的数据，安全审计人员可严格审查每个独立处理环节，安全性好；虚拟机风格解释器引擎复杂性高，易造成安全隐患",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构风格",
+      "source": "网站题200参考答案"
+    }
+  ]
+}

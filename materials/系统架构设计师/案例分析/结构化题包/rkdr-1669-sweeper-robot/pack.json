@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-sweeper-robot-pack",
+  "version": 1,
+  "title": "扫地机器人：功能结构、传感器选型与串口计算",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-sweeper-robot",
+      "title": "服务型智能扫地机器人（ARM+STM32双核）",
+      "stem": "扫地机器人：紧急状态感知/姿态感知/视觉感知/自动充电/清扫吸尘/运动执行/监控/信息处理中心；ARM+STM32双核分工；串口9600b/s传输。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号115～117"
+      },
+      "figures": [
+        {
+          "file": "../../assets/e40514721e856473.png",
+          "caption": "图3-1 扫地机器人功能结构图：感知输入、信息处理中心与执行输出，空(1)～(5)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/f0f65067bdbcf9565f7d75decd4bbca9.png-ruankao"
+        },
+        {
+          "file": "../../assets/d16e66ae7021c534.png",
+          "caption": "表3-1 传感器功能表：空(1)～(6)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/c1df421572fe403aa3ca5f1f217ed5ea.png-ruankao"
+        },
+        {
+          "file": "../../assets/08751b3d96bf8911.png",
+          "caption": "图3-2 ARM与STM32串口连接示意图",
+          "source_locator": "https://image-t.chaiding.com/ruankao/8e271085c0f1b0e333071572b9fda56f.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-sweeper-robot-q1",
+          "title": "问题1（5分）",
+          "prompt": "图3-1是服务型智能扫地机器人典型的功能结构图，请根据说明的描述，填写（ ）～（5）空白处，完成该功能结构图。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-sweeper-robot-q2",
+          "title": "问题2（12分）",
+          "prompt": "王工选择了7种类型的传感器，请根据传感器的功能完成表3-1，填（ ）～（6）。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-sweeper-robot-q3",
+          "title": "问题3（8分）",
+          "prompt": "串口传输数据格式为8位数据位、1位起始位、1位停止位、无校验位。(1)波特率9600b/s时每秒传送的有效数据是多少字节？(2)累计误差不大于1/4 bit时，时钟允许的误差范围及最大误差百分比。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

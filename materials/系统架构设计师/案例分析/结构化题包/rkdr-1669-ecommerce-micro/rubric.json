@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-ecommerce-micro-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-109～111参考答案；教程第2版§14核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-ecommerce-micro-p1",
+      "question_id": "rkdr-1669-ecommerce-micro-q1",
+      "weight": 2,
+      "criterion": "RESTful优势五条",
+      "correct": "优势：(1)标准通信方式基于HTTP简化服务集成；(2)统一资源标识与操作方法（GET/POST/PUT/DELETE）交互直观易懂；(3)支持无状态通信（请求含全部所需信息）；(4)支持缓存（HTTP头控制缓存行为提高性能）；(5)易于扩展（随业务发展添加资源和方法）",
+      "conditions": [
+        "五条"
+      ],
+      "equivalents": [],
+      "dimension": "微服务通信",
+      "source": "网站题109参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p2",
+      "question_id": "rkdr-1669-ecommerce-micro-q1",
+      "weight": 4,
+      "criterion": "机制词口径",
+      "correct": "答出HTTP/统一接口/无状态/缓存等机制词",
+      "conditions": [
+        "机制词齐全"
+      ],
+      "equivalents": [],
+      "dimension": "微服务通信",
+      "source": "网站题109题面"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p3",
+      "question_id": "rkdr-1669-ecommerce-micro-q1",
+      "weight": 4,
+      "criterion": "场景挂接口径",
+      "correct": "优势与题干“高性能+快速迭代扩展”需求相扣",
+      "conditions": [
+        "场景相扣"
+      ],
+      "equivalents": [],
+      "dimension": "微服务通信",
+      "source": "网站题109题面"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p4",
+      "question_id": "rkdr-1669-ecommerce-micro-q2",
+      "weight": 2,
+      "criterion": "容器化作用①②",
+      "correct": "(1)环境一致性——微服务及依赖打包为独立运行单元，开发/测试/生产环境一致；(2)资源隔离——每个微服务封装在自己的容器中，CPU/内存/网络隔离，避免资源竞争冲突",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "容器化",
+      "source": "网站题110参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p5",
+      "question_id": "rkdr-1669-ecommerce-micro-q2",
+      "weight": 2,
+      "criterion": "容器化作用③④",
+      "correct": "(3)快速部署与伸缩——部署扩展简单高效，容器编排工具实现自动化部署伸缩管理；(4)简化运维——编排工具轻松监控、重启、日志收集、故障排查，提高运维效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "容器化",
+      "source": "网站题110参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p6",
+      "question_id": "rkdr-1669-ecommerce-micro-q2",
+      "weight": 2,
+      "criterion": "容器化作用⑤",
+      "correct": "(5)提升效率——相比物理主机和虚拟主机，减少资源开销、优化资源利用，提升微服务效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "容器化",
+      "source": "网站题110参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p7",
+      "question_id": "rkdr-1669-ecommerce-micro-q2",
+      "weight": 4,
+      "criterion": "场景挂接口径",
+      "correct": "容器化作用与题干稳定性可扩展性需求相扣（张工方案）",
+      "conditions": [
+        "场景相扣"
+      ],
+      "equivalents": [],
+      "dimension": "容器化",
+      "source": "网站题110题面"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p8",
+      "question_id": "rkdr-1669-ecommerce-micro-q3",
+      "weight": 1,
+      "criterion": "空(1)实现原理",
+      "correct": "（1）轻量级的基础设施层（服务网格实现原理）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题111参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p9",
+      "question_id": "rkdr-1669-ecommerce-micro-q3",
+      "weight": 1,
+      "criterion": "空(2)作用",
+      "correct": "（2）剥离并确保微服务间的通信、安全、监控和治理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题111参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p10",
+      "question_id": "rkdr-1669-ecommerce-micro-q3",
+      "weight": 1,
+      "criterion": "空(3)ESB治理能力",
+      "correct": "（3）服务注册与管理、负载均衡、容错等（ESB治理能力）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题111参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p11",
+      "question_id": "rkdr-1669-ecommerce-micro-q3",
+      "weight": 1,
+      "criterion": "空(4)ESB调用方式",
+      "correct": "（4）指定的调用接口（ESB调用方式）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题111参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-micro-p12",
+      "question_id": "rkdr-1669-ecommerce-micro-q3",
+      "weight": 1,
+      "criterion": "空(5)网格适用场景",
+      "correct": "（5）服务数量众多、通信复杂且需要高可靠性和安全性的云应用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题111参考答案"
+    }
+  ]
+}

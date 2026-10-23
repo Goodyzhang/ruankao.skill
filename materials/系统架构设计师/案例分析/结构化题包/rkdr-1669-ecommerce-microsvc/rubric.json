@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-ecommerce-microsvc-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-13～15参考答案；教程第2版§14章核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p1",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q1",
+      "weight": 1,
+      "criterion": "高可伸缩性",
+      "correct": "高可伸缩性：独立伸缩各服务，按业务需求灵活调整资源，无需调整整个应用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "云原生微服务",
+      "source": "网站题13参考答案；教程第2版§14.3.2"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p2",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q1",
+      "weight": 1,
+      "criterion": "技术栈灵活性",
+      "correct": "技术栈灵活性：每个微服务可用最适合的技术栈开发",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "云原生微服务",
+      "source": "网站题13参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p3",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q1",
+      "weight": 1,
+      "criterion": "快速迭代和部署",
+      "correct": "快速迭代和部署：服务解耦，团队并行开发、测试、部署，加快迭代",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "云原生微服务",
+      "source": "网站题13参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p4",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q1",
+      "weight": 1,
+      "criterion": "故障隔离",
+      "correct": "故障隔离：单个服务故障不影响整个系统，提高稳定性可靠性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "云原生微服务",
+      "source": "网站题13参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p5",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q1",
+      "weight": 1,
+      "criterion": "团队协作",
+      "correct": "更好的团队协作：小型自治团队各专注自己的服务，提高效率与质量",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "云原生微服务",
+      "source": "网站题13参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p6",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q2",
+      "weight": 3,
+      "criterion": "RESTful API特点",
+      "correct": "RESTful API：基于HTTP，JSON/XML传输，跨平台易用，支持GET/POST/PUT/DELETE便于CRUD，客户端支持广泛",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务通信",
+      "source": "网站题14参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p7",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q2",
+      "weight": 3,
+      "criterion": "gRPC特点",
+      "correct": "gRPC：基于HTTP/2，多语言，用Protocol Buffers作IDL，性能略优（低延迟高吞吐），但学习成本高、客户端支持不如REST广泛",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务通信",
+      "source": "网站题14参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p8",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q2",
+      "weight": 3,
+      "criterion": "推荐结论",
+      "correct": "推荐RESTful API作为服务间通信方式（理由充分时推荐gRPC或混合方案亦可，需与电商需求自洽）",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [
+        "gRPC/混合（须理由充分）"
+      ],
+      "dimension": "服务通信",
+      "source": "网站题14参考答案（推荐RESTful）"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p9",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q2",
+      "weight": 3,
+      "criterion": "选择理由",
+      "correct": "理由：①电商需与Web前端、移动应用、第三方等多种客户端交互，REST支持度广；②易用简单，降低开发成本提高效率；③电商实时性要求不高，REST性能足够",
+      "conditions": [
+        "三条理由方向正确"
+      ],
+      "equivalents": [],
+      "dimension": "服务通信",
+      "source": "网站题14参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p10",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q3",
+      "weight": 2,
+      "criterion": "分布式事务",
+      "correct": "分布式事务：2PC/3PC或SAGA模式保证跨服务数据一致性；引入复杂性与性能开销需谨慎使用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据一致性",
+      "source": "网站题15参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p11",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q3",
+      "weight": 2,
+      "criterion": "最终一致性",
+      "correct": "最终一致性：事件驱动架构或消息队列异步更新数据，一段时间后达到一致，提高可用性与性能",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据一致性",
+      "source": "网站题15参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p12",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q3",
+      "weight": 2,
+      "criterion": "服务熔断与降级",
+      "correct": "服务熔断与降级：失败率达阈值自动熔断防止故障扩散；负载过高时降级提供简化响应",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "高可用",
+      "source": "网站题15参考答案"
+    },
+    {
+      "id": "rkdr-1669-ecommerce-microsvc-p13",
+      "question_id": "rkdr-1669-ecommerce-microsvc-q3",
+      "weight": 2,
+      "criterion": "其余高可用策略（任答一条）",
+      "correct": "服务注册与发现（Eureka/Consul等）、数据复制与缓存（主从复制、Redis/Memcached）、API网关（路由/过滤/认证/限流）等任一即可；本小问“答出4条即可”口径下，前三点各2分，第4条从本点内任取",
+      "conditions": [
+        "与前三点合计四条策略"
+      ],
+      "equivalents": [
+        "注册发现/复制缓存/API网关任一"
+      ],
+      "dimension": "高可用",
+      "source": "网站题15参考答案（答出4条即可）"
+    }
+  ]
+}

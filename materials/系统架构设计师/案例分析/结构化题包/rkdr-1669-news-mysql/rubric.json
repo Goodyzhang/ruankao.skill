@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-news-mysql-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-118～120参考答案；教程第2版§6核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-news-mysql-p1",
+      "question_id": "rkdr-1669-news-mysql-q1",
+      "weight": 3,
+      "criterion": "好处①避免单点故障",
+      "correct": "①避免数据库单点故障：主服务器实时、异步复制数据到从服务器，主库宕机时可从从库中选择一个升级为主服务器",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题118参考答案"
+    },
+    {
+      "id": "rkdr-1669-news-mysql-p2",
+      "question_id": "rkdr-1669-news-mysql-q1",
+      "weight": 3,
+      "criterion": "好处②提高查询效率",
+      "correct": "②提高查询效率：主库负责插入/删除/更新等写操作，从库专门负责查询，将查询分担到不同从服务器提高访问效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题118参考答案"
+    },
+    {
+      "id": "rkdr-1669-news-mysql-p3",
+      "question_id": "rkdr-1669-news-mysql-q2",
+      "weight": 3,
+      "criterion": "主从复制过程",
+      "correct": "从库启动复制时创建I/O线程连接主库；主库创建Binlog Dump线程读取数据库事件发送给I/O线程；I/O线程将事件数据更新到从库中继日志Relay Log；从库SQL线程读取Relay Log中的事件并应用",
+      "conditions": [
+        "四线程/日志链路完整"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题119参考答案"
+    },
+    {
+      "id": "rkdr-1669-news-mysql-p4",
+      "question_id": "rkdr-1669-news-mysql-q2",
+      "weight": 3,
+      "criterion": "binlog机制口径",
+      "correct": "主从复制通过binary log实现主从数据同步的机制描述完整",
+      "conditions": [
+        "机制完整"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题119题面"
+    },
+    {
+      "id": "rkdr-1669-news-mysql-p5",
+      "question_id": "rkdr-1669-news-mysql-q3",
+      "weight": 4,
+      "criterion": "三种复制特点",
+      "correct": "同步复制：主库等待所有备库操作成功才响应，保证一致性牺牲可用性；异步复制：主库处理完请求直接响应，备库异步同步，保证可用性牺牲一致性；半同步复制：主库执行写操作并发送同步请求，等待一部分备库同步完成后即可响应用户",
+      "conditions": [
+        "三种齐全"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题120参考答案"
+    },
+    {
+      "id": "rkdr-1669-news-mysql-p6",
+      "question_id": "rkdr-1669-news-mysql-q3",
+      "weight": 4,
+      "criterion": "CAP权衡口径",
+      "correct": "三种复制按“一致性vs可用性”权衡表述",
+      "conditions": [
+        "权衡明确"
+      ],
+      "equivalents": [],
+      "dimension": "数据库架构",
+      "source": "网站题120题面"
+    }
+  ]
+}

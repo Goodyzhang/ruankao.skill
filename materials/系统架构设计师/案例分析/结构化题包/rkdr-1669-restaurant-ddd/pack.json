@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-restaurant-ddd-pack",
+  "version": 1,
+  "title": "连锁餐厅点餐系统：限界上下文、架构填图与同步方案",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-restaurant-ddd",
+      "title": "餐厅点餐系统（终端+云端双层架构）",
+      "stem": "连锁餐厅分布式Web点餐系统：终端层智能点餐设备（扫码/浏览/下单支付/加菜退单），云端层管理中枢（菜品/订单/配置/权限）。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号62～64"
+      },
+      "figures": [
+        {
+          "file": "../../assets/98a518cb64b8b8c6.png",
+          "caption": "餐厅点餐系统架构图：表示层/统一代理层/业务层/基础配置层/数据实体/数据持久层，空(1)～(11)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/7d0e1307-4591-4d2a-8b0d-e0cf5af8eec4.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-restaurant-ddd-q1",
+          "title": "问题1（6分）",
+          "prompt": "点餐系统采用领域驱动的开发方法，说明在领域驱动中，限界上下文的定义以及作用。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-restaurant-ddd-q2",
+          "title": "问题2（11分）",
+          "prompt": "请从选项(a)-(n)中为架构图中(1)-(11)处空白选择相应的内容，补充餐厅点餐系统架构设计图。",
+          "complete": true,
+          "max_score": 11
+        },
+        {
+          "id": "rkdr-1669-restaurant-ddd-q3",
+          "title": "问题3（8分）",
+          "prompt": "云端到终端以及终端间同步在网络出现数据丢失、冲突等问题时，应该如何解决，给出相应的方案。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

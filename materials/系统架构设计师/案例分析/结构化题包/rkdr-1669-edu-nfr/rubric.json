@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-edu-nfr-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-1～3参考答案；教程第2版§8.1.2/§5.2/§4.1.1核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-edu-nfr-p1",
+      "question_id": "rkdr-1669-edu-nfr-q1",
+      "weight": 2,
+      "criterion": "性能类需求识别",
+      "correct": "性能：（a）、（b）、（f）",
+      "conditions": [
+        "并发用户数、缓冲时间、响应时间三条全部归入性能",
+        "不得把（g）备份恢复或（c）可用性混入"
+      ],
+      "equivalents": [
+        "吞吐量/响应时间归类一致"
+      ],
+      "dimension": "质量属性",
+      "source": "网站题1参考答案；教程第2版§8.1.2面向架构评估的质量属性"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p2",
+      "question_id": "rkdr-1669-edu-nfr-q1",
+      "weight": 2,
+      "criterion": "安全性类需求识别",
+      "correct": "安全性：（e）",
+      "conditions": [
+        "防DDoS攻击归入安全性"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题1参考答案；教程第2版§8.1.2"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p3",
+      "question_id": "rkdr-1669-edu-nfr-q1",
+      "weight": 2,
+      "criterion": "可用性类需求识别",
+      "correct": "可用性：（c）、（g）",
+      "conditions": [
+        "99.9%服务可用性与备份恢复时间都归入可用性",
+        "常见陷阱：把（g）归入可维护性/性能"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题1参考答案；教程第2版§8.1.2"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p4",
+      "question_id": "rkdr-1669-edu-nfr-q1",
+      "weight": 2,
+      "criterion": "易用性类需求识别",
+      "correct": "易用性：（d）、（h）",
+      "conditions": [
+        "界面直观易用与多语言支持归入易用性",
+        "多语言不是功能需求归类"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题1参考答案；教程第2版§8.1.2"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p5",
+      "question_id": "rkdr-1669-edu-nfr-q2",
+      "weight": 2,
+      "criterion": "业务需求定义",
+      "correct": "业务需求：反映组织机构或客户对系统、产品高层次的目标要求",
+      "conditions": [
+        "定义完整、点明“高层次目标”"
+      ],
+      "equivalents": [
+        "business requirement"
+      ],
+      "dimension": "需求工程",
+      "source": "网站题2参考答案；教程第2版§5.2需求层次"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p6",
+      "question_id": "rkdr-1669-edu-nfr-q2",
+      "weight": 2,
+      "criterion": "用户需求定义",
+      "correct": "用户需求：描述用户使用产品必须要完成的任务，是用户对产品的期望",
+      "conditions": [
+        "点明“任务/期望”"
+      ],
+      "equivalents": [
+        "user requirement"
+      ],
+      "dimension": "需求工程",
+      "source": "网站题2参考答案；教程第2版§5.2"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p7",
+      "question_id": "rkdr-1669-edu-nfr-q2",
+      "weight": 2,
+      "criterion": "功能需求定义",
+      "correct": "功能需求（含非功能需求）：定义开发人员必须实现的软件功能，使用户完成任务从而满足业务需求",
+      "conditions": [
+        "点明“开发人员必须实现”"
+      ],
+      "equivalents": [
+        "functional requirement"
+      ],
+      "dimension": "需求工程",
+      "source": "网站题2参考答案；教程第2版§5.2"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p8",
+      "question_id": "rkdr-1669-edu-nfr-q2",
+      "weight": 1,
+      "criterion": "层次判定",
+      "correct": "“观看学习视频可随时暂停、重放或调整播放速度”属于用户需求层次",
+      "conditions": [
+        "判定为用户需求并给出“用户使用产品要完成的任务”理由"
+      ],
+      "equivalents": [],
+      "dimension": "需求工程",
+      "source": "网站题2参考答案"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p9",
+      "question_id": "rkdr-1669-edu-nfr-q3",
+      "weight": 2,
+      "criterion": "机密性含义",
+      "correct": "机密性：确保信息不暴露给未授权的实体或进程",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题3参考答案；教程第2版§4.1.1"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p10",
+      "question_id": "rkdr-1669-edu-nfr-q3",
+      "weight": 2,
+      "criterion": "完整性含义",
+      "correct": "完整性：只有得到允许的人才能修改数据，并且能够判别出数据是否已被篡改",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题3参考答案；教程第2版§4.1.1"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p11",
+      "question_id": "rkdr-1669-edu-nfr-q3",
+      "weight": 2,
+      "criterion": "可用性含义",
+      "correct": "可用性：得到授权的实体在需要时可访问数据，攻击者不能占用所有资源而阻碍授权者的工作",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题3参考答案；教程第2版§4.1.1"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p12",
+      "question_id": "rkdr-1669-edu-nfr-q3",
+      "weight": 2,
+      "criterion": "可控性含义",
+      "correct": "可控性：可以控制授权范围内的信息流向及行为方式",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "信息安全",
+      "source": "网站题3参考答案；教程第2版§4.1.1"
+    },
+    {
+      "id": "rkdr-1669-edu-nfr-p13",
+      "question_id": "rkdr-1669-edu-nfr-q3",
+      "weight": 2,
+      "criterion": "可审查性含义",
+      "correct": "可审查性：对出现的信息安全问题提供调查的依据和手段",
+      "conditions": [
+        "按教程/网站口径写“可审查性”",
+        "部分资料写“不可否认性”，见知识点双口径说明"
+      ],
+      "equivalents": [
+        "不可否认性（不同口径）"
+      ],
+      "dimension": "信息安全",
+      "source": "网站题3参考答案；教程第2版§4.1.1"
+    }
+  ]
+}

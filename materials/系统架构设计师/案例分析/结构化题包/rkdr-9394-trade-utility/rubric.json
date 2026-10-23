@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9394-trade-utility-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§8.2.1、§8.3.6；网站136答案表与解析（原样存档）",
+    "level": "教材与网站解析互相印证的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9394-trade-utility-p1attr",
+      "question_id": "rkdr-9394-trade-utility-q1",
+      "weight": 2,
+      "criterion": "空(1)填性能，与同分支叶(a)0.5秒响应印证",
+      "conditions": [
+        "由(a)的响应时间场景推出性能"
+      ],
+      "equivalents": [
+        "写“性能（Performance）”或只写“性能”均给分"
+      ],
+      "correct": "(1) 性能",
+      "dimension": "质量属性",
+      "source": "网站答案表；教材§8.3.6效用树结构"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p2attr",
+      "question_id": "rkdr-9394-trade-utility-q1",
+      "weight": 2,
+      "criterion": "空(2)填可修改性，与同分支叶(h)30人月修改代价印证",
+      "conditions": [
+        "由(h)的修改代价场景推出可修改性"
+      ],
+      "equivalents": [
+        "写“可修改性（Modifiability）”均给分"
+      ],
+      "correct": "(2) 可修改性",
+      "dimension": "质量属性",
+      "source": "网站答案表；教材§8.3.6效用树结构"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p3leaf",
+      "question_id": "rkdr-9394-trade-utility-q1",
+      "weight": 2,
+      "criterion": "空(3)填(e)：高峰负载10秒完成支付的性能场景",
+      "conditions": [
+        "有环境（高峰负载）与响应度量（10秒）"
+      ],
+      "equivalents": [
+        "(a)亦可（与(e)同为性能叶，互换成立）"
+      ],
+      "correct": "(3) (e)",
+      "dimension": "质量属性场景",
+      "source": "网站答案表；教材§8.1.2性能场景要素"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p4leaf",
+      "question_id": "rkdr-9394-trade-utility-q1",
+      "weight": 2,
+      "criterion": "空(4)填(j)：断电3秒内重定向备用站点的可用性场景",
+      "conditions": [
+        "故障恢复类场景与可用性分支匹配"
+      ],
+      "equivalents": [
+        "(d)与(j)同为可用性叶互换成立，但(d)已被固定占位，故此处填(j)"
+      ],
+      "correct": "(4) (j)",
+      "dimension": "质量属性场景",
+      "source": "网站答案表；教材§8.1.2可用性场景要素"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p5leaf",
+      "question_id": "rkdr-9394-trade-utility-q1",
+      "weight": 2,
+      "criterion": "空(5)填(l)：界面修改限4人月的可修改性场景",
+      "conditions": [
+        "修改代价类场景与可修改性分支匹配"
+      ],
+      "equivalents": [
+        "(i)亦可（同为可修改性），但(i)是问题二指定风险点，避免一字母两用优先(l)"
+      ],
+      "correct": "(5) (l)",
+      "dimension": "质量属性场景",
+      "source": "网站答案表；教材§8.1.2可修改性场景要素"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p6leaf",
+      "question_id": "rkdr-9394-trade-utility-q1",
+      "weight": 2,
+      "criterion": "空(6)填(k)：数据库授权99.999%可用的安全性场景",
+      "conditions": [
+        "授权防护目标归安全性，不因“可用”字样误入可用性"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(6) (k)",
+      "dimension": "质量属性场景",
+      "source": "网站答案表；教材§8.1.2安全性场景要素"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p7riskdef",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 3,
+      "criterion": "风险点定义：架构设计中潜在的、存在问题的架构决策所带来的隐患",
+      "conditions": [
+        "须含“潜在的、存在问题的架构决策”与“隐患”两个关键词簇"
+      ],
+      "equivalents": [
+        "“由存在问题的架构决策带来的隐患”等义表述"
+      ],
+      "correct": "架构风险＝潜在、存在问题的架构决策带来的隐患",
+      "dimension": "评估概念",
+      "source": "教材§8.2.1；网站答案"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p8sensdef",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 3,
+      "criterion": "敏感点定义：为实现某种特定质量属性，一个或多个构件所具有的特性",
+      "conditions": [
+        "须含“特定质量属性”与“一个或多个构件的特性”"
+      ],
+      "equivalents": [
+        "“对某质量属性起决定作用的构件特性”等义表述"
+      ],
+      "correct": "敏感点＝实现特定质量属性的构件特性",
+      "dimension": "评估概念",
+      "source": "教材§8.2.1；网站答案"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p9tradef",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 3,
+      "criterion": "权衡点定义：影响多个质量属性、并对多个质量属性都是敏感点的属性",
+      "conditions": [
+        "须含“影响多个质量属性”与“都是敏感点”递进层"
+      ],
+      "equivalents": [
+        "“多个质量属性的敏感点”等义表述"
+      ],
+      "correct": "权衡点＝影响多个质量属性且都是敏感点的特性",
+      "dimension": "评估概念",
+      "source": "教材§8.2.1；网站答案"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p10risk",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 1,
+      "criterion": "风险点选(i)：紧耦合致修改，已存在的设计隐患",
+      "conditions": [
+        "选(i)并指出隐患属性"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(i) 风险点",
+      "dimension": "评估概念应用",
+      "source": "网站答案；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p11sens",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 1,
+      "criterion": "敏感点选(g)：处理时间要求牵引协议与交易处理设计",
+      "conditions": [
+        "选(g)并说明单一属性牵引设计"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(g) 敏感点",
+      "dimension": "评估概念应用",
+      "source": "网站答案；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p12trade",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 1,
+      "criterion": "权衡点选(f)：加密算法安全性↑性能↓",
+      "conditions": [
+        "选(f)并指出两属性对抗"
+      ],
+      "equivalents": [
+        "无"
+      ],
+      "correct": "(f) 权衡点",
+      "dimension": "评估概念应用",
+      "source": "网站答案；教材§8.2.1"
+    },
+    {
+      "id": "rkdr-9394-trade-utility-p13why",
+      "question_id": "rkdr-9394-trade-utility-q2",
+      "weight": 1,
+      "criterion": "每个选择结合题干给出理由",
+      "conditions": [
+        "三个选择各附一句题干依据"
+      ],
+      "equivalents": [
+        "理由写在对应定义后或集中说明均可"
+      ],
+      "correct": "结合(i)(g)(f)原文说明归类理由",
+      "dimension": "评估概念应用",
+      "source": "训练推定：简答题步骤分惯例"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph O["开环：订单1的本次执行"]
+    O1["订单1决策"] -->|原安排| O2["执行至完工"]
+  end
+  O2 --> O3["结果与事后评价"]
+  O3 -->|供以后参考| O4["订单2决策"]
+  subgraph C["闭环：以当月排产决策为范围"]
+    C1["当月排产"] -->|下达当前安排| C2["执行"]
+    C2 -->|采集| C3["实际进度"]
+    C3 -->|反馈并调整本次| C1
+    C2 --> C4["最终完工"]
+  end
+  N["每晚批量汇总但次日调整当月排产：可闭环<br/>即时记录却只在下次改变：本次可开环<br/>分类按反馈用途判断；更新速度单独不足"]
+  O4 -.- N
+  C4 -.- N
+  classDef current fill:#e5f6fa,stroke:#19748b,color:#153440;
+  classDef next fill:#f1ebff,stroke:#7053a8,color:#2d2346;
+  classDef note fill:#fff6df,stroke:#a97717,color:#3f3218;
+  class O1,O2,O3,C1,C2,C3,C4 current;
+  class O4 next;
+  class N note;

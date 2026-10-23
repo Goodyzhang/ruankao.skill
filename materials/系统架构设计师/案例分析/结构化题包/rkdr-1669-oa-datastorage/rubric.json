@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-oa-datastorage-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-18～20参考答案；教程第2版§6.1.1/§6.5.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-oa-datastorage-p1",
+      "question_id": "rkdr-1669-oa-datastorage-q1",
+      "weight": 2,
+      "criterion": "空(1) 数据库设计难度",
+      "correct": "（1）数据结构需要符合某些模式，设计难度较大",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据管理",
+      "source": "网站题18参考答案；教程第2版§6.1.1"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p2",
+      "question_id": "rkdr-1669-oa-datastorage-q1",
+      "weight": 2,
+      "criterion": "空(2) 文件系统冗余",
+      "correct": "（2）可能在多个文件中复制相同的数据属性，数据冗余较大",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据管理",
+      "source": "网站题18参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p3",
+      "question_id": "rkdr-1669-oa-datastorage-q1",
+      "weight": 2,
+      "criterion": "空(3) 文件系统数据架构",
+      "correct": "（3）以应用系统为中心组织、管理数据",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据管理",
+      "source": "网站题18参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p4",
+      "question_id": "rkdr-1669-oa-datastorage-q1",
+      "weight": 2,
+      "criterion": "空(4) 数据库应用扩展性",
+      "correct": "（4）数据独立于应用系统，很容易在不同的应用系统之间共享数据",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据管理",
+      "source": "网站题18参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p5",
+      "question_id": "rkdr-1669-oa-datastorage-q2",
+      "weight": 2,
+      "criterion": "空(1) 文档数据库数据模型",
+      "correct": "（1）文档模型（JSON/BSON文档，键值对集合嵌套）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "文档型/JSON模型"
+      ],
+      "dimension": "数据库选型",
+      "source": "网站题19参考答案；教程第2版§6.5.2"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p6",
+      "question_id": "rkdr-1669-oa-datastorage-q2",
+      "weight": 2,
+      "criterion": "空(2) 关系数据库读写性能",
+      "correct": "（2）性能相对较低，特别是关联查询（JOIN）多时",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据库选型",
+      "source": "网站题19参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p7",
+      "question_id": "rkdr-1669-oa-datastorage-q2",
+      "weight": 2,
+      "criterion": "空(3) 文档数据库模式扩展性",
+      "correct": "（3）模式自由（Schemaless），可随时增加字段或嵌套内部对象",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据库选型",
+      "source": "网站题19参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p8",
+      "question_id": "rkdr-1669-oa-datastorage-q2",
+      "weight": 2,
+      "criterion": "空(4) 文档数据库数据一致性",
+      "correct": "（4）欠缺事务支持，数据一致性差（相对关系数据库而言）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "弱事务/最终一致性"
+      ],
+      "dimension": "数据库选型",
+      "source": "网站题19参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p9",
+      "question_id": "rkdr-1669-oa-datastorage-q3",
+      "weight": 2,
+      "criterion": "JSON存储-语法简洁",
+      "correct": "存储：JSON语法简洁明了，易于阅读和编写，降低数据存储复杂性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL/JSON",
+      "source": "网站题20参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p10",
+      "question_id": "rkdr-1669-oa-datastorage-q3",
+      "weight": 2,
+      "criterion": "JSON存储-多类型灵活",
+      "correct": "存储：支持字符串、数字、布尔值、数组、对象等多种数据类型，灵活表示复杂数据结构；允许空值和可选字段，增加灵活性、缩小空间占用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL/JSON",
+      "source": "网站题20参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p11",
+      "question_id": "rkdr-1669-oa-datastorage-q3",
+      "weight": 2,
+      "criterion": "JSON修改",
+      "correct": "修改：基于文本格式，JSON文档可直接被程序解析和修改，也支持文本编辑器查看编辑，便于开发调试",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL/JSON",
+      "source": "网站题20参考答案"
+    },
+    {
+      "id": "rkdr-1669-oa-datastorage-p12",
+      "question_id": "rkdr-1669-oa-datastorage-q3",
+      "weight": 3,
+      "criterion": "JSON传输",
+      "correct": "传输：格式紧凑，易于传输和存储；支持跨平台、跨语言数据交换，不同系统与编程语言间传输简单",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL/JSON",
+      "source": "网站题20参考答案"
+    }
+  ]
+}

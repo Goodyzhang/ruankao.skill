@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-webx-rental-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-74参考答案；教程第2版§13.2/§6.4.4/§6.2.3核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-webx-rental-p1",
+      "question_id": "rkdr-1669-webx-rental-q1",
+      "weight": 2,
+      "criterion": "基础服务支持",
+      "correct": "基础服务支持：WebX在阿里巴巴和淘宝使用多年，经受超大访问量电商网站考验，被证明成熟可靠",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Web框架",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p2",
+      "question_id": "rkdr-1669-webx-rental-q1",
+      "weight": 2,
+      "criterion": "多应用支持",
+      "correct": "多应用支持：WebX与Spring MVC一样完全建立在Spring之上，可用Spring所有特性；WebX设计成多个层次，层次间分界线清晰，每层足够开放易扩展",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Web框架",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p3",
+      "question_id": "rkdr-1669-webx-rental-q1",
+      "weight": 1,
+      "criterion": "可扩展性",
+      "correct": "可扩展性：WebX对Spring做了扩展，一个组件可扩展另一组件、也可被其他组件扩展，扩展性较好且比未经扩展的Spring更易使用",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Web框架",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p4",
+      "question_id": "rkdr-1669-webx-rental-q2",
+      "weight": 2,
+      "criterion": "空(1) MyBatis基本ORM",
+      "correct": "（1）A（MyBatis支持基本对象关系映射，能生成简单基本的DAO层方法）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "A.支持"
+      ],
+      "dimension": "持久层",
+      "source": "网站题74参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p5",
+      "question_id": "rkdr-1669-webx-rental-q2",
+      "weight": 2,
+      "criterion": "空(2) Hibernate大批量SQL调优",
+      "correct": "（2）B（单次业务超百万条规模大批量数据读取、需SQL人工调优场景，Hibernate支持差）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "B.不支持或支持差"
+      ],
+      "dimension": "持久层",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p6",
+      "question_id": "rkdr-1669-webx-rental-q2",
+      "weight": 4,
+      "criterion": "空(3)(4) 外部不可改数据源",
+      "correct": "（3）B、（4）A（部分数据源来自被监控云平台、结构不可更改且实体设计可能不合理：Hibernate支持差，MyBatis可手写SQL灵活映射）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p7",
+      "question_id": "rkdr-1669-webx-rental-q2",
+      "weight": 4,
+      "criterion": "空(5)(6) 数据库移植性",
+      "correct": "（5）A、（6）B（良好的数据库移植性：Hibernate支持不同厂商关系库，MyBatis支持差）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p8",
+      "question_id": "rkdr-1669-webx-rental-q3",
+      "weight": 4,
+      "criterion": "方法判定：水平分割",
+      "correct": "王工采用的是表分割方式中的水平分割（分割参数为“月”）",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [],
+      "dimension": "反规范化",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p9",
+      "question_id": "rkdr-1669-webx-rental-q3",
+      "weight": 2,
+      "criterion": "水平/垂直分割定义",
+      "correct": "水平分割：按记录分割，不同记录分开保存，每个子表列数相同，分割条件可以是某列或多列数据的值（如时间参数）；垂直分割：按列分割，把一条记录分开多个地方保存，每个子表行数相同，主键+部分列与主键+其余列分表、通过主键关联",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "反规范化",
+      "source": "网站题74参考答案"
+    },
+    {
+      "id": "rkdr-1669-webx-rental-p10",
+      "question_id": "rkdr-1669-webx-rental-q3",
+      "weight": 2,
+      "criterion": "水平分割优缺点",
+      "correct": "优点：降低查询时需要读取的数据量和索引页数，降低索引层数，提高查询速度；缺点：给应用增加复杂度，查询时需要多个表名，查询所有数据需要union操作",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "反规范化",
+      "source": "网站题74参考答案"
+    }
+  ]
+}

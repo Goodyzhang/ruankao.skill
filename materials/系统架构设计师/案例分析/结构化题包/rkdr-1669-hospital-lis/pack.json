@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-hospital-lis-pack",
+  "version": 1,
+  "title": "医院检验管理系统：参与者、桥接模式与状态图",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-hospital-lis",
+      "title": "检验管理系统面向对象建模",
+      "stem": "医院检验管理系统升级：登录、医生开单打印、患者APP缴费预约查看、护士采样、检验师检测、管理员作废退费、一周未缴费自动作废、检验单八状态跟踪。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号75～77"
+      },
+      "figures": [
+        {
+          "file": "../../assets/1c446434b704004c.png",
+          "caption": "图2 检验单处理状态图：代缴费/(a)/(b)/(d)/(f)/已完成与转移(c)(e)，空(a)～(f)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20251010/118bd5549de14512aa7819370a63723b.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-hospital-lis-q1",
+          "title": "问题1（8分）",
+          "prompt": "请根据题目所述需求，说明检验管理系统中有哪些参与者。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-hospital-lis-q2",
+          "title": "问题2（5分）",
+          "prompt": "医院检查设备需屏蔽不同厂商设备的控制逻辑差异，检验业务也可能发生变化。请选择合适的设计模式，说明其为何适用该场景。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-hospital-lis-q3",
+          "title": "问题3（12分）",
+          "prompt": "请根据题干描述，填写图2中的（a）～（f）空白，完成检验单处理的状态图。",
+          "complete": true,
+          "max_score": 12
+        }
+      ]
+    }
+  ]
+}

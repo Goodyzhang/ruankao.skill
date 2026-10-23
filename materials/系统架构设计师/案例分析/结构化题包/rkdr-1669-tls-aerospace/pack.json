@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-tls-aerospace-pack",
+  "version": 1,
+  "title": "宇航嵌入式TLS架构：层次、OS选型与故障处理",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-tls-aerospace",
+      "title": "宇航嵌入式设备TLS三层栈软件架构",
+      "stem": "宇航嵌入式设备研制：LRM外场快速更换、软硬件无关、任务间数据隔离、高可靠故障处理。公司提出三层栈（TLS）架构：应用层(AL)/操作系统层(OSL)/模块支持层(MSL)。李工主张VxWorks5.5类OS（快、不要隔离），总工程师主张Linux类OS（隔离安全）。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号37～39"
+      },
+      "figures": [
+        {
+          "file": "../../assets/3980ed70880ecf1c.jpg",
+          "caption": "图3-1 宇航嵌入式设备软件架构：TLS结构=AL/OSL/MSL三层栈+硬件平台",
+          "source_locator": "https://image-t.chaiding.com/ruankao/25530807fe21bbc1a16c7541c5763fa3.jpg-ruankao"
+        },
+        {
+          "file": "../../assets/3fdbd0b57cd2092e.jpg",
+          "caption": "表3-1 两种操作系统的主要差异：VxWorks5.5 vs Linux，空①～⑤",
+          "source_locator": "https://image-t.chaiding.com/ruankao/28c94f617bb10d32e7a89b573addaf7c.jpg-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-tls-aerospace-q1",
+          "title": "问题1（8分）",
+          "prompt": "用150字以内的文字，说明公司制定的TLS软件架构的层次特点，并针对上述功能需求（ ）~（ ），说明架构中各层内涵。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-tls-aerospace-q2",
+          "title": "问题2（10分）",
+          "prompt": "请说明两种操作系统的主要差异，完成表3-1中的空白部分，并针对本任务要求，用200字以内的文字说明你选择操作系统的类型和理由。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-tls-aerospace-q3",
+          "title": "问题3（7分）",
+          "prompt": "用150字以内的文字说明嵌入式系统中故障主要分哪几类？并分别给出两种常用的故障滤波算法和容错算法。",
+          "complete": true,
+          "max_score": 7
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9394-platform-quality-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§8.1.2、§8.1.3及网站137答案与解析（原样存档）",
+    "level": "教材与网站解析互相印证的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9394-platform-quality-p1perf",
+      "question_id": "rkdr-9394-platform-quality-q1",
+      "weight": 1.5,
+      "criterion": "性能名称正确且含义含响应时间或单位时间处理量",
+      "conditions": [
+        "名称与含义同时给出"
+      ],
+      "equivalents": [
+        "响应能力/吞吐量等义表述"
+      ],
+      "correct": "性能：系统的响应能力，即对某事件响应所需时间或单位时间内处理事件的个数",
+      "dimension": "质量属性",
+      "source": "教材§8.1.2；网站137解析"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p2avail",
+      "question_id": "rkdr-9394-platform-quality-q1",
+      "weight": 1.5,
+      "criterion": "可用性名称正确且含义为正常运行时间比例",
+      "conditions": [
+        "名称与含义同时给出"
+      ],
+      "equivalents": [
+        "正常工作时间所占比例"
+      ],
+      "correct": "可用性：系统能够正常运行的时间比例",
+      "dimension": "质量属性",
+      "source": "教材§8.1.2；网站137解析"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p3sec",
+      "question_id": "rkdr-9394-platform-quality-q1",
+      "weight": 1.5,
+      "criterion": "安全性名称正确且含义含'合法提供服务+阻止非授权'",
+      "conditions": [
+        "名称与含义同时给出"
+      ],
+      "equivalents": [
+        "保密性+拒绝非授权使用"
+      ],
+      "correct": "安全性：系统向合法用户提供服务的同时阻止非授权用户使用的能力",
+      "dimension": "质量属性",
+      "source": "教材§8.1.2；网站137解析"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p4mod",
+      "question_id": "rkdr-9394-platform-quality-q1",
+      "weight": 1.5,
+      "criterion": "可修改性名称正确且含义含变更代价（快速且高性价比）",
+      "conditions": [
+        "名称与含义同时给出"
+      ],
+      "equivalents": [
+        "以较高性能价格比对系统进行变更"
+      ],
+      "correct": "可修改性：能够快速地以较高的性能价格比对系统进行变更的能力",
+      "dimension": "质量属性",
+      "source": "教材§8.1.2；网站137解析"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p5test",
+      "question_id": "rkdr-9394-platform-quality-q1",
+      "weight": 1.5,
+      "criterion": "可测试性名称正确且含义为发现/隔离/定位故障",
+      "conditions": [
+        "名称与含义同时给出"
+      ],
+      "equivalents": [
+        "含测试设计执行能力的表述"
+      ],
+      "correct": "可测试性：软件发现故障并隔离、定位其故障的能力",
+      "dimension": "质量属性",
+      "source": "教材§8.1.2；网站137解析"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p6usable",
+      "question_id": "rkdr-9394-platform-quality-q1",
+      "weight": 1.5,
+      "criterion": "易用性名称正确且含义为完成指定任务的难易程度",
+      "conditions": [
+        "名称与含义同时给出"
+      ],
+      "equivalents": [
+        "操作便利/学习成本表述"
+      ],
+      "correct": "易用性：衡量用户使用一个软件产品完成指定任务的难易程度",
+      "dimension": "质量属性",
+      "source": "教材§8.1.2；网站137解析"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p7q1attr",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 2,
+      "criterion": "要求(1)判定为性能",
+      "conditions": [
+        "1s内完成交易请求→性能"
+      ],
+      "equivalents": [
+        "写'性能(Performance)'"
+      ],
+      "correct": "(1) 性能",
+      "dimension": "属性归类",
+      "source": "网站137解析；教材§8.1.2"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p8q1s1",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "性能策略一（增加计算资源或改善资源需求）",
+      "conditions": [
+        "属于性能策略族"
+      ],
+      "equivalents": [
+        "减少计算复杂度/降低资源占用"
+      ],
+      "correct": "增加计算资源",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p9q1s2",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "性能策略二（资源管理并发/数据复制或资源调度）",
+      "conditions": [
+        "属于性能策略族"
+      ],
+      "equivalents": [
+        "并发处理、缓存/副本、FIFO或优先级队列"
+      ],
+      "correct": "资源管理（并发、数据复制）或资源调度",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p10q2attr",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 2,
+      "criterion": "要求(2)判定为安全性",
+      "conditions": [
+        "信息保密与安全→安全性"
+      ],
+      "equivalents": [
+        "写'安全性(Security)'"
+      ],
+      "correct": "(2) 安全性",
+      "dimension": "属性归类",
+      "source": "网站137解析；教材§8.1.2"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p11q2s1",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "安全性策略一（抵御攻击：认证/授权/限制访问）",
+      "conditions": [
+        "属于安全性策略族"
+      ],
+      "equivalents": [
+        "身份验证、访问控制"
+      ],
+      "correct": "抵御攻击（授权、认证、限制访问）",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p12q2s2",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "安全性策略二（攻击检测/从攻击中恢复/信息审计）",
+      "conditions": [
+        "属于安全性策略族"
+      ],
+      "equivalents": [
+        "入侵检测、审计追踪"
+      ],
+      "correct": "攻击检测（入侵检测）或信息审计",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p13q3attr",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 2,
+      "criterion": "要求(3)判定为可用性（平均故障恢复时间）",
+      "conditions": [
+        "故障恢复时间<10s→可用性"
+      ],
+      "equivalents": [
+        "写'可用性(Availability)'"
+      ],
+      "correct": "(3) 可用性",
+      "dimension": "属性归类",
+      "source": "网站137解析；教材§8.1.2"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p14q3s1",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "可用性策略一（Ping/Echo或心跳）",
+      "conditions": [
+        "属于可用性策略族"
+      ],
+      "equivalents": [
+        "探活机制"
+      ],
+      "correct": "Ping/Echo或心跳",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p15q3s2",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "可用性策略二（异常或主动冗余）",
+      "conditions": [
+        "属于可用性策略族"
+      ],
+      "equivalents": [
+        "被动冗余、备用/热备"
+      ],
+      "correct": "主动冗余或异常",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p16q4attr",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 2,
+      "criterion": "要求(4)判定为可修改性（经常添加新功能或硬件升级）",
+      "conditions": [
+        "6小时内完成变更→可修改性"
+      ],
+      "equivalents": [
+        "写'可修改性(Modifiability)'"
+      ],
+      "correct": "(4) 可修改性",
+      "dimension": "属性归类",
+      "source": "网站137解析；教材§8.1.2"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p17q4s1",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "可修改性策略一（软件模块泛化或限制模块间通信）",
+      "conditions": [
+        "属于可修改性策略族"
+      ],
+      "equivalents": [
+        "模块泛化/信息隐藏"
+      ],
+      "correct": "软件模块泛化或限制模块之间通信",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    },
+    {
+      "id": "rkdr-9394-platform-quality-p18q4s2",
+      "question_id": "rkdr-9394-platform-quality-q2",
+      "weight": 1,
+      "criterion": "可修改性策略二（使用中介或延迟绑定）",
+      "conditions": [
+        "属于可修改性策略族"
+      ],
+      "equivalents": [
+        "中介者、运行时绑定"
+      ],
+      "correct": "使用中介或延迟绑定",
+      "dimension": "设计策略",
+      "source": "网站137解析；教材§8.1.3"
+    }
+  ]
+}

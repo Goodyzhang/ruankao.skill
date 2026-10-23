@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-oa-datastorage-pack",
+  "version": 1,
+  "title": "OA系统数据存储选型：文件系统/数据库/文档数据库/JSON",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-oa-datastorage",
+      "title": "办公自动化系统数据架构（存储方式选型）",
+      "stem": "某软件公司开发OA系统（公文办理、员工管理、考勤、报销审批）。王工主张文件系统，李工建议数据库，项目组采纳李工意见。后续比较文档数据库与关系数据库，并最终采用MongoDB（JSON存储）。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号18～20"
+      },
+      "figures": [
+        {
+          "file": "../../assets/1433f14fc8dd07d8.png",
+          "caption": "表：数据库管理系统和文件系统存储方式比较，空号(1)(2)(3)(4)位置原样保留",
+          "source_locator": "https://image-t.chaiding.com/ruankao/7f31da55df956dc03ad49385e80d3925.png-ruankao"
+        },
+        {
+          "file": "../../assets/ed561b13f08a84bb.png",
+          "caption": "表4-2：文档数据库和关系数据库比较，空号(1)(2)(3)(4)位置原样保留",
+          "source_locator": "https://image-t.chaiding.com/ruankao/75dcc12e6003546fcb1e95d650aa8bbc.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-oa-datastorage-q1",
+          "title": "问题1（8分）",
+          "prompt": "请从设计难度、数据冗余程度、数据架构、应用扩展性等4个方面对关系型数据库管理系统和文件系统两种数据存储方式进行比较，填写下表中（ ）～（4）。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-oa-datastorage-q2",
+          "title": "问题2（8分）",
+          "prompt": "对系统的核心业务需求进行认真分析后，公司的资深架构师张工提出采用文档数据库代替日常使用的关系数据库。请首先分析比较文档数据库和关系数据库在数据模型、读写性能、模式扩展性、数据一致性等方面的差异，填写下表4-2中（ ）～（4）的空白。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-oa-datastorage-q3",
+          "title": "问题3（9分）",
+          "prompt": "经过讨论，最终采用了MongoDB作为系统的数据库。MongoDB采用JSON格式来存储数据，请用300字以内的文字说明JSON在数据存储、修改和传输方面的优点。",
+          "complete": true,
+          "max_score": 9
+        }
+      ]
+    }
+  ]
+}

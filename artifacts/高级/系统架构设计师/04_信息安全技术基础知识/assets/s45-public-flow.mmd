@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant A as A：持SK_A
+    participant B as B：持SK_B
+    Note over A,B: 前提：双方可靠取得对方公钥<br/>N_a由A生成；N_b由B生成
+    A->>B: ① E_PK_B[N_a,ID_A]
+    B->>A: ② E_PK_A[N_a,N_b]
+    A->>B: ③ E_PK_B[N_b]（A→B）
+    A->>B: ④ M=E_PK_B[E_SK_A[K_s]]
+    Note over B: 本地：先SK_B处理外层<br/>再PK_A处理内层
+    Note over A,B: E_SK_A是教材旧式RSA记号；现代签名用Sign/Verify<br/>本图用于钥属与流程辨识，不作无条件抗攻击保证

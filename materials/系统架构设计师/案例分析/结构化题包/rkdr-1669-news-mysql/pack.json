@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-news-mysql-pack",
+  "version": 1,
+  "title": "新闻社交软件：主从复制三问（选做题20分）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-news-mysql",
+      "title": "新闻社交类软件MySQL扩展（读写分离+混合存储）",
+      "stem": "新闻社交软件MySQL压力增大；张工读写分离主从复制、李工NoSQL重构、刘工Key-Value+MySQL混合，最终采用刘工方案。",
+      "complete": true,
+      "max_score": 20,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号118～120（选做题20分）"
+      },
+      "figures": [
+        {
+          "file": "../../assets/d6c01dd2c93b3268.jpg",
+          "caption": "图4-1 张工读写分离主从复制方案架构图",
+          "source_locator": "https://image-t.chaiding.com/ruankao/e1b69f604cd1af1fea7c33f5fa219d94.jpg-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-news-mysql-q1",
+          "title": "问题1（6分）",
+          "prompt": "张工方案中采用了读写分离，主从复制策略。简述主从复制给系统带来的好处。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-news-mysql-q2",
+          "title": "问题2（6分）",
+          "prompt": "MySQL数据库中，主从复制是通过binary log来实现主从服务器的数据同步。请简述主从复制的过程。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-news-mysql-q3",
+          "title": "问题3（8分）",
+          "prompt": "主从复制可以采用同步、异步、半同步复制。请简述每种复制技术的特点。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

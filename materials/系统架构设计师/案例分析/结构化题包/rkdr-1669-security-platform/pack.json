@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-security-platform-pack",
+  "version": 1,
+  "title": "信息安全支撑平台",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-security-platform",
+      "title": "信息安全支撑平台",
+      "stem": "阅读以下关于系统设计的叙述，回答问题。\n【说明】\n某软件公司拟开发一套信息安全支撑平台，为客户的局域网业务环境提供信息安全保护。主要需求：1.为局域网业务环境提供用户身份鉴别与资源访问授权功能；2.为局域网环境中交换的网络数据提供加密保护；3.为服务器和终端机存储的敏感持久数据提供加密保护；4.保护的主要实体对象包括局域网内交换的网络数据包、文件服务器中的敏感数据文件、数据库服务器中的敏感关系数据和终端机用户存储的敏感数据文件；5.服务器中存储的敏感数据按安全管理员配置的权限访问；6.业务系统生成的单个敏感数据文件可能会达到数百兆的规模；7.终端机用户存储的敏感数据为用户私有；8.局域网业务环境的总用户数在100人以内。",
+      "complete": false,
+      "max_score": 3,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号213"
+      },
+      "figures": [
+        {
+          "file": "../../assets/ae21ff3ea04d05ab.jpg",
+          "caption": "数字信封加密后文件结构图",
+          "source_locator": "网站题213附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-security-platform-q1",
+          "title": "问题1（分值未标）",
+          "prompt": "采用基于公钥体系认证机制的原因分析。",
+          "complete": true,
+          "max_score": 1
+        },
+        {
+          "id": "rkdr-1669-security-platform-q2",
+          "title": "问题2（分值未标）",
+          "prompt": "数字信封加密采用块加密还是流加密及加解密过程描述。",
+          "complete": true,
+          "max_score": 1
+        },
+        {
+          "id": "rkdr-1669-security-platform-q3",
+          "title": "问题3（分值未标）",
+          "prompt": "加解密API与透明加密解释及选型。",
+          "complete": true,
+          "max_score": 1
+        }
+      ]
+    }
+  ]
+}

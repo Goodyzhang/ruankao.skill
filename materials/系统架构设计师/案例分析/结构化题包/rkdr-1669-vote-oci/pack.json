@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-vote-oci-pack",
+  "version": 1,
+  "title": "在线投票系统OCI与ORM",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-vote-oci",
+      "title": "在线投票系统OCI与ORM",
+      "stem": "阅读以下关于Web系统架构的设计的叙述，回答下列问题。\n【说明】\n某信息技术公司计划开发一套在线投票系统，用于为市场调研、信息调查和销售反馈等业务提供服务。该系统计划通过大量宣传和奖品鼓励的方式快速积累用户，当用户规模扩大到一定程度时，开始联系相关企业提供信息服务，并按照信息服务种类和用户投票数量收取费用。\n为了降低开发成本和提高开发效率，项目组经过讨论后决定采用轻量级Java EE开发框架设计系统应用架构。在应用架构设计中，除了满足系统主要功能需求，还需要考虑的因素包括：1.项目开发采用Oracle数据库存储数据，但将来可能移植到其他数据库平台；2.系统开发过程中尽可能降低或者消除SQL语句开发的工作量；3.投票系统中数据之间的关系复杂，需要支持数据对象的聚合和继承等关系。\n项目组基于MVC模式设计出了投票系统的架构，包括表示层、业务逻辑层、数据持久层和数据层。在具体讨论数据持久层采用哪种技术方案时，老王建议采用成熟的客户端库函数，小李则认为ORM更加灵活，更适合作为投票系统数据持久层开发技术。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号215～216～217"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-vote-oci-q1",
+          "title": "问题1（5分）",
+          "prompt": "300字内说明什么是数据持久层及为项目开发带来的好处。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-vote-oci-q2",
+          "title": "问题2（12分）",
+          "prompt": "项目组应选用哪种技术实现数据持久层？300字内说明采用两种技术的优缺点。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-vote-oci-q3",
+          "title": "问题3（8分）",
+          "prompt": "ORM主流有Hibernate和MyBatis/MyBatis Plus，200字内说明区别。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-cassandra-hdfs-pack",
+  "version": 1,
+  "title": "电商平台：MySQL/Cassandra/HDFS/Kafka数据架构升级",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-cassandra-hdfs",
+      "title": "电商平台数据存储升级（Cassandra+HDFS+Kafka）",
+      "stem": "电商平台升级数据存储：MySQL遇查询瓶颈、备份复杂、非结构化数据难处理；引入Cassandra处理高并发用户与商品数据、HDFS存储非结构化数据、Kafka支撑实时数据流。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号59～61"
+      },
+      "figures": [
+        {
+          "file": "../../assets/302697b51355def4.png",
+          "caption": "MySQL与Cassandra特性对比表：数据模型/可伸缩性/一致性模型/适用场景，空(1)～(4)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/f04d0a1a-a9a8-42ad-a377-d0af91d2634e.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-cassandra-hdfs-q1",
+          "title": "问题1（8分）",
+          "prompt": "请分析并比较MySQL与Cassandra在数据模型、可扩展性、一致性模型及适用场景方面的差异，并填写下表。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-cassandra-hdfs-q2",
+          "title": "问题2（6分）",
+          "prompt": "在引入HDFS作为非结构化数据存储解决方案时，请阐述HDFS在数据可靠性、伸缩性和性能方面的优势，并说明HDFS是如何实现这些优势的。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-cassandra-hdfs-q3",
+          "title": "问题3（11分）",
+          "prompt": "考虑到电商平台对实时数据分析的需求，团队计划将部分实时数据从Cassandra同步到Kafka中，以支持实时数据流处理和分析。请说明为何选择Kafka作为实时数据流处理的中间件。",
+          "complete": true,
+          "max_score": 11
+        }
+      ]
+    }
+  ]
+}

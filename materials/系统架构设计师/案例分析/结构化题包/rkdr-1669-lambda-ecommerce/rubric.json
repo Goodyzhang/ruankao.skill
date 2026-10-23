@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-lambda-ecommerce-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-28～30参考答案；教程第2版§19.3.5/§6.5.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p1",
+      "question_id": "rkdr-1669-lambda-ecommerce-q1",
+      "weight": 2,
+      "criterion": "容错性好",
+      "correct": "优点①容错性好：出错可修复算法或从头重算视图",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题28参考答案；教程第2版§19.3.5"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p2",
+      "question_id": "rkdr-1669-lambda-ecommerce-q1",
+      "weight": 2,
+      "criterion": "查询灵活",
+      "correct": "优点②查询灵活度高：批处理层允许针对任何数据临时查询",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题28参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p3",
+      "question_id": "rkdr-1669-lambda-ecommerce-q1",
+      "weight": 1,
+      "criterion": "易伸缩",
+      "correct": "优点③易伸缩：批处理层/加速层/服务层完全分布式，加机器即可扩规模",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题28参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p4",
+      "question_id": "rkdr-1669-lambda-ecommerce-q1",
+      "weight": 1,
+      "criterion": "易扩展",
+      "correct": "优点④易扩展：添加视图只需给主数据集添加几个新函数",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题28参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p5",
+      "question_id": "rkdr-1669-lambda-ecommerce-q1",
+      "weight": 1,
+      "criterion": "缺点表述",
+      "correct": "缺点至少两条：全场景覆盖编码开销/重复离线训练益处不大/重新部署迁移成本高",
+      "conditions": [
+        "缺点至少两条"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题28参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p6",
+      "question_id": "rkdr-1669-lambda-ecommerce-q1",
+      "weight": 2,
+      "criterion": "选型对比理由",
+      "correct": "采用理由：Hadoop主要工作在离线批处理模式，实时数据处理能力不足；Lambda能同时处理离线和实时数据，故本系统更适合",
+      "conditions": [
+        "对比落点明确"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题28参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p7",
+      "question_id": "rkdr-1669-lambda-ecommerce-q2",
+      "weight": 2,
+      "criterion": "高并发高性能",
+      "correct": "NoSQL优点①支持高并发数据访问，性能较高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题29参考答案；教程第2版§6.5.2"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p8",
+      "question_id": "rkdr-1669-lambda-ecommerce-q2",
+      "weight": 2,
+      "criterion": "存储结构松散",
+      "correct": "NoSQL优点②数据存储结构松散，灵活支持多种数据格式",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题29参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p9",
+      "question_id": "rkdr-1669-lambda-ecommerce-q2",
+      "weight": 2,
+      "criterion": "海量存储横向扩展",
+      "correct": "NoSQL优点③支持海量数据存储，易于横向扩展",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题29参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p10",
+      "question_id": "rkdr-1669-lambda-ecommerce-q2",
+      "weight": 2,
+      "criterion": "分布式高可用",
+      "correct": "NoSQL优点④基于分布式数据存储，不存在单点故障和性能瓶颈，系统可用性高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "NoSQL",
+      "source": "网站题29参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p11",
+      "question_id": "rkdr-1669-lambda-ecommerce-q3",
+      "weight": 2,
+      "criterion": "监督学习特点",
+      "correct": "（1）监督学习：通过对已有标记数据进行学习，训练模型能从未标记数据中进行预测和分类",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题30参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p12",
+      "question_id": "rkdr-1669-lambda-ecommerce-q3",
+      "weight": 2,
+      "criterion": "无监督学习",
+      "correct": "（2）不需要使用已标记的数据进行训练→无监督学习",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题30参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p13",
+      "question_id": "rkdr-1669-lambda-ecommerce-q3",
+      "weight": 2,
+      "criterion": "半监督学习",
+      "correct": "（3）既使用未标记数据训练提高泛化能力，又使用少量已标记数据训练提高精确性→半监督学习",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题30参考答案"
+    },
+    {
+      "id": "rkdr-1669-lambda-ecommerce-p14",
+      "question_id": "rkdr-1669-lambda-ecommerce-q3",
+      "weight": 2,
+      "criterion": "强化学习特点",
+      "correct": "（4）强化学习：通过让模型与环境进行交互并从中学习，以实现最优策略的目标",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题30参考答案"
+    }
+  ]
+}

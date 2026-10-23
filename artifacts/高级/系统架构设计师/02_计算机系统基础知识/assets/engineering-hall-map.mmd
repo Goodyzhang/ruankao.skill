@@ -1,0 +1,10 @@
+flowchart TB
+  subgraph STAGE["时间维定位：当前运行阶段"]
+    direction LR
+    A["明确问题"] --> B["确定目标"] --> C["系统综合：提出候选"]
+    C --> D["系统分析：比较候选"] --> E["优化"] --> F["决策"] --> G["实施"]
+  end
+  K["知识维：工程、管理、法律等专业知识"] -.->|"支持逻辑工作"| STAGE
+  N["逻辑活动在时间阶段内发生；分析不自动使系统变成研制阶段"]
+  classDef core fill:#e5f5f6,stroke:#187e8b,color:#153451;
+  class A,B,C,D,E,F,G core;

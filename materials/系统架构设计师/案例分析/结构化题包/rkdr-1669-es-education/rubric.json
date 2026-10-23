@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-es-education-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-68～70参考答案；教程第2版§6.5核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-es-education-p1",
+      "question_id": "rkdr-1669-es-education-q1",
+      "weight": 2,
+      "criterion": "空(1) MySQL搜索引擎原理",
+      "correct": "（1）基于SQL的查询引擎",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "搜索引擎",
+      "source": "网站题68参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-es-education-p2",
+      "question_id": "rkdr-1669-es-education-q1",
+      "weight": 2,
+      "criterion": "空(2) ES索引机制",
+      "correct": "（2）分词、建立倒排索引",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "搜索引擎",
+      "source": "网站题68参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p3",
+      "question_id": "rkdr-1669-es-education-q1",
+      "weight": 2,
+      "criterion": "空(3) ES数据模型",
+      "correct": "（3）面向文档为主的灵活的数据模型",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "文档模型"
+      ],
+      "dimension": "搜索引擎",
+      "source": "网站题68参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p4",
+      "question_id": "rkdr-1669-es-education-q1",
+      "weight": 2,
+      "criterion": "空(4) MySQL高可用",
+      "correct": "（4）默认是单机模式，需要额外配置主从等高可用模式",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "搜索引擎",
+      "source": "网站题68参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p5",
+      "question_id": "rkdr-1669-es-education-q1",
+      "weight": 2,
+      "criterion": "空(5) MySQL适用场景",
+      "correct": "（5）小规模数据的在线事务处理和查询",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "OLTP"
+      ],
+      "dimension": "搜索引擎",
+      "source": "网站题68参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p6",
+      "question_id": "rkdr-1669-es-education-q2",
+      "weight": 2,
+      "criterion": "分词原理",
+      "correct": "分词原理：将输入文本字符串切分成独立词汇单元（Token）以便索引和查询匹配；过程含字符过滤（去标点停用词）、词汇切分、词汇归一化（转小写）",
+      "conditions": [
+        "三步骤"
+      ],
+      "equivalents": [],
+      "dimension": "搜索引擎",
+      "source": "网站题69参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p7",
+      "question_id": "rkdr-1669-es-education-q2",
+      "weight": 3,
+      "criterion": "自定义分词器",
+      "correct": "自定义分词器：通过插件机制或配置自定义分析器实现；自定义分析器=自定义字符过滤器+分词器+词汇过滤器；针对在线教育专业术语建自定义词汇表优先匹配；可调整分词策略（基于统计/基于规则）",
+      "conditions": [
+        "机制+业务落点"
+      ],
+      "equivalents": [],
+      "dimension": "搜索引擎",
+      "source": "网站题69参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p8",
+      "question_id": "rkdr-1669-es-education-q3",
+      "weight": 2,
+      "criterion": "binlog同步",
+      "correct": "基于binlog的数据同步：灵活性高，可精确控制同步数据；工具如Logstash、Canal",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据同步",
+      "source": "网站题70参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p9",
+      "question_id": "rkdr-1669-es-education-q3",
+      "weight": 2,
+      "criterion": "插件同步",
+      "correct": "基于MySQL的插件同步：插件直接在MySQL中捕获数据变更并同步ES，如go-mysql-elasticsearch",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据同步",
+      "source": "网站题70参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p10",
+      "question_id": "rkdr-1669-es-education-q3",
+      "weight": 2,
+      "criterion": "同步双写",
+      "correct": "同步双写：MySQL修改操作同时写入Elasticsearch",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据同步",
+      "source": "网站题70参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p11",
+      "question_id": "rkdr-1669-es-education-q3",
+      "weight": 2,
+      "criterion": "异步双写",
+      "correct": "异步双写：修改操作先写入MQ等消息中间件，再从MQ写入Elasticsearch",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据同步",
+      "source": "网站题70参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-education-p12",
+      "question_id": "rkdr-1669-es-education-q3",
+      "weight": 2,
+      "criterion": "定时任务同步",
+      "correct": "定时任务同步：Cron Job结合SQL查询与批量导入定期同步",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据同步",
+      "source": "网站题70参考答案"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'PingFang SC, Microsoft YaHei, sans-serif','fontSize':'23px','primaryColor':'#e9f1f5','primaryTextColor':'#183149','lineColor':'#386b89'},'flowchart':{'htmlLabels':true,'curve':'linear','nodeSpacing':32,'rankSpacing':42}}}%%
+flowchart TB
+ TPS[3.2.3 基础事务处理<br/>收货、领料、订单与结算]
+ TPS -->|提供可靠业务数据| NEXT[后续管理/决策所需基础信息]
+ REL[连续性条件<br/>关键事务需适当容错、冗余及恢复]
+ ACCESS[权限条件<br/>谁可查、改、执行业务]
+ BUILD[建设条件<br/>规则结构化可用结构化生命周期法<br/>采购产品仍核配置、接口与业务适配]
+ REL -.->|保障执行| TPS
+ ACCESS -.->|约束操作| TPS
+ BUILD -.->|选择建设方式| TPS
+ NEXT ~~~ NOTE[基础层描述业务职责，不衡量重要程度<br/>实线箭头＝提供信息；虚线＝保障或约束<br/>三个条件并列，不承诺零故障]
+ classDef note fill:#fff2d7,stroke:#bd8b48;
+ class NOTE note;

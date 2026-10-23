@@ -1,0 +1,34 @@
+[
+  {
+    "source_question": "26",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 26,
+    "paper": "第2题 系统设计与建模",
+    "stem": "第2题 系统设计与建模",
+    "subquestion": {
+      "site_number": 26,
+      "label": "1、UML时序图的三种消息及其概念",
+      "prompt": "UML时序图的三种消息及其概念",
+      "type": "解答题",
+      "max_score": null
+    },
+    "source_answer": "同步消息：发送者把控制传递给接收者，然后停止活动，等待接收者放弃或返回控制，用来表示同步的意义。异步消息：发送者通过消息把信号传递给接收者，然后继续自己的活动，不等待接收者返回消息或控制；接收者和发送者并发工作。返回消息：表示从过程调用返回。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "27",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 27,
+    "paper": "第2题 系统设计与建模",
+    "stem_same_as_q26": "第2题 系统设计与建模 问答组，与题26同组",
+    "subquestion": {
+      "site_number": 27,
+      "label": "2、系统分析设计过程中时序图和协作图两种交互图的选取原则",
+      "prompt": "系统分析设计过程中时序图和协作图两种交互图的选取原则",
+      "type": "解答题",
+      "max_score": null
+    },
+    "source_answer": "时序图选取原则：强调时间顺序（展示消息传递的时间顺序与动态行为、事件发生顺序）；展示交互的时间线（各对象在不同时间点的状态变化）；描述复杂交互场景（多对象复杂交互按时间线展示先后顺序）。\n协作图选取原则：强调对象间的关系（链接与关系结构、静态连接与通信路径）；展示对象的结构关系（如何协作完成任务、静态结构与协作方式）；突出对象间的通信（展示通信与交互而非时间顺序）。",
+    "source_analysis": "无（网站仅给答案）"
+  }
+]

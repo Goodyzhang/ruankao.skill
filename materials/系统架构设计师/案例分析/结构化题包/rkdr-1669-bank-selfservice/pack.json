@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-bank-selfservice-pack",
+  "version": 1,
+  "title": "银行自助服务系统",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-bank-selfservice",
+      "title": "银行自助服务系统",
+      "stem": "阅读以下关于系统设计的说明，回答下列问题。\n【说明】\n某银行计划开发一套自助服务系统，旨在提高客户服务效率和满意度。该系统将支持账户查询、转账、存款、取款等多种功能。在设计阶段，团队成员对于系统核心组件的设计、系统的可靠性保障以及特定功能实现的方式存在分歧。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号186～187～188"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-bank-selfservice-q1",
+          "title": "问题1（10分）",
+          "prompt": "OOD类图填空：基类/控制类/边界类/自助机服务类与身份验证类关系/账户类与交易记录类关系。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-bank-selfservice-q2",
+          "title": "问题2（10分）",
+          "prompt": "300字内说明如何确保系统的可靠性。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-bank-selfservice-q3",
+          "title": "问题3（5分）",
+          "prompt": "转账功能为什么适合中介者模式（300字内）。",
+          "complete": true,
+          "max_score": 5
+        }
+      ]
+    }
+  ]
+}

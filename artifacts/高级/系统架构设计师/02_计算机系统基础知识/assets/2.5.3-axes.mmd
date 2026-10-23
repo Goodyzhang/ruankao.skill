@@ -1,0 +1,33 @@
+---
+title: 2.5.3 网络技术：同一网络可按不同轴描述
+---
+flowchart TB
+  range ~~~ topology
+  topology ~~~ media
+  example[本例：一台交换机<br/>用网线连接楼内多台终端]
+  subgraph range[观察轴一：覆盖范围]
+    lan[LAN：局部范围]
+    man[MAN：城市范围]
+    wan[WAN：跨地区范围]
+  end
+  subgraph topology[观察轴二：物理连接形状]
+    star[星型：围绕中心连接]
+    others[其他形状：树、总线、环、网状<br/>按实际连接关系识别]
+  end
+  subgraph media[观察轴三：传输介质]
+    wired[有线：使用线缆]
+    wireless[无线：使用无线信道]
+  end
+  example -->|本例范围| lan
+  example -->|本例形状| star
+  example -->|本例介质| wired
+  scope[不同轴可以同时成立<br/>LAN 不指定必用哪种拓扑或介质]
+  lan -.->|共同描述| scope
+  star -.->|共同描述| scope
+  wired -.->|共同描述| scope
+  classDef picked fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef alternatives fill:#f2f4f6,stroke:#89949e,color:#394b5a;
+  classDef boundary fill:#fff4df,stroke:#b0803e,color:#573814;
+  class example,lan,star,wired picked;
+  class man,wan,others,wireless alternatives;
+  class scope boundary;

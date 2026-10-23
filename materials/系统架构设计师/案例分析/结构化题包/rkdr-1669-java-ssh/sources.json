@@ -1,0 +1,51 @@
+[
+  {
+    "source_question": "4",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 4,
+    "paper": "试题五（25分）",
+    "stem": "阅读以下关于Java企业级应用系统开发架构的叙述，根据要求回答问题。\n[说明]\n某软件公司承担了某中小型企业应用软件开发任务，进度要求紧迫。为了按时完成任务，选择合适的企业应用系统开发架构非常重要。项目组在进行方案论证时，项目组成员提出了两种开发思路。\n刘工建议采用J2EE 5.0和EJB 3.0进行开发。理由是J2EE定义了标准的应用开发体系结构和部署环境，EJB是J2EE的基础和核心。J2EE 5.0主要目标是简化开发，相比EJB 2.1，EJB 3.0具有很多改进和提高。\n杜工建议采用Struts、Spring和Hibenate轻量级开源框架相结合的方式。理由是随着Java开源项目阵营的发展壮大，一些基于POJOs(Plan Old Java Objects)的开源框架被广泛地引入到Java企业应用开发中来，与重量级的EJB框架相比，这些轻量级的框架有很多优点。\n项目组仔细比较分析了两种方案的特点、优点和不足之处。认为杜工和刘工的建议都合理，但是从结合当前项目实际情况出发，最后决定采用杜工的建议。",
+    "stem_typos": "原站拼写：Hibenate（应为 Hibernate）、Plan Old Java Objects（应为 Plain Old Java Objects）；按规则保留原文，校订在旁注",
+    "subquestion": {
+      "site_number": 4,
+      "label": "问题1（6分）",
+      "prompt": "Java企业级应用框架一般被划分为3个层次，请用150字以内的文字说明都有哪3个层次?功能分别是什么?",
+      "type": "解答题",
+      "max_score": 6
+    },
+    "source_answer": "（1）表现层。对应视图(View)。用于为从客户端发来的请求服务的对象及其行为，用于展现数据以及负责View组件实现模式、组件在View显示粒度、页面跳转，以及事件触发等功能。\n（2）业务逻辑组件层。对应控制器(Controller)。用于支持由表现层发起的(某些情况下也可能由持久层直接发起)业务数据的逻辑处理。\n（3）持久层。实现持久化存储，对应模型(Model)。用于支持外部资源通信。例如，与数据库交互数据等。",
+    "source_analysis": "详细解析给出：表现层建立应用系统界面对应View（如JSF，事件驱动、IoC实现请求前后处理）；业务逻辑组件层开发应用逻辑对应Controller（如EJB3.0 Session Bean，松耦合组件）；持久层实现持久化存储对应Model（如EJB3.0实体Bean，吸收Hibernate思想的O/R Mapping模式）。"
+  },
+  {
+    "source_question": "5",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 5,
+    "paper": "试题五（25分）",
+    "stem_same_as_q4": "某软件公司企业应用开发，刘工 J2EE5.0+EJB3.0 vs 杜工 Struts+Spring+Hibernate 轻量级框架，最终采用杜工方案；全文见 source-capture-4.json",
+    "subquestion": {
+      "site_number": 5,
+      "label": "问题2（12分）",
+      "prompt": "请用200字以内的文字叙述Struts、Spring和Hibernate开源框架特点和结合方式。",
+      "type": "解答题",
+      "max_score": 12
+    },
+    "source_answer": "（1）Struts框架的组件在页面中显示的粗粒度，以及框架类的限制在很多情况下会表现得过于死板，给表示层的开发会带来一些额外的代码开销。（2）Spring框架采用依赖注入使得它可以很容易地实现Bean的装配，提供了简洁的AOP并据此实现事务管理等，但是它不具备处理应用分布式的能力。（3）Hibernate是一个开源的O/R Mapping框架，对JDBC进行了非常轻量级的对象封装，可应用在任何使用JDBC的场合，可在应用EJB的J2EE框架中取代CMP完成数据持久化；使用Java反射机制而不是字节码增强程序实现透明性；使用简单；映射灵活性出色，支持各种关系数据库从1:1到m:n的各种复杂关系；缺点是限制所使用的对象模型（如一个持久性类不能映射到多个表）。（注：网站原文拼写Hiberhate/Hibernat等，此处已校订）网站另注：以上意思对即可给分。",
+    "source_analysis": "详细解析补充：Struts出现早、使用广、现成标签多；Spring是业务组件层轻量级框架，基于IoC+AOP，支持POJO编程，不具备分布式能力，模块可分离配置体现灵活性优于EJB3.0；Hibernate与iBATIS对比：Hibernate自动生成SQL，iBATIS要求开发者编写SQL，以工作量和移植性让步换取更大自由空间。"
+  },
+  {
+    "source_question": "6",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 6,
+    "paper": "试题五（25分）",
+    "stem_same_as_q4": "某软件公司企业应用开发，J2EE vs 轻量级框架对比选型；全文见 source-capture-4.json",
+    "subquestion": {
+      "site_number": 6,
+      "label": "问题3（7分）",
+      "prompt": "请用200字以内的文字说明基于Struts、Spring和Hibernate的轻量级框架与基于EJB的重量级框架解决问题的侧重点有什么不同?",
+      "type": "解答题",
+      "max_score": 7
+    },
+    "source_answer": "轻量级框架侧重于减小开发的复杂度，相应的它的处理能力便有所减弱(如事务功能弱、不具备分布式处理能力)，比较适用于开发中小型企业应用。\n重量级框架的EJB框架则强调高可伸缩性，适用于开发大型企业应用。在EJB体系结构中，一切与基础结构服务相关的问题和底层分配问题都由应用程序容器或服务器来处理，且EJB容器通过减少数据库访问次数及分布式处理等方式提供了专门的系统性能解决方案，能够充分解决系统性能问题。",
+    "source_analysis": "详细解析补充：轻量级基于POJOs不依赖容器提高开发调试效率，开源社区提供快速构建工具与参考代码（Tomcat+Spring+Hibernate为中小型应用常见选择）；轻量级与重量级互补而非否定；EJB3.0也在轻量化；大型应用或可能扩展的中小型应用可结合两者。"
+  }
+]

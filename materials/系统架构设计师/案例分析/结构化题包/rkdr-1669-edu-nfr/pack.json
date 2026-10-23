@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-edu-nfr-pack",
+  "version": 1,
+  "title": "在线教育课程管理系统：非功能需求归类与需求/安全要素简答",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-edu-nfr",
+      "title": "在线教育课程管理系统（需求与质量属性综合）",
+      "stem": "某在线教育平台在线课程管理系统：课程发布、视频播放、在线测试、学员管理、学习进度追踪、教师评价；非功能性需求（a）1000并发用户、（b）缓冲不超2秒、（c）99.9%可用性、（d）界面直观易用、（e）防DDoS、（f）测试提交响应不超2秒、（g）备份恢复不超30分钟、（h）多语言支持。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号1～3"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-edu-nfr-q1",
+          "title": "问题1（8分）",
+          "prompt": "请将上述非功能性需求（a）～（h）归类到性能、安全性、可用性、易用性这四类非功能性需求。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-edu-nfr-q2",
+          "title": "问题2（7分）",
+          "prompt": "软件需求可以分为3个不同的层次，请以200字以内的文字分别介绍，并说明“观看学习视频可以随时暂停、重放或调整播放速度”属于哪个层次的需求。",
+          "complete": true,
+          "max_score": 7
+        },
+        {
+          "id": "rkdr-1669-edu-nfr-q3",
+          "title": "问题3（10分）",
+          "prompt": "请以200字以内的文字介绍信息安全的五个要素及其含义。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

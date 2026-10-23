@@ -1,0 +1,16 @@
+flowchart TB
+ subgraph PLAN["本例的计划输入：资料 / 计划 / 方法"]
+ direction LR
+ PDM["PDM 产品数据管理<br/>产品结构、版本与变更"] -->|提供产品结构| BOM["BOM 物料清单<br/>组成件与用量"]
+ MPS["MPS 主生产计划<br/>产品、数量与日期"] -->|主计划输入| MRP["MRP 物料需求计划<br/>计算净需求"]
+ BOM -->|物料展开| MRP
+ INV["库存信息"] -->|现有可用量| MRP
+ end
+ CONTEXT["业务系统可集成配合<br/>部署边界依具体实现"]
+ CONTEXT --- ERP
+ ERP["ERP<br/>协调资源与计划"] -.可交换计划/实绩.- MES["MES<br/>跟踪生产执行"]
+ ERP -.可交换库存/业务数据.- WMS["WMS<br/>仓内收发与作业"]
+ MRP -->|物料计划支持| ERP
+ MES -.执行和用料状态可协同.- WMS
+ NOTE["SFC 需按语境<br/>本教材制造介绍与 MES 并用<br/>工程文档可指车间控制<br/>某产品也指追踪实例标识"]
+ CONTEXT --- NOTE

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-logistics-microsvc-pack",
+  "version": 1,
+  "title": "物流配送系统",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-logistics-microsvc",
+      "title": "物流配送系统",
+      "stem": "阅读以下关于Web物流配送系统的架构设计描述，回答问题1至问题3。\n【说明】\n某物流平台计划开发一个支持全球多区域仓库的智能配送系统，需处理订单分拣、路径优化、实时追踪及动态库存管理。系统需应对每秒万级订单量、跨区域数据同步和高可用性需求，计划使用消息队列和分布式数据库。关键设计因素包括：(1)订单状态需实时同步至多个仓库系统；(2)路径优化需结合实时交通数据和天气信息；(3)系统需支持故障自动切换和数据一致性。\n项目团队经过讨论，决定采用微服务架构。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号165～166～167"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-logistics-microsvc-q1",
+          "title": "问题1（10分）",
+          "prompt": "以300字以内的文字简述微服务架构相较于传统单体架构的主要优势。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-1669-logistics-microsvc-q2",
+          "title": "问题2（7分）",
+          "prompt": "在订单状态同步场景中，需选择一种数据同步方案。请比较消息队列（如Kafka）和数据库触发器（如MySQL的触发器）的优缺点，并推荐一种方案。",
+          "complete": true,
+          "max_score": 7
+        },
+        {
+          "id": "rkdr-1669-logistics-microsvc-q3",
+          "title": "问题3（8分）",
+          "prompt": "为确保路径优化服务的实时性和准确性，请列举至少4种技术策略。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

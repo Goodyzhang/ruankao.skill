@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-bike-patterns-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-149参考答案；教程第2版§5.3.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-bike-patterns-p1",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(1)注册",
+      "correct": "(1)=D.注册（用户管理的子用例）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案；用例图核验"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p2",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(2)用户查询",
+      "correct": "(2)=F.用户查询（注册的include子用例）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p3",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(3)用户管理",
+      "correct": "(3)=C.用户管理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p4",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(4)身份认证",
+      "correct": "(4)=R.身份认证（连外部身份认证系统）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p5",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(5)用户",
+      "correct": "(5)=A.用户（左侧参与者）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p6",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(6)数据存储管理",
+      "correct": "(6)=N.数据存储管理（连外部存储）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p7",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(7)单车数据存储管理",
+      "correct": "(7)=P.单车数据存储管理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p8",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(8)归还",
+      "correct": "(8)=I.归还（extend车辆维修）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p9",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(9)共享单车",
+      "correct": "(9)=B.共享单车（下方参与者）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p10",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(10)费用管理",
+      "correct": "(10)=K.费用管理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p11",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(11)保证金管理",
+      "correct": "(11)=L.保证金管理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p12",
+      "question_id": "q1",
+      "weight": 1,
+      "criterion": "空(12)费用结算",
+      "correct": "(12)=Q.费用结算",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p13",
+      "question_id": "q2",
+      "weight": 5,
+      "criterion": "三类模式作用",
+      "correct": "创建型：主要用于创建对象，为设计类实例化新对象提供指南；结构型：主要用于处理类或对象的组合，对类如何设计以形成更大的结构提供指南；行为型：主要用于描述类或对象的交互以及职责的分配，对类之间交互以及分配责任的方式提供指南",
+      "conditions": [
+        "三类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "设计模式",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p14",
+      "question_id": "q3",
+      "weight": 3,
+      "criterion": "要求(6)策略模式",
+      "correct": "积分折扣（需求6）：选择策略模式——在具有公共接口的独立类中定义每个计算，创建各促销类从同一超类继承，每个类有相同名称的标准接口方法，按会员等级计算折扣金额",
+      "conditions": [
+        "模式+方案"
+      ],
+      "equivalents": [],
+      "dimension": "设计模式",
+      "source": "网站题149参考答案"
+    },
+    {
+      "id": "rkdr-1669-bike-patterns-p15",
+      "question_id": "q3",
+      "weight": 5,
+      "criterion": "要求(8)适配器模式",
+      "correct": "合作伙伴更换（需求8）：选择适配器模式——增加适配器类转换接口到客户端期望的接口；为系统其他部分提供不变的调用方法；为集成不同供应商的优惠计算类编写适配器子类，将系统调用映射到供应商类；更换供应商只需新增适配器子类",
+      "conditions": [
+        "模式+方案"
+      ],
+      "equivalents": [],
+      "dimension": "设计模式",
+      "source": "网站题149参考答案"
+    }
+  ]
+}

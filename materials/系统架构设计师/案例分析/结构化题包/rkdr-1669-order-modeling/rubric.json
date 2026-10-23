@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-order-modeling-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-81～83参考答案；教程第2版§5.3.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-order-modeling-p1",
+      "question_id": "rkdr-1669-order-modeling-q1",
+      "weight": 2,
+      "criterion": "空(a)待付款",
+      "correct": "（a）用户提交订单后，尚未完成支付",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题81参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p2",
+      "question_id": "rkdr-1669-order-modeling-q1",
+      "weight": 2,
+      "criterion": "空(b)处理中",
+      "correct": "（b）库存管理员确认库存并准备发货",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题81参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p3",
+      "question_id": "rkdr-1669-order-modeling-q1",
+      "weight": 2,
+      "criterion": "空(c)已收货",
+      "correct": "（c）用户确认收货，订单进入评价环节",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题81参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p4",
+      "question_id": "rkdr-1669-order-modeling-q1",
+      "weight": 2,
+      "criterion": "空(d)已取消",
+      "correct": "（d）用户或管理员主动取消订单",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题81参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p5",
+      "question_id": "rkdr-1669-order-modeling-q1",
+      "weight": 2,
+      "criterion": "空(e)库存不足",
+      "correct": "（e）订单因库存不足被暂停",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题81参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p6",
+      "question_id": "rkdr-1669-order-modeling-q2",
+      "weight": 5,
+      "criterion": "状态图元素（答出5个满分）",
+      "correct": "状态图常见元素：状态、转换、事件、动作、初始状态、终止状态、守护条件等（答出5个即满分）",
+      "conditions": [
+        "五元素以上"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题82参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p7",
+      "question_id": "rkdr-1669-order-modeling-q3",
+      "weight": 2,
+      "criterion": "参与者：用户及用例",
+      "correct": "用户：提交订单、查看订单状态、提交商品评价、申请退款等",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题83参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p8",
+      "question_id": "rkdr-1669-order-modeling-q3",
+      "weight": 2,
+      "criterion": "参与者：库存管理员/管理员",
+      "correct": "库存管理员：调整商品库存、监控库存预警；管理员：批量导入商品信息、打印销售报表",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题83参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p9",
+      "question_id": "rkdr-1669-order-modeling-q3",
+      "weight": 2,
+      "criterion": "参与者：时间/打印机",
+      "correct": "时间：定期核销优惠券、超时关闭订单；打印机：打印销售报表",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题83参考答案"
+    },
+    {
+      "id": "rkdr-1669-order-modeling-p10",
+      "question_id": "rkdr-1669-order-modeling-q3",
+      "weight": 4,
+      "criterion": "参与者-用例映射口径",
+      "correct": "每个参与者至少关联一个用例，映射来自需求(1)~(6)逐条对应",
+      "conditions": [
+        "映射完整"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题83题干要求"
+    }
+  ]
+}

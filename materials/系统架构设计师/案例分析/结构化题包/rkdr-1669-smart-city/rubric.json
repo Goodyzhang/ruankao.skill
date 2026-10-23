@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-smart-city-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-87～89参考答案；教程第2版§14核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-smart-city-p1",
+      "question_id": "rkdr-1669-smart-city-q1",
+      "weight": 2,
+      "criterion": "监督学习四维",
+      "correct": "监督学习：训练方式=标注好的违章图像数据集训练；数据依赖=需大量高质量标注数据、成本高精度可控；模型复杂度=CNN等深度学习模型参数大资源高；应用场景=已知违章类型的精准识别",
+      "conditions": [
+        "四维齐全"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题87参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p2",
+      "question_id": "rkdr-1669-smart-city-q1",
+      "weight": 2,
+      "criterion": "无监督学习四维",
+      "correct": "无监督学习：训练方式=聚类算法（K-means）自动发现异常行为模式无需标注；数据依赖=仅需原始视频流、可发现未定义异常；模型复杂度=传统机器学习算法轻量化但需人工验证；应用场景=新类型违章探测或辅助标注、需人工确认",
+      "conditions": [
+        "四维齐全"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题87参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p3",
+      "question_id": "rkdr-1669-smart-city-q1",
+      "weight": 2,
+      "criterion": "范式选择",
+      "correct": "综上所述，监督学习更精准、能实时识别无需人工确认，在此场景下更合理",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题87参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p4",
+      "question_id": "rkdr-1669-smart-city-q1",
+      "weight": 4,
+      "criterion": "对比结构口径",
+      "correct": "按训练方式/数据依赖性/模型复杂度/应用场景四维度对仗作答（各4分制下两范式各4分+结论2分）",
+      "conditions": [
+        "四维度成对"
+      ],
+      "equivalents": [],
+      "dimension": "机器学习",
+      "source": "网站题87题面要求"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p5",
+      "question_id": "rkdr-1669-smart-city-q2",
+      "weight": 2,
+      "criterion": "区块链需求(2)存证",
+      "correct": "需求(2)申诉存证可采用区块链：不可篡改性和时间戳特性确保申诉记录真实性与可追溯性，防止事后篡改",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题88参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p6",
+      "question_id": "rkdr-1669-smart-city-q2",
+      "weight": 2,
+      "criterion": "区块链需求(4)智能合约",
+      "correct": "需求(4)政府采购自动执行付款条件可采用区块链：通过“智能合约”自动触发付款（条件满足自动转账），减少人为干预，提高透明度与效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题88参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p7",
+      "question_id": "rkdr-1669-smart-city-q2",
+      "weight": 2,
+      "criterion": "排除项说明口径",
+      "correct": "需求(1)AI识别、(3)自动扩容、(5)规划决策不属于区块链典型场景（分别对应AI/云计算/数据分析）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题88题面"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p8",
+      "question_id": "rkdr-1669-smart-city-q2",
+      "weight": 2,
+      "criterion": "核心优势归纳",
+      "correct": "核心优势：不可篡改、可追溯、时间戳、智能合约自动执行、去信任",
+      "conditions": [
+        "优势方向正确"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题88参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p9",
+      "question_id": "rkdr-1669-smart-city-q3",
+      "weight": 1,
+      "criterion": "服务模式判定",
+      "correct": "云计算动态资源调度属于IaaS（基础设施即服务）模式",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "云计算",
+      "source": "网站题89参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p10",
+      "question_id": "rkdr-1669-smart-city-q3",
+      "weight": 2,
+      "criterion": "IaaS优点",
+      "correct": "优点：资源控制权高（直接管理虚拟机存储网络）；资源利用率高（控制粒度小按需拓展）；灵活性高（自定义操作系统和中间件环境）",
+      "conditions": [
+        "三条"
+      ],
+      "equivalents": [],
+      "dimension": "云计算",
+      "source": "网站题89参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p11",
+      "question_id": "rkdr-1669-smart-city-q3",
+      "weight": 2,
+      "criterion": "IaaS缺点",
+      "correct": "缺点：学习成本高（学习云平台操作与底层运维）；方便性差（需自行构建应用系统实现复杂）；运维成本高（自行负责OS、数据库、应用维护）",
+      "conditions": [
+        "三条"
+      ],
+      "equivalents": [],
+      "dimension": "云计算",
+      "source": "网站题89参考答案"
+    },
+    {
+      "id": "rkdr-1669-smart-city-p12",
+      "question_id": "rkdr-1669-smart-city-q3",
+      "weight": 2,
+      "criterion": "对比口径",
+      "correct": "优缺点均以vs PaaS/SaaS为参照",
+      "conditions": [
+        "对比参照明确"
+      ],
+      "equivalents": [],
+      "dimension": "云计算",
+      "source": "网站题89题面"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-logistics-web-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-78～80参考答案；教程第2版§13.2/§6.4.4核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-logistics-web-p1",
+      "question_id": "rkdr-1669-logistics-web-q1",
+      "weight": 2,
+      "criterion": "MVC优点缺点",
+      "correct": "MVC优势：分层简单（模型/视图/控制器），各层专注自身职责，允许多种用户界面扩展，易于维护；缺点：视图层与模型层存在直接耦合，绕过控制器",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "表现层",
+      "source": "网站题78参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p2",
+      "question_id": "rkdr-1669-logistics-web-q1",
+      "weight": 3,
+      "criterion": "MVVM优点缺点",
+      "correct": "MVVM优势：数据绑定（ViewModel）实现视图与模型自动同步，防止视图与模型直接耦合，减少控制器层代码，适合富客户端；缺点：出现问题不易定位来源",
+      "conditions": [
+        "优缺点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "表现层",
+      "source": "网站题78参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p3",
+      "question_id": "rkdr-1669-logistics-web-q1",
+      "weight": 3,
+      "criterion": "对比结构完整",
+      "correct": "按“MVC优缺/MVVM优缺”四段对仗作答",
+      "conditions": [
+        "四段齐全"
+      ],
+      "equivalents": [],
+      "dimension": "表现层",
+      "source": "网站题78题面要求"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p4",
+      "question_id": "rkdr-1669-logistics-web-q2",
+      "weight": 1,
+      "criterion": "选型结论：MyBatis",
+      "correct": "应选择MyBatis作为持久层框架",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [
+        "Hibernate（须反驳三维度，本题语境选MyBatis）"
+      ],
+      "dimension": "持久层",
+      "source": "网站题79参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p5",
+      "question_id": "rkdr-1669-logistics-web-q2",
+      "weight": 2,
+      "criterion": "性能维度",
+      "correct": "性能：Hibernate全自动ORM映射可能引入额外开销（复杂查询/大数据量场景）；MyBatis允许手动优化SQL，减少不必要数据库交互，更适合高并发读写",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层",
+      "source": "网站题79参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p6",
+      "question_id": "rkdr-1669-logistics-web-q2",
+      "weight": 2,
+      "criterion": "灵活性维度",
+      "correct": "灵活性：MyBatis支持原生SQL和动态SQL，灵活支持不同数据库特性（如随机数等特殊函数）；Hibernate的HQL虽跨库但复杂业务逻辑较难实现，灵活性较低",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层",
+      "source": "网站题79参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p7",
+      "question_id": "rkdr-1669-logistics-web-q2",
+      "weight": 2,
+      "criterion": "复杂查询维度",
+      "correct": "复杂查询：MyBatis直接编写多表关联、子查询等复杂SQL更直观高效；Hibernate的HQL对复杂查询支持有限，多表关联可能生成不优化的SQL",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层",
+      "source": "网站题79参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p8",
+      "question_id": "rkdr-1669-logistics-web-q3",
+      "weight": 2,
+      "criterion": "空(1) 处理位置",
+      "correct": "（1）边缘节点（边缘计算的数据处理位置）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题80参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p9",
+      "question_id": "rkdr-1669-logistics-web-q3",
+      "weight": 2,
+      "criterion": "空(2) 集中式延迟",
+      "correct": "（2）较高延迟（秒级）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题80参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p10",
+      "question_id": "rkdr-1669-logistics-web-q3",
+      "weight": 2,
+      "criterion": "空(3) 边缘存在问题",
+      "correct": "（3）有限的硬件资源和恶劣的部署环境",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题80参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p11",
+      "question_id": "rkdr-1669-logistics-web-q3",
+      "weight": 2,
+      "criterion": "空(4) 集中式可靠性",
+      "correct": "（4）很高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题80参考答案"
+    },
+    {
+      "id": "rkdr-1669-logistics-web-p12",
+      "question_id": "rkdr-1669-logistics-web-q3",
+      "weight": 2,
+      "criterion": "空(5) 边缘适用场景",
+      "correct": "（5）实时性要求高的本地决策",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题80参考答案"
+    }
+  ]
+}

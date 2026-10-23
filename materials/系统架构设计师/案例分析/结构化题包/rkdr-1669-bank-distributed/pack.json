@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-bank-distributed-pack",
+  "version": 1,
+  "title": "银行分布式改造",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-bank-distributed",
+      "title": "银行分布式改造",
+      "stem": "阅读以下关于数据库设计的叙述，在答题纸上回答问题1至问题3。\n【说明】\n某国有商业银行正在推进核心业务系统的分布式改造项目。该系统需要处理每日数千万笔的交易请求，包括存款、取款、转账、贷款发放等核心银行业务。由于业务量巨大，系统采用分布式架构部署，涉及多个数据库节点和数据中心。\n目前系统面临以下挑战：\n（1）在高并发交易场景下，需要避免出现双花问题；\n（2）跨分行转账业务涉及多个数据库节点，需要确保分布式架构下的事务；\n（3）客户账户余额查询和修改存在激烈的资源竞争，需要合理的锁机制设计；\n（4）系统需要7×24小时可用，在保证可用性的前提下也要尽量避免牺牲其他特性。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号203～204～205"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-bank-distributed-q1",
+          "title": "问题1（11分）",
+          "prompt": "解释ACID特性，并说明2PC如何保证其中某一个特性。",
+          "complete": true,
+          "max_score": 11
+        },
+        {
+          "id": "rkdr-1669-bank-distributed-q2",
+          "title": "问题2（8分）",
+          "prompt": "对比悲观锁和乐观锁的机制/性能/场景，并说明余额查询与转账分别选何种锁。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-bank-distributed-q3",
+          "title": "问题3（6分）",
+          "prompt": "200字内阐述分布式数据库BASE理论的内涵。",
+          "complete": true,
+          "max_score": 6
+        }
+      ]
+    }
+  ]
+}

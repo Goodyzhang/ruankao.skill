@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-hosp2-utility-tree-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题122答案为网站图片表（实际看图读取）；题123/124网站参考答案；教程第2版§8核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p1",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(1)安全性",
+      "correct": "(1)=安全性（分支叶：c密码复杂性、f药物过敏识别）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题122答案表（图片载体）；效用树逻辑核验"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p2",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(2)可修改性",
+      "correct": "(2)=可修改性（分支叶：b界面2周、e无缝集成）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题122答案表"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p3",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(3)=(h)",
+      "correct": "(3)=(h) 100门诊+20取药终端并发（性能分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题122答案表"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p4",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(4)=(f)",
+      "correct": "(4)=(f) 药物过敏识别避免医疗事故（安全性分支，safety口径）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题122答案表"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p5",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(5)=(g)",
+      "correct": "(5)=(g) 严重故障2小时恢复（可用性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题122答案表"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p6",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q1",
+      "weight": 2,
+      "criterion": "空(6)=(e)",
+      "correct": "(6)=(e) 新增子系统无缝集成（可修改性分支）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题122答案表"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p7",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q2",
+      "weight": 2,
+      "criterion": "运行期质量属性",
+      "correct": "运行期质量属性：性能、安全性、可用性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题123参考答案"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p8",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q2",
+      "weight": 2,
+      "criterion": "开发期质量属性",
+      "correct": "开发期质量属性：可修改性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题123参考答案"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p9",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q3",
+      "weight": 3,
+      "criterion": "六要素列举",
+      "correct": "6要素：刺激源（Source）、刺激（Stimulus）、环境（Environment）、制品（Artifact）、响应（Response）、响应度量（Measurement）",
+      "conditions": [
+        "六要素齐全"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题124参考答案"
+    },
+    {
+      "id": "rkdr-1669-hosp2-utility-tree-p10",
+      "question_id": "rkdr-1669-hosp2-utility-tree-q3",
+      "weight": 6,
+      "criterion": "场景(a)要素（答3个即可）",
+      "correct": "场景(a)要素：(1)刺激源=用户请求；(2)刺激=快速挂号和就诊；(3)环境=高峰时段；(4)制品=系统；(5)响应=系统响应/处理刺激；(6)响应度量=不得超过3秒（答出3个即可）",
+      "conditions": [
+        "至少3个"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题124参考答案"
+    }
+  ]
+}

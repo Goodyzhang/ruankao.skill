@@ -1,0 +1,18 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'PingFang SC, Microsoft YaHei, sans-serif','fontSize':'23px','primaryColor':'#e9f1f5','primaryTextColor':'#183149','lineColor':'#386b89'},'flowchart':{'htmlLabels':true,'curve':'linear','nodeSpacing':38,'rankSpacing':46}}}%%
+flowchart TB
+ subgraph ACTION[行动文件：让接收者执行事务]
+ A[TPS生成采购指示] -->|交给| B[采购员依授权向供应商采购]
+ end
+ subgraph INFORMATION[信息文件：表明事件发生]
+ C[TPS生成发货确认] -->|告知| D[客户获知已发货<br/>也可用作核对/控制]
+ end
+ subgraph TURN[周转文件：发送后返回并再输入]
+ E[发送方TPS<br/>生成单据、维护业务记录] -->|发送| F[客户收到单据]
+ F -->|返回一联及付款凭据| G[发送方核对并再录入]
+ G -->|更新业务记录| E
+ end
+ ACTION ~~~ INFORMATION
+ INFORMATION ~~~ TURN
+ TURN ~~~ NOTE[三区按用途比较，可交叠<br/>周转的核心是返回及再输入；不指退货<br/>持有文件仍需符合行动权限]
+ classDef note fill:#fff2d7,stroke:#bd8b48;
+ class NOTE note;

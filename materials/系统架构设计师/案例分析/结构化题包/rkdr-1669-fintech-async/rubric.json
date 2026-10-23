@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-fintech-async-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-21～23参考答案；教程第2版§6.4.3/§6.4.4核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-fintech-async-p1",
+      "question_id": "rkdr-1669-fintech-async-q1",
+      "weight": 1,
+      "criterion": "简化开发流程",
+      "correct": "ORM优点：简化开发流程",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题21参考答案；教程第2版§6.4.4"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p2",
+      "question_id": "rkdr-1669-fintech-async-q1",
+      "weight": 1,
+      "criterion": "接口丰富提高效率",
+      "correct": "ORM优点：接口丰富，提高开发效率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题21参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p3",
+      "question_id": "rkdr-1669-fintech-async-q1",
+      "weight": 1,
+      "criterion": "面向对象可维护",
+      "correct": "ORM优点：面向对象，增强代码可读性和可维护性",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题21参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p4",
+      "question_id": "rkdr-1669-fintech-async-q1",
+      "weight": 1,
+      "criterion": "跨数据库",
+      "correct": "ORM优点：支持多种数据库和跨数据库操作",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题21参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p5",
+      "question_id": "rkdr-1669-fintech-async-q1",
+      "weight": 1,
+      "criterion": "隐藏底层细节",
+      "correct": "ORM优点：隐藏数据库底层细节",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题21参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p6",
+      "question_id": "rkdr-1669-fintech-async-q2",
+      "weight": 3,
+      "criterion": "异步化原因",
+      "correct": "原因：交易请求量大，同步处理导致响应时间长、吞吐量下降；消息队列使请求先入队、后台异步处理，提高系统吞吐量",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题22参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p7",
+      "question_id": "rkdr-1669-fintech-async-q2",
+      "weight": 3,
+      "criterion": "MQ优势",
+      "correct": "优势：解耦服务提高可扩展性灵活性；削峰填谷平衡负载；实现消息订阅和选择性传递",
+      "conditions": [
+        "三条至少答出两条"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题22参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p8",
+      "question_id": "rkdr-1669-fintech-async-q2",
+      "weight": 3,
+      "criterion": "MQ挑战",
+      "correct": "挑战：队列设计管理复杂；可能消息丢失、重复或乱序；需处理延迟与吞吐量瓶颈",
+      "conditions": [
+        "三条至少答出两条"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题22参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p9",
+      "question_id": "rkdr-1669-fintech-async-q2",
+      "weight": 3,
+      "criterion": "答全加分口径",
+      "correct": "原因+优势+挑战三段齐全且机制表述正确（训练扣分口径下，本点与前三点去重）",
+      "conditions": [
+        "三部分完整"
+      ],
+      "equivalents": [],
+      "dimension": "消息中间件",
+      "source": "网站题22题面要求"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p10",
+      "question_id": "rkdr-1669-fintech-async-q3",
+      "weight": 2,
+      "criterion": "去中心化",
+      "correct": "去中心化：每个节点保存完整交易记录，无中心管理机构，避免单点故障与篡改风险",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题23参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p11",
+      "question_id": "rkdr-1669-fintech-async-q3",
+      "weight": 2,
+      "criterion": "加密技术",
+      "correct": "加密技术：交易数据经加密算法加密，保障传输与存储安全",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题23参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p12",
+      "question_id": "rkdr-1669-fintech-async-q3",
+      "weight": 2,
+      "criterion": "共识机制",
+      "correct": "共识机制：新交易需多节点验证共识，确保真实合法",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题23参考答案"
+    },
+    {
+      "id": "rkdr-1669-fintech-async-p13",
+      "question_id": "rkdr-1669-fintech-async-q3",
+      "weight": 2,
+      "criterion": "不可篡改性",
+      "correct": "不可篡改性：交易上链后无法修改删除，保证完整性与历史可追溯",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "区块链",
+      "source": "网站题23参考答案"
+    }
+  ]
+}

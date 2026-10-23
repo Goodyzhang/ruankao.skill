@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-maintenance-reverse-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-136～138参考答案；教程第2版§10/§5核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-maintenance-reverse-p1",
+      "question_id": "rkdr-1669-maintenance-reverse-q1",
+      "weight": 2,
+      "criterion": "实现级",
+      "correct": "实现级：包括程序的抽象语法树、符号表等信息",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "逆向工程",
+      "source": "网站题136参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p2",
+      "question_id": "rkdr-1669-maintenance-reverse-q1",
+      "weight": 2,
+      "criterion": "结构级",
+      "correct": "结构级：反映程序分量之间相互依赖关系的信息（调用图、结构图等）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "逆向工程",
+      "source": "网站题136参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p3",
+      "question_id": "rkdr-1669-maintenance-reverse-q1",
+      "weight": 2,
+      "criterion": "功能级",
+      "correct": "功能级：反映程序功能与程序之间关系的信息",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "逆向工程",
+      "source": "网站题136参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p4",
+      "question_id": "rkdr-1669-maintenance-reverse-q1",
+      "weight": 2,
+      "criterion": "领域级",
+      "correct": "领域级：反映程序分量或程序诸实体与应用领域概念之间对应关系的信息",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "逆向工程",
+      "source": "网站题136参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p5",
+      "question_id": "rkdr-1669-maintenance-reverse-q2",
+      "weight": 3,
+      "criterion": "重构三类别",
+      "correct": "软件重构三类：代码重构、模块重构、架构重构",
+      "conditions": [
+        "三类齐全"
+      ],
+      "equivalents": [],
+      "dimension": "软件重构",
+      "source": "网站题137参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p6",
+      "question_id": "rkdr-1669-maintenance-reverse-q2",
+      "weight": 4,
+      "criterion": "常见重构方法",
+      "correct": "常见方法：重新组织函数、重新组织对象、重新组织数据、简化条件表达式、简化函数调用和处理概括关系",
+      "conditions": [
+        "方法清单"
+      ],
+      "equivalents": [],
+      "dimension": "软件重构",
+      "source": "网站题137参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p7",
+      "question_id": "rkdr-1669-maintenance-reverse-q2",
+      "weight": 4,
+      "criterion": "问题适配",
+      "correct": "问题(1)（程序难理解注释混乱）→代码重构，重新梳理代码流程；问题(2)（模块耦合复杂）→模块重构和架构重构，梳理模块关系降低耦合",
+      "conditions": [
+        "两问对应"
+      ],
+      "equivalents": [],
+      "dimension": "软件重构",
+      "source": "网站题137参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p8",
+      "question_id": "rkdr-1669-maintenance-reverse-q3",
+      "weight": 3,
+      "criterion": "性能优化原因①",
+      "correct": "分解良好的程序使性能分析的粒度更细，性能调整更加容易",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "软件重构",
+      "source": "网站题138参考答案"
+    },
+    {
+      "id": "rkdr-1669-maintenance-reverse-p9",
+      "question_id": "rkdr-1669-maintenance-reverse-q3",
+      "weight": 3,
+      "criterion": "性能优化原因②",
+      "correct": "分解良好的程序代码更清晰，更容易与性能优化工具结合，分析系统性能瓶颈的具体位置",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "软件重构",
+      "source": "网站题138参考答案"
+    }
+  ]
+}

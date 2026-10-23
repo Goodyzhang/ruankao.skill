@@ -1,0 +1,16 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'PingFang SC, Microsoft YaHei, sans-serif','fontSize':'23px','primaryColor':'#e9f1f5','primaryTextColor':'#183149','lineColor':'#386b89'},'flowchart':{'htmlLabels':true,'curve':'linear','nodeSpacing':34,'rankSpacing':42}}}%%
+flowchart TB
+ subgraph BEFORE[本例：订单与准备]
+ direction LR
+ A[受理订单<br/>记录要求、检查库存与信用] -->|受理后| B[发货准备<br/>生成指示并备货]
+ end
+ subgraph AFTER[本例：发货与核对]
+ direction LR
+ C[发货<br/>记录数量及交接] -->|事后核对| D[结算与付款通知<br/>核对凭证、记录账项]
+ end
+ BEFORE -->|具备发货条件后继续| AFTER
+ R[3.2.1 作业层事务<br/>规则、资源、目标预先明确] -.->|规定处理条件| BEFORE
+ AFTER -.->|业务数据可供后续管理使用| INFO[管理与决策的基础信息<br/>不等于已完成方案分析]
+ INFO ~~~ NOTE[四项业务功能分行展示<br/>实线箭头＝本例先后；虚线＝约束或支撑]
+ classDef note fill:#fff2d7,stroke:#bd8b48;
+ class NOTE note;

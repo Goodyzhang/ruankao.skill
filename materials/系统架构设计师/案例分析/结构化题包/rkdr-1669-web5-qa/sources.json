@@ -1,0 +1,50 @@
+[
+  {
+    "source_question": "208",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 208,
+    "paper": "第5题 Web架构（问答组）",
+    "stem_case": "Web架构问答组",
+    "stem": "第5题 Web架构",
+    "subquestion": {
+      "site_number": 208,
+      "label": "问题1（11分）",
+      "prompt": "1、数据库类型选择，从下列选择中填入（ ）到（ ）。选项：(A)处理层 (B)接口层 (C)存储层 (D)HBase (E)HDFS (F)ES (G)MySQL",
+      "type": "解答题",
+      "max_score": 11
+    },
+    "source_answer": "正确答案：暂无解析（网站无答案——题面附架构图，需看图后核验或待核验）。"
+  },
+  {
+    "source_question": "209",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 209,
+    "paper": "第5题 Web架构（问答组）",
+    "stem_same_as_q208": "Web架构问答组与题208同组",
+    "stem": "第5题 Web架构",
+    "subquestion": {
+      "site_number": 209,
+      "label": "问题2（10分）",
+      "prompt": "2、MongoDB特点(10分)。2.1 说明MongoDB如何实现空间矢量化存储的。2.2 说明MongoDB对于存储非关系型数据的优势。",
+      "type": "解答题",
+      "max_score": 10
+    },
+    "source_answer": "2.1 MongoDB作为文档型数据库，非结构性数据以文档形式存储；可通过GeoJSON格式存储空间矢量数据（基于JSON的地理空间数据交换格式），使用geometry字段存储几何形状，coordinates字段存储几何形状坐标。\n2.2 优势：采用分布式文件系统和空间索引，提高矢量空间数据的存储和处理效率；支持多种空间分析和查询操作，可对数据深度分析挖掘；扩展性好，可根据业务需要增加字段，表达丰富的地理信息。"
+  },
+  {
+    "source_question": "210",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 210,
+    "paper": "第5题 Web架构（问答组）",
+    "stem_same_as_q208": "Web架构问答组与题208同组",
+    "stem": "第5题 Web架构",
+    "subquestion": {
+      "site_number": 210,
+      "label": "问题3（4分）",
+      "prompt": "请说明HDFS使用热数据、温数据和冷数据存储的原因。",
+      "type": "解答题",
+      "max_score": 4
+    },
+    "source_answer": "HDFS允许将不活跃数据分配到较便宜的存储上用于归档或冷存储；可设置存储策略，将较旧数据从昂贵的高性能存储转移到性价比更高的存储设备。冷数据采取容量大读写性能不高的存储介质（如机械硬盘），热数据使用SSD硬盘存储，读写效率性能差距大。异构特性允许对不同文件选择不同存储介质保存，实现机器性能最大化。硬盘SSD/SAS/SATA分别对应热/温/冷数据：1)\"热\"数据——新产生被应用大量使用，采用SSD存储；2)\"温\"数据——访问频率逐渐降低，采用SAS盘存储；3)\"冷\"数据——使用率下降更多，采用容量大而便宜的SATA盘存储。"
+  }
+]

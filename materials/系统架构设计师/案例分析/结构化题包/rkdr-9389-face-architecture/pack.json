@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-9389-face-architecture-pack",
+  "version": 1,
+  "title": "FACE开放式宇航架构：映射难点、五段含义与可移植性",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-9389-face-architecture",
+      "title": "FACE开放式嵌入式软件架构设计",
+      "stem": "宇航系统FACE开放式软件架构：需求到架构映射难点、五段（操作系统/I-O服务/平台服务/传输服务/可移植组件）含义、紧耦合与封装问题及解决方案。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=9389",
+        "label": "软考达人·第七章 系统架构设计基础知识（新第2版）/第二节 基于架构的软件开发方法·网站题号105"
+      },
+      "figures": [
+        {
+          "file": "../../assets/5575afa4da9b0557.png",
+          "caption": "图3-1 FACE架构：五段+三标准接口（IO/TS/OS-RT-FW）",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/635bcd25-005a-4617-b625-cab0b0d08142.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-9389-face-architecture-q1",
+          "title": "问题1（9分）",
+          "prompt": "从描述语言、非功能性需求描述、需求和架构的一致性等三个方面，用300字以内文字说明软件需求到架构的映射存在哪些难点。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-9389-face-architecture-q2",
+          "title": "问题2（10分）",
+          "prompt": "分析图3-1给出的FACE架构相关信息，用300字以内文字简要说明FACE 5个段的含义。",
+          "complete": true,
+          "max_score": 10
+        },
+        {
+          "id": "rkdr-9389-face-architecture-q3",
+          "title": "问题3（6分）",
+          "prompt": "用200字以内文字简要说明在可移植性上，应用程序的紧耦合和封装问题的主要表现分别是什么，并给出解决方案。",
+          "complete": true,
+          "max_score": 6
+        }
+      ]
+    }
+  ]
+}

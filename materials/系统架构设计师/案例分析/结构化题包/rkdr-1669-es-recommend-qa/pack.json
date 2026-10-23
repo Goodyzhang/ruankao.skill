@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-es-recommend-qa-pack",
+  "version": 1,
+  "title": "ES分词商品推荐问答组（分值未标+题151无答案，暂缓出题）",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）；题151无官方答案，不构造。",
+  "cases": [
+    {
+      "id": "rkdr-1669-es-recommend-qa",
+      "title": "ES分词商品推荐系统问答",
+      "stem": "Web Elasticsearch分词的商品推荐系统（微信小程序接入）：四分词器特点；架构图填写；RESTful前后端分离。",
+      "complete": false,
+      "max_score": 14,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号150～152"
+      },
+      "figure_notice": "部分解题必需图含答题进度或手写标注，尚无清洁原图；仅供解析复习，不适合作完整模拟题。",
+      "figures": [],
+      "questions": [
+        {
+          "id": "q1",
+          "title": "问题1（分值未标）",
+          "prompt": "1.Standard，Simple，Whitespace，Keyword分词引擎的特点差异。",
+          "complete": true,
+          "max_score": 4
+        },
+        {
+          "id": "q2",
+          "title": "问题2（14分）",
+          "prompt": "2.架构图填写，层，支持框架（14分8个空）。（无官方答案，待核验）",
+          "complete": false,
+          "max_score": 6
+        },
+        {
+          "id": "q3",
+          "title": "问题3（分值未标）",
+          "prompt": "3.RESTful架构是如何实现前后端分离的？",
+          "complete": true,
+          "max_score": 4
+        }
+      ]
+    }
+  ]
+}

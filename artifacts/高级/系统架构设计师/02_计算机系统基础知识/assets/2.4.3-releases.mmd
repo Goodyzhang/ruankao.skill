@@ -1,0 +1,11 @@
+flowchart TB
+  clock[时间/事件到达] --> release[分别登记各任务释放<br/>不能将1s检查嵌入60ms条件]
+  release --> ready[就绪队列：已释放且能运行的任务]
+  ready --> pick[按已选调度策略选择任务<br/>本例：短周期固定高优先级]
+  pick --> cpu[单CPU执行；更高优先级就绪可抢占]
+  cpu -->|完成| done[完成时刻−释放时刻＝响应时间R]
+  done --> deadline[逐任务检查R≤相对截止期D]
+  cpu -->|等待资源/事件| blocked[阻塞队列：暂不能参与CPU选择]
+  blocked -->|条件满足后重新就绪| ready
+  cpu -->|抢占后剩余工作| ready
+  note[平均U小于1只检查容量线索<br/>期限、阻塞、开销需另审] -.-> deadline

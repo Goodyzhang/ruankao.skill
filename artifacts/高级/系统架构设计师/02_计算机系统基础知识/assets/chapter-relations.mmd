@@ -1,0 +1,17 @@
+flowchart TB
+  C["组成 · 系统中有什么<br/>2.1 系统概述与边界<br/>2.2 硬件；2.3 软件<br/>2.4 嵌入式系统及软件"]
+  R["运行 · 对象怎样变化<br/>2.2 指令与 I/O；2.3 进程与资源<br/>2.5 消息与访问路径<br/>2.6 语言处理；2.7 媒体编码"]
+  P["评价 · 给定负载下表现怎样<br/>2.9 指标、计算与评估<br/>回看 2.2 / 2.3 / 2.5 的资源与边界"]
+  E["工程 · 怎样设计并验证系统<br/>2.8 系统工程、生命周期与模型<br/>连接 2.4 安全保证、2.9 性能设计"]
+  C -->|部件及职责支撑运行| R
+  R -->|按对象与窗口观测| P
+  P -->|与目标比较，反馈改进| E
+  E -->|设计或调整组成| C
+  classDef composition fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef process fill:#eef7f2,stroke:#477b65,color:#254e3d;
+  classDef evaluation fill:#fff2dd,stroke:#a87534,color:#69471c;
+  classDef engineering fill:#f0eef9,stroke:#77699b,color:#423a5b;
+  class C composition;
+  class R process;
+  class P evaluation;
+  class E engineering;

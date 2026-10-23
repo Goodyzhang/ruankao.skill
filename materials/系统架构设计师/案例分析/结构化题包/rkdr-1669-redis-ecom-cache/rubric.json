@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-redis-ecom-cache-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-159～161参考答案；教程第2版§6.5.1核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p1",
+      "question_id": "rkdr-1669-redis-ecom-cache-q1",
+      "weight": 2,
+      "criterion": "空(1) Redis存储方式",
+      "correct": "（1）基于内存存储（键值对）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题159参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p2",
+      "question_id": "rkdr-1669-redis-ecom-cache-q1",
+      "weight": 2,
+      "criterion": "空(2) Redis失效机制",
+      "correct": "（2）主动过期+被动淘汰",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题159参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p3",
+      "question_id": "rkdr-1669-redis-ecom-cache-q1",
+      "weight": 2,
+      "criterion": "空(3) MySQL持久化",
+      "correct": "（3）原生支持",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题159参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p4",
+      "question_id": "rkdr-1669-redis-ecom-cache-q1",
+      "weight": 2,
+      "criterion": "空(4) MySQL高并发",
+      "correct": "（4）较低（受锁机制限制）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题159参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p5",
+      "question_id": "rkdr-1669-redis-ecom-cache-q1",
+      "weight": 2,
+      "criterion": "空(5) MySQL适用场景",
+      "correct": "（5）低频读写、小数据量、简单数据结构的临时缓存",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式缓存",
+      "source": "网站题159参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p6",
+      "question_id": "rkdr-1669-redis-ecom-cache-q2",
+      "weight": 2,
+      "criterion": "String",
+      "correct": "String（字符串）：商品库存缓存、分布式会话存储、原子计数器（如秒杀活动库存扣减）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题160参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p7",
+      "question_id": "rkdr-1669-redis-ecom-cache-q2",
+      "weight": 2,
+      "criterion": "Hash",
+      "correct": "Hash（散列）：用户信息缓存、用户购物车缓存、商品详情缓存",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题160参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p8",
+      "question_id": "rkdr-1669-redis-ecom-cache-q2",
+      "weight": 2,
+      "criterion": "List",
+      "correct": "List（列表）：订单消息队列、用户最新操作记录、评论分页",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题160参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p9",
+      "question_id": "rkdr-1669-redis-ecom-cache-q2",
+      "weight": 2,
+      "criterion": "Set",
+      "correct": "Set（集合）：商品标签去重、用户共同关注商品推荐、权限控制",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题160参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p10",
+      "question_id": "rkdr-1669-redis-ecom-cache-q2",
+      "weight": 2,
+      "criterion": "ZSet",
+      "correct": "Sorted Set/ZSet（有序集合）：实时销量排行榜、用户积分排名、个性化推荐权重",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "Redis",
+      "source": "网站题160参考答案"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p11",
+      "question_id": "rkdr-1669-redis-ecom-cache-q3",
+      "weight": 2,
+      "criterion": "穿透原因",
+      "correct": "缓存穿透：缓存和数据库中都没有相应数据时，用户请求直接穿过缓存访问数据库，每次请求都查数据库，失去缓存作用",
+      "conditions": [
+        "原因完整"
+      ],
+      "equivalents": [],
+      "dimension": "Redis缓存",
+      "source": "网站题161参考答案（2分）"
+    },
+    {
+      "id": "rkdr-1669-redis-ecom-cache-p12",
+      "question_id": "rkdr-1669-redis-ecom-cache-q3",
+      "weight": 3,
+      "criterion": "解决方案",
+      "correct": "方案：①缓存空值——数据不存在时缓存NULL并设较短过期时间，避免相同请求多次查库；②布隆过滤器——预先存储所有可能存在的键，查询先经布隆过滤器判断，判定不存在则直接返回；③参数合法性校验——业务逻辑层验证请求参数，过滤明显无效或恶意请求",
+      "conditions": [
+        "三种方案"
+      ],
+      "equivalents": [],
+      "dimension": "Redis缓存",
+      "source": "网站题161参考答案（3分）"
+    }
+  ]
+}

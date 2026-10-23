@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-sale-oo-pack",
+  "version": 1,
+  "title": "网上销售系统：设计类、活动图区别与状态图",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-sale-oo",
+      "title": "网上销售系统面向对象设计",
+      "stem": "网上销售系统：浏览/购物车/订单/30分钟支付/备货出货/签收流程。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号180～182"
+      },
+      "figures": [
+        {
+          "file": "../../assets/e1e7210dd0897eff.png",
+          "caption": "图2-1 订单处理状态图：空(a)～(e)",
+          "source_locator": "https://image-t.chaiding.com/ruankaodaren/2026_03_01/watermark/19f97c81-28c9-4b28-90b1-2a93680c8deb.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-sale-oo-q1",
+          "title": "问题1（12分）",
+          "prompt": "请用300字以内的文字说明设计类通常分为哪三种类型，每种类型的主要职责，并针对题干描述案例涉及的具体类为每种类型的设计类举出2个实例。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-sale-oo-q2",
+          "title": "问题2（3分）",
+          "prompt": "请用300字以内的文字给出活动图与流程图（flow chart）的三个主要区别。",
+          "complete": true,
+          "max_score": 3
+        },
+        {
+          "id": "rkdr-1669-sale-oo-q3",
+          "title": "问题3（10分）",
+          "prompt": "请根据题干描述，填写图2-1中的（a）～（e）空白，完成订单处理的状态图。",
+          "complete": true,
+          "max_score": 10
+        }
+      ]
+    }
+  ]
+}

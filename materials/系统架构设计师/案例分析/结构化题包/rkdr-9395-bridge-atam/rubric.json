@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-9395-bridge-atam-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "教材§8.2.1、§8.3；网站82解析独立保留；本地章级笔记题目9交叉印证",
+    "level": "教材核验的训练推定；无逐点官方分值"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-9395-bridge-atam-b1",
+      "question_id": "rkdr-9395-bridge-atam-q1",
+      "weight": 2,
+      "criterion": "空(1) 属性名",
+      "correct": "安全性",
+      "conditions": [
+        "由固定叶(b)攻击防御定位"
+      ],
+      "equivalents": [
+        "Security"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-b2",
+      "question_id": "rkdr-9395-bridge-atam-q1",
+      "weight": 2,
+      "criterion": "空(2) 属性名",
+      "correct": "可修改性",
+      "conditions": [
+        "由固定叶(i)升级代价定位"
+      ],
+      "equivalents": [
+        "Modifiability"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-b3",
+      "question_id": "rkdr-9395-bridge-atam-q1",
+      "weight": 2,
+      "criterion": "空(3) 描述编号",
+      "correct": "(3) h 视频分辨率与帧率",
+      "conditions": [
+        "性能场景；填(k)并说明吞吐量口径按等价处理"
+      ],
+      "equivalents": [
+        "(k) 吞吐量性能场景"
+      ],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-b4",
+      "question_id": "rkdr-9395-bridge-atam-q1",
+      "weight": 2,
+      "criterion": "空(4) 描述编号",
+      "correct": "(4) l 数据库操作完整记录",
+      "conditions": [
+        "审计归安全性；填(e)理由不足不给分"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-b5",
+      "question_id": "rkdr-9395-bridge-atam-q1",
+      "weight": 2,
+      "criterion": "空(5) 描述编号",
+      "correct": "(5) j 断电3秒重定向",
+      "conditions": [
+        "故障恢复场景，与固定叶(g)同分支不重复"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-b6",
+      "question_id": "rkdr-9395-bridge-atam-q1",
+      "weight": 2,
+      "criterion": "空(6) 描述编号",
+      "correct": "(6) m 4人周改Web接口",
+      "conditions": [
+        "修改代价场景"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-defrisk",
+      "question_id": "rkdr-9395-bridge-atam-q2",
+      "weight": 2,
+      "criterion": "架构风险定义",
+      "correct": "架构设计中潜在、存在问题的架构决策带来的隐患，不支持优先质量目标",
+      "conditions": [
+        "判别词：潜在隐患"
+      ],
+      "equivalents": [
+        "架构风险"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-defsens",
+      "question_id": "rkdr-9395-bridge-atam-q2",
+      "weight": 2,
+      "criterion": "敏感点定义",
+      "correct": "为实现某种特定质量属性，一个或多个构件（和/或关系）所具有的特性",
+      "conditions": [
+        "判别词：特定质量属性"
+      ],
+      "equivalents": [
+        "Sensitivity Point"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-deftrade",
+      "question_id": "rkdr-9395-bridge-atam-q2",
+      "weight": 2,
+      "criterion": "权衡点定义",
+      "correct": "影响多个质量属性的特性，是多个质量属性的敏感点",
+      "conditions": [
+        "判别词：多个质量属性"
+      ],
+      "equivalents": [
+        "Tradeoff Point"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-seln",
+      "question_id": "rkdr-9395-bridge-atam-q2",
+      "weight": 2.5,
+      "criterion": "风险选择",
+      "correct": "(n) 养护报告逻辑未达成共识致规则矛盾",
+      "conditions": [
+        "须附未消除隐患理由；无可控翻转句"
+      ],
+      "equivalents": [
+        "n"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-seld",
+      "question_id": "rkdr-9395-bridge-atam-q2",
+      "weight": 2,
+      "criterion": "敏感点选择",
+      "correct": "(d) 查询处理时间要求影响协议与处理过程设计",
+      "conditions": [
+        "单属性决定设计维度"
+      ],
+      "equivalents": [
+        "d"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    },
+    {
+      "id": "rkdr-9395-bridge-atam-self",
+      "question_id": "rkdr-9395-bridge-atam-q2",
+      "weight": 2.5,
+      "criterion": "权衡点选择",
+      "correct": "(f) 更改加密级别影响安全性与性能",
+      "conditions": [
+        "须附两属性冲突理由；教材§8.2.1原例同型"
+      ],
+      "equivalents": [
+        "f"
+      ],
+      "dimension": "架构关注点",
+      "source": "系统架构设计师教程（第2版）§8.2.1、§8.3；网站82解析；本地章级笔记 8.2 题目9 交叉印证"
+    }
+  ]
+}

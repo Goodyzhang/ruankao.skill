@@ -1,0 +1,20 @@
+flowchart LR
+  U["管理者（用户）<br/>确定目标、约束与最终选择"]
+  subgraph D["经典两库结构：2个库，3个子系统"]
+    H["对话子系统<br/>输入假设 / 查看结果"]
+    DB["数据库子系统<br/>决策数据"]
+    MB["模型库子系统<br/>方案分析模型"]
+    H <-->|查取 / 结果| DB
+    H <-->|调用 / 结果| MB
+    DB <-->|参数 / 输出| MB
+  end
+  U <-->|操作 / 响应| H
+  U -->|最终决策| F["真实家具厂"]
+  F -->|实绩与环境变化| P["问题与反馈"]
+  P -->|供判断| U
+  X["另一结构可增加<br/>知识 / 推理 / 方法支持"]
+  X -.->|按具体体系扩展| D
+  classDef base fill:#e9f4ff,stroke:#276d9d,color:#15344a;
+  classDef human fill:#fff4dc,stroke:#c38c2c,color:#473718;
+  class H,DB,MB,X base;
+  class U,F,P human;

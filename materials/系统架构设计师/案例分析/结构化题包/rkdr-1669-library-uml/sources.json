@@ -1,0 +1,51 @@
+[
+  {
+    "source_question": "7",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 7,
+    "paper": "试题二（25分）",
+    "stem": "阅读以下关于软件系统建模的叙述，在答题纸上回答问题1至问题3。\n【说明】\n一家图书馆计划开发一套图书管理系统，以提高图书借阅和管理的效率。该图书管理系统基本的需求包括：\n（ ）读者需通过身份验证登录系统，才能借阅图书；\n（ ）图书馆管理员管理图书的入库、出库、归还和分类；\n（ ）读者可以搜索图书信息，查看图书详情，预约图书，并查看借阅历史；\n（ ）系统自动记录图书的借阅情况，并定期生成借阅报告；\n（ ）图书馆管理员可以批量导入图书信息，并管理读者账户；\n（ ）系统支持读者在线续借图书；\n（ ）系统在图书归还时自动检查是否超时，如超时则记录违约情况。\n项目组决定采用UML进行系统建模。",
+    "stem_note": "每条需求前有（ ）空号，题面原样保留；预计后续问题要求填写或分类",
+    "subquestion": {
+      "site_number": 7,
+      "label": "问题1（10分）",
+      "prompt": "请根据题目所述需求，说明图书管理系统中有哪些参与者。并列举项目中使用的所有实体类。",
+      "type": "解答题",
+      "max_score": 10
+    },
+    "source_answer": "参与者有：读者、图书馆管理员、系统时间。\n实体类有：图书、借阅记录、借阅报告、图书分类、读者账户、图书信息、违约记录。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "8",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 8,
+    "paper": "试题二（25分）",
+    "stem_same_as_q7": "图书管理系统UML建模，需求（ ）1～7条与题7共同背景一致",
+    "subquestion": {
+      "site_number": 8,
+      "label": "问题2（7分）",
+      "prompt": "在UML建模中，顺序图用于描述对象之间交互的顺序。请指出在UML建模中，顺序图中的消息有哪些类型？对题目所述图书管理系统的需求建模时，“读者借阅图书”场景中的消息类型可能包括哪些？",
+      "type": "解答题",
+      "max_score": 7
+    },
+    "source_answer": "顺序图中的消息类型包括：同步消息（Synchronous Message）、异步消息（Asynchronous Message）、返回消息（Return Message）和自关联消息（Self-Message）。\n“读者借阅图书”场景中的消息类型可能包括：同步消息（如读者提交借阅请求，系统响应借阅成功或失败）、异步消息（如读者提交预约图书请求）、返回消息（如系统返回图书的详情）。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "9",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 9,
+    "paper": "试题二（25分）",
+    "stem_same_as_q7": "图书管理系统UML建模，需求（ ）1～7条与题7共同背景一致",
+    "subquestion": {
+      "site_number": 9,
+      "label": "问题3（8分）",
+      "prompt": "请列举顺序图中常见的几种元素。",
+      "type": "解答题",
+      "max_score": 8
+    },
+    "source_answer": "（1）对象(Object)：系统中具有特定职责和行为的实体。（2）生命线(Lifeline)：对象在交互过程中存在的时间线。（3）激活(Activation)/控制焦点(Focus of Control)：对象正在执行某个动作或处于活动状态的时间段。（4）消息(Message)：对象之间传递的信息，用于触发接收对象的动作或状态变化。（5）交互片段(Interaction Fragment)：表示顺序图中的一组特殊交互，如循环、条件分支等。（答出4种即满分）",
+    "source_analysis": "无（网站仅给答案）"
+  }
+]

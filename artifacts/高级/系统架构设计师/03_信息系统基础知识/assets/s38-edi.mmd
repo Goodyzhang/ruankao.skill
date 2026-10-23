@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant A as 青木业务应用
+  participant B as 青木映射/通信
+  participant C as 板材商映射/通信
+  participant D as 板材商业务应用
+  A->>B: 对外采购订单数据
+  Note over B: 映射为约定标准报文
+  B->>C: 经所选网络传输标准报文
+  Note over C: 接收、校验、映射内部格式
+  C-->>B: 相应传输处置状态（若提供）
+  C->>D: 交业务应用处理
+  Note over B,D: 传输处置通知不等于商业接单<br/>异常仍可需要人工核查

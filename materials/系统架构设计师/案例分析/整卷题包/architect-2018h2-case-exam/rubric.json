@@ -1,0 +1,1657 @@
+{
+  "schema_version": 1,
+  "pack_id": "architect-2018h2-case-exam",
+  "pack_version": "1",
+  "version": "1",
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "本地2018年题答＋清华官方样章第25–28页校核试题一、二；Kopetz原著校核试题三；缓存官方文档与原图校核试题四、五。详见来源记录。",
+    "level": "官方指定书解析（Q1/Q2）＋原著和技术官方文档校核＋原题答案资料（Q3–Q5）"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "c1-q1-operational",
+      "question_id": "c1-q1",
+      "weight": 2,
+      "criterion": "说明操作性需求的范围",
+      "conditions": [
+        "说明操作性需求的范围"
+      ],
+      "equivalents": [
+        "技术环境、平台、集成、移植、支持与维护"
+      ],
+      "correct": "系统运行环境及维护、适应变更的需求。",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q1-performance",
+      "question_id": "c1-q1",
+      "weight": 2,
+      "criterion": "说明性能需求的范围",
+      "conditions": [
+        "说明性能需求的范围"
+      ],
+      "equivalents": [
+        "响应时间、吞吐量、容量、资源利用率等"
+      ],
+      "correct": "完成任务的效率或容量指标。",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q1-security",
+      "question_id": "c1-q1",
+      "weight": 2,
+      "criterion": "说明安全性需求的范围",
+      "conditions": [
+        "说明安全性需求的范围"
+      ],
+      "equivalents": [
+        "合法访问、权限控制、加密认证等保护要求"
+      ],
+      "correct": "系统与数据的保护要求。",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q1-cultural",
+      "question_id": "c1-q1",
+      "weight": 2,
+      "criterion": "说明文化需求的范围",
+      "conditions": [
+        "说明文化需求的范围"
+      ],
+      "equivalents": [
+        "多语言、本地化、个性化需求"
+      ],
+      "correct": "不同用户群体的特有需求。",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-a",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(a)归入文化需求",
+      "conditions": [
+        "将(a)归入文化需求"
+      ],
+      "equivalents": [
+        "文化需求"
+      ],
+      "correct": "(a)：文化需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-b",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(b)归入操作性需求",
+      "conditions": [
+        "将(b)归入操作性需求"
+      ],
+      "equivalents": [
+        "操作需求"
+      ],
+      "correct": "(b)：操作性需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-c",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(c)归入性能需求",
+      "conditions": [
+        "将(c)归入性能需求"
+      ],
+      "equivalents": [
+        "能需求"
+      ],
+      "correct": "(c)：性能需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-d",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(d)归入操作性需求",
+      "conditions": [
+        "将(d)归入操作性需求"
+      ],
+      "equivalents": [
+        "操作需求"
+      ],
+      "correct": "(d)：操作性需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-e",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(e)归入安全性需求",
+      "conditions": [
+        "将(e)归入安全性需求"
+      ],
+      "equivalents": [
+        "安全需求"
+      ],
+      "correct": "(e)：安全性需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-f",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(f)归入性能需求",
+      "conditions": [
+        "将(f)归入性能需求"
+      ],
+      "equivalents": [
+        "能需求"
+      ],
+      "correct": "(f)：性能需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-g",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(g)归入安全性需求",
+      "conditions": [
+        "将(g)归入安全性需求"
+      ],
+      "equivalents": [
+        "安全需求"
+      ],
+      "correct": "(g)：安全性需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q2-h",
+      "question_id": "c1-q2",
+      "weight": 1,
+      "criterion": "将(h)归入文化需求",
+      "conditions": [
+        "将(h)归入文化需求"
+      ],
+      "equivalents": [
+        "文化需求"
+      ],
+      "correct": "(h)：文化需求",
+      "dimension": "需求分类",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q3-item1",
+      "question_id": "c1-q3",
+      "weight": 3,
+      "criterion": "给出第1项成立的瘦客户端适用需求",
+      "conditions": [
+        "答案中至少有1个不同的正确需求，按作答顺序匹配；同一需求不重复给分。",
+        "允许只给字母或复述需求；本题不强制追加实现机制。"
+      ],
+      "equivalents": [
+        "界面定制",
+        "协议与平台接口支持",
+        "故障诊断和恢复",
+        "多语言支持"
+      ],
+      "correct": "从(a)、(b)、(d)、(h)中给出三个不同需求。",
+      "dimension": "架构选型",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q3-item2",
+      "question_id": "c1-q3",
+      "weight": 3,
+      "criterion": "给出第2项成立的瘦客户端适用需求",
+      "conditions": [
+        "答案中至少有2个不同的正确需求，按作答顺序匹配；同一需求不重复给分。",
+        "允许只给字母或复述需求；本题不强制追加实现机制。"
+      ],
+      "equivalents": [
+        "界面定制",
+        "协议与平台接口支持",
+        "故障诊断和恢复",
+        "多语言支持"
+      ],
+      "correct": "从(a)、(b)、(d)、(h)中给出三个不同需求。",
+      "dimension": "架构选型",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c1-q3-item3",
+      "question_id": "c1-q3",
+      "weight": 3,
+      "criterion": "给出第3项成立的瘦客户端适用需求",
+      "conditions": [
+        "答案中至少有3个不同的正确需求，按作答顺序匹配；同一需求不重复给分。",
+        "允许只给字母或复述需求；本题不强制追加实现机制。"
+      ],
+      "equivalents": [
+        "界面定制",
+        "协议与平台接口支持",
+        "故障诊断和恢复",
+        "多语言支持"
+      ],
+      "correct": "从(a)、(b)、(d)、(h)中给出三个不同需求。",
+      "dimension": "架构选型",
+      "source": "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+    },
+    {
+      "id": "c2-q1-E1",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "E1的名称与数据流相符",
+      "conditions": [
+        "E1的名称与数据流相符"
+      ],
+      "equivalents": [
+        "房主"
+      ],
+      "correct": "E1：房主",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-E2",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "E2的名称与数据流相符",
+      "conditions": [
+        "E2的名称与数据流相符"
+      ],
+      "equivalents": [
+        "租赁者"
+      ],
+      "correct": "E2：租赁者",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-P1",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "P1的名称与数据流相符",
+      "conditions": [
+        "P1的名称与数据流相符"
+      ],
+      "equivalents": [
+        "登记房主信息"
+      ],
+      "correct": "P1：登记房主信息",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-P2",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "P2的名称与数据流相符",
+      "conditions": [
+        "P2的名称与数据流相符"
+      ],
+      "equivalents": [
+        "登记房屋信息"
+      ],
+      "correct": "P2：登记房屋信息",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-P3",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "P3的名称与数据流相符",
+      "conditions": [
+        "P3的名称与数据流相符"
+      ],
+      "equivalents": [
+        "登记租赁者信息"
+      ],
+      "correct": "P3：登记租赁者信息",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-P4",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "P4的名称与数据流相符",
+      "conditions": [
+        "P4的名称与数据流相符"
+      ],
+      "equivalents": [
+        "查询租赁房屋信息"
+      ],
+      "correct": "P4：查询待租赁房屋信息",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-P5",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "P5的名称与数据流相符",
+      "conditions": [
+        "P5的名称与数据流相符"
+      ],
+      "equivalents": [
+        "安排租赁者看房"
+      ],
+      "correct": "P5：安排看房",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-P6",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "P6的名称与数据流相符",
+      "conditions": [
+        "P6的名称与数据流相符"
+      ],
+      "equivalents": [
+        "变更房屋状态"
+      ],
+      "correct": "P6：变更房屋状态",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-D1",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "D1的名称与数据流相符",
+      "conditions": [
+        "D1的名称与数据流相符"
+      ],
+      "equivalents": [
+        "房主信息数据存储"
+      ],
+      "correct": "D1：房主信息文件",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-D2",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "D2的名称与数据流相符",
+      "conditions": [
+        "D2的名称与数据流相符"
+      ],
+      "equivalents": [
+        "租赁者信息数据存储"
+      ],
+      "correct": "D2：租赁者信息文件",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-D3",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "D3的名称与数据流相符",
+      "conditions": [
+        "D3的名称与数据流相符"
+      ],
+      "equivalents": [
+        "房屋信息数据存储"
+      ],
+      "correct": "D3：房屋信息文件",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q1-D4",
+      "question_id": "c2-q1",
+      "weight": 1,
+      "criterion": "D4的名称与数据流相符",
+      "conditions": [
+        "D4的名称与数据流相符"
+      ],
+      "equivalents": [
+        "看房记录数据存储"
+      ],
+      "correct": "D4：看房记录文件",
+      "dimension": "结构化建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q2-blank1",
+      "question_id": "c2-q2",
+      "weight": 1,
+      "criterion": "ERD实体(1)定位正确",
+      "conditions": [
+        "ERD实体(1)定位正确"
+      ],
+      "equivalents": [
+        "房主"
+      ],
+      "correct": "(1)：房主",
+      "dimension": "数据建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q2-blank2",
+      "question_id": "c2-q2",
+      "weight": 1,
+      "criterion": "ERD实体(2)定位正确",
+      "conditions": [
+        "ERD实体(2)定位正确"
+      ],
+      "equivalents": [
+        "房屋"
+      ],
+      "correct": "(2)：房屋",
+      "dimension": "数据建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q2-blank3",
+      "question_id": "c2-q2",
+      "weight": 1,
+      "criterion": "ERD实体(3)定位正确",
+      "conditions": [
+        "ERD实体(3)定位正确"
+      ],
+      "equivalents": [
+        "房屋类型"
+      ],
+      "correct": "(3)：房屋类型",
+      "dimension": "数据建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q2-blank4",
+      "question_id": "c2-q2",
+      "weight": 1,
+      "criterion": "ERD实体(4)定位正确",
+      "conditions": [
+        "ERD实体(4)定位正确"
+      ],
+      "equivalents": [
+        "租赁者"
+      ],
+      "correct": "(4)：租赁者",
+      "dimension": "数据建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q2-blank5",
+      "question_id": "c2-q2",
+      "weight": 1,
+      "criterion": "ERD实体(5)定位正确",
+      "conditions": [
+        "ERD实体(5)定位正确"
+      ],
+      "equivalents": [
+        "看房记录",
+        "看房安排记录"
+      ],
+      "correct": "(5)：看房安排",
+      "dimension": "数据建模",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q3-entity",
+      "question_id": "c2-q3",
+      "weight": 1,
+      "criterion": "说明实体用于数据建模",
+      "conditions": [
+        "说明实体用于数据建模"
+      ],
+      "equivalents": [
+        "实体只有属性"
+      ],
+      "correct": "实体表达数据属性。",
+      "dimension": "面向对象需求分析",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q3-class",
+      "question_id": "c2-q3",
+      "weight": 1,
+      "criterion": "说明类封装属性和行为",
+      "conditions": [
+        "说明类封装属性和行为"
+      ],
+      "equivalents": [
+        "数据与行为封装"
+      ],
+      "correct": "类包含属性和操作。",
+      "dimension": "面向对象需求分析",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q3-essential-stage",
+      "question_id": "c2-q3",
+      "weight": 1,
+      "criterion": "指出Essential对应分析阶段",
+      "conditions": [
+        "指出Essential对应分析阶段"
+      ],
+      "equivalents": [
+        "本质用例、抽象用例"
+      ],
+      "correct": "Essential：分析。",
+      "dimension": "面向对象需求分析",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q3-real-stage",
+      "question_id": "c2-q3",
+      "weight": 1,
+      "criterion": "指出Real对应设计阶段",
+      "conditions": [
+        "指出Real对应设计阶段"
+      ],
+      "equivalents": [
+        "实际用例、真实用例"
+      ],
+      "correct": "Real：设计。",
+      "dimension": "面向对象需求分析",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q3-essential-tech",
+      "question_id": "c2-q3",
+      "weight": 2,
+      "criterion": "说明Essential独立于实现技术",
+      "conditions": [
+        "说明Essential独立于实现技术"
+      ],
+      "equivalents": [
+        "不依赖软硬件技术或界面实现"
+      ],
+      "correct": "Essential描述需求本质。",
+      "dimension": "面向对象需求分析",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c2-q3-real-tech",
+      "question_id": "c2-q3",
+      "weight": 2,
+      "criterion": "说明Real涉及具体实现",
+      "conditions": [
+        "说明Real涉及具体实现"
+      ],
+      "equivalents": [
+        "体现设计方法和技术"
+      ],
+      "correct": "Real描述实现方式。",
+      "dimension": "面向对象需求分析",
+      "source": "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+    },
+    {
+      "id": "c3-q1-blank1",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(1)对应(c)",
+      "conditions": [
+        "表3-1的(1)对应(c)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(1)：(c)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank2",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(2)对应(d)",
+      "conditions": [
+        "表3-1的(2)对应(d)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(2)：(d)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank3",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(3)对应(o)",
+      "conditions": [
+        "表3-1的(3)对应(o)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(3)：(o)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank4",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(4)对应(p)",
+      "conditions": [
+        "表3-1的(4)对应(p)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(4)：(p)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank5",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(5)对应(g)",
+      "conditions": [
+        "表3-1的(5)对应(g)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(5)：(g)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank6",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(6)对应(h)",
+      "conditions": [
+        "表3-1的(6)对应(h)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(6)：(h)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank7",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(7)对应(k)",
+      "conditions": [
+        "表3-1的(7)对应(k)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(7)：(k)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank8",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(8)对应(l)",
+      "conditions": [
+        "表3-1的(8)对应(l)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(8)：(l)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank9",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(9)对应(i)",
+      "conditions": [
+        "表3-1的(9)对应(i)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(9)：(i)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank10",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(10)对应(j)",
+      "conditions": [
+        "表3-1的(10)对应(j)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(10)：(j)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank11",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(11)对应(n)",
+      "conditions": [
+        "表3-1的(11)对应(n)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(11)：(n)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank12",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(12)对应(m)",
+      "conditions": [
+        "表3-1的(12)对应(m)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(12)：(m)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank13",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(13)对应(e)",
+      "conditions": [
+        "表3-1的(13)对应(e)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(13)：(e)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q1-blank14",
+      "question_id": "c3-q1",
+      "weight": 1,
+      "criterion": "表3-1的(14)对应(f)",
+      "conditions": [
+        "表3-1的(14)对应(f)"
+      ],
+      "equivalents": [
+        "可直接写与该选项完全相同的描述；以题目行的分类含义为准。"
+      ],
+      "correct": "(14)：(f)",
+      "dimension": "实时任务特征",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-transport",
+      "question_id": "c3-q2",
+      "weight": 1,
+      "criterion": "指出发送组件与接收组件的消息传送",
+      "conditions": [
+        "指出发送组件与接收组件的消息传送"
+      ],
+      "equivalents": [
+        "组件间消息传输、广播或组播语义"
+      ],
+      "correct": "从发送组件传给一个或多个接收组件。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-reliability",
+      "question_id": "c3-q2",
+      "weight": 1,
+      "criterion": "指出高可靠的传送要求",
+      "conditions": [
+        "指出高可靠的传送要求"
+      ],
+      "equivalents": [
+        "可靠地传递消息"
+      ],
+      "correct": "高可靠。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-delay",
+      "question_id": "c3-q2",
+      "weight": 0.5,
+      "criterion": "指出低传送延迟",
+      "conditions": [
+        "指出低传送延迟"
+      ],
+      "equivalents": [
+        "时延小"
+      ],
+      "correct": "低延迟。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-jitter",
+      "question_id": "c3-q2",
+      "weight": 0.5,
+      "criterion": "指出低抖动",
+      "conditions": [
+        "指出低抖动"
+      ],
+      "equivalents": [
+        "传送时延变化小"
+      ],
+      "correct": "抖动小。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-unidirectional",
+      "question_id": "c3-q2",
+      "weight": 1,
+      "criterion": "指出单向消息流或收发解耦",
+      "conditions": [
+        "指出单向消息流或收发解耦"
+      ],
+      "equivalents": [
+        "接收端故障不直接影响发送端"
+      ],
+      "correct": "单向传输。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-event",
+      "question_id": "c3-q2",
+      "weight": 1,
+      "criterion": "说明事件触发的触发依据",
+      "conditions": [
+        "说明事件触发的触发依据"
+      ],
+      "equivalents": [
+        "由事件驱动发送"
+      ],
+      "correct": "发生事件后发送。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-rate",
+      "question_id": "c3-q2",
+      "weight": 1,
+      "criterion": "说明速率约束的上限含义",
+      "conditions": [
+        "说明速率约束的上限含义"
+      ],
+      "equivalents": [
+        "约束最小发送间隔；只写固定比特率不足"
+      ],
+      "correct": "消息产生速率有上界。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-time",
+      "question_id": "c3-q2",
+      "weight": 1,
+      "criterion": "说明时间触发的预定时刻",
+      "conditions": [
+        "说明时间触发的预定时刻"
+      ],
+      "equivalents": [
+        "全局时间、时间表或周期调度"
+      ],
+      "correct": "按预先约定的时刻发送。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-bus1",
+      "question_id": "c3-q2",
+      "weight": 2,
+      "criterion": "给出第1种具有时间触发能力的总线",
+      "conditions": [
+        "至少1个不同的有效示例；同一总线的缩写和全称只算一次。"
+      ],
+      "equivalents": [
+        "时间触发协议TTP/C",
+        "时间触发以太网TTE",
+        "FlexRay静态段"
+      ],
+      "correct": "TTP、TTEthernet、FlexRay任选两种。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c3-q2-bus2",
+      "question_id": "c3-q2",
+      "weight": 2,
+      "criterion": "给出第2种具有时间触发能力的总线",
+      "conditions": [
+        "至少2个不同的有效示例；同一总线的缩写和全称只算一次。"
+      ],
+      "equivalents": [
+        "时间触发协议TTP/C",
+        "时间触发以太网TTE",
+        "FlexRay静态段"
+      ],
+      "correct": "TTP、TTEthernet、FlexRay任选两种。",
+      "dimension": "实时通信",
+      "source": "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+    },
+    {
+      "id": "c4-q1-distributed",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "说明缓存由多个节点提供",
+      "conditions": [
+        "说明缓存由多个节点提供"
+      ],
+      "equivalents": [],
+      "correct": "多个节点提供缓存。",
+      "dimension": "缓存架构",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q1-hot-data",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "说明缓存保存经常访问的数据",
+      "conditions": [
+        "说明缓存保存经常访问的数据"
+      ],
+      "equivalents": [
+        "缓存经常访问的数据或查询结果"
+      ],
+      "correct": "将热点数据缓存在内存。",
+      "dimension": "缓存架构",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q1-db-load",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "说明减轻数据库压力的目的",
+      "conditions": [
+        "说明减轻数据库压力的目的"
+      ],
+      "equivalents": [],
+      "correct": "提高访问效率并减轻数据库负载。",
+      "dimension": "缓存架构",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q1-blank1",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "Redis支持多种数据结构",
+      "conditions": [
+        "Redis支持多种数据结构"
+      ],
+      "equivalents": [
+        "字符串、列表、集合、哈希、有序集合"
+      ],
+      "correct": "string/key-value、list、set、hash、sorted set。",
+      "dimension": "缓存能力比较",
+      "source": "本地2018题答；Redis 官方 persistence 与 client handling 文档；按照2018年版本语境。"
+    },
+    {
+      "id": "c4-q1-blank2",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "Memcache默认不支持数据持久化",
+      "conditions": [
+        "Memcache默认不支持数据持久化"
+      ],
+      "equivalents": [
+        "内存缓存，重启或故障可丢失数据"
+      ],
+      "correct": "不支持（按题目的2018语境）。",
+      "dimension": "缓存能力比较",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q1-blank3",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "区分Memcache客户端分布与原生服务器集群",
+      "conditions": [
+        "区分Memcache客户端分布与原生服务器集群"
+      ],
+      "equivalents": [
+        "填不支持按题表口径给分",
+        "明确客户端分片实现分布式同样给分"
+      ],
+      "correct": "无原生服务器集群；客户端可散列分布。",
+      "dimension": "缓存能力比较",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q1-blank4",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "识别2018年Redis命令处理的单线程模型",
+      "conditions": [
+        "识别2018年Redis命令处理的单线程模型"
+      ],
+      "equivalents": [
+        "单线程事件循环",
+        "明确区分命令线程与后来版本I/O线程的正确表述"
+      ],
+      "correct": "不支持多线程命令执行（2018语境）。",
+      "dimension": "缓存能力比较",
+      "source": "本地2018题答；Redis 官方 persistence 与 client handling 文档；按照2018年版本语境。"
+    },
+    {
+      "id": "c4-q1-blank5",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "识别Memcache的内存分配管理",
+      "conditions": [
+        "识别Memcache的内存分配管理"
+      ],
+      "equivalents": [
+        "有",
+        "Slab allocator"
+      ],
+      "correct": "支持，采用Slab分配等内存管理。",
+      "dimension": "缓存能力比较",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q1-blank6",
+      "question_id": "c4-q1",
+      "weight": 1,
+      "criterion": "识别Memcache不支持事务",
+      "conditions": [
+        "识别Memcache不支持事务"
+      ],
+      "equivalents": [
+        "不支持多操作事务；CAS不等于事务"
+      ],
+      "correct": "不支持。",
+      "dimension": "缓存能力比较",
+      "source": "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-no-persistence",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "指出Memcache没有默认持久化",
+      "conditions": [
+        "指出Memcache没有默认持久化"
+      ],
+      "equivalents": [
+        "默认纯内存存储"
+      ],
+      "correct": "无持久化。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-loss",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "说明故障或重启造成缓存数据丢失",
+      "conditions": [
+        "说明故障或重启造成缓存数据丢失"
+      ],
+      "equivalents": [
+        "掉电后无法从缓存自身恢复"
+      ],
+      "correct": "故障或重启可丢失缓存数据。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-no-transaction",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "指出Memcache缺乏跨操作事务",
+      "conditions": [
+        "指出Memcache缺乏跨操作事务"
+      ],
+      "equivalents": [
+        "多键或多步骤不能整体原子提交"
+      ],
+      "correct": "不支持跨操作事务。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-consistency",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "说明数据库与缓存更新可不一致",
+      "conditions": [
+        "说明数据库与缓存更新可不一致"
+      ],
+      "equivalents": [
+        "更新非原子、部分失败或顺序不当使数据不同步"
+      ],
+      "correct": "数据库和缓存的更新可出现不一致。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-read-cache",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "读取优先查缓存",
+      "conditions": [
+        "读取优先查缓存"
+      ],
+      "equivalents": [
+        "命中则直接返回"
+      ],
+      "correct": "先读Redis。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-read-db",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "未命中时读取原数据库",
+      "conditions": [
+        "未命中时读取原数据库"
+      ],
+      "equivalents": [
+        "缓存缺失时回源"
+      ],
+      "correct": "未命中读数据库。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-fill-cache",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "读取数据库后补充缓存",
+      "conditions": [
+        "读取数据库后补充缓存"
+      ],
+      "equivalents": [
+        "将查得数据放回缓存"
+      ],
+      "correct": "回源后更新Redis。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q2-write-sync",
+      "question_id": "c4-q2",
+      "weight": 1,
+      "criterion": "数据库写入后处理缓存同步",
+      "conditions": [
+        "数据库写入后处理缓存同步"
+      ],
+      "equivalents": [
+        "合理的Cache Aside：写库后删除缓存",
+        "可靠的变更订阅同步方案；须说明读写和同步路径"
+      ],
+      "correct": "先写数据库，再更新或失效缓存。",
+      "dimension": "缓存可靠性与同步",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+    },
+    {
+      "id": "c4-q3-replication",
+      "question_id": "c4-q3",
+      "weight": 2,
+      "criterion": "给出主从分布式存储方案",
+      "conditions": [
+        "给出主从分布式存储方案"
+      ],
+      "equivalents": [
+        "主从加Sentinel高可用"
+      ],
+      "correct": "主从复制。",
+      "dimension": "分布式缓存",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c4-q3-cluster",
+      "question_id": "c4-q3",
+      "weight": 2,
+      "criterion": "给出另一种有效分布式存储方案",
+      "conditions": [
+        "给出另一种有效分布式存储方案"
+      ],
+      "equivalents": [
+        "明确说明多节点分片的分布式部署"
+      ],
+      "correct": "Redis Cluster。",
+      "dimension": "分布式缓存",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c4-q3-shard1",
+      "question_id": "c4-q3",
+      "weight": 2,
+      "criterion": "给出第1种不同的分片位置或实现方式",
+      "conditions": [
+        "至少1种不同的分片机制，并明确分片由谁实施。"
+      ],
+      "equivalents": [
+        "客户端按key哈希路由",
+        "代理路由至节点",
+        "服务端hash slot映射节点"
+      ],
+      "correct": "客户端分片、代理分片、服务端Cluster槽分片。",
+      "dimension": "数据分片",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c4-q3-shard2",
+      "question_id": "c4-q3",
+      "weight": 2,
+      "criterion": "给出第2种不同的分片位置或实现方式",
+      "conditions": [
+        "至少2种不同的分片机制，并明确分片由谁实施。"
+      ],
+      "equivalents": [
+        "客户端按key哈希路由",
+        "代理路由至节点",
+        "服务端hash slot映射节点"
+      ],
+      "correct": "客户端分片、代理分片、服务端Cluster槽分片。",
+      "dimension": "数据分片",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-service",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "指出SOA以服务组织功能单元",
+      "conditions": [
+        "指出SOA以服务组织功能单元"
+      ],
+      "equivalents": [
+        "业务功能服务化"
+      ],
+      "correct": "不同功能单元作为服务。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-contract",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "指出明确的接口和契约",
+      "conditions": [
+        "指出明确的接口和契约"
+      ],
+      "equivalents": [
+        "标准服务接口、定义清楚的服务契约"
+      ],
+      "correct": "服务通过接口或契约交互。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-neutral",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "指出平台或语言中立性",
+      "conditions": [
+        "指出平台或语言中立性"
+      ],
+      "equivalents": [
+        "独立于硬件、操作系统、语言的交互接口"
+      ],
+      "correct": "服务接口与实现平台解耦。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-bus-role",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "说明ESB连接整合服务",
+      "conditions": [
+        "说明ESB连接整合服务"
+      ],
+      "equivalents": [
+        "统一通信中介、服务集成总线"
+      ],
+      "correct": "总线连接和整合各服务。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-feature1",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "给出第1项独立的ESB能力",
+      "conditions": [
+        "至少1项不同的有效ESB能力；重复描述连接整合本身不再计入。"
+      ],
+      "equivalents": [
+        "注册管理",
+        "报文或协议转换",
+        "同步和异步传送",
+        "服务发现、匹配、路由、动态选择",
+        "安全、QoS、负载均衡与管理"
+      ],
+      "correct": "元数据注册、数据转换传递、发现路由或安全与服务治理。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-feature2",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "给出第2项独立的ESB能力",
+      "conditions": [
+        "至少2项不同的有效ESB能力；重复描述连接整合本身不再计入。"
+      ],
+      "equivalents": [
+        "注册管理",
+        "报文或协议转换",
+        "同步和异步传送",
+        "服务发现、匹配、路由、动态选择",
+        "安全、QoS、负载均衡与管理"
+      ],
+      "correct": "元数据注册、数据转换传递、发现路由或安全与服务治理。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q1-feature3",
+      "question_id": "c5-q1",
+      "weight": 1,
+      "criterion": "给出第3项独立的ESB能力",
+      "conditions": [
+        "至少3项不同的有效ESB能力；重复描述连接整合本身不再计入。"
+      ],
+      "equivalents": [
+        "注册管理",
+        "报文或协议转换",
+        "同步和异步传送",
+        "服务发现、匹配、路由、动态选择",
+        "安全、QoS、负载均衡与管理"
+      ],
+      "correct": "元数据注册、数据转换传递、发现路由或安全与服务治理。",
+      "dimension": "SOA与服务集成",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q2-blank1",
+      "question_id": "c5-q2",
+      "weight": 2,
+      "criterion": "架构图(1)定位正确",
+      "conditions": [
+        "架构图(1)定位正确"
+      ],
+      "equivalents": [
+        "c",
+        "业务层"
+      ],
+      "correct": "(1)：(c) 业务层",
+      "dimension": "SOA架构建模",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+    },
+    {
+      "id": "c5-q2-blank2",
+      "question_id": "c5-q2",
+      "weight": 2,
+      "criterion": "架构图(2)定位正确",
+      "conditions": [
+        "架构图(2)定位正确"
+      ],
+      "equivalents": [
+        "i",
+        "UDDI"
+      ],
+      "correct": "(2)：(i) UDDI",
+      "dimension": "SOA架构建模",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+    },
+    {
+      "id": "c5-q2-blank3",
+      "question_id": "c5-q2",
+      "weight": 2,
+      "criterion": "架构图(3)定位正确",
+      "conditions": [
+        "架构图(3)定位正确"
+      ],
+      "equivalents": [
+        "h",
+        "publish"
+      ],
+      "correct": "(3)：(h) publish",
+      "dimension": "SOA架构建模",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+    },
+    {
+      "id": "c5-q2-blank4",
+      "question_id": "c5-q2",
+      "weight": 2,
+      "criterion": "架构图(4)定位正确",
+      "conditions": [
+        "架构图(4)定位正确"
+      ],
+      "equivalents": [
+        "e",
+        "企业服务总线ESB"
+      ],
+      "correct": "(4)：(e) 企业服务总线ESB",
+      "dimension": "SOA架构建模",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+    },
+    {
+      "id": "c5-q2-blank5",
+      "question_id": "c5-q2",
+      "weight": 2,
+      "criterion": "架构图(5)定位正确",
+      "conditions": [
+        "架构图(5)定位正确"
+      ],
+      "equivalents": [
+        "g",
+        "安全验证和质量管理"
+      ],
+      "correct": "(5)：(g) 安全验证和质量管理",
+      "dimension": "SOA架构建模",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+    },
+    {
+      "id": "c5-q2-blank6",
+      "question_id": "c5-q2",
+      "weight": 2,
+      "criterion": "架构图(6)定位正确",
+      "conditions": [
+        "架构图(6)定位正确"
+      ],
+      "equivalents": [
+        "j",
+        "组件层"
+      ],
+      "correct": "(6)：(j) 组件层",
+      "dimension": "SOA架构建模",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+    },
+    {
+      "id": "c5-q3-measure1",
+      "question_id": "c5-q3",
+      "weight": 2,
+      "criterion": "列举第1种独立有效的交互安全措施",
+      "conditions": [
+        "至少1种不同的具体安全措施；同一机制的别名不重复给分。本题只要求列举。"
+      ],
+      "equivalents": [
+        "TLS/HTTPS",
+        "加密传输",
+        "消息摘要或MAC保证完整性",
+        "数字签名",
+        "证书认证",
+        "身份认证和访问控制"
+      ],
+      "correct": "传输加密、完整性验证、数字签名等。",
+      "dimension": "数据交互安全",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q3-measure2",
+      "question_id": "c5-q3",
+      "weight": 2,
+      "criterion": "列举第2种独立有效的交互安全措施",
+      "conditions": [
+        "至少2种不同的具体安全措施；同一机制的别名不重复给分。本题只要求列举。"
+      ],
+      "equivalents": [
+        "TLS/HTTPS",
+        "加密传输",
+        "消息摘要或MAC保证完整性",
+        "数字签名",
+        "证书认证",
+        "身份认证和访问控制"
+      ],
+      "correct": "传输加密、完整性验证、数字签名等。",
+      "dimension": "数据交互安全",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    },
+    {
+      "id": "c5-q3-measure3",
+      "question_id": "c5-q3",
+      "weight": 2,
+      "criterion": "列举第3种独立有效的交互安全措施",
+      "conditions": [
+        "至少3种不同的具体安全措施；同一机制的别名不重复给分。本题只要求列举。"
+      ],
+      "equivalents": [
+        "TLS/HTTPS",
+        "加密传输",
+        "消息摘要或MAC保证完整性",
+        "数字签名",
+        "证书认证",
+        "身份认证和访问控制"
+      ],
+      "correct": "传输加密、完整性验证、数字签名等。",
+      "dimension": "数据交互安全",
+      "source": "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+    }
+  ],
+  "reference_deductions": [],
+  "training_notes": "逐点权重为开卷前推定；同义和有效替代方案见各点。正确术语配错误机制不得分。参考分无独立惩罚，严格训练分只对有依据的错误扩展按采分单元扣分，同因去重，已经失去对应点的同一错误不叠罚。",
+  "reference_answers": {
+    "c1-q1": {
+      "origin": "source",
+      "sources": [
+        "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+      ],
+      "markdown": "- **说明操作性需求的范围**：系统运行环境及维护、适应变更的需求。\n- **说明性能需求的范围**：完成任务的效率或容量指标。\n- **说明安全性需求的范围**：系统与数据的保护要求。\n- **说明文化需求的范围**：不同用户群体的特有需求。"
+    },
+    "c1-q2": {
+      "origin": "source",
+      "sources": [
+        "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+      ],
+      "markdown": "- **将(a)归入文化需求**：(a)：文化需求\n- **将(b)归入操作性需求**：(b)：操作性需求\n- **将(c)归入性能需求**：(c)：性能需求\n- **将(d)归入操作性需求**：(d)：操作性需求\n- **将(e)归入安全性需求**：(e)：安全性需求\n- **将(f)归入性能需求**：(f)：性能需求\n- **将(g)归入安全性需求**：(g)：安全性需求\n- **将(h)归入文化需求**：(h)：文化需求"
+    },
+    "c1-q3": {
+      "origin": "source",
+      "sources": [
+        "清华出版社《系统架构设计师2018至2022年试题分析与解答》，ISBN 9787302674269，印刷第25–26页；官方样章 PDF 第17–18页。"
+      ],
+      "markdown": "- **给出第1项成立的瘦客户端适用需求**：从(a)、(b)、(d)、(h)中给出三个不同需求。\n- **给出第2项成立的瘦客户端适用需求**：从(a)、(b)、(d)、(h)中给出三个不同需求。\n- **给出第3项成立的瘦客户端适用需求**：从(a)、(b)、(d)、(h)中给出三个不同需求。"
+    },
+    "c2-q1": {
+      "origin": "source",
+      "sources": [
+        "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+      ],
+      "markdown": "- **E1的名称与数据流相符**：E1：房主\n- **E2的名称与数据流相符**：E2：租赁者\n- **P1的名称与数据流相符**：P1：登记房主信息\n- **P2的名称与数据流相符**：P2：登记房屋信息\n- **P3的名称与数据流相符**：P3：登记租赁者信息\n- **P4的名称与数据流相符**：P4：查询待租赁房屋信息\n- **P5的名称与数据流相符**：P5：安排看房\n- **P6的名称与数据流相符**：P6：变更房屋状态\n- **D1的名称与数据流相符**：D1：房主信息文件\n- **D2的名称与数据流相符**：D2：租赁者信息文件\n- **D3的名称与数据流相符**：D3：房屋信息文件\n- **D4的名称与数据流相符**：D4：看房记录文件"
+    },
+    "c2-q2": {
+      "origin": "source",
+      "sources": [
+        "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+      ],
+      "markdown": "- **ERD实体(1)定位正确**：(1)：房主\n- **ERD实体(2)定位正确**：(2)：房屋\n- **ERD实体(3)定位正确**：(3)：房屋类型\n- **ERD实体(4)定位正确**：(4)：租赁者\n- **ERD实体(5)定位正确**：(5)：看房安排"
+    },
+    "c2-q3": {
+      "origin": "source",
+      "sources": [
+        "同书印刷第28页，官方样章 PDF 第20页（实体、类、用例阶段与实现差异）；DFD 同时对照本地原题图。"
+      ],
+      "markdown": "- **说明实体用于数据建模**：实体表达数据属性。\n- **说明类封装属性和行为**：类包含属性和操作。\n- **指出Essential对应分析阶段**：Essential：分析。\n- **指出Real对应设计阶段**：Real：设计。\n- **说明Essential独立于实现技术**：Essential描述需求本质。\n- **说明Real涉及具体实现**：Real描述实现方式。"
+    },
+    "c3-q1": {
+      "origin": "source",
+      "sources": [
+        "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+      ],
+      "markdown": "- **表3-1的(1)对应(c)**：(1)：(c)\n- **表3-1的(2)对应(d)**：(2)：(d)\n- **表3-1的(3)对应(o)**：(3)：(o)\n- **表3-1的(4)对应(p)**：(4)：(p)\n- **表3-1的(5)对应(g)**：(5)：(g)\n- **表3-1的(6)对应(h)**：(6)：(h)\n- **表3-1的(7)对应(k)**：(7)：(k)\n- **表3-1的(8)对应(l)**：(8)：(l)\n- **表3-1的(9)对应(i)**：(9)：(i)\n- **表3-1的(10)对应(j)**：(10)：(j)\n- **表3-1的(11)对应(n)**：(11)：(n)\n- **表3-1的(12)对应(m)**：(12)：(m)\n- **表3-1的(13)对应(e)**：(13)：(e)\n- **表3-1的(14)对应(f)**：(14)：(f)"
+    },
+    "c3-q2": {
+      "origin": "source",
+      "sources": [
+        "Hermann Kopetz, Real-Time Systems, 2nd ed., 2011, Table 2.2（印刷46页，PDF第66页）、§7.2.1（印刷172–173页，PDF第192–193页）、第7章；原著正文和本题选项语义交叉核对。"
+      ],
+      "markdown": "- **指出发送组件与接收组件的消息传送**：从发送组件传给一个或多个接收组件。\n- **指出高可靠的传送要求**：高可靠。\n- **指出低传送延迟**：低延迟。\n- **指出低抖动**：抖动小。\n- **指出单向消息流或收发解耦**：单向传输。\n- **说明事件触发的触发依据**：发生事件后发送。\n- **说明速率约束的上限含义**：消息产生速率有上界。\n- **说明时间触发的预定时刻**：按预先约定的时刻发送。\n- **给出第1种具有时间触发能力的总线**：TTP、TTEthernet、FlexRay任选两种。\n- **给出第2种具有时间触发能力的总线**：TTP、TTEthernet、FlexRay任选两种。"
+    },
+    "c4-q1": {
+      "origin": "source",
+      "sources": [
+        "本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。",
+        "本地2018题答；Redis 官方 persistence 与 client handling 文档；按照2018年版本语境。"
+      ],
+      "markdown": "- **说明缓存由多个节点提供**：多个节点提供缓存。\n- **说明缓存保存经常访问的数据**：将热点数据缓存在内存。\n- **说明减轻数据库压力的目的**：提高访问效率并减轻数据库负载。\n- **Redis支持多种数据结构**：string/key-value、list、set、hash、sorted set。\n- **Memcache默认不支持数据持久化**：不支持（按题目的2018语境）。\n- **区分Memcache客户端分布与原生服务器集群**：无原生服务器集群；客户端可散列分布。\n- **识别2018年Redis命令处理的单线程模型**：不支持多线程命令执行（2018语境）。\n- **识别Memcache的内存分配管理**：支持，采用Slab分配等内存管理。\n- **识别Memcache不支持事务**：不支持。"
+    },
+    "c4-q2": {
+      "origin": "source",
+      "sources": [
+        "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。；本地2018题答；Memcached 官方 Overview https://docs.memcached.org/ ，区分客户端分散存储与服务器原生集群。"
+      ],
+      "markdown": "- **指出Memcache没有默认持久化**：无持久化。\n- **说明故障或重启造成缓存数据丢失**：故障或重启可丢失缓存数据。\n- **指出Memcache缺乏跨操作事务**：不支持跨操作事务。\n- **说明数据库与缓存更新可不一致**：数据库和缓存的更新可出现不一致。\n- **读取优先查缓存**：先读Redis。\n- **未命中时读取原数据库**：未命中读数据库。\n- **读取数据库后补充缓存**：回源后更新Redis。\n- **数据库写入后处理缓存同步**：先写数据库，再更新或失效缓存。"
+    },
+    "c4-q3": {
+      "origin": "source",
+      "sources": [
+        "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+      ],
+      "markdown": "- **给出主从分布式存储方案**：主从复制。\n- **给出另一种有效分布式存储方案**：Redis Cluster。\n- **给出第1种不同的分片位置或实现方式**：客户端分片、代理分片、服务端Cluster槽分片。\n- **给出第2种不同的分片位置或实现方式**：客户端分片、代理分片、服务端Cluster槽分片。"
+    },
+    "c5-q1": {
+      "origin": "source",
+      "sources": [
+        "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+      ],
+      "markdown": "- **指出SOA以服务组织功能单元**：不同功能单元作为服务。\n- **指出明确的接口和契约**：服务通过接口或契约交互。\n- **指出平台或语言中立性**：服务接口与实现平台解耦。\n- **说明ESB连接整合服务**：总线连接和整合各服务。\n- **给出第1项独立的ESB能力**：元数据注册、数据转换传递、发现路由或安全与服务治理。\n- **给出第2项独立的ESB能力**：元数据注册、数据转换传递、发现路由或安全与服务治理。\n- **给出第3项独立的ESB能力**：元数据注册、数据转换传递、发现路由或安全与服务治理。"
+    },
+    "c5-q2": {
+      "origin": "source",
+      "sources": [
+        "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。（第5空重号由原图位置核实）"
+      ],
+      "markdown": "- **架构图(1)定位正确**：(1)：(c) 业务层\n- **架构图(2)定位正确**：(2)：(i) UDDI\n- **架构图(3)定位正确**：(3)：(h) publish\n- **架构图(4)定位正确**：(4)：(e) 企业服务总线ESB\n- **架构图(5)定位正确**：(5)：(g) 安全验证和质量管理\n- **架构图(6)定位正确**：(6)：(j) 组件层"
+    },
+    "c5-q3": {
+      "origin": "source",
+      "sources": [
+        "本地答案详解转录：2018-下半年-下午.md，题答 PDF 第16–29页；本套材料来源核验记录。"
+      ],
+      "markdown": "- **列举第1种独立有效的交互安全措施**：传输加密、完整性验证、数字签名等。\n- **列举第2种独立有效的交互安全措施**：传输加密、完整性验证、数字签名等。\n- **列举第3种独立有效的交互安全措施**：传输加密、完整性验证、数字签名等。"
+    }
+  }
+}

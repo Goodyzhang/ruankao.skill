@@ -1,0 +1,51 @@
+[
+  {
+    "source_question": "1",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 1,
+    "paper": "试题一（25分）",
+    "stem": "阅读以下关于软件分析与设计的说明，在答题纸上回答问题1至问题3。\n【说明】\n某在线教育平台计划开发一个在线课程管理系统，该系统需支持课程发布、视频播放、在线测试、学员管理、学习进度追踪、教师评价等功能。其非功能性需求如下：\n（a）系统应能支持至少1000个并发用户同时在线学习；\n（b）视频播放应流畅，缓冲时间不超过2秒；\n（c）系统需保证99.9%的服务可用性；\n（d）界面设计应直观易用，便于各年龄段用户操作；\n（e）系统需具备防DDoS攻击能力；\n（f）在线测试提交后的响应时间不超过2秒；\n（g）数据备份恢复时间不超过30分钟；\n（h）系统应提供多语言支持。",
+    "subquestion": {
+      "site_number": 1,
+      "label": "问题1（8分）",
+      "prompt": "请将上述非功能性需求（a）～（h）归类到性能、安全性、可用性、易用性这四类非功能性需求。",
+      "type": "解答题",
+      "max_score": 8
+    },
+    "figure_note": "页面仅公众号二维码/头像图（73px），按 browser.md 规则不采集",
+    "source_answer": "性能: （a）、（b）、（f）\n安全性: （e）\n可用性: （c）、（g）\n易用性: （d）、（h）",
+    "source_analysis": "无（网站仅给答案，无文字解析）"
+  },
+  {
+    "source_question": "2",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 2,
+    "paper": "试题一（25分）",
+    "stem_same_as_q1": "某在线教育平台在线课程管理系统，非功能性需求（a）～（h），与题1共同背景一致，全文见 source-capture-1.json",
+    "subquestion": {
+      "site_number": 2,
+      "label": "问题2（7分）",
+      "prompt": "软件需求可以分为3个不同的层次，请以200字以内的文字分别介绍，并说明“观看学习视频可以随时暂停、重放或调整播放速度”属于哪个层次的需求。",
+      "type": "解答题",
+      "max_score": 7
+    },
+    "source_answer": "（1）业务需求(business requirement)：组织机构或客户对系统、产品高层次的目标要求。（2）用户需求(user requirement)：描述用户使用产品必须要完成的任务，是用户对软件产品的期望；这两种构成用户原始需求文档内容。（3）功能需求(functional requirement)，也包括非功能需求：定义开发人员必须实现的软件功能，使用户能完成任务，从而满足业务需求。\n“观看学习视频可以随时暂停、重放或调整播放速度”属于用户需求层次。",
+    "source_analysis": "无（网站仅给答案）"
+  },
+  {
+    "source_question": "3",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 3,
+    "paper": "试题一（25分）",
+    "stem_same_as_q1": "某在线教育平台在线课程管理系统，非功能性需求（a）～（h），与题1共同背景一致",
+    "subquestion": {
+      "site_number": 3,
+      "label": "问题3（10分）",
+      "prompt": "请以200字以内的文字介绍信息安全的五个要素及其含义。",
+      "type": "解答题",
+      "max_score": 10
+    },
+    "source_answer": "信息安全包括5个基本要素：机密性、完整性、可用性、可控性与可审查性。\n(1)机密性：确保信息不暴露给未授权的实体或进程。\n(2)完整性：只有得到允许的人才能修改数据，并且能够判别出数据是否已被篡改。\n(3)可用性：得到授权的实体在需要时可访问数据，即攻击者不能占用所有的资源而阻碍授权者的工作。\n(4)可控性：可以控制授权范围内的信息流向及行为方式。\n(5)可审查性：对出现的信息安全问题提供调查的依据和手段。",
+    "source_analysis": "无（网站仅给答案）"
+  }
+]

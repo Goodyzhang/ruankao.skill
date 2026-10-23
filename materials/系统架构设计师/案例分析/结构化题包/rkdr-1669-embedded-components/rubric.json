@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-embedded-components-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-53～55参考答案及解析；教程第2版§5.6/§16.4.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-embedded-components-p1",
+      "question_id": "rkdr-1669-embedded-components-q1",
+      "weight": 4,
+      "criterion": "获取构件4方法",
+      "correct": "获取方法4种：(1)从现有构件中获得符合要求的构件，直接使用或适应性修改；(2)通过遗留工程将具有潜在复用价值的软件提取出来；(3)从市场购买现成商业构件（COTS）；(4)开发新的符合要求的构件",
+      "conditions": [
+        "4种齐全"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题53参考答案；教程第2版§5.6"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p2",
+      "question_id": "rkdr-1669-embedded-components-q1",
+      "weight": 3,
+      "criterion": "开发构件3策略",
+      "correct": "开发策略3种：(1)分区（partitioning）——将问题情景的空间分割成几乎可独立研究的部分；(2)抽象（abstraction）——对给定实践内执行指定计算的软/硬件单元的抽象；(3)分割（segmentation）——将结构引入构件的行为，支持时序推理",
+      "conditions": [
+        "3种齐全"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题53参考答案"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p3",
+      "question_id": "rkdr-1669-embedded-components-q1",
+      "weight": 2,
+      "criterion": "主流构件标准",
+      "correct": "主流构件标准：CORBA（OMG）、COM/DCOM（Microsoft）、EJB（SUN）——列举两种即可",
+      "conditions": [
+        "任举两种"
+      ],
+      "equivalents": [
+        "OMG CORBA/COM/DCOM/EJB任二"
+      ],
+      "dimension": "软件构件",
+      "source": "网站题53参考答案"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p4",
+      "question_id": "rkdr-1669-embedded-components-q2",
+      "weight": 1,
+      "criterion": "判断(1)正确",
+      "correct": "（1）构件是系统中封装了设计与实现、只暴露接口的可更换部分——√",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题54参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p5",
+      "question_id": "rkdr-1669-embedded-components-q2",
+      "weight": 1,
+      "criterion": "判断(2)错误",
+      "correct": "（2）水平式复用关键点在于领域分析——×；垂直式复用才与领域特性相关（领域分析），水平式复用是公用服务不与特殊领域相关",
+      "conditions": [
+        "结论+理由"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题54参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p6",
+      "question_id": "rkdr-1669-embedded-components-q2",
+      "weight": 1,
+      "criterion": "判断(3)错误",
+      "correct": "（3）基于配置的组装技术——×；组装技术=基于功能/基于数据/面向对象三种，配置只是功能组合的动态方法",
+      "conditions": [
+        "结论+理由"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题54参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p7",
+      "question_id": "rkdr-1669-embedded-components-q2",
+      "weight": 1,
+      "criterion": "判断(4)正确",
+      "correct": "（4）软件架构=构件描述+构件相互作用（连接件）+指导集成模式及约束——√",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题54参考答案"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p8",
+      "question_id": "rkdr-1669-embedded-components-q2",
+      "weight": 1,
+      "criterion": "判断(5)错误",
+      "correct": "（5）RTL属垂直式复用构件——×；RTL（数学库、stdio等运行时库）服务多种应用与领域无关，属水平式复用",
+      "conditions": [
+        "结论+理由"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题54参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p9",
+      "question_id": "rkdr-1669-embedded-components-q2",
+      "weight": 1,
+      "criterion": "判断(6)错误",
+      "correct": "（6）软件构件功能不能修改——×；硬件构件功能被ASIC预先确定不可修改，软件构件功能由加载其上的软件（作业）确定，寿命期中可以修改",
+      "conditions": [
+        "结论+理由"
+      ],
+      "equivalents": [],
+      "dimension": "软件构件",
+      "source": "网站题54参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p10",
+      "question_id": "rkdr-1669-embedded-components-q3",
+      "weight": 3,
+      "criterion": "链接接口LIF",
+      "correct": "链接接口（对上层OS/应用提供功能服务）：Send()输出数据到RS-232芯片；Receive()通过RS-232芯片从外部接收数据；Init232()初始化RS-232芯片",
+      "conditions": [
+        "接口定位+功能"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式构件",
+      "source": "网站题55参考答案"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p11",
+      "question_id": "rkdr-1669-embedded-components-q3",
+      "weight": 2,
+      "criterion": "局部接口",
+      "correct": "局部接口（芯片寄存器与CPU支持，与硬件紧密相关）：Intconnect()中断向量连接CPU；Read()读寄存器内容；Write()写控制信息或数据到寄存器",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式构件",
+      "source": "网站题55参考答案"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p12",
+      "question_id": "rkdr-1669-embedded-components-q3",
+      "weight": 2,
+      "criterion": "技术相关接口TDI",
+      "correct": "技术相关接口（为维护人员提供芯片诊断接口）：Datacheck()诊断数据传输校验错误",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式构件",
+      "source": "网站题55参考答案"
+    },
+    {
+      "id": "rkdr-1669-embedded-components-p13",
+      "question_id": "rkdr-1669-embedded-components-q3",
+      "weight": 3,
+      "criterion": "技术无关接口TII",
+      "correct": "技术无关接口（运行时配置/复位/重启）：Reset()复位；Restart()重启动；Rateconfigure()配置传输速率",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式构件",
+      "source": "网站题55参考答案"
+    }
+  ]
+}

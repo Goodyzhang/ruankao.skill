@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-lambda-ecommerce-pack",
+  "version": 1,
+  "title": "电商用户行为分析：Lambda架构、NoSQL与机器学习分类",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-lambda-ecommerce",
+      "title": "电商用户访问记录分析（Hadoop vs Lambda选型）",
+      "stem": "电商网站分析海量用户访问记录（浏览/搜索/加购/下单支付/退货），支持市场预测、商品推荐与实时推荐；张工建议传统Hadoop，李工建议Lambda架构，团队采纳李工。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号28～30"
+      },
+      "figures": [
+        {
+          "file": "../../assets/1fa5bf4f9a89cc8a.png",
+          "caption": "表4-1 机器学习分类：监督学习特点空(1)、(2)空特点为不需标记数据、(3)空特点为未标记+少量标记、强化学习特点空(4)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/8027dbaa4f59c9bd188dff00f90c9db4.png-ruankao"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-lambda-ecommerce-q1",
+          "title": "问题1（9分）",
+          "prompt": "请用300字以内的文字分析Lambda架构的优缺点，说明为什么要采用Lambda架构。",
+          "complete": true,
+          "max_score": 9
+        },
+        {
+          "id": "rkdr-1669-lambda-ecommerce-q2",
+          "title": "问题2（8分）",
+          "prompt": "在本系统中，采用了HBase这种列族的NoSQL数据库，请用200字以内的文字解释NoSQL数据库有哪些优点？",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-lambda-ecommerce-q3",
+          "title": "问题3（8分）",
+          "prompt": "在本系统中采用了TensorFlow机器学习框架进行模型训练和优化，以提升推荐准确度和用户满意度。请根据机器学习的分类填写下表中的空格。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

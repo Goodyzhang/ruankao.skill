@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-autosar-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-43～45参考答案及解析；教程第2版§16核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-autosar-p1",
+      "question_id": "rkdr-1669-autosar-q1",
+      "weight": 3,
+      "criterion": "结论：李工流程符合",
+      "correct": "李工设计的流程符合AUTOSAR要求（并发、可多次迭代）",
+      "conditions": [
+        "结论明确选李工"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题43参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p2",
+      "question_id": "rkdr-1669-autosar-q1",
+      "weight": 3,
+      "criterion": "理由：三描述并行",
+      "correct": "李工流程将软件组件描述、系统描述和ECU资源描述同时定义；王工流程仅仅只做系统描述",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题43参考答案及解析；图3-2/3-3对照"
+    },
+    {
+      "id": "rkdr-1669-autosar-p3",
+      "question_id": "rkdr-1669-autosar-q1",
+      "weight": 3,
+      "criterion": "理由：组件与迭代",
+      "correct": "王工流程没有考虑软件组件描述，只是简单将软件组件作为第4步被集成；李工流程明确顶层定义阶段、并行度高、迭代清晰",
+      "conditions": [
+        "两条理由齐全"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题43参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p4",
+      "question_id": "rkdr-1669-autosar-q2",
+      "weight": 2,
+      "criterion": "箭头(1) 警报启动错误处理",
+      "correct": "（1）操作系统的警报管理发现ECU系统出错时，启动错误处理程序",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站题44参考答案及解析；图3-4箭头核验"
+    },
+    {
+      "id": "rkdr-1669-autosar-p5",
+      "question_id": "rkdr-1669-autosar-q2",
+      "weight": 2,
+      "criterion": "箭头(2) 交由进程管理",
+      "correct": "（2）错误处理程序将具体动作交由进程管理完成对发生错误的任务进行处理",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站题44参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p6",
+      "question_id": "rkdr-1669-autosar-q2",
+      "weight": 2,
+      "criterion": "箭头(3) 产生错误事件",
+      "correct": "（3）错误处理程序产生一个错误事件",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站题44参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p7",
+      "question_id": "rkdr-1669-autosar-q2",
+      "weight": 2,
+      "criterion": "箭头(4) 调用资源管理",
+      "correct": "（4）任务控制块处理程序调用资源管理功能，实现硬件资源重分配",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站题44参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p8",
+      "question_id": "rkdr-1669-autosar-q2",
+      "weight": 2,
+      "criterion": "箭头(5) 通知事件管理",
+      "correct": "（5）任务控制块处理程序通知事件管理，对错误事件进行应答",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式OS",
+      "source": "网站题44参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p9",
+      "question_id": "rkdr-1669-autosar-q3",
+      "weight": 2,
+      "criterion": "优点：多厂家支持",
+      "correct": "AUTOSAR优点(1)：具有厂商独立性，可以有效支持多厂家汽车电子基础软件的研制",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题45参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p10",
+      "question_id": "rkdr-1669-autosar-q3",
+      "weight": 2,
+      "criterion": "优点：软件重用",
+      "correct": "AUTOSAR优点(2)：有利于软件重用，可根据不同ECU结构通过数据配置自动生成各种ECU软件组件",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题45参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-autosar-p11",
+      "question_id": "rkdr-1669-autosar-q3",
+      "weight": 2,
+      "criterion": "优点：全生存周期",
+      "correct": "AUTOSAR优点(3)：定义的软件框架支持汽车电子软件全生存周期（构架、开发、测试、验证、授权、版本和接口）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题45参考答案及解析"
+    }
+  ]
+}

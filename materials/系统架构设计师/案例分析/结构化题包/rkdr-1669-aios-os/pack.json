@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-aios-os-pack",
+  "version": 1,
+  "title": "AI原生操作系统AIOS",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-aios-os",
+      "title": "AI原生操作系统AIOS",
+      "stem": "试题四\n操作系统与AI的结合是计算范式演进的关键趋势。早期操作系统主要管理硬件资源与提供通用接口，而AI的兴起催生了专用计算需求。随着AI应用普及，操作系统开始深度集成智能能力，现代操作系统正演化为“AI原生”平台。这一融合不仅提升了系统自治性与适应性，更让操作系统成为连接物理世界与智能服务的核心基石，推动边缘计算、自动驾驶等前沿领域发展。",
+      "complete": false,
+      "max_score": 15,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号90～91"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-aios-os-q1",
+          "title": "问题1（8分）",
+          "prompt": "简要说明嵌入式智能操作系统AIOS的特点。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-aios-os-q2",
+          "title": "问题2（7分）",
+          "prompt": "什么是轻量级内核，它有什么特点。",
+          "complete": true,
+          "max_score": 7
+        }
+      ]
+    }
+  ]
+}

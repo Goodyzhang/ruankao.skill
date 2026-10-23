@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-iot-edge-cloud-pack",
+  "version": 1,
+  "title": "物联网设备管理平台：边云协同、MQTT与设备安全",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-iot-edge-cloud",
+      "title": "物联网设备管理平台（边缘计算+中心云+MQTT）",
+      "stem": "智能家居公司全球化设备管理平台：百万级设备实时采集控制；低延迟/高可用/本地化计算；边缘计算节点+中心云+MQTT。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号153～155"
+      },
+      "figures": [
+        {
+          "file": "../../assets/d4740e9466a76c33.png",
+          "caption": "MQTT与HTTP对比表：协议类型/带宽占用/实时性/适用场景，空(1)～(4)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20250701/763ffddde9f94d27ab0310df0bcfcf54.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-iot-edge-cloud-q1",
+          "title": "问题1（12分）",
+          "prompt": "请以300字以内的文字简述边云协同包括哪些内容。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-iot-edge-cloud-q2",
+          "title": "问题2（8分）",
+          "prompt": "比较MQTT协议与HTTP协议在物联网设备通信中的优缺点，并填写表格。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-iot-edge-cloud-q3",
+          "title": "问题3（5分）",
+          "prompt": "如何确保物联网设备的身份认证与指令安全性？",
+          "complete": true,
+          "max_score": 5
+        }
+      ]
+    }
+  ]
+}

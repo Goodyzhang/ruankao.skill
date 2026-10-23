@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-ecommerce-microsvc-pack",
+  "version": 1,
+  "title": "电商平台微服务：优势、通信选型与一致性高可用",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站仅给参考答案，逐点分值与拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-ecommerce-microsvc",
+      "title": "Web电商平台微服务架构设计",
+      "stem": "面向全球的电商在线购物系统：多语言多货币多地区配送，高可扩展高可用；采用微服务架构+Docker部署；关键因素含分布式事务、服务通信安全高效、多支付合规、CDN；规划用户/商品/订单/支付等核心微服务。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号13～15"
+      },
+      "figures": [],
+      "questions": [
+        {
+          "id": "rkdr-1669-ecommerce-microsvc-q1",
+          "title": "问题1（5分）",
+          "prompt": "简述微服务架构相较于传统单体架构的主要优势。",
+          "complete": true,
+          "max_score": 5
+        },
+        {
+          "id": "rkdr-1669-ecommerce-microsvc-q2",
+          "title": "问题2（12分）",
+          "prompt": "在微服务架构下，服务间的通信和数据共享是核心问题之一。请比较常见的服务间通信方式RESTful API和gRPC，并基于电商平台的需求，推荐一种合适的通信方式并说明选择原因。",
+          "complete": true,
+          "max_score": 12
+        },
+        {
+          "id": "rkdr-1669-ecommerce-microsvc-q3",
+          "title": "问题3（8分）",
+          "prompt": "在微服务架构下，如何确保各个微服务之间的数据一致性和服务的高可用性？请列举几种常见的策略或技术。",
+          "complete": true,
+          "max_score": 8
+        }
+      ]
+    }
+  ]
+}

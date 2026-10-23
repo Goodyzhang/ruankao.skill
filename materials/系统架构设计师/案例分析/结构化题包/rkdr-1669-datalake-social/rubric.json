@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-datalake-social-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-71～73参考答案；教程第2版§19/§6.5.2核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-datalake-social-p1",
+      "question_id": "rkdr-1669-datalake-social-q1",
+      "weight": 2,
+      "criterion": "空(1) 数据湖数据类型",
+      "correct": "（1）结构化/半结构化/非结构化数据类型",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题71参考答案；表图核验"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p2",
+      "question_id": "rkdr-1669-datalake-social-q1",
+      "weight": 2,
+      "criterion": "空(2) 数仓数据处理",
+      "correct": "（2）ETL（提前清洗）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题71参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p3",
+      "question_id": "rkdr-1669-datalake-social-q1",
+      "weight": 2,
+      "criterion": "空(3) 数据湖查询延迟",
+      "correct": "（3）高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题71参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p4",
+      "question_id": "rkdr-1669-datalake-social-q1",
+      "weight": 2,
+      "criterion": "空(4) 数仓适用场景",
+      "correct": "（4）固定报表与分析",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "大数据架构",
+      "source": "网站题71参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p5",
+      "question_id": "rkdr-1669-datalake-social-q2",
+      "weight": 1.25,
+      "criterion": "Delta Lake事务",
+      "correct": "事务支持：支持ACID事务，避免数据不一致",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据湖",
+      "source": "网站题72参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p6",
+      "question_id": "rkdr-1669-datalake-social-q2",
+      "weight": 1.25,
+      "criterion": "Delta Lake查询优化",
+      "correct": "优化查询：内置元数据管理，加速格式数据查询",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据湖",
+      "source": "网站题72参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p7",
+      "question_id": "rkdr-1669-datalake-social-q2",
+      "weight": 1.25,
+      "criterion": "Delta Lake时间旅行",
+      "correct": "时间旅行（Time Travel）：通过版本回滚恢复误删数据",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据湖",
+      "source": "网站题72参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p8",
+      "question_id": "rkdr-1669-datalake-social-q2",
+      "weight": 1.25,
+      "criterion": "Delta Lake流批一体",
+      "correct": "流批一体：同时支持批处理和流数据写入",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据湖",
+      "source": "网站题72参考答案"
+    },
+    {
+      "id": "rkdr-1669-datalake-social-p9",
+      "question_id": "rkdr-1669-datalake-social-q3",
+      "weight": 12,
+      "criterion": "图数据库理由（六条）",
+      "correct": "七条理由答出6条即满分：嵌套关系查询（朋友的朋友，Oracle性能低）/路径查询（原生支持低延迟）/动态模式（无需预定义schema）/社交网络分析（影响力、社区发现）/实时更新（好友添加）/可视化支持（Cypher生成图谱）/轻量级存储（仅存必要关系）；单条2分、答足6条得满分",
+      "conditions": [
+        "六条及以上"
+      ],
+      "equivalents": [],
+      "dimension": "图数据库",
+      "source": "网站题73参考答案"
+    }
+  ]
+}

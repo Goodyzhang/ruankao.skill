@@ -1,0 +1,17 @@
+flowchart TB
+  operator[操作者：设定温度] -->|人机接口| app[应用软件：比较目标与测量]
+  sensor[温度传感器] -->|输入采样| app
+  app -->|输出控制命令| actuator[执行器：控制加热器]
+  actuator -->|改变物理状态| object[受控对象：小温箱]
+  object -->|温度变化| sensor
+  subgraph computer[嵌入式计算机的一般组成；按需求裁剪]
+    hw[处理器＋存储/定时/总线/I-O等支撑硬件]
+    os[可选OS：管理任务与资源]
+    support[支撑软件：公共库与服务]
+    app
+    hw -->|提供执行环境| os
+    os -->|提供公共能力| support
+    support -->|被应用使用| app
+    hw -.->|裸机方案可不配置OS| app
+  end
+  tools[宿主开发工具与调试环境] -.->|生成/加载目标程序| computer

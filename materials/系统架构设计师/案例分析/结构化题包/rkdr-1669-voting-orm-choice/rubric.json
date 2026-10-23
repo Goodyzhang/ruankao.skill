@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-voting-orm-choice-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-34～36参考答案；教程第2版§6.4.4核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-voting-orm-choice-p1",
+      "question_id": "rkdr-1669-voting-orm-choice-q1",
+      "weight": 3,
+      "criterion": "ORM定义",
+      "correct": "ORM全称Object Relational Mapping（对象关系映射）：通过使用描述对象和数据之间映射的元数据，将程序中的对象自动持久化到关系数据库中",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题34参考答案；教程第2版§6.4.4"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p2",
+      "question_id": "rkdr-1669-voting-orm-choice-q1",
+      "weight": 2,
+      "criterion": "ORM优点（效率/对象化）",
+      "correct": "优点：①提高开发效率，降低开发成本；②使开发更加对象化",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题34参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p3",
+      "question_id": "rkdr-1669-voting-orm-choice-q1",
+      "weight": 3,
+      "criterion": "ORM优点（移植/缓存）",
+      "correct": "优点：③可移植；④可以很方便地引入数据缓存之类的附加功能",
+      "conditions": [
+        "两条齐全"
+      ],
+      "equivalents": [],
+      "dimension": "数据访问",
+      "source": "网站题34参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p4",
+      "question_id": "rkdr-1669-voting-orm-choice-q2",
+      "weight": 2,
+      "criterion": "选型结论",
+      "correct": "项目组应选用Hibernate框架",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [
+        "iBatis（须有充分理由，本题题干三条因素指向Hibernate）"
+      ],
+      "dimension": "框架选型",
+      "source": "网站题35参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p5",
+      "question_id": "rkdr-1669-voting-orm-choice-q2",
+      "weight": 3,
+      "criterion": "理由：移植",
+      "correct": "理由①Hibernate支持多种不同类型数据库，满足数据库移植需求（对应因素1）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题35参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p6",
+      "question_id": "rkdr-1669-voting-orm-choice-q2",
+      "weight": 3,
+      "criterion": "理由：SQL工作量",
+      "correct": "理由②Hibernate相对于iBatis减少了SQL语句开发的工作量（对应因素2）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题35参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p7",
+      "question_id": "rkdr-1669-voting-orm-choice-q2",
+      "weight": 1,
+      "criterion": "理由：聚合继承",
+      "correct": "理由③iBatis生成的PO是扁平化的，无法像Hibernate一样支持对象的继承和聚合等立体化关系（对应因素3）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "框架选型",
+      "source": "网站题35参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p8",
+      "question_id": "rkdr-1669-voting-orm-choice-q3",
+      "weight": 2,
+      "criterion": "空(1) JDBC封装",
+      "correct": "（1）JDBC封装→(c)Spring JdbcTemplate",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层技术",
+      "source": "网站题36参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p9",
+      "question_id": "rkdr-1669-voting-orm-choice-q3",
+      "weight": 2,
+      "criterion": "空(2) SQL Mapping",
+      "correct": "（2）SQL Mapping→(b)iBatis/MyBatis",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层技术",
+      "source": "网站题36参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p10",
+      "question_id": "rkdr-1669-voting-orm-choice-q3",
+      "weight": 2,
+      "criterion": "空(3) O/R Mapping",
+      "correct": "（3）O/R Mapping→(d)TopLink、JDO、Hibernate",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层技术",
+      "source": "网站题36参考答案"
+    },
+    {
+      "id": "rkdr-1669-voting-orm-choice-p11",
+      "question_id": "rkdr-1669-voting-orm-choice-q3",
+      "weight": 2,
+      "criterion": "空(4) Entity Bean",
+      "correct": "（4）Entity Bean→(a)BMP、CMP",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "持久层技术",
+      "source": "网站题36参考答案"
+    }
+  ]
+}

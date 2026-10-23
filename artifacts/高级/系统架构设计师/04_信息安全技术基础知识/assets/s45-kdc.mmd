@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant A as A
+    participant C as KDC
+    participant B as B
+    Note over A,B: A与KDC共享长期K_A；B与KDC共享长期K_B
+    Note over A,B: request含A/B身份；N_a/N_b为本轮随机挑战
+    A->>C: ① request, N_a
+    C->>A: ② E_K_A[K_s,request,N_a] || Ticket_B
+    Note over A,B: Ticket_B=E_K_B[K_s,ID_A]；A原样转交
+    A->>B: ③ Ticket_B（A→B）
+    B->>A: ④ E_K_s[N_b]
+    A->>B: ⑤ E_K_s[f(N_b)]
+    Note over A,B: K_s用于本轮会话；E/f为教材简化记号

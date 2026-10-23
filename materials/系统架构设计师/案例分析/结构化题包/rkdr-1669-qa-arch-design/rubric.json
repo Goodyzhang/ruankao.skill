@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-qa-arch-design-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "题128网站参考答案；题129/130网站自述题面缺失（pending）",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-qa-arch-design-p8",
+      "question_id": "rkdr-1669-qa-arch-design-q1",
+      "weight": 7,
+      "criterion": "微服务介绍与优缺点",
+      "correct": "架构风格定义+优点（解耦/独立/技术多样/容错/松耦合）+缺点（分布式复杂/运维/测试/网络开销）",
+      "conditions": [
+        "定义+优缺点"
+      ],
+      "equivalents": [],
+      "dimension": "微服务",
+      "source": "网站题128参考答案与参考图1"
+    },
+    {
+      "id": "rkdr-1669-qa-arch-design-p9",
+      "question_id": "rkdr-1669-qa-arch-design-q2",
+      "weight": 3,
+      "criterion": "效用树填空（题面缺失）",
+      "correct": "效用树本体缺失，不构造答案；标准结构=树根→质量属性→属性分类→场景（H/M/L）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构评估",
+      "source": "网站题129自述图片缺失"
+    },
+    {
+      "id": "rkdr-1669-qa-arch-design-p10",
+      "question_id": "rkdr-1669-qa-arch-design-q3",
+      "weight": 4,
+      "criterion": "六元素两场景（题面缺失）",
+      "correct": "场景正文缺失，不构造答案；六要素定义完整记录",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "质量属性",
+      "source": "网站题130自述图片缺失"
+    }
+  ]
+}

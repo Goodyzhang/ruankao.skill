@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-energy-mesh-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-140～142参考答案；教程第2版§14核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-energy-mesh-p1",
+      "question_id": "rkdr-1669-energy-mesh-q1",
+      "weight": 2,
+      "criterion": "Service Mesh定义",
+      "correct": "定义：处理服务间通信的专用基础设施层，由一组轻量级网络代理（Sidecar）组成，与应用代码一起部署但独立运行，负责微服务间通信的可靠性、安全性和可观测性，将通用功能从业务代码剥离",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题140参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p2",
+      "question_id": "rkdr-1669-energy-mesh-q1",
+      "weight": 2,
+      "criterion": "服务发现",
+      "correct": "服务发现：Sidecar代理自动注册到控制平面；调用时Sidecar查询控制平面获取目标服务所有健康实例的最新地址列表，实现动态服务发现",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题140参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p3",
+      "question_id": "rkdr-1669-energy-mesh-q1",
+      "weight": 2,
+      "criterion": "负载均衡",
+      "correct": "负载均衡：Sidecar获取目标实例列表后按预设算法（轮询、最少连接、加权等）分发出站请求，避免单实例过载",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题140参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p4",
+      "question_id": "rkdr-1669-energy-mesh-q1",
+      "weight": 2,
+      "criterion": "熔断机制",
+      "correct": "熔断：Sidecar持续监控请求失败率或响应时间，超阈值自动“熔断”停止向故障实例发送请求直接返回错误，防止故障扩散和雪崩；冷却后再少量请求探测恢复",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "服务网格",
+      "source": "网站题140参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p5",
+      "question_id": "rkdr-1669-energy-mesh-q2",
+      "weight": 4,
+      "criterion": "Serverless特征四条",
+      "correct": "特征（8分口径）：(1)全托管计算服务（只需写代码，无需关注基础设施开发运维安全高可用）；(2)通用性（结合云BaaS API支撑云上所有重要类型应用）；(3)自动弹性伸缩（无需提前容量规划）；(4)按量计费（成本降低，无需为闲置资源付费）",
+      "conditions": [
+        "四条"
+      ],
+      "equivalents": [],
+      "dimension": "Serverless",
+      "source": "网站题141参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p6",
+      "question_id": "rkdr-1669-energy-mesh-q2",
+      "weight": 4,
+      "criterion": "场景优点三条",
+      "correct": "场景优点（3分口径）：(1)降低成本（账单任务非持续运行，按执行付费优于长期维护虚拟机）；(2)简化开发运维（只关注业务逻辑，无需担心部署扩缩容）；(3)自动扩容（用户激增时自动瞬间扩展大量实例并行处理）",
+      "conditions": [
+        "三条"
+      ],
+      "equivalents": [],
+      "dimension": "Serverless",
+      "source": "网站题141参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p7",
+      "question_id": "rkdr-1669-energy-mesh-q2",
+      "weight": 3,
+      "criterion": "场景挂接口径",
+      "correct": "优点与“突发高并发异步任务（电子账单）”场景相扣",
+      "conditions": [
+        "场景相扣"
+      ],
+      "equivalents": [],
+      "dimension": "Serverless",
+      "source": "网站题141题面"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p8",
+      "question_id": "rkdr-1669-energy-mesh-q3",
+      "weight": 3,
+      "criterion": "HPA弹性伸缩",
+      "correct": "弹性伸缩：通过HPA实现；HPA持续监控Pod的CPU使用率、内存等自定义指标，超过预设目标阈值自动增加Pod副本数分担负载，负载降低时减少副本数节省资源",
+      "conditions": [
+        "机制完整"
+      ],
+      "equivalents": [],
+      "dimension": "容器编排",
+      "source": "网站题142参考答案"
+    },
+    {
+      "id": "rkdr-1669-energy-mesh-p9",
+      "question_id": "rkdr-1669-energy-mesh-q3",
+      "weight": 3,
+      "criterion": "滚动更新",
+      "correct": "滚动更新：部署新版本时逐步用新Pod替换旧Pod——先启动一个或多个新Pod，等待进入Ready状态后再终止一个旧Pod，循环往复直到全部更新完毕",
+      "conditions": [
+        "流程完整"
+      ],
+      "equivalents": [],
+      "dimension": "容器编排",
+      "source": "网站题142参考答案"
+    }
+  ]
+}

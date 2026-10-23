@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-ramp-esb-pack",
+  "version": 1,
+  "title": "Ramp Coordination ESB集成",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）。",
+  "cases": [
+    {
+      "id": "rkdr-1669-ramp-esb",
+      "title": "Ramp Coordination ESB集成",
+      "stem": "阅读以下关于企业应用系统集成架构设计的说明，回答问题。\n【说明】\n某航空公司希望对构建于上世纪七八十年代的主要业务系统进行改造与集成，提高企业的竞争力。由于集成过程非常复杂，公司决定首先以Ramp Coordination系统为例进行集成过程的探索与验证。\n在航空业中，Ramp Coordination是指飞机从降落到起飞过程中所需要进行的各种业务活动的协调过程。通常每个航班都有一位员工负责Ramp Coordination（Ramp Coordinator），协调的业务活动包括检查机位环境、卸货和装货等。\n由于航班类型、机型的不同，Ramp Coordination的流程有很大差异（短期中转航班/到达航班/离港航班三类流程，可进一步细分）。\n为完成上述业务，Ramp Coordination信息系统需要从乘务人员管理系统中提取航班乘务员的信息、从订票系统中提取乘客信息、从机务人员管理系统中提取机务人员信息、接收来自航班调度系统的航班到达事件。其中乘务人员管理系统和航班调度系统运行在大型主机系统中，机务人员管理系统运行在Unix操作系统之上，订票系统基于Java语言，具有Web界面，运",
+      "complete": false,
+      "max_score": 2,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号214"
+      },
+      "figures": [
+        {
+          "file": "../../assets/2dbe7ccdc7496f70.jpg",
+          "caption": "Ramp Coordination三类航班流程图(a)(b)(c)",
+          "source_locator": "网站题214附图"
+        },
+        {
+          "file": "../../assets/4c0c84fb638d9904.jpg",
+          "caption": "服务组件服务表",
+          "source_locator": "网站题214附图"
+        },
+        {
+          "file": "../../assets/e6799714aa23ead2.jpg",
+          "caption": "ESB集成架构图",
+          "source_locator": "网站题214附图"
+        },
+        {
+          "file": "../../assets/bbeba1d8038e6d9e.jpg",
+          "caption": "ESB填图空白版",
+          "source_locator": "网站题214附图"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-ramp-esb-q1",
+          "title": "问题1（分值未标）",
+          "prompt": "Ramp Control与Flight Management两业务服务组件服务分析填表。",
+          "complete": true,
+          "max_score": 1
+        },
+        {
+          "id": "rkdr-1669-ramp-esb-q2",
+          "title": "问题2（分值未标）",
+          "prompt": "200字内描述ESB定义、给出五个主要功能，并填图（1）～（6）。",
+          "complete": true,
+          "max_score": 1
+        }
+      ]
+    }
+  ]
+}

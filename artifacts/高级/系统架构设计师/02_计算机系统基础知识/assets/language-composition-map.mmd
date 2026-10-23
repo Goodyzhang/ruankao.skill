@@ -1,0 +1,19 @@
+flowchart LR
+  subgraph DATA[数据组织：保存与定位]
+    S["集合 S：不重复的用户"]
+    Other["数组／散列表／字符串<br/>各有组织与访问约定"]
+  end
+  subgraph VALUE[表达式：求得一个值]
+    Count["size(S)：不同用户数"]
+    Test["count &lt; cap 且用户不在 S 中<br/>布尔条件"]
+  end
+  subgraph CONTROL[流程控制：选择执行路径]
+    Branch{"条件成立？"}
+    Add["加入新用户"]
+    Reject["拒绝提交"]
+  end
+  S -->|作为求值输入| Count
+  Count -->|参与比较| Test
+  Test -->|作为分支条件| Branch
+  Branch -->|是| Add
+  Branch -->|否| Reject

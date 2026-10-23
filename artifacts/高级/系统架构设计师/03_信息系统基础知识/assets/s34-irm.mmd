@@ -1,0 +1,12 @@
+flowchart LR
+  ROOT["关联练习补充：IRM 信息资源管理<br/>不计入DSS四个正式小小节"]
+  ROOT --- VIEW["题内两种管理重点"]
+  VIEW --- DR["数据资源管理<br/>强调数据控制；题内起点与基础"]
+  VIEW --- IP["信息处理管理<br/>管理者怎样获得与处理信息"]
+  ROOT --- AXIS["另一观察轴：企业信息资源集成对象"]
+  AXIS --- FN["前提：信息功能集成<br/>协调部门采集、处理职责"]
+  AXIS --- FLOW["核心：内外信息流集成<br/>贯通订单、库存与供应商信息"]
+  AXIS --- TECH["实施基础：信息手段集成<br/>接口、网络与工具协同"]
+  NOTE["两轴各自并列说明<br/>仅升级设备不能证明职责和信息流已集成"] --- AXIS
+  classDef base fill:#e9f4ff,stroke:#276d9d,color:#15344a;
+  class ROOT,VIEW,DR,IP,AXIS,FN,FLOW,TECH,NOTE base;

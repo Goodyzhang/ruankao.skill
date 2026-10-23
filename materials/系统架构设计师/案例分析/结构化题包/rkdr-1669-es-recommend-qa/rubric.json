@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-es-recommend-qa-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-150/152参考答案；题151无官方答案",
+    "level": "混合来源训练推定（题151待核验）"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-es-recommend-qa-p1",
+      "question_id": "q1",
+      "weight": 4,
+      "criterion": "四分词器特点",
+      "correct": "Standard按词/中文按字、Simple按非字母过滤、Whitespace仅空白、Keyword整体一词",
+      "conditions": [
+        "四分词器齐全"
+      ],
+      "equivalents": [],
+      "dimension": "Elasticsearch",
+      "source": "网站题150参考答案"
+    },
+    {
+      "id": "rkdr-1669-es-recommend-qa-p2",
+      "question_id": "q2",
+      "weight": 6,
+      "criterion": "架构图八空（题面缺失）",
+      "correct": "无官方答案，不构造",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "架构分层",
+      "source": "网站题151自述无答案"
+    },
+    {
+      "id": "rkdr-1669-es-recommend-qa-p3",
+      "question_id": "q3",
+      "weight": 4,
+      "criterion": "RESTful前后端分离",
+      "correct": "资源URL+HTTP方法、JSON响应、职责分离、交互规范四要点",
+      "conditions": [
+        "四要点"
+      ],
+      "equivalents": [],
+      "dimension": "REST",
+      "source": "网站题152参考答案"
+    }
+  ]
+}

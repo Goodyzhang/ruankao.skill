@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-goa-architecture-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-131～132参考答案（与题121答案表图片互证）；教程第2版§16核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-goa-architecture-p1",
+      "question_id": "q1",
+      "weight": 9,
+      "criterion": "开放式架构四特点",
+      "correct": "①可移植性——应用系统可在具有开放架构特性的各种计算机系统间移植，不论同种型号同种机型；②可互操作性——网上各结点机间可相互操作和资源共享；③可剪裁性——低档机上运行的应用应能在高档机运行，高档应用经剪裁可在低档机运行；④易获得性——软件环境易于从多方获得不受单一来源控制",
+      "conditions": [
+        "四特点齐全"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题131参考答案（题121同案未标分值版一致）"
+    },
+    {
+      "id": "rkdr-1669-goa-architecture-p2",
+      "question_id": "q2",
+      "weight": 2,
+      "criterion": "空(1) 4D描述",
+      "correct": "（1）为任何处理机中的服务功能提供各应用软件互操作服务的接口（应用到系统服务的直接接口）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "4D"
+      ],
+      "dimension": "嵌入式架构",
+      "source": "网站题132参考答案；接口表图核验"
+    },
+    {
+      "id": "rkdr-1669-goa-architecture-p3",
+      "question_id": "q2",
+      "weight": 2,
+      "criterion": "空(2)(3)(4)名称",
+      "correct": "（2）1L（物理资源逻辑接口）；（3）3D（系统服务到资源访问直接接口）；（4）4L（应用逻辑接口）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题132参考答案"
+    },
+    {
+      "id": "rkdr-1669-goa-architecture-p4",
+      "question_id": "q2",
+      "weight": 2,
+      "criterion": "空(5) 1D描述",
+      "correct": "（5）物理资源与物理资源之间以及物理资源与外部环境之间的接口（物理资源到物理资源直接接口）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "1D"
+      ],
+      "dimension": "嵌入式架构",
+      "source": "网站题132参考答案"
+    },
+    {
+      "id": "rkdr-1669-goa-architecture-p5",
+      "question_id": "q2",
+      "weight": 2,
+      "criterion": "空(6) 3L描述",
+      "correct": "（6）在同一个或不同的处理机之间，为处理机中的系统服务提供逻辑服务和远程服务的接口（系统服务逻辑接口）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "3L"
+      ],
+      "dimension": "嵌入式架构",
+      "source": "网站题132参考答案"
+    },
+    {
+      "id": "rkdr-1669-goa-architecture-p6",
+      "question_id": "q2",
+      "weight": 2,
+      "criterion": "空(7)(8)名称",
+      "correct": "（7）2L（资源访问服务逻辑接口）；（8）2D（资源服务到物理资源直接接口）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题132参考答案"
+    },
+    {
+      "id": "rkdr-1669-goa-architecture-p7",
+      "question_id": "q2",
+      "weight": 6,
+      "criterion": "D/L判别口径",
+      "correct": "直接接口(iD)定义信息传输方式、逻辑接口(iL)定义对等数据交换要求（传输发生在直接接口上）；与GOA架构图接口标注互证",
+      "conditions": [
+        "判别依据明确"
+      ],
+      "equivalents": [],
+      "dimension": "嵌入式架构",
+      "source": "网站题132题面与架构图"
+    }
+  ]
+}

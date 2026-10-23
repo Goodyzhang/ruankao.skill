@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-design-qa-group-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-26～27参考答案；教程UML口径核验（分值未标，pending）",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-design-qa-group-p11",
+      "question_id": "rkdr-1669-design-qa-group-q1",
+      "weight": 0.5,
+      "criterion": "三种消息及概念",
+      "correct": "同步消息（等待控制返回）、异步消息（不等待继续活动）、返回消息（从过程调用返回）",
+      "conditions": [
+        "机制与阻塞语义正确"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题26参考答案；教程UML口径核验"
+    },
+    {
+      "id": "rkdr-1669-design-qa-group-p12",
+      "question_id": "rkdr-1669-design-qa-group-q2",
+      "weight": 0.5,
+      "criterion": "两图选取原则",
+      "correct": "时序图：强调时间顺序/时间线/复杂交互；协作图：强调对象关系/结构/通信",
+      "conditions": [
+        "核心判别词正确"
+      ],
+      "equivalents": [],
+      "dimension": "UML建模",
+      "source": "网站题27参考答案；教程UML口径核验"
+    }
+  ]
+}

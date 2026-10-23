@@ -1,0 +1,14 @@
+flowchart LR
+  ROOT["3.4.4 组成：四项建设任务<br/>与两库结构采用不同观察重点"]
+  ROOT --- DATA["数据重组和确认<br/>识别、多源混合、清洗，统一逻辑模型"]
+  ROOT --- DICT["数据字典建立<br/>格式含义一致，元数据与业务事实分清"]
+  ROOT --- MINE["数据挖掘与智能体<br/>模式发现、查询分析、跟踪与检验"]
+  ROOT --- MOD["模型建立<br/>模型有意义且适合当前问题"]
+  DATA -->|本例组织分析数据| DW["DW：集成历史，主题分析<br/>仍需更新与质量管理"]
+  DICT --- SEM["本例维护编码、单位、指标口径"]
+  MINE --- TYPES["关联 / 定序 / 分类 / 聚类<br/>按目标与输入条件区分"]
+  MOD --- APP["应用轴<br/>统计 / 会计 / 人事 / 营销"]
+  MOD --- BASIS["依据轴<br/>经验判断 / 客观数据，可结合"]
+  MOD --- METHODS["方法轴<br/>穷枚举 / 算法 / 启发式 / 模拟，可组合"]
+  classDef base fill:#e9f4ff,stroke:#276d9d,color:#15344a;
+  class ROOT,DATA,DICT,MINE,MOD,DW,SEM,TYPES,APP,BASIS,METHODS base;

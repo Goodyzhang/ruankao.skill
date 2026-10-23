@@ -1,0 +1,11 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'PingFang SC, Microsoft YaHei, sans-serif','fontSize':'23px','primaryColor':'#e9f1f5','primaryTextColor':'#183149','lineColor':'#386b89'},'flowchart':{'htmlLabels':true,'curve':'linear','nodeSpacing':36,'rankSpacing':48}}}%%
+flowchart TB
+ I[数据输入<br/>人工、自动、二者结合] -->|原始业务数据| P[数据处理<br/>校验、计算、分类、汇总]
+ P -->|处理结果| O[文件/报表生成<br/>业务单据与操作记录]
+ P -->|业务写入、修改等| D[(数据库维护<br/>检索、修改、存入、删除)]
+ D -->|已有数据| P
+ Q[查询处理<br/>按条件检索与访问授权] -->|查询条件| P
+ P -->|查询结果| Q
+ N[3.2.2 的五种功能及作用关系<br/>每次查询无需先走完五步<br/>数据库维护此处指业务数据操作]
+ classDef note fill:#fff2d7,stroke:#bd8b48;
+ class N note;

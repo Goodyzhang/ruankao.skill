@@ -1,4 +1,10 @@
 # Keep the published knowledge library in Git/Pages, outside release source archives.
 /artifacts export-ignore
+# Optional study materials have their own release and category archives.
+/materials export-ignore
+# Source PDFs are binary; preserve Markdown hard breaks and source spacing.
+*.pdf binary
+*.md whitespace=-blank-at-eol,-blank-at-eof
+*.mmd whitespace=-blank-at-eof
 # Preserve generated dependencies and their upstream legal notices byte for byte.
 /skills/soft-exam-lab/assets/frontend/dist/** -text -whitespace

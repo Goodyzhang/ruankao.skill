@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-cps-highway-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-174～176参考答案；教程第2版§11核验",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-cps-highway-p1",
+      "question_id": "rkdr-1669-cps-highway-q1",
+      "weight": 4,
+      "criterion": "CPS核心作用",
+      "correct": "CPS是本项目顶层架构和核心思想：通过物联网实现物理世界（道路、桥梁、车辆）深度感知，通过边缘计算和云计算进行数据分析和智能决策，再通过网络通信将控制指令反馈给物理世界（信号灯、诱导屏），形成“感-联-知-控”闭环；实现物理高速公路与信息系统深度融合、实时交互与协同控制，是实现所有智慧功能的基础",
+      "conditions": [
+        "闭环表述完整"
+      ],
+      "equivalents": [],
+      "dimension": "信息物理系统",
+      "source": "网站题174参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p2",
+      "question_id": "rkdr-1669-cps-highway-q1",
+      "weight": 3,
+      "criterion": "需求(1)技术整合",
+      "correct": "需求(1)设施监测预警：物联网（高精度传感器采集物理形变数据，数据来源）+大数据&人工智能（海量时序数据实时分析挖掘，机器学习异常检测趋势预测实现故障诊断健康预警）",
+      "conditions": [
+        "技术+角色"
+      ],
+      "equivalents": [],
+      "dimension": "信息物理系统",
+      "source": "网站题174参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p3",
+      "question_id": "rkdr-1669-cps-highway-q1",
+      "weight": 3,
+      "criterion": "需求(3)技术整合",
+      "correct": "需求(3)动态交通控制：物联网（车流量检测器实时采集车流密度速度）+人工智能（优化算法如强化学习快速计算最优车道限速信号灯策略）+信息物理系统（闭环控制下发策略至指示牌信号灯执行单元）",
+      "conditions": [
+        "技术+角色"
+      ],
+      "equivalents": [],
+      "dimension": "信息物理系统",
+      "source": "网站题174参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p4",
+      "question_id": "rkdr-1669-cps-highway-q2",
+      "weight": 2,
+      "criterion": "选型结论",
+      "correct": "应采用边缘计算来处理（2分）",
+      "conditions": [
+        "结论明确"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题175参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p5",
+      "question_id": "rkdr-1669-cps-highway-q2",
+      "weight": 3,
+      "criterion": "延迟维度",
+      "correct": "延迟：边缘计算将处理能力下沉到网络边缘（如路边单元RSU），数据无需上传遥远云端，延迟极低（毫秒级），满足V2X通信和实时服务苛刻要求；云计算传输往返时间长延迟高",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题175参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p6",
+      "question_id": "rkdr-1669-cps-highway-q2",
+      "weight": 3,
+      "criterion": "带宽与可靠性",
+      "correct": "带宽：边缘本地处理原始数据（视频流）只上传结果性数据，极大节省核心网络带宽；云计算传全部原始数据带宽消耗巨大。可靠性：边缘在网络中断（如山洪冲断光纤）时仍能提供本地化关键服务；云计算完全依赖网络，网络故障即服务中断",
+      "conditions": [
+        "两维度齐全"
+      ],
+      "equivalents": [],
+      "dimension": "边缘计算",
+      "source": "网站题175参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p7",
+      "question_id": "rkdr-1669-cps-highway-q3",
+      "weight": 3.5,
+      "criterion": "新技术清单",
+      "correct": "新技术：(1)物联网——采集实时车流量数据；(2)大数据——存储处理结构化非结构化实时数据并参考海量历史数据；(3)人工智能——机器学习实现精准预测；(4)边缘计算——实现低延时服务；(5)云计算——复杂模型训练、全局路径规划；(6)数字孪生——构建与物理道路完全映射的虚拟路网；(7)5G——超低延时大带宽高移动性确保低延时反馈",
+      "conditions": [
+        "技术+原因"
+      ],
+      "equivalents": [],
+      "dimension": "新技术",
+      "source": "网站题176参考答案"
+    },
+    {
+      "id": "rkdr-1669-cps-highway-p8",
+      "question_id": "rkdr-1669-cps-highway-q3",
+      "weight": 3.5,
+      "criterion": "技术与需求(5)对应",
+      "correct": "技术与“精准预测拥堵+低延时反馈”需求对应：物联网采集→大数据处理→AI预测→边缘低延时反馈→云计算全局训练→数字孪生映射→5G传输",
+      "conditions": [
+        "对应关系完整"
+      ],
+      "equivalents": [],
+      "dimension": "新技术",
+      "source": "网站题176题面"
+    }
+  ]
+}

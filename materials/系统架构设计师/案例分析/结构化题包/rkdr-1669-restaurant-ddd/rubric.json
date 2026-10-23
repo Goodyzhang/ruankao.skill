@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "pack_id": "rkdr-1669-restaurant-ddd-pack",
+  "pack_version": 1,
+  "version": 1,
+  "basis": "inferred-training",
+  "answer_source": {
+    "reliable": true,
+    "locator": "软考达人题1669-62～64参考答案及解析；(6)(7)按网站解析段落与架构图修正（网站答案列表笔误）",
+    "level": "软考达人网站参考答案与《系统架构设计师教程（第2版）》对应章节核验后的训练推定"
+  },
+  "training_policy": "unit-weight-deduplicated-v1",
+  "points": [
+    {
+      "id": "rkdr-1669-restaurant-ddd-p1",
+      "question_id": "rkdr-1669-restaurant-ddd-q1",
+      "weight": 3,
+      "criterion": "限界上下文定义",
+      "correct": "定义：通过限制边界的方法确定业务的上下文，是一种划分业务边界的方法",
+      "conditions": [
+        "定义完整"
+      ],
+      "equivalents": [],
+      "dimension": "领域驱动设计",
+      "source": "网站题62参考答案；教程第2版§14（DDD）"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p2",
+      "question_id": "rkdr-1669-restaurant-ddd-q1",
+      "weight": 3,
+      "criterion": "限界上下文作用",
+      "correct": "作用：分解业务复杂度，确保每个模块聚焦特定业务逻辑；确保开发人员、产品经理和业务方在特定边界内对领域模型达成一致理解，构建可维护可扩展的系统",
+      "conditions": [
+        "两层作用"
+      ],
+      "equivalents": [],
+      "dimension": "领域驱动设计",
+      "source": "网站题62参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p3",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(1)表示层",
+      "correct": "(1)→(c)表示层（Android/iOS/HTML客户端技术所在层）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案；架构图核验"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p4",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(2)Ktor",
+      "correct": "(2)→(l)Ktor（轻量高性能框架，统一接收移动端HTTP请求，负责路由认证）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p5",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(3)Ajax",
+      "correct": "(3)→(g)Ajax（与HTML/CSS/JS并列实现网页动态数据交互）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p6",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(4)统一代理层",
+      "correct": "(4)→(d)统一代理层（承接移动端与Web端，进入业务层的入口，起网关作用）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [
+        "网关层"
+      ],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p7",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(5)Spring Security",
+      "correct": "(5)→(k)Spring Security（网关层的身份认证、授权、攻击防护）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p8",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(6)业务层（修正）",
+      "correct": "(6)→(e)业务层（人员管理/菜单管理/桌台管理/原料管理等管理功能）。网站答案列表误写(6)→(m)且缺(7)；其解析段落明确“(6)提供各个管理功能属于业务层”，架构图(6)框内为管理功能，故按图与解析修正为(e)",
+      "conditions": [
+        "修正依据=网站解析+架构图"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63解析+架构图核验（网站答案列表笔误）"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p9",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(7)基础配置层（修正）",
+      "correct": "(7)→(m)基础配置层（为上层提供监控、配置、消息队列等系统支撑功能）。网站答案列表缺(7)，按解析段落与架构图(7)框（监控/配置/消息队列）修正",
+      "conditions": [
+        "修正依据=网站解析+架构图"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63解析+架构图核验（网站答案列表缺项）"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p10",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(8)日志操作",
+      "correct": "(8)→(h)日志操作（与监控、配置、消息队列并列的系统支撑）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p11",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(9)桌台",
+      "correct": "(9)→(f)桌台（数据实体：菜单/员工/桌台中待填项）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p12",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(10)数据持久层",
+      "correct": "(10)→(a)数据持久层（MySQL/Redis等通用库所在层）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p13",
+      "question_id": "rkdr-1669-restaurant-ddd-q2",
+      "weight": 1,
+      "criterion": "空(11)SQLite",
+      "correct": "(11)→(i)Sqllite（与MySQL/Redis同为通用数据库；Realm专为移动设备设计不具通用性）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "层次式架构",
+      "source": "网站题63参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p14",
+      "question_id": "rkdr-1669-restaurant-ddd-q3",
+      "weight": 3,
+      "criterion": "数据丢失方案",
+      "correct": "丢失：操作先写本地数据库，后台消息队列+自动重试，网络恢复后异步同步云端；对用户透明，最终一致（先本地存活再云端同步）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式同步",
+      "source": "网站题64参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p15",
+      "question_id": "rkdr-1669-restaurant-ddd-q3",
+      "weight": 3,
+      "criterion": "数据冲突方案",
+      "correct": "冲突：权限分级（主修改权绑定创建终端，支付只由收银终端执行）+版本号校验（修改携带版本号，云端匹配才更新）+冲突裁决（业务规则自动合并如同时加菜；无法自动解决提示用户人工裁决）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式同步",
+      "source": "网站题64参考答案及解析"
+    },
+    {
+      "id": "rkdr-1669-restaurant-ddd-p16",
+      "question_id": "rkdr-1669-restaurant-ddd-q3",
+      "weight": 2,
+      "criterion": "操作延迟方案",
+      "correct": "延迟：界面立即响应后台异步同步不阻塞；临时ID机制，服务器确认后替换正式ID，失败回滚（如库存不足清除临时订单并提示原因）",
+      "conditions": [
+        "内容与所引来源口径一致"
+      ],
+      "equivalents": [],
+      "dimension": "分布式同步",
+      "source": "网站题64参考答案及解析"
+    }
+  ]
+}

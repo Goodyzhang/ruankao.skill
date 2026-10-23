@@ -1,0 +1,13 @@
+flowchart TB
+  app[应用层：温控策略/告警与业务功能]
+  middle[可选中间件层：消息/数据/服务/集成/安全]
+  os[操作系统层：任务调度/内存/时间/任务间通信<br/>按需配置文件/网络/GUI/运行库等]
+  abstract[抽象层：HAL隐藏硬件差异；BSP提供板级支持<br/>可含硬件相关驱动；划界随实现变化]
+  hw[硬件层：处理器/存储/I-O/总线/电源/时钟]
+  hw -->|硬件操作封装| abstract
+  abstract -->|向OS提供硬件接口| os
+  os -->|公共系统能力| middle
+  middle -->|向应用提供服务| app
+  os -.->|OS提供可直接使用的API| app
+  contract[先约定接口；桩/模拟器支持部分并行开发] -.-> abstract
+  integration[实际目标板集成：验证真实I-O/时序/故障] -.-> hw

@@ -1,0 +1,50 @@
+[
+  {
+    "source_question": "150",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 150,
+    "paper": "Web Elasticsearch分词的商品推荐系统（微信小程序接入）",
+    "stem_case": "ES分词商品推荐问答组",
+    "stem": "Web Elasticsearch分词的商品推荐系统（微信小程序接入）。",
+    "subquestion": {
+      "site_number": 150,
+      "label": "问题1（分值未标）",
+      "prompt": "1.Standard，Simple，Whitespace，Keyword分词引擎的特点差异（几种分词器怎么分词）。",
+      "type": "解答题",
+      "max_score": null
+    },
+    "source_answer": "1.Standard分词器：默认分词器，英文按单词切分并将大写转小写；中文简单拆分为单个汉字。\n2.Simple分词器：按非字母字符（标点、数字、特殊字符等）切分，大写转小写，并过滤非字母字符。\n3.Whitespace分词器：仅按空白字符（空格、制表符等）切分，不做小写转换，不过滤任何字符。\n4.Keyword分词器：不切分，将整个输入字符串作为单独的词（关键词）处理。\n【注意】本条分值未标，预计为问答组首条，后续小条待观察。"
+  },
+  {
+    "source_question": "151",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 151,
+    "paper": "Web Elasticsearch分词的商品推荐系统（问答组）",
+    "stem_same_as_q150": "ES分词商品推荐问答组与题150同组",
+    "stem": "Web Elasticsearch分词的商品推荐系统（微信小程序接入）。",
+    "subquestion": {
+      "site_number": 151,
+      "label": "问题2（14分8个空）",
+      "prompt": "2.架构图填写，层，支持框架（14分8个空）。",
+      "type": "解答题",
+      "max_score": 14
+    },
+    "source_answer": "（网站正确答案文字区为空、解析为“略”——题面下方附架构图，空位内容需看图后核验或待核验）"
+  },
+  {
+    "source_question": "152",
+    "source": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+    "observed_question": 152,
+    "paper": "Web Elasticsearch分词的商品推荐系统（问答组）",
+    "stem_same_as_q150": "ES分词商品推荐问答组与题150同组",
+    "stem": "Web Elasticsearch分词的商品推荐系统（微信小程序接入）。",
+    "subquestion": {
+      "site_number": 152,
+      "label": "问题3（分值未标）",
+      "prompt": "3.RESTful架构是如何实现前后端分离的？",
+      "type": "解答题",
+      "max_score": null
+    },
+    "source_answer": "RESTful架构通过定义资源、请求方式、响应格式以及前后端交互规范等关键点实现前后端分离，使前端和后端可以独立开发和维护，提高开发效率和系统可扩展性。\n解析详述：(1)资源定义与URL规范——每种URL代表一种资源，通过不同HTTP请求方法（GET/POST/PUT/DELETE）对同一URL操作实现获取/添加/修改/删除；(2)请求方式与响应格式——客户端用标准HTTP方法操作资源，服务器响应通常以JSON格式返回，前端轻松解析处理；(3)前后端职责分离——前端负责用户界面与体验（页面展示、渲染速率和效果），通过Ajax请求与后端交互并接收JSON数据展示；后端专注业务逻辑处理与数据存储，接收请求处理后返回数据；(4)前后端交互规范——双方遵循相同的接口定义、请求方法和响应格式，使前后端独立开发维护，提高协作效率和可扩展性。"
+  }
+]

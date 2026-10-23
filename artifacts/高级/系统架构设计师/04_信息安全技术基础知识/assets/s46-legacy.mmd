@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph SEND["发送方A"]
+      P["原消息P"] --> DA["A私钥操作D_A
+题内签署"]
+      DA --> SIGN["D_A(P)"]
+      SIGN --> EB["B公钥操作E_B
+题内保密"]
+    end
+    EB --> WIRE["信道：E_B(D_A(P))"]
+    subgraph RECEIVE["接收方B"]
+      DB["B私钥操作D_B
+去外层"] --> Q["D_A(P)"]
+      Q --> EA["A公钥操作E_A
+处理内层"]
+      EA --> OUT["题内恢复P"]
+      Q --> KEEP["题内留存：D_A(P)
+签署凭据"]
+    end
+    WIRE --> DB
+    N["仅为教材旧式RSA记号
+现代用完整Sign/Verify，不普遍恢复原文"]

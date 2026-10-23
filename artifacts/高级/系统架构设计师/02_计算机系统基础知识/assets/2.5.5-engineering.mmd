@@ -1,0 +1,32 @@
+---
+title: 2.5.5 网络工程：粗粒度三环节与五阶段模型
+---
+flowchart TB
+  textbook ~~~ exam
+  exam ~~~ correspondence
+  correspondence ~~~ boundary
+  subgraph textbook[教材 2.5.5 的三个正式环节]
+    direction LR
+    planning[网络规划<br/>需求、可行性、现有网络分析]
+    design[网络设计<br/>目标与原则、通信子网<br/>设备选型、安全设计]
+    implementation[网络实施<br/>采购、验收、安装调试<br/>试运行切换、培训]
+    planning -->|规划结果作为设计依据| design
+    design -->|按设计方案组织实施| implementation
+  end
+  subgraph exam[历年题五阶段：更细的工作划分模型]
+    direction LR
+    requirements[需求规范<br/>明确功能与性能要求]
+    communication[通信规范<br/>明确通信约束]
+    logical[逻辑网络设计<br/>资源、地址、路由与安全规划]
+    physical[物理网络设计<br/>设备、位置、线路与测试方案]
+    execute[实施阶段<br/>落地、安装与调试]
+    requirements --> communication --> logical --> physical --> execute
+  end
+  correspondence[粗细教学对应：示意<br/>规划：需求/通信规范<br/>设计：逻辑/物理设计<br/>实施：实施阶段]
+  boundary[箭头表示各模型内的工作先后<br/>上下两套模型不串接成八步<br/>五阶段不是教材新增的五个正式环节]
+  classDef official fill:#eaf2fa,stroke:#376992,color:#173750;
+  classDef finer fill:#e8f6f0,stroke:#45836b,color:#204e3d;
+  classDef note fill:#fff4df,stroke:#b0803e,color:#573814;
+  class planning,design,implementation official;
+  class requirements,communication,logical,physical,execute finer;
+  class correspondence,boundary note;

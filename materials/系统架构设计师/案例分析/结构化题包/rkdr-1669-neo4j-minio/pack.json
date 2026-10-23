@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "rkdr-1669-neo4j-minio-pack",
+  "version": 1,
+  "title": "医疗患者关系分析：Neo4j图数据库与MinIO对象存储",
+  "scoring_notice": "本包为训练用途评分口径（inferred-training）：网站参考答案与逐点分值拆分为推定，采用 unit-weight-deduplicated-v1 扣分口径；不宣称官方评分标准。",
+  "cases": [
+    {
+      "id": "rkdr-1669-neo4j-minio",
+      "title": "患者关系分析系统数据架构（MySQL升级Neo4j+MinIO）",
+      "stem": "三甲医院患者关系分析系统：追踪患者亲属、主治医生及转诊记录；MySQL面临跨科室关联网络查询低效与非结构化病历扫描件存储难题；引入Neo4j图数据库与MinIO分布式对象存储。",
+      "complete": true,
+      "max_score": 25,
+      "source": {
+        "kind": "web-bank",
+        "locator": "https://ruankaodaren.com/exam/#/answer/answer?type=1&id=1669",
+        "label": "软考达人·第二十二章 案例分析/第一节 案例分析·网站题号65～67"
+      },
+      "figures": [
+        {
+          "file": "../../assets/06c647bdc8a26c2d.png",
+          "caption": "MySQL与Neo4j特性对比表：数据模型/查询复杂度/一致性模型/适用场景，空(1)～(4)",
+          "source_locator": "https://image-t.chaiding.com/ruankao/20250701/4ecebb2f5c044afc935e4801b648e9a8.png"
+        }
+      ],
+      "questions": [
+        {
+          "id": "rkdr-1669-neo4j-minio-q1",
+          "title": "问题1（8分）",
+          "prompt": "请比较MySQL与Neo4j在以下方面的差异，并填写表格。",
+          "complete": true,
+          "max_score": 8
+        },
+        {
+          "id": "rkdr-1669-neo4j-minio-q2",
+          "title": "问题2（6分）",
+          "prompt": "在引入MinIO存储病历扫描件时，请说明其在数据可靠性、伸缩性、性能方面的优势，并简要解释实现原理。",
+          "complete": true,
+          "max_score": 6
+        },
+        {
+          "id": "rkdr-1669-neo4j-minio-q3",
+          "title": "问题3（11分）",
+          "prompt": "对比MySQL主从复制、主主复制（Master-Master）集群的优缺点，以及适用场景。",
+          "complete": true,
+          "max_score": 11
+        }
+      ]
+    }
+  ]
+}
